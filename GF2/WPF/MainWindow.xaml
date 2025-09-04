@@ -1,0 +1,42 @@
+﻿<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="Background" Value="#2C2C2C"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1E88E5"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Menu VerticalAlignment="Top" Background="#1C1C1C">
+            <MenuItem Header="Navigation">
+                <MenuItem Header="Velkommen til WPF" Click="NavigateToMain"/>
+                <MenuItem Header="Taxa" Click="Navigate" Tag="{x:Type local:Taxa}"/>
+                <MenuItem Header="Hr Gran" Click="Navigate" Tag="{x:Type local:HrGran}"/>
+                <MenuItem Header="Cookie Clicker" Click="Navigate" Tag="{x:Type local:CookieClicker}"/>
+                <MenuItem Header="Binær Kodeomformer" Click="Navigate" Tag="{x:Type local:Binary}"/>
+                <MenuItem Header="Wordle" Click="Navigate" Tag="{x:Type local:Wordle}"/>
+                <MenuItem Header="TypeRacer" Click="Navigate" Tag="{x:Type local:TypeRacer}"/>
+                <MenuItem Header="Tic Tac Toe" Click="Navigate" Tag="{x:Type local:TicTacToe}"/>
+                <MenuItem Header="Connect Four" Click="Navigate" Tag="{x:Type local:ConnectFour}"/>
+            </MenuItem>
+        </Menu>
+        <Button x:Name="welcomeButton" Content="Velkommen til WPF" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="100" Click="Button_Click"/>
+        <Canvas x:Name="fireworksCanvas" IsHitTestVisible="False"/>
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

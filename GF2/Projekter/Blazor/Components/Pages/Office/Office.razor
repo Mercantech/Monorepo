@@ -1,0 +1,79 @@
+@page "/kontoret"
+
+<div class="kontor-hero text-center py-5 mb-4">
+    <h1 class="display-3 fw-bold mb-3">Kontoret</h1>
+    <p class="lead mb-0">Programmering for kontormiljøet</p>
+</div>
+
+<div class="container kontor-content">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg mb-5 border-0 kontor-card">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4 text-primary fw-semibold">Velkommen til Kontoret</h2>
+                    <p class="mb-4">
+                        I dette projekt skal I bygge små værktøjer, som kan hjælpe medarbejdere på et kontor i deres daglige arbejde. Det inkluderer både konsolprogrammer og en webbaseret informationsside lavet i Blazor.
+                    </p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/kontoret/aboutus">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">🖥️</div>
+                                    <h4 class="fw-bold mb-2">Informationsside i Blazor</h4>
+                                    <p class="mb-0 small">Design og byg en informationsside til virksomheden i Blazor. Inkluder fx landing page, information om værktøjer, præsentation af teamet og navigation mellem sider.</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/kontoret/binaryconverter">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">🔢</div>
+                                    <h4 class="fw-bold mb-2">Binærkodeomformer</h4>
+                                    <p class="mb-0 small">Lav et program der konverterer mellem decimal, binær og hexadecimal. <em>Ekstra:</em> Vis ANDing mellem to IP-adresser.</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/kontoret/landing">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">💡</div>
+                                    <h4 class="fw-bold mb-2">Find på jeres egne værktøjer!</h4>
+                                    <p class="mb-0 small">Det kan være alt fra et lille backup-værktøj, en PDF-generator til kontrakter eller et printer-kontrolsystem.</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <em class="text-secondary">Formålet er at træne programmering i praksis med fokus på kontorarbejde og brugerbehov.</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.kontor-hero {
+    background: linear-gradient(90deg, #3a0647 0%, #1b6ec2 100%);
+    color: #fff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 32px rgba(58,6,71,0.10);
+}
+.kontor-content {
+    margin-top: -40px;
+}
+.kontor-card {
+    border-radius: 1.5rem;
+}
+.feature-box {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-box:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(27,110,194,0.10);
+    background: #eaf1fb;
+}
+</style>
+
+
+

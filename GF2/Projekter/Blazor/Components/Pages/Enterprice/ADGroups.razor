@@ -1,0 +1,40 @@
+@page "/enterprice/adgroups"
+
+<div class="game-hero text-center py-5 mb-4">
+    <h1 class="display-4 fw-bold mb-3">Gruppeoversigt (Active Directory)</h1>
+    <p class="lead mb-0">Få et overblik over alle grupper i jeres AD – og se hvem der er medlem af hvad!</p>
+</div>
+
+<div class="container game-content">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg mb-5 border-0 game-card">
+                <div class="card-body p-5">
+                    <h2 class="h4 mb-3 text-primary fw-semibold">Sådan gør du:</h2>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item">Forbind til jeres AD og hent alle grupper.</li>
+                        <li class="list-group-item">Vis grupperne i en oversigt – fx som en tabel eller liste.</li>
+                        <li class="list-group-item"><em>Ekstra:</em> Vis medlemmer for hver gruppe.</li>
+                    </ul>
+                    <div class="alert alert-info mt-4">
+                        <strong>Tip:</strong> Prøv at lave klikbare grupper, så man kan se medlemmerne!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.game-hero {
+    background: linear-gradient(90deg, #1b6ec2 0%, #3a0647 100%);
+    color: #fff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+}
+.game-content {
+    margin-top: -40px;
+}
+.game-card {
+    border-radius: 1.5rem;
+}
+</style>

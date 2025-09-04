@@ -1,0 +1,41 @@
+@page "/guessanumber"
+
+<div class="game-hero text-center py-5 mb-4">
+    <h1 class="display-4 fw-bold mb-3">Gæt et tal</h1>
+    <p class="lead mb-0">Kan du gætte det hemmelige tal, computeren har valgt?</p>
+</div>
+
+<div class="container game-content">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg mb-5 border-0 game-card">
+                <div class="card-body p-5">
+                    <h2 class="h4 mb-3 text-primary fw-semibold">Sådan spiller du:</h2>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item">Computeren vælger et tilfældigt tal mellem 1 og 100.</li>
+                        <li class="list-group-item">Du skal gætte tallet – og får at vide, om det rigtige tal er højere eller lavere.</li>
+                        <li class="list-group-item"><em>Ekstra:</em> Gem dine gæt i en liste og se dem til sidst!</li>
+                    </ul>
+                    <div class="alert alert-info mt-4">
+                        <strong>Tip:</strong> Prøv at gætte tallet på færrest mulige forsøg – og udfordr dine venner!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.game-hero {
+    background: linear-gradient(90deg, #1b6ec2 0%, #3a0647 100%);
+    color: #fff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+}
+.game-content {
+    margin-top: -40px;
+}
+.game-card {
+    border-radius: 1.5rem;
+}
+</style>
