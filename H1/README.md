@@ -63,4 +63,4 @@ Jeres Database Connection kommer fra Supabase - Hvor I for udleveret en konto af
 
 
 ### Hosting
-Vi kigger på Hosting under H1 forløbet, men vores applikation her burde gerne være live på [Render.com](https://h1-template.onrender.com/)! *Siden bliver inaktiv efter lidt tid, så hvis den ikke loader, er [containeren](https://www.notion.so/mercantec/Containers-a9c3613888d342cca0221c7e0f68a767) ved at starte op!*
+Vi kigger på Hosting under H1 forløbet, men vores applikation her burde gerne være live på Deploy.mercantec.tech
