@@ -6,6 +6,12 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "MaSwaggerNobg",
+      "MaSwagger",
+      "MaScalar",
+      "MaXml",
+      "MaBruno",
+      "MaFakerBogus",
       "MaH3Logo",
       "MaH4Logo",
       "MaH5Logo",
@@ -14,13 +20,7 @@
       "MaGF1",
       "MaActiveDirectory",
       "MaCsharpbogenNobg",
-      "MaAssets",
-      "MaFiles",
-      "MaSpotifyLogo",
-      "FasFlag",
-      "🏴‍☠️",
-      "MaCsharpbogen",
-      "MaAPI"
+      "MaAssets"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -61,5 +61,10 @@
   "H6": "MaH6Logo",
   "H5": "MaH5Logo",
   "H4": "MaH4Logo",
-  "H3": "MaH3Logo"
+  "H3": "MaH3Logo",
+  "Web API med CSharp/Bogus.md": "MaFakerBogus",
+  "Web API med CSharp/Bruno.md": "MaBruno",
+  "Web API med CSharp/Dokumentation med XML.md": "MaXml",
+  "Web API med CSharp/Scalar.md": "MaScalar",
+  "Web API med CSharp/Swagger.md": "MaSwaggerNobg"
 }
