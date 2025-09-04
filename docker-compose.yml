@@ -20,3 +20,4 @@ services:
 networks:
   obsidian-network:
     driver: bridge
+  
