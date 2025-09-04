@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Opgaver/Binær Kodeomformer.md",
+                "file": "CSharp/SignalR/SignalR.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Binær Kodeomformer"
+              "title": "SignalR"
             }
           }
         ],
@@ -196,11 +196,20 @@
   },
   "active": "27b004dc082ee470",
   "lastOpenFiles": [
-    "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
+    "Assets/Pasted image 20250904233058.png",
+    "Opgaver/Opgaver Oversigt.base",
+    "CSharp/SignalR/SignalR.md",
+    "H1/Oversigt.md",
+    "CSharp/SignalR",
+    "Opgaver/Opgaver oversigt.md",
+    "Opgaver/Visualisere Benzinpriser.md",
+    "CSharp/CSharp.md",
+    "Assets/Pasted image 20250904232439.png",
+    "Opgaver/Selvvalgt API Projekt.md",
     "Opgaver/Binær Kodeomformer.md",
+    "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
     "Assets/Pasted image 20250904231431.png",
     "Assets/Pasted image 20250904231424.png",
-    "CSharp/CSharp.md",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "GF2/Canva.canvas",
     "Welcome.md",
@@ -233,17 +242,8 @@
     "Infrastruktur/Cisco CCNA/01. Networking Today.md",
     "Assets/1.9.3-lab---research-it-and-networking-job-opportunities.pdf",
     "Infrastruktur/Cisco CCNA",
-    "Assets/Pasted image 20250904223538.png",
     "Infrastruktur",
     "CSharp/Dotnet",
-    "CSharp",
-    "CSharp/Dotnet/Dotnet core.md",
-    "CSharp/Web API med CSharp/Cross Site Scripting - XSS.md",
-    "CSharp/Web API med CSharp/CORS - Cross Origin Resource Sharing.md",
-    "CSharp/Web API med CSharp/EFCore.md",
-    "CSharp/Web API med CSharp/Hashing.md",
-    "CSharp/Web API med CSharp/JWT.md",
-    "Untitled.base",
     "CSharp/Blazor/Overview.canvas"
   ]
 }

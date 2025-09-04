@@ -1,0 +1,13 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.folder == "Opgaver"
+  - type: cards
+    name: View
+    filters:
+      and:
+        - file.folder == "Opgaver"
+    order:
+      - file.name

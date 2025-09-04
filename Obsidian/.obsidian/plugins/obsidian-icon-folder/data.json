@@ -6,6 +6,9 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "MaSignalR",
+      "MaGgas",
+      "MaAPI",
       "LiBinary",
       "MaTCPIP",
       "MaCisco",
@@ -17,10 +20,7 @@
       "MaSwagger",
       "MaScalar",
       "MaXml",
-      "MaBruno",
-      "MaFakerBogus",
-      "MaH3Logo",
-      "MaH4Logo"
+      "MaBruno"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -47,7 +47,6 @@
   "GF1/Spotify Klon.md": "MaSpotifyLogo",
   "Assets": "MaAssets",
   "GF1": "MaGF1",
-  "H1": "MaH1Logo",
   "H6": "MaH6Logo",
   "H5": "MaH5Logo",
   "H4": "MaH4Logo",
@@ -74,5 +73,9 @@
   "Infrastruktur/Cisco CCNA": "MaCisco",
   "Infrastruktur/Cisco CCNA/CCNA for programmør.md": "MaCiscoCcna",
   "Infrastruktur/Cisco CCNA/03. Protocols and Models.md": "MaTCPIP",
-  "Opgaver/Binær Kodeomformer.md": "LiBinary"
+  "Opgaver/Binær Kodeomformer.md": "LiBinary",
+  "Opgaver/Selvvalgt API Projekt.md": "MaAPI",
+  "Opgaver/Visualisere Benzinpriser.md": "MaGgas",
+  "CSharp/SignalR": "MaSignalR",
+  "CSharp/SignalR/SignalR.md": "MaSignalR"
 }
