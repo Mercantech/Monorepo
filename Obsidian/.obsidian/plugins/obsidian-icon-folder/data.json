@@ -6,6 +6,9 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "MaTCPIP",
+      "MaCisco",
+      "MaCiscoCcna",
       "MaOsi",
       "MaDotNet",
       "MaLogoCSharp",
@@ -17,10 +20,7 @@
       "MaFakerBogus",
       "MaH3Logo",
       "MaH4Logo",
-      "MaH5Logo",
-      "MaH6Logo",
-      "MaH1Logo",
-      "MaGF1"
+      "MaH5Logo"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -70,5 +70,8 @@
   "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md": "FasFlag",
   "Infrastruktur/Active-Diretory": "MaActiveDirectory",
   "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md": "MaActiveDirectory",
-  "Infrastruktur/Cisco CCNA/OSI-Modellen.md": "MaOsi"
+  "Infrastruktur/Cisco CCNA/OSI-Modellen.md": "MaOsi",
+  "Infrastruktur/Cisco CCNA": "MaCisco",
+  "Infrastruktur/Cisco CCNA/CCNA for programmør.md": "MaCiscoCcna",
+  "Infrastruktur/Cisco CCNA/03. Protocols and Models.md": "MaTCPIP"
 }

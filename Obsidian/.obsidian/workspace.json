@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastruktur/Cisco CCNA/CCNA for programmør.md",
+                "file": "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CCNA for programmør"
+              "title": "OSI-Modellen"
             }
           }
         ],
@@ -91,7 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 301.5004348754883
+    "width": 275.5004348754883
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -184,14 +184,18 @@
   },
   "active": "0eeaae5c62531cb0",
   "lastOpenFiles": [
-    "Infrastruktur/Cisco CCNA/16. Network Security Fundamentals.md",
+    "Assets/Pasted image 20250904225510.png",
+    "Assets/Pasted image 20250904225432.png",
+    "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
     "Infrastruktur/Cisco CCNA/Cisco - Netacad.md",
+    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
+    "Infrastruktur/Cisco CCNA/CCNA for programmør.md",
+    "Infrastruktur/Cisco CCNA/16. Network Security Fundamentals.md",
     "Assets/Pasted image 20250904224536.png",
     "Assets/Pasted image 20250904224530.png",
     "Assets/Pasted image 20250904224525.png",
     "Assets/Pasted image 20250904224458.png",
     "Assets/Pasted image 20250904224451.png",
-    "Infrastruktur/Cisco CCNA/CCNA for programmør.md",
     "Infrastruktur/Cisco CCNA/15. Application Layer.md",
     "Infrastruktur/Cisco CCNA/14. Transport Layer.md",
     "Infrastruktur/Cisco CCNA/11. IPv4 Addressing.md",
@@ -201,11 +205,9 @@
     "Infrastruktur/Cisco CCNA/05. Number Systems.md",
     "Opgaver/Binær Kodeomformer.md",
     "Infrastruktur/Cisco CCNA/04. Physical Layer.md",
-    "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
     "Assets/3.7.9-lab---install-wireshark.pdf",
     "Infrastruktur/Cisco CCNA/01. Networking Today.md",
     "Assets/1.9.3-lab---research-it-and-networking-job-opportunities.pdf",
-    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
     "Infrastruktur/Cisco CCNA",
     "Assets/Pasted image 20250904223538.png",
     "Assets/Pasted image 20250904223533.png",
@@ -224,7 +226,6 @@
     "CSharp/Web API med CSharp/Rolles and Permisions.md",
     "Assets/Pasted image 20250904222553.png",
     "Assets/Pasted image 20250904220942.png",
-    "Assets/Pasted image 20250904220928.png",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "Untitled.base",
     "Machine Learning/Untitled",

@@ -36,3 +36,96 @@ På den anden side er **TCP/IP** (Transmission Control Protocol/Internet Protoco
 
 ![[Pasted image 20250904223538.png]]
 Selvom begge modeller har til formål at beskrive netværksprotokoller og hvordan de interagerer, er der nogle forskelle mellem dem. OSI-modellen er mere detaljeret og specifik, mens TCP/IP-modellen er mere generel og anvendelig i praksis. For eksempel, i OSI-modellen er session, præsentation og applikationslag adskilt, mens de i TCP/IP-modellen er samlet i et enkelt applikationslag.
+
+## Praktisk anvendelse for programmører
+
+### Fejlfinding og debugging
+OSI-modellen er et kraftfuldt værktøj til systematisk fejlfinding:
+
+**Applikationslag (7)**
+- API tilgængelighed og endpoints
+- HTTP status koder (200, 404, 500)
+- Authentication og authorization
+- Input validering
+
+**Præsentationslag (6)**
+- Data serialisering/deserialisering (JSON, XML)
+- Kryptering og sikkerhed
+- Karakter encoding (UTF-8, ASCII)
+
+**Session lag (5)**
+- Session management
+- Login/logout funktionalitet
+- WebSocket forbindelser
+- Database sessions
+
+**Transportlag (4)**
+- Port konfiguration (80, 443, 8080)
+- TCP vs UDP valg
+- Connection pooling
+- Timeout indstillinger
+
+**Netværkslag (3)**
+- IP adresser og routing
+- DNS resolution
+- Load balancing
+- Firewall regler
+
+### Sikkerhedsarkitektur
+Hvert lag har sine egne sikkerhedsaspekter:
+
+- **Lag 7**: Input validation, rate limiting, OWASP guidelines
+- **Lag 6**: TLS/SSL kryptering, data masking
+- **Lag 5**: Session hijacking beskyttelse
+- **Lag 4**: Port scanning beskyttelse
+- **Lag 3**: VPN, IP whitelisting
+
+### Performance optimering
+- **Caching strategier** (lag 7)
+- **Connection pooling** (lag 4)
+- **CDN implementering** (lag 3)
+- **Compression** (lag 6)
+
+### Værktøjer til debugging
+- **Wireshark**: Packet analysis på alle lag
+- **Postman/Insomnia**: API testing (lag 7)
+- **curl/wget**: HTTP debugging (lag 7)
+- **netstat**: Port og forbindelsesanalyse (lag 4)
+- **ping/traceroute**: Netværksdiagnostik (lag 3)
+
+## Cloud og Microservices
+
+I moderne arkitektur er OSI-modellen stadig relevant:
+
+**Container kommunikation**
+- Service-to-service kommunikation
+- API Gateway funktionalitet
+- Load balancer konfiguration
+
+**Database forbindelser**
+- Connection string konfiguration
+- Connection pooling
+- Database clustering
+
+**Message Queues**
+- Asynkron kommunikation
+- Event-driven arkitektur
+- Pub/Sub patterns
+
+## Praktiske eksempler
+
+### Webapplikation flow
+1. **Browser** sender HTTP request (lag 7)
+2. **Web server** modtager på port 80/443 (lag 4)
+3. **Load balancer** distribuerer trafik (lag 3)
+4. **Application server** behandler request (lag 7)
+5. **Database** gemmer/henter data (lag 7)
+
+### API integration
+- **REST APIs** opererer primært på lag 7
+- **GraphQL** håndterer data på lag 6-7
+- **gRPC** bruger lag 4-7 effektivt
+- **WebSockets** etablerer session på lag 5
+
+![[Pasted image 20250904225510.png]]
+![[Pasted image 20250904225432.png]]
