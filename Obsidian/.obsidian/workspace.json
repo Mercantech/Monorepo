@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSharp/MailService.md",
+                "file": "GF1/Spotify Klon.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MailService"
+              "title": "Spotify Klon"
             }
           }
         ],
@@ -196,8 +196,14 @@
   },
   "active": "7f8678176ae8be8c",
   "lastOpenFiles": [
-    "Infrastruktur/IT-ServiceManagment.md",
+    "CSS/CSS Spil.md",
+    "GF1/Spotify Klon.md",
+    "CSS",
+    "Untitled 1",
+    "Untitled",
+    "Assets/Pasted image 20250904234705.png",
     "CSharp/MailService.md",
+    "Infrastruktur/IT-ServiceManagment.md",
     "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
     "CSharp/SignalR/SignalR.md",
     "Assets/Pasted image 20250904233108.png",
@@ -230,20 +236,14 @@
     "Infrastruktur/Cisco CCNA/16. Network Security Fundamentals.md",
     "Assets/Pasted image 20250904224536.png",
     "Assets/Pasted image 20250904224530.png",
-    "Assets/Pasted image 20250904224525.png",
     "Infrastruktur/Cisco CCNA/15. Application Layer.md",
     "Infrastruktur/Cisco CCNA/14. Transport Layer.md",
     "Infrastruktur/Cisco CCNA/11. IPv4 Addressing.md",
     "Infrastruktur/Cisco CCNA/09. Address Resolution.md",
     "Infrastruktur/Cisco CCNA/08. Network Layer.md",
     "Infrastruktur/Cisco CCNA/06. Data Link Layer.md",
-    "Infrastruktur/Cisco CCNA/05. Number Systems.md",
-    "Infrastruktur/Cisco CCNA/04. Physical Layer.md",
     "Assets/3.7.9-lab---install-wireshark.pdf",
     "Assets/1.9.3-lab---research-it-and-networking-job-opportunities.pdf",
-    "Infrastruktur/Cisco CCNA",
-    "Infrastruktur",
-    "CSharp/Dotnet",
     "CSharp/Blazor/Overview.canvas"
   ]
 }
