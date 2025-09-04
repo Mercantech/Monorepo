@@ -7,7 +7,7 @@ services:
     ports:
       - "2847:8000"
     volumes:
-      - ./Obsidian:/docs
+      - ./Obsidian:/docs/docs
       - ./mkdocs.yml:/docs/mkdocs.yml
     working_dir: /docs
     environment:
