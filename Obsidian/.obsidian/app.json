@@ -2,5 +2,6 @@
   "alwaysUpdateLinks": true,
   "newFileLocation": "current",
   "attachmentFolderPath": "Assets",
-  "uriCallbacks": true
+  "uriCallbacks": true,
+  "showLineNumber": true
 }
