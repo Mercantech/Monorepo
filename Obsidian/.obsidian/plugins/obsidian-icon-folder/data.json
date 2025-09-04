@@ -6,6 +6,11 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "MaActiveDirectory",
+      "MaCsharpbogenNobg",
+      "MaAssets",
+      "MaFiles",
+      "MaSpotifyLogo",
       "FasFlag",
       "🏴‍☠️",
       "MaCsharpbogen",
@@ -38,13 +43,16 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "Active-Diretory": "LiServer",
-  "Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md": "LiAlbum",
+  "Active-Diretory": "MaActiveDirectory",
+  "Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md": "MaActiveDirectory",
   "Blazor": "MaBlazor",
   "Web API med CSharp": "MaAPI",
   "Web API med CSharp/Oversigt.md": "MaAPI",
   "Blazor/Blazor.md": "MaBlazor",
   "CSharp-Bogen/CSharp-Bogen.md": "MaCsharpbogen",
   "CTF - Capture The Flag": "🏴‍☠️",
-  "CTF - Capture The Flag/CTF - Datahouse Datacenter.md": "FasFlag"
+  "CTF - Capture The Flag/CTF - Datahouse Datacenter.md": "FasFlag",
+  "GF1/Spotify Klon.md": "MaSpotifyLogo",
+  "CSharp-Bogen": "MaCsharpbogenNobg",
+  "Assets": "MaAssets"
 }

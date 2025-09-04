@@ -2,5 +2,6 @@
   "enabledCssSnippets": [
     "iconize",
     "columns"
-  ]
+  ],
+  "theme": "obsidian"
 }
