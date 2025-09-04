@@ -1,12 +1,11 @@
-site_name: "Mathias' Obsidian Vault"
-site_description: 'Min personlige videnbase med C# noter, projekter og dokumentation'
-site_author: 'Mathias'
-site_url: 'https://docs.mags.dk' 
+site_name: "Mathias Obsidian Vault"
+site_description: "Min personlige videnbase med C# noter, projekter og dokumentation"
+site_author: "Mathias"
+site_url: "https://docs.mags.dk"
 
 theme:
   name: material
   palette:
-    # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
@@ -14,8 +13,6 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
@@ -23,7 +20,6 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-
   features:
     - navigation.tabs
     - navigation.sections
@@ -35,42 +31,22 @@ theme:
     - content.code.copy
     - content.code.annotate
 
-  icon:
-    repo: fontawesome/brands/github
-
 plugins:
   - search
   - git-revision-date-localized:
       enable_creation_date: true
-  - git-committers:
-      repository: mathias/monorepo
-      branch: main
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.superfences
-  - pymdownx.arithmatex
-  - pymdownx.mark
-  - pymdownx.caret
-  - pymdownx.keys
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
   - admonition
-  - pymdownx.superfences
   - footnotes
   - attr_list
   - md_in_html
@@ -79,36 +55,33 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - C# Bogen:
-    - CSharp-Bogen/0. Oversigt.md
-    - CSharp-Bogen/1. Dit første program.md
-    - CSharp-Bogen/2. Variabler.md
-    - CSharp-Bogen/3. Expressions og operatører.md
-    - CSharp-Bogen/4. Inputs.md
-    - CSharp-Bogen/5. Control Flow.md
-    - CSharp-Bogen/6. Klasser og Objekter.md
-    - CSharp-Bogen/7. Loops og iterationer.md
-    - CSharp-Bogen/8. Metoder - Funktioner.md
-    - CSharp-Bogen/9. Debugging.md
-    - CSharp-Bogen/10. Kodestandarter.md
+  - "C# Bogen":
+    - "CSharp-Bogen/0. Oversigt.md"
+    - "CSharp-Bogen/1. Dit første program.md"
+    - "CSharp-Bogen/2. Variabler.md"
+    - "CSharp-Bogen/3. Expressions og operatører.md"
+    - "CSharp-Bogen/4. Inputs.md"
+    - "CSharp-Bogen/5. Control Flow.md"
+    - "CSharp-Bogen/6. Klasser og Objekter.md"
+    - "CSharp-Bogen/7. Loops og iterationer.md"
+    - "CSharp-Bogen/8. Metoder - Funktioner.md"
+    - "CSharp-Bogen/9. Debugging.md"
+    - "CSharp-Bogen/10. Kodestandarter.md"
   - Kurser:
-    - GF1: GF1/Oversigt.md
-    - H1: H1/Oversigt.md
-    - H2: H2/Oversigt.md
-    - H3: H3/Oversigt.md
-    - H4: H4/Oversigt.md
-    - H5: H5/Oversigt.md
-    - H6: H6/Oversigt.md
+    - "GF1": "GF1/Oversigt.md"
+    - "H1": "H1/Oversigt.md"
+    - "H2": "H2/Oversigt.md"
+    - "H3": "H3/Oversigt.md"
+    - "H4": "H4/Oversigt.md"
+    - "H5": "H5/Oversigt.md"
+    - "H6": "H6/Oversigt.md"
   - Teknologier:
-    - Blazor: Blazor/Oversigt.md
-    - Web API: Web API med CSharp/Oversigt.md
+    - "Blazor": "Blazor/Oversigt.md"
+    - "Web API": "Web API med CSharp/Oversigt.md"
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/mathias
+      link: "https://github.com/mathias"
     - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/in/mathias
-
-  version:
-    provider: mike
+      link: "https://linkedin.com/in/mathias"
