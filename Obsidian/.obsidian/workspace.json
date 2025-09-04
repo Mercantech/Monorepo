@@ -20,17 +20,17 @@
             }
           },
           {
-            "id": "0eeaae5c62531cb0",
+            "id": "27b004dc082ee470",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
+                "file": "Welcome.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "OSI-Modellen"
+              "title": "Welcome"
             }
           }
         ],
@@ -91,7 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 275.5004348754883
+    "width": 310.5040512084961
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -194,10 +194,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "172545d0481928dd",
+  "active": "27b004dc082ee470",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2025-09-04 23.04.55.excalidraw.md",
+    "CSharp/CSharp.md",
+    "Welcome.md",
     "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
+    "Excalidraw/Drawing 2025-09-04 23.04.55.excalidraw.md",
     "Excalidraw",
     "README.md",
     "quartz.config.ts",
@@ -228,7 +230,6 @@
     "Infrastruktur/Cisco CCNA",
     "Assets/Pasted image 20250904223538.png",
     "Assets/Pasted image 20250904223533.png",
-    "CSharp/CSharp.md",
     "Infrastruktur",
     "CSharp/Dotnet",
     "CSharp",
@@ -239,7 +240,6 @@
     "CSharp/Web API med CSharp/Hashing.md",
     "CSharp/Web API med CSharp/JWT.md",
     "CSharp/Web API med CSharp/Logging.md",
-    "CSharp/Web API med CSharp/Rate Limiting.md",
     "Assets/Pasted image 20250904222553.png",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "Untitled.base",
