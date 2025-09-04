@@ -1,7 +1,7 @@
 site_name: 'Mathias' Obsidian Vault
 site_description: 'Min personlige videnbase med C# noter, projekter og dokumentation'
 site_author: 'Mathias'
-site_url: 'https://docs.mathias.local'  # Ændr til dit domæne
+site_url: 'https://docs.mags.dk' 
 
 theme:
   name: material
