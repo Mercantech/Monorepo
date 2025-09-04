@@ -1,0 +1,7 @@
+.markdown-preview-view .iconize {
+    font-size: 21.5em; /* Standard for alle Iconize ikoner */
+}
+
+/* Hvis du vil have forskellige størrelser */
+.icon-large { font-size: 2em; }
+.icon-small { font-size: 0.8em; }

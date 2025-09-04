@@ -1,0 +1,31 @@
+/* Virker i både Preview og Reading View */
+.markdown-preview-view .columns,
+.markdown-reading-view .columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Billede fylder 2/3, tekst fylder 1/3 */
+  gap: 1.5rem;
+  align-items: start;
+  margin: 1rem 0;
+}
+
+.markdown-preview-view .columns > div,
+.markdown-reading-view .columns > div {
+  margin: 0;
+}
+
+/* Alternativ layout hvor tekst kommer først (skifter side) */
+.markdown-preview-view .columns.reverse,
+.markdown-reading-view .columns.reverse {
+  grid-template-columns: 1fr 2fr; /* Tekst fylder 1/3, billede fylder 2/3 */
+}
+
+/* Responsivt design for mindre skærme */
+@media (max-width: 768px) {
+  .markdown-preview-view .columns,
+  .markdown-reading-view .columns,
+  .markdown-preview-view .columns.reverse,
+  .markdown-reading-view .columns.reverse {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "migrated": 6,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 20,
+    "emojiStyle": "twemoji",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "FasFlag",
+      "🏴‍☠️",
+      "MaCsharpbogen",
+      "MaAPI",
+      "LiAlbum",
+      "MaBlazor",
+      "LiAnchor",
+      "⏩",
+      "LiServer"
+    ],
+    "recentlyUsedIconsSize": 15,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": true,
+    "iconInTitleEnabled": true,
+    "iconInTitlePosition": "inline",
+    "iconInFrontmatterEnabled": true,
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconsBackgroundCheckEnabled": true,
+    "iconsInNotesEnabled": true,
+    "iconsInLinksEnabled": true,
+    "iconIdentifier": ":",
+    "lucideIconPackType": "native",
+    "debugMode": false,
+    "useInternalPlugins": false
+  },
+  "Active-Diretory": "LiServer",
+  "Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md": "LiAlbum",
+  "Blazor": "MaBlazor",
+  "Web API med CSharp": "MaAPI",
+  "Web API med CSharp/Oversigt.md": "MaAPI",
+  "Blazor/Blazor.md": "MaBlazor",
+  "CSharp-Bogen/CSharp-Bogen.md": "MaCsharpbogen",
+  "CTF - Capture The Flag": "🏴‍☠️",
+  "CTF - Capture The Flag/CTF - Datahouse Datacenter.md": "FasFlag"
+}
