@@ -36,6 +36,7 @@ SMTP (Simple Mail Transfer Protocol) opererer på **Port 25** (standard) eller *
 - **Delivery rates** kan være lave
 
 #### **Populære lokale SMTP servere:**
+- Mailpit (CrossPlatform og generelt anbefalet af MAGS)
 - **IIS SMTP** (Windows)
 - **Postfix** (Linux)
 - **hMailServer** (Windows)
@@ -344,6 +345,292 @@ I forbindelse med [[IT-ServiceManagment|IT Service Management]] kan email servic
     "Password": "SG.your-api-key",
     "EnableSsl": true
   }
+}
+```
+
+## Hotelbooking System - Praktisk Anvendelse
+
+### **Hvorfor Email er Kritisk i Hotelbooking**
+
+Hotelbooking systemer er afhængige af email kommunikation på flere niveauer:
+
+#### **1. Kunde Kommunikation**
+- **Bekræftelse** af reservation
+- **Check-in** instruktioner
+- **Service** notifikationer
+- **Feedback** requests efter ophold
+
+#### **2. Interne Processer**
+- **Staff** notifikationer om nye bookinger
+- **Housekeeping** assignments
+- **Maintenance** requests
+- **Management** rapporter
+
+#### **3. Business Intelligence**
+- **Revenue** tracking
+- **Occupancy** alerts
+- **Guest** satisfaction surveys
+- **Marketing** campaigns
+
+### **Email Workflow i Hotelbooking System**
+
+```csharp
+public class HotelBookingEmailService
+{
+    private readonly IMailService _mailService;
+    private readonly IHubContext<NotificationHub> _hubContext;
+
+    // 1. Booking Bekræftelse
+    public async Task SendBookingConfirmationAsync(Booking booking)
+    {
+        var template = @"
+        <html>
+            <body style='font-family: Arial, sans-serif;'>
+                <h2>Booking Bekræftelse</h2>
+                <p>Kære {0},</p>
+                <p>Tak for din reservation hos {1}!</p>
+                
+                <div style='background: #f5f5f5; padding: 15px; margin: 10px 0;'>
+                    <h3>Reservation Detaljer:</h3>
+                    <p><strong>Check-in:</strong> {2}</p>
+                    <p><strong>Check-out:</strong> {3}</p>
+                    <p><strong>Værelse:</strong> {4}</p>
+                    <p><strong>Gæster:</strong> {5}</p>
+                    <p><strong>Total pris:</strong> {6} DKK</p>
+                </div>
+                
+                <p>Vi glæder os til at byde dig velkommen!</p>
+                <p>Med venlig hilsen,<br>Hotel Team</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, 
+            booking.GuestName, 
+            "Hotel Copenhagen",
+            booking.CheckInDate.ToString("dd/MM/yyyy"),
+            booking.CheckOutDate.ToString("dd/MM/yyyy"),
+            booking.RoomType,
+            booking.GuestCount,
+            booking.TotalPrice.ToString("N0"));
+
+        await _mailService.SendEmailAsync(booking.GuestEmail, 
+            "Booking Bekræftelse - Hotel Copenhagen", htmlBody);
+
+        // Real-time notifikation til staff
+        await _hubContext.Clients.All.SendAsync("NewBooking", new {
+            GuestName = booking.GuestName,
+            RoomType = booking.RoomType,
+            CheckIn = booking.CheckInDate,
+            Timestamp = DateTime.Now
+        });
+    }
+
+    // 2. Check-in Reminder
+    public async Task SendCheckInReminderAsync(Booking booking)
+    {
+        var template = @"
+        <html>
+            <body>
+                <h2>Check-in Reminder</h2>
+                <p>Hej {0},</p>
+                <p>Dette er en påmindelse om din check-in i morgen kl. 15:00.</p>
+                <p><strong>Adresse:</strong> Hotel Copenhagen, København</p>
+                <p><strong>Parkering:</strong> Gratis parkering tilgængelig</p>
+                <p>Vi glæder os til at se dig!</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, booking.GuestName);
+        await _mailService.SendEmailAsync(booking.GuestEmail, 
+            "Check-in Reminder - Hotel Copenhagen", htmlBody);
+    }
+
+    // 3. Service Notifikationer
+    public async Task SendServiceNotificationAsync(string guestEmail, string service, string message)
+    {
+        var template = @"
+        <html>
+            <body>
+                <h2>Service Notifikation</h2>
+                <p>Kære gæst,</p>
+                <p><strong>Service:</strong> {0}</p>
+                <p><strong>Besked:</strong> {1}</p>
+                <p>Kontakt reception hvis du har spørgsmål.</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, service, message);
+        await _mailService.SendEmailAsync(guestEmail, 
+            "Service Notifikation - Hotel Copenhagen", htmlBody);
+    }
+
+    // 4. Feedback Request
+    public async Task SendFeedbackRequestAsync(Booking booking)
+    {
+        var template = @"
+        <html>
+            <body>
+                <h2>Hjælp os med at forbedre vores service</h2>
+                <p>Kære {0},</p>
+                <p>Tak for dit ophold hos os! Vi håber du havde et godt ophold.</p>
+                <p>Din feedback er vigtig for os. Klik på linket nedenfor for at vurdere dit ophold:</p>
+                <a href='https://hotel.com/feedback/{1}' style='background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>Giv Feedback</a>
+                <p>Tak for din tid!</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, booking.GuestName, booking.BookingId);
+        await _mailService.SendEmailAsync(booking.GuestEmail, 
+            "Feedback Request - Hotel Copenhagen", htmlBody);
+    }
+}
+```
+
+### **Staff Notifikationer**
+
+```csharp
+public class HotelStaffNotificationService
+{
+    private readonly IMailService _mailService;
+
+    // Housekeeping Assignment
+    public async Task NotifyHousekeepingAsync(RoomAssignment assignment)
+    {
+        var template = @"
+        <html>
+            <body>
+                <h2>Housekeeping Assignment</h2>
+                <p><strong>Værelse:</strong> {0}</p>
+                <p><strong>Check-out tid:</strong> {1}</p>
+                <p><strong>Gæster:</strong> {2}</p>
+                <p><strong>Special requests:</strong> {3}</p>
+                <p>Venligst forbered værelset til næste gæst.</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, 
+            assignment.RoomNumber,
+            assignment.CheckOutTime.ToString("HH:mm"),
+            assignment.GuestCount,
+            assignment.SpecialRequests ?? "Ingen");
+
+        await _mailService.SendEmailAsync("housekeeping@hotel.com", 
+            $"Housekeeping Assignment - Værelse {assignment.RoomNumber}", htmlBody);
+    }
+
+    // Maintenance Request
+    public async Task NotifyMaintenanceAsync(MaintenanceRequest request)
+    {
+        var template = @"
+        <html>
+            <body>
+                <h2>Maintenance Request</h2>
+                <p><strong>Værelse:</strong> {0}</p>
+                <p><strong>Problem:</strong> {1}</p>
+                <p><strong>Prioritet:</strong> {2}</p>
+                <p><strong>Beskrivelse:</strong> {3}</p>
+                <p>Venligst håndter denne anmodning snarest muligt.</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, 
+            request.RoomNumber,
+            request.ProblemType,
+            request.Priority,
+            request.Description);
+
+        await _mailService.SendEmailAsync("maintenance@hotel.com", 
+            $"Maintenance Request - Værelse {request.RoomNumber}", htmlBody);
+    }
+}
+```
+
+### **Integration med IT Service Management**
+
+I forbindelse med [[IT-ServiceManagment|IT Service Management]] kan hotelbooking systemer bruge email til:
+
+#### **Incident Management**
+- **System nedetid** notifikationer til gæster
+- **Booking system** fejl alerts til IT team
+- **Payment** processing fejl notifikationer
+
+#### **Change Management**
+- **System updates** notifikationer til staff
+- **New features** announcements til gæster
+- **Maintenance** windows kommunikation
+
+#### **Service Level Management**
+- **Booking response** time monitoring
+- **Email delivery** rate tracking
+- **Guest satisfaction** metrics
+
+### **Best Practices for Hotelbooking Email**
+
+#### **Timing**
+- **Bekræftelse:** Umiddelbart efter booking
+- **Check-in reminder:** 24 timer før ankomst
+- **Service notifikationer:** Real-time
+- **Feedback request:** 24 timer efter check-out
+
+#### **Personalization**
+- Brug gæstens navn
+- Inkluder booking detaljer
+- Tilpas indhold til gæstens sprog
+- Referer til specifikke services
+
+#### **Compliance**
+- **GDPR** compliance for data håndtering
+- **CAN-SPAM** compliance for marketing emails
+- **Opt-out** muligheder
+- **Data retention** policies
+
+### **Monitoring og Analytics**
+
+```csharp
+public class HotelEmailAnalytics
+{
+    public async Task TrackEmailMetricsAsync(string emailType, string recipient, bool success)
+    {
+        // Log email metrics for analysis
+        var metrics = new EmailMetrics
+        {
+            EmailType = emailType,
+            Recipient = recipient,
+            Success = success,
+            Timestamp = DateTime.Now,
+            HotelId = GetCurrentHotelId()
+        };
+
+        await _analyticsService.LogAsync(metrics);
+    }
+
+    public async Task GenerateDailyReportAsync()
+    {
+        var report = await _analyticsService.GetDailyReportAsync();
+        
+        var template = @"
+        <html>
+            <body>
+                <h2>Daglig Email Rapport - {0}</h2>
+                <p><strong>Bekræftelser sendt:</strong> {1}</p>
+                <p><strong>Reminders sendt:</strong> {2}</p>
+                <p><strong>Feedback requests:</strong> {3}</p>
+                <p><strong>Delivery rate:</strong> {4}%</p>
+                <p><strong>Open rate:</strong> {5}%</p>
+            </body>
+        </html>";
+
+        var htmlBody = string.Format(template, 
+            DateTime.Now.ToString("dd/MM/yyyy"),
+            report.ConfirmationsSent,
+            report.RemindersSent,
+            report.FeedbackRequests,
+            report.DeliveryRate,
+            report.OpenRate);
+
+        await _mailService.SendEmailAsync("management@hotel.com", 
+            "Daglig Email Rapport", htmlBody);
+    }
 }
 ```
 
