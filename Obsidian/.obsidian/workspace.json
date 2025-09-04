@@ -23,14 +23,17 @@
             "id": "7f8678176ae8be8c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "GF1/Spotify Klon.md",
-                "mode": "source",
-                "source": false
+                "file": "CSharp/CSharp-Bogen/Canva.canvas",
+                "viewState": {
+                  "x": 1676.5824918812032,
+                  "y": 1223.8697238531113,
+                  "zoom": -2.9104317914873494
+                }
               },
-              "icon": "lucide-file",
-              "title": "Spotify Klon"
+              "icon": "lucide-layout-dashboard",
+              "title": "Canva"
             }
           }
         ],
@@ -196,8 +199,8 @@
   },
   "active": "7f8678176ae8be8c",
   "lastOpenFiles": [
-    "CSS/CSS Spil.md",
     "GF1/Spotify Klon.md",
+    "CSS/CSS Spil.md",
     "CSS",
     "Untitled 1",
     "Untitled",

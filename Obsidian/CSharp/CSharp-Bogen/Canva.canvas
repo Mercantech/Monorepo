@@ -11,7 +11,10 @@
 		{"id":"ca6af2c450d0fa05","type":"file","file":"CSharp/CSharp-Bogen/7. Loops og iterationer.md","x":3280,"y":-520,"width":830,"height":891},
 		{"id":"5b17af19537cacd9","type":"file","file":"CSharp/CSharp-Bogen/8. Metoder - Funktioner.md","x":3280,"y":440,"width":830,"height":891},
 		{"id":"c10e80557fc03a6e","type":"file","file":"CSharp/CSharp-Bogen/9. Debugging.md","x":4200,"y":-520,"width":830,"height":891},
-		{"id":"37c3e12ba1a757c4","type":"file","file":"CSharp/CSharp-Bogen/10. Kodestandarter.md","x":4200,"y":440,"width":830,"height":891}
+		{"id":"37c3e12ba1a757c4","type":"file","file":"CSharp/CSharp-Bogen/10. Kodestandarter.md","x":4200,"y":440,"width":830,"height":891},
+		{"id":"712b35f71e25dd94","x":2070,"y":1600,"width":400,"height":400,"type":"link","url":"https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=net-9.0"},
+		{"id":"d8ce134dad0348fe","x":1655,"y":1600,"width":400,"height":400,"type":"link","url":"https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays"},
+		{"id":"b20d135e790de8cb","x":1240,"y":1600,"width":400,"height":400,"type":"link","url":"https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-9.0"}
 	],
 	"edges":[
 		{"id":"b04a1febb3cdbf44","fromNode":"2d9cbf2152dcbccc","fromSide":"bottom","toNode":"f383e32881a2081e","toSide":"top"},
@@ -24,6 +27,9 @@
 		{"id":"e56667ec46e2e14c","fromNode":"ca6af2c450d0fa05","fromSide":"bottom","toNode":"5b17af19537cacd9","toSide":"top"},
 		{"id":"c4a6e7a5ad917aac","fromNode":"9b62988fef818ca1","fromSide":"right","toNode":"ca6af2c450d0fa05","toSide":"left"},
 		{"id":"6d9413b2b5b6f56a","fromNode":"c10e80557fc03a6e","fromSide":"bottom","toNode":"37c3e12ba1a757c4","toSide":"top"},
-		{"id":"48eb54709eebca94","fromNode":"5b17af19537cacd9","fromSide":"right","toNode":"c10e80557fc03a6e","toSide":"left"}
+		{"id":"48eb54709eebca94","fromNode":"5b17af19537cacd9","fromSide":"right","toNode":"c10e80557fc03a6e","toSide":"left"},
+		{"id":"3a40f71cb075ed53","fromNode":"152b1e3b6b9348fd","fromSide":"bottom","toNode":"d8ce134dad0348fe","toSide":"top"},
+		{"id":"141019fc2e2c7683","fromNode":"152b1e3b6b9348fd","fromSide":"bottom","toNode":"712b35f71e25dd94","toSide":"top"},
+		{"id":"e7f3804cf7d129cd","fromNode":"152b1e3b6b9348fd","fromSide":"bottom","toNode":"b20d135e790de8cb","toSide":"top"}
 	]
 }
