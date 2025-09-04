@@ -19,7 +19,7 @@ Velkommen til C# bogen! Her er en oversigt over alle emnerne i bogen med direkte
 - **Indhold:** Aritmetiske, sammenlignings- og logiske operatorer
 - **Niveau:** Begynder
 
-### 4. [Inputs](4.%20Inputs.md)
+### 4. [Inputs](3.5%20Inputs.md)
 - **Emne:** Brugerinput og datakonvertering
 - **Indhold:** Console.ReadLine(), TryParse metoder, fejlhåndtering og scope
 - **Niveau:** Begynder

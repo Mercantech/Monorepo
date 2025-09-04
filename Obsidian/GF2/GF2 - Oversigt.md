@@ -20,7 +20,7 @@ På GF2 har I 14 konkrette undervisningsgange, hvor vi dækker følgende kapitle
 - **Teori dag 3 - Control Flow - If/Else, Switch og Inputs**
   > [!note]- Se pensum for tredje dag!
   > ![[5. Control Flow]]
-  > ![[4. Inputs]]
+  > ![[3.5 Inputs]]
 
 ## Dag 4 | Hjemmet
 

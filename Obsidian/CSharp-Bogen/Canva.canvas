@@ -1,17 +1,29 @@
 {
 	"nodes":[
-		{"id":"d3d94c062ae834ee","x":1654,"y":442,"width":400,"height":400,"type":"file","file":"CSharp-Bogen/5. Control Flow.md"},
-		{"id":"2d9cbf2152dcbccc","x":-400,"y":-520,"width":830,"height":891,"type":"file","file":"CSharp-Bogen/CSharp-Bogen.md"},
-		{"id":"b6c618eb2cd00ac9","x":540,"y":-520,"width":830,"height":891,"type":"file","file":"CSharp-Bogen/2. Variabler.md"},
-		{"id":"f383e32881a2081e","x":-400,"y":440,"width":830,"height":891,"type":"file","file":"CSharp-Bogen/1. Dit første program.md"},
-		{"id":"a1e1deedecdb704c","x":540,"y":440,"width":830,"height":891,"type":"file","file":"CSharp-Bogen/3. Expressions og operatører.md"},
-		{"id":"e3a692ee23a6c087","x":1440,"y":-520,"width":830,"height":891,"type":"file","file":"CSharp-Bogen/4. Inputs.md"}
+		{"id":"2d9cbf2152dcbccc","type":"file","file":"CSharp-Bogen/CSharp-Bogen.md","x":-400,"y":-520,"width":830,"height":891},
+		{"id":"b6c618eb2cd00ac9","type":"file","file":"CSharp-Bogen/2. Variabler.md","x":540,"y":-520,"width":830,"height":891},
+		{"id":"f383e32881a2081e","type":"file","file":"CSharp-Bogen/1. Dit første program.md","x":-400,"y":440,"width":830,"height":891},
+		{"id":"a1e1deedecdb704c","type":"file","file":"CSharp-Bogen/3. Expressions og operatører.md","x":540,"y":440,"width":830,"height":891},
+		{"id":"e3a692ee23a6c087","type":"file","file":"CSharp-Bogen/3.5 Inputs.md","x":1440,"y":-520,"width":830,"height":891},
+		{"id":"152b1e3b6b9348fd","type":"file","file":"CSharp-Bogen/4. Arrays, Lists & Dictionary.md","x":1440,"y":440,"width":830,"height":891},
+		{"id":"73240e29c868969c","type":"file","file":"CSharp-Bogen/5. Control Flow.md","x":2360,"y":-520,"width":830,"height":891},
+		{"id":"9b62988fef818ca1","type":"file","file":"CSharp-Bogen/6. Klasser og Objekter.md","x":2360,"y":440,"width":830,"height":891},
+		{"id":"ca6af2c450d0fa05","type":"file","file":"CSharp-Bogen/7. Loops og iterationer.md","x":3280,"y":-520,"width":830,"height":891},
+		{"id":"5b17af19537cacd9","type":"file","file":"CSharp-Bogen/8. Metoder - Funktioner.md","x":3280,"y":440,"width":830,"height":891},
+		{"id":"c10e80557fc03a6e","type":"file","file":"CSharp-Bogen/9. Debugging.md","x":4200,"y":-520,"width":830,"height":891},
+		{"id":"37c3e12ba1a757c4","type":"file","file":"CSharp-Bogen/10. Kodestandarter.md","x":4200,"y":440,"width":830,"height":891}
 	],
 	"edges":[
 		{"id":"b04a1febb3cdbf44","fromNode":"2d9cbf2152dcbccc","fromSide":"bottom","toNode":"f383e32881a2081e","toSide":"top"},
 		{"id":"547fe67767e2cdce","fromNode":"f383e32881a2081e","fromSide":"right","toNode":"b6c618eb2cd00ac9","toSide":"left"},
 		{"id":"10566ee24f354c4c","fromNode":"b6c618eb2cd00ac9","fromSide":"bottom","toNode":"a1e1deedecdb704c","toSide":"top"},
 		{"id":"064d9000583cc7d1","fromNode":"a1e1deedecdb704c","fromSide":"right","toNode":"e3a692ee23a6c087","toSide":"left"},
-		{"id":"42b8c47865b1ce33","fromNode":"e3a692ee23a6c087","fromSide":"bottom","toNode":"d3d94c062ae834ee","toSide":"top"}
+		{"id":"c9028b55eed8cf0a","fromNode":"e3a692ee23a6c087","fromSide":"bottom","toNode":"152b1e3b6b9348fd","toSide":"top"},
+		{"id":"d898dbc4077e90a0","fromNode":"152b1e3b6b9348fd","fromSide":"right","toNode":"73240e29c868969c","toSide":"left"},
+		{"id":"9aab7de5d1b1da0d","fromNode":"73240e29c868969c","fromSide":"bottom","toNode":"9b62988fef818ca1","toSide":"top"},
+		{"id":"e56667ec46e2e14c","fromNode":"ca6af2c450d0fa05","fromSide":"bottom","toNode":"5b17af19537cacd9","toSide":"top"},
+		{"id":"c4a6e7a5ad917aac","fromNode":"9b62988fef818ca1","fromSide":"right","toNode":"ca6af2c450d0fa05","toSide":"left"},
+		{"id":"6d9413b2b5b6f56a","fromNode":"c10e80557fc03a6e","fromSide":"bottom","toNode":"37c3e12ba1a757c4","toSide":"top"},
+		{"id":"48eb54709eebca94","fromNode":"5b17af19537cacd9","fromSide":"right","toNode":"c10e80557fc03a6e","toSide":"left"}
 	]
 }
