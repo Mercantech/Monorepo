@@ -163,13 +163,23 @@
               "icon": "lucide-list",
               "title": "Outline of Spotify Klon"
             }
+          },
+          {
+            "id": "172545d0481928dd",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -179,16 +189,23 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0eeaae5c62531cb0",
+  "active": "92a44750e2882671",
   "lastOpenFiles": [
+    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
+    "Excalidraw/Drawing 2025-09-04 23.04.55.excalidraw.md",
+    "Excalidraw",
+    "README.md",
+    "quartz.config.ts",
+    "package.json",
     "Assets/Pasted image 20250904225510.png",
     "Assets/Pasted image 20250904225432.png",
     "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
     "Infrastruktur/Cisco CCNA/Cisco - Netacad.md",
-    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
     "Infrastruktur/Cisco CCNA/CCNA for programmør.md",
     "Infrastruktur/Cisco CCNA/16. Network Security Fundamentals.md",
     "Assets/Pasted image 20250904224536.png",
@@ -223,14 +240,9 @@
     "CSharp/Web API med CSharp/JWT.md",
     "CSharp/Web API med CSharp/Logging.md",
     "CSharp/Web API med CSharp/Rate Limiting.md",
-    "CSharp/Web API med CSharp/Rolles and Permisions.md",
     "Assets/Pasted image 20250904222553.png",
-    "Assets/Pasted image 20250904220942.png",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "Untitled.base",
-    "Machine Learning/Untitled",
-    "Machine Learning",
-    "Opgaver",
     "CSharp/Blazor/Overview.canvas",
     "GF2/Canva.canvas"
   ]
