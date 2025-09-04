@@ -3,7 +3,6 @@ site_description: "Min personlige videnbase med C# noter, projekter og dokumenta
 site_author: "Mathias"
 site_url: "https://docs.mags.dk"
 
-docs_dir: "."
 
 theme:
   name: material
