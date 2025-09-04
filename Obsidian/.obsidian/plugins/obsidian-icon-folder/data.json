@@ -6,6 +6,7 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiBinary",
       "MaTCPIP",
       "MaCisco",
       "MaCiscoCcna",
@@ -19,8 +20,7 @@
       "MaBruno",
       "MaFakerBogus",
       "MaH3Logo",
-      "MaH4Logo",
-      "MaH5Logo"
+      "MaH4Logo"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -73,5 +73,6 @@
   "Infrastruktur/Cisco CCNA/OSI-Modellen.md": "MaOsi",
   "Infrastruktur/Cisco CCNA": "MaCisco",
   "Infrastruktur/Cisco CCNA/CCNA for programmør.md": "MaCiscoCcna",
-  "Infrastruktur/Cisco CCNA/03. Protocols and Models.md": "MaTCPIP"
+  "Infrastruktur/Cisco CCNA/03. Protocols and Models.md": "MaTCPIP",
+  "Opgaver/Binær Kodeomformer.md": "LiBinary"
 }
