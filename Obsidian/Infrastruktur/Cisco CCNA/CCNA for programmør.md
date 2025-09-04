@@ -17,3 +17,26 @@ I kan også finde pensum listen herunder:
 Specielt [[OSI-Modellen]] er vigtig!
 
 [[01. Networking Today]]
+
+## Oversigt over CCNA-materialer
+
+### Grundlæggende koncepter
+- [[01. Networking Today]] - Introduktion til netværk i dag
+- [[03. Protocols and Models]] - Protokoller og modeller
+- [[OSI-Modellen]] - OSI 7-lags modellen (vigtig!)
+
+### Netværkslag
+- [[04. Physical Layer]] - Fysisk lag
+- [[05. Number Systems]] - Talsystemer
+- [[06. Data Link Layer]] - Data Link lag
+- [[08. Network Layer]] - Netværkslag
+- [[09. Address Resolution]] - Adresseresolution
+- [[11. IPv4 Addressing]] - IPv4 adressering
+- [[14. Transport Layer]] - Transport lag
+- [[15. Application Layer]] - Applikationslag
+
+### Sikkerhed og avancerede emner
+- [[16. Network Security Fundamentals]] - Netværkssikkerhed
+
+### Praktisk vejledning
+- [[Cisco - Netacad]] - Guide til Netacad platformen
