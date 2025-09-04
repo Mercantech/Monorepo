@@ -54,6 +54,8 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Test: test.md
+  - Welcome: Welcome.md
   - "C# Bogen":
     - "CSharp-Bogen/0. Oversigt.md"
     - "CSharp-Bogen/1. Dit første program.md"
