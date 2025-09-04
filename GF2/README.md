@@ -1,3 +1,8 @@
 # GF2-CSharp
 
-C# på GF2 (Fysiske hold)
+C# på GF2 
+
+
+## Opgaver
+
+## Projekter
