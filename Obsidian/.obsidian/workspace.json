@@ -11,12 +11,14 @@
             "id": "c23d559a304926ba",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Assets/Pasted image 20250905084358.png"
+                "file": "H3/Oversigt.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250905084358"
+              "icon": "lucide-file",
+              "title": "Oversigt"
             }
           }
         ]
@@ -171,8 +173,10 @@
   },
   "active": "c23d559a304926ba",
   "lastOpenFiles": [
-    "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
+    "H6/Oversigt.md",
+    "H5/Oversigt.md",
     "Assets/Pasted image 20250905084358.png",
+    "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
     "Assets/Pasted image 20250905084333.png",
     "Assets/Pasted image 20250905084318.png",
     "Infrastruktur/IT-ServiceManagment.md",
@@ -210,7 +214,6 @@
     "Infrastruktur",
     "CSharp/Web API med CSharp/Swagger.md",
     "CSharp/Web API med CSharp/Scalar.md",
-    "CSharp/Web API med CSharp/Rolles and Permisions.md",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "CSharp/Web API med CSharp",
