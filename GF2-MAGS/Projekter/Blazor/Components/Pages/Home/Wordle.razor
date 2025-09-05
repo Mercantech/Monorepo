@@ -1,0 +1,42 @@
+@page "/wordle"
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Wordle</h1>
+        </div>
+    </div>
+</div>
+
+<div class="iframe-container">
+    <iframe 
+        src="https://mercantec.notion.site/ebd/112dab5ca23780fa81e6e44c3b97da4f" 
+        class="responsive-iframe"
+        title="Wordle opgavebeskrivelse"
+        loading="lazy"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<style>
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        margin: 20px 0;
+    }
+
+    .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+</style>
+    

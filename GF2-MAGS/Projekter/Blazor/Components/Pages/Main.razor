@@ -1,0 +1,86 @@
+@page "/"
+
+<PageTitle>GF2 Projektoversigt</PageTitle>
+
+<div class="main-hero text-center py-5 mb-4">
+    <h1 class="display-3 fw-bold mb-3">Velkommen til GF2</h1>
+    <p class="lead mb-0">Udforsk dine tre spændende projekter gennem forløbet</p>
+</div>
+
+<div class="container main-content">
+    <div class="row g-4 justify-content-center">
+        <!-- Hjemmet Projekt -->
+        <div class="col-md-4">
+            <div class="card h-100 project-card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5 text-center">
+                    <div class="display-2 mb-3">🏠</div>
+                    <h3 class="fw-bold mb-3">Hjemmet</h3>
+                    <p class="mb-4">
+                        Små tidsfordrivsspil til hjemmekontoret:<br />
+                        <span class="text-primary">Gæt et tal, Sten Saks Papir, Tic-Tac-Toe, Four in a Row, Type Racer, Wordle</span>.<br />
+                        <span class="text-secondary">Find også på jeres egne spil!</span>
+                    </p>
+                    <a href="/hjemmet" class="btn btn-primary px-4">Start Projekt</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kontoret Projekt -->
+        <div class="col-md-4">
+            <div class="card h-100 project-card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5 text-center">
+                    <div class="display-2 mb-3">💼</div>
+                    <h3 class="fw-bold mb-3">Kontoret</h3>
+                    <p class="mb-4">
+                        Byg værktøjer til kontormiljøet:<br />
+                        <span class="text-primary">Informationsside i Blazor, Binærkodeomformer</span>.<br />
+                        <span class="text-secondary">Lav også jeres egne kontorværktøjer!</span>
+                    </p>
+                    <a href="/kontoret" class="btn btn-primary px-4">Start Projekt</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enterprise Projekt -->
+        <div class="col-md-4">
+            <div class="card h-100 project-card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5 text-center">
+                    <div class="display-2 mb-3">🏢</div>
+                    <h3 class="fw-bold mb-3">Enterprise</h3>
+                    <p class="mb-4">
+                        Automatisér og dokumentér processer for større virksomheder:<br />
+                        <span class="text-primary">AD-brugeroversigt, Gruppeoversigt, Stemple ind/ud-system</span>.<br />
+                        <span class="text-secondary">Find også på egne enterprise-værktøjer!</span>
+                    </p>
+                    <a href="/enterprice" class="btn btn-primary px-4">Start Projekt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.main-hero {
+    background: linear-gradient(90deg, #1b6ec2 0%, #3a0647 100%);
+    color: #fff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+}
+.main-content {
+    margin-top: -40px;
+}
+.project-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    border-radius: 1.5rem;
+}
+.project-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(27,110,194,0.10);
+    background: #eaf1fb;
+}
+.display-2 {
+    font-size: 3.5rem;
+}
+</style>
+
+

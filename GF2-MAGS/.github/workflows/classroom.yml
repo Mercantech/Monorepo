@@ -1,0 +1,59 @@
+name: Autograding
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  autograding:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Set environment to Danish culture
+        run: |
+          echo "DOTNET_CLI_UI_LANGUAGE=da" >> $GITHUB_ENV
+          export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+          export LC_ALL=da_DK.UTF-8
+          export LANG=da_DK.UTF-8
+
+      - name: Restore dependencies
+        run: dotnet restore ./UnitTest/UnitTest.csproj
+
+      - name: Build solution
+        run: dotnet build ./UnitTest/UnitTest.csproj --configuration Release --no-restore
+
+      - name: Install JUnit XML Test Logger
+        run: dotnet tool install --global JunitXml.TestLogger
+
+      - name: Add .NET tools to PATH
+        run: echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Run tests
+        id: run-tests
+        run: dotnet test ./UnitTest/UnitTest.csproj --logger "junit;LogFilePath=TestResults.xml"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: TestResults
+          path: '**/TestResults.xml'
+
+      - name: Autograding
+        uses: education/autograding@v2

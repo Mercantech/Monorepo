@@ -1,0 +1,15 @@
+﻿<Page x:Class="WPF.ConnectFour"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Taxa">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="ConnectFour - 4 på stribe" FontSize="24" Margin="0,0,0,20"/>
+            <Button Click="NotionButton_Click" Background="Transparent" BorderThickness="0">
+                <Viewbox Stretch="Uniform" Width="100" Height="100">
+                    <Image Source="https://gf2.mercantec.tech/Notion.png"/>
+                </Viewbox>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
