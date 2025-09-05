@@ -11,14 +11,12 @@
             "id": "c23d559a304926ba",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
-                "mode": "source",
-                "source": false
+                "file": "Assets/Pasted image 20250905084358.png"
               },
-              "icon": "lucide-file",
-              "title": "Opsætning af Active Directory i Windows Server 2022"
+              "icon": "lucide-image",
+              "title": "Pasted image 20250905084358"
             }
           }
         ]
@@ -173,6 +171,10 @@
   },
   "active": "c23d559a304926ba",
   "lastOpenFiles": [
+    "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
+    "Assets/Pasted image 20250905084358.png",
+    "Assets/Pasted image 20250905084333.png",
+    "Assets/Pasted image 20250905084318.png",
     "Infrastruktur/IT-ServiceManagment.md",
     "Assets/ITIL7.png",
     "Assets/ITIL.png",
@@ -203,7 +205,6 @@
     "Infrastruktur/Cisco CCNA/04. Physical Layer.md",
     "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
     "Infrastruktur/Cisco CCNA/01. Networking Today.md",
-    "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
     "Infrastruktur/Cisco CCNA",
     "Infrastruktur/Active-Diretory",
     "Infrastruktur",
@@ -217,9 +218,6 @@
     "CSharp/Dotnet",
     "CSharp/CSharp-Bogen",
     "Assets/Pasted image 20250904224530.png",
-    "Assets/Pasted image 20250904224525.png",
-    "Assets/Pasted image 20250904224458.png",
-    "Assets/Pasted image 20250904224451.png",
     "GF2/Canva.canvas",
     "CSharp-Bogen/Canva.canvas",
     "Blazor/Overview.canvas"
