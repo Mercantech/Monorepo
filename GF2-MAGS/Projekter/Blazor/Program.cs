@@ -1,6 +1,5 @@
 using Blazor.Components;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using Konsol.Enterprice;
 
 namespace Blazor
 {
@@ -12,6 +11,10 @@ namespace Blazor
 
             // Add services to the container.
             builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+            builder.Services.AddRazorPages();
+            builder.Services.AddServerSideBlazor();
+            builder.Services.AddHttpClient();
+            builder.Services.AddSingleton(_ => ADService.FromConfigFile("appsettings.json"));
 
             var app = builder.Build();
 

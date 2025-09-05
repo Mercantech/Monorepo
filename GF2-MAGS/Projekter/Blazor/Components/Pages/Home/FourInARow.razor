@@ -1,43 +1,215 @@
 ﻿@page "/four-in-a-row"
-<div class="container">
+
+<div class="container mt-4">
     <div class="row">
-        <div class="col-12">
-            <h1>Four In A Row</h1><a href="https://mercantec.notion.site/connectfour?pvs=4"></a>
+        <div class="col-12 text-center">
+            <h1 class="mb-4">Fire på Stribe</h1>
+            
+            @if (winner != null)
+            {
+                <div class="alert alert-success mb-3">
+                    Tillykke! Spiller @winner har vundet!
+                    <button class="btn btn-primary ms-2" @onclick="ResetGame">Spil igen</button>
+                </div>
+            }
+            else if (IsDraw())
+            {
+                <div class="alert alert-info mb-3">
+                    Spillet er uafgjort!
+                    <button class="btn btn-primary ms-2" @onclick="ResetGame">Spil igen</button>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info mb-3">
+                    Det er spiller @(currentPlayer)'s tur
+                </div>
+            }
+
+            <div class="game-board">
+                @for (int row = 0; row < 6; row++)
+                {
+                    <div class="board-row">
+                        @for (int col = 0; col < 7; col++)
+                        {
+                            var currentCol = col;
+                            <div class="cell" @onclick="() => MakeMove(currentCol)">
+                                @if (board[row, col] != null)
+                                {
+                                    <div class="piece @(board[row, col] == 1 ? "player-one" : "player-two")"></div>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>
 
-<div class="iframe-container">
-    <iframe 
-        src="https://mercantec.notion.site/ebd/112dab5ca2378059bd9ae8b99a4a2eee" 
-        class="responsive-iframe"
-        title="Four In A Row opgavebeskrivelse"
-        loading="lazy"
-        allowfullscreen>
-    </iframe>
-</div>
-
 <style>
-    .iframe-container {
-        position: relative;
-        width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        margin: 20px 0;
+    .game-board {
+        display: inline-block;
+        background-color: #0066cc;
+        padding: 10px;
+        border-radius: 10px;
     }
 
-    .responsive-iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .board-row {
+        display: flex;
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+        background-color: white;
+        border-radius: 50%;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .piece {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .player-one {
+        background-color: #ff4444;
+    }
+
+    .player-two {
+        background-color: #ffff44;
     }
 </style>
-@code {
 
+@code {
+    private int?[,] board = new int?[6, 7];
+    private int currentPlayer = 1;
+    private int? winner = null;
+
+    private void MakeMove(int col)
+    {
+        if (winner != null || IsDraw()) return;
+
+        // Find den nederste ledige position i den valgte kolonne
+        for (int row = 5; row >= 0; row--)
+        {
+            if (board[row, col] == null)
+            {
+                board[row, col] = currentPlayer;
+                
+                if (CheckWin(row, col))
+                {
+                    winner = currentPlayer;
+                }
+                else
+                {
+                    currentPlayer = currentPlayer == 1 ? 2 : 1;
+                }
+                return;
+            }
+        }
+    }
+
+    private bool CheckWin(int row, int col)
+    {
+        return CheckHorizontal(row, col) || 
+               CheckVertical(row, col) || 
+               CheckDiagonal(row, col);
+    }
+
+    private bool CheckHorizontal(int row, int col)
+    {
+        int count = 0;
+        int player = board[row, col]!.Value;
+
+        // Check til venstre
+        for (int c = col; c >= 0 && board[row, c] == player; c--)
+            count++;
+
+        // Check til højre
+        for (int c = col + 1; c < 7 && board[row, c] == player; c++)
+            count++;
+
+        return count >= 4;
+    }
+
+    private bool CheckVertical(int row, int col)
+    {
+        int count = 0;
+        int player = board[row, col]!.Value;
+
+        // Check nedad
+        for (int r = row; r < 6 && board[r, col] == player; r++)
+            count++;
+
+        return count >= 4;
+    }
+
+    private bool CheckDiagonal(int row, int col)
+    {
+        int player = board[row, col]!.Value;
+        
+        // Check diagonal (/)
+        int count1 = 1;
+        int r = row - 1;
+        int c = col + 1;
+        while (r >= 0 && c < 7 && board[r, c] == player)
+        {
+            count1++;
+            r--;
+            c++;
+        }
+        r = row + 1;
+        c = col - 1;
+        while (r < 6 && c >= 0 && board[r, c] == player)
+        {
+            count1++;
+            r++;
+            c--;
+        }
+
+        // Check diagonal (\)
+        int count2 = 1;
+        r = row - 1;
+        c = col - 1;
+        while (r >= 0 && c >= 0 && board[r, c] == player)
+        {
+            count2++;
+            r--;
+            c--;
+        }
+        r = row + 1;
+        c = col + 1;
+        while (r < 6 && c < 7 && board[r, c] == player)
+        {
+            count2++;
+            r++;
+            c++;
+        }
+
+        return count1 >= 4 || count2 >= 4;
+    }
+
+    private bool IsDraw()
+    {
+        for (int col = 0; col < 7; col++)
+        {
+            if (board[0, col] == null)
+                return false;
+        }
+        return true;
+    }
+
+    private void ResetGame()
+    {
+        board = new int?[6, 7];
+        currentPlayer = 1;
+        winner = null;
+    }
 }

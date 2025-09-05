@@ -1,41 +1,184 @@
 @page "/tic-tac-toe"
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Tic Tac Toe</h1>
+<div class="container py-5">
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-6 text-center">
+            <h1 class="display-4 text-primary mb-4">Tic Tac Toe</h1>
+            @if (!gameOver)
+            {
+                <div class="alert alert-info">
+                    Næste spiller: <strong>@(xIsNext ? "X" : "O")</strong>
+                </div>
+            }
         </div>
     </div>
-</div>
 
-<div class="iframe-container">
-    <iframe 
-        src="https://mercantec.notion.site/ebd/118dab5ca2378049b133dcdbb4d17ef5" 
-        class="responsive-iframe"
-        title="Tic Tac Toe opgavebeskrivelse"
-        loading="lazy"
-        allowfullscreen>
-    </iframe>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="game-board bg-white shadow-lg rounded-3 p-3">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <div class="row g-2">
+                        @for (int j = 0; j < 3; j++)
+                        {
+                            var row = i;
+                            var col = j;
+                            <div class="col-4">
+                                <div class="game-cell @GetCellClass(row, col)" @onclick="() => MakeMove(row, col)">
+                                    <span class="@(board[row, col] == "X" ? "text-primary" : "text-success")">
+                                        @board[row, col]
+                                    </span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (gameOver)
+    {
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-md-6 text-center">
+                <div class="alert @(gameOverMessage.Contains("vundet") ? "alert-success" : "alert-warning")">
+                    <h4 class="mb-3">@gameOverMessage</h4>
+                    <button class="btn btn-lg btn-primary" @onclick="ResetGame">
+                        <i class="fas fa-redo-alt me-2"></i>Start nyt spil
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 <style>
-    .iframe-container {
-        position: relative;
-        width: 100%;    
-        padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        margin: 20px 0;
+    .game-cell {
+        aspect-ratio: 1;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5em;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #ffffff;
     }
 
-    .responsive-iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .winner {
+        background-color: #d4edda !important;
+        border-color: #c3e6cb;
+        animation: pulse 1s infinite;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .winner:hover {
+        background-color: rgba(40, 167, 69, 0.2);
+        transform: scale(1.05);
+        border-color: #28a745;
+    }
+
+    @@keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .game-board {
+        backdrop-filter: blur(10px);
     }
 </style>
+
+@code {
+    private string[,] board = new string[3,3];
+    private bool xIsNext = true;
+    private bool gameOver = false;
+    private string gameOverMessage = "";
+    private int[] winningCombination = new int[6];
+
+    private void MakeMove(int row, int col)
+    {
+        if (gameOver || !string.IsNullOrEmpty(board[row, col]))
+            return;
+
+        board[row, col] = xIsNext ? "X" : "O";
+        
+        if (CheckWinner(row, col))
+        {
+            gameOver = true;
+            gameOverMessage = $"Spiller {(xIsNext ? "X" : "O")} har vundet!";
+        }
+        else if (IsBoardFull())
+        {
+            gameOver = true;
+            gameOverMessage = "Uafgjort!";
+        }
+        else
+        {
+            xIsNext = !xIsNext;
+        }
+    }
+
+    private bool CheckWinner(int lastRow, int lastCol)
+    {
+        string player = board[lastRow, lastCol];
+
+        // Check row
+        if (board[lastRow, 0] == player && board[lastRow, 1] == player && board[lastRow, 2] == player)
+        {
+            winningCombination = new[] { lastRow, 0, lastRow, 1, lastRow, 2 };
+            return true;
+        }
+
+        // Check column
+        if (board[0, lastCol] == player && board[1, lastCol] == player && board[2, lastCol] == player)
+        {
+            winningCombination = new[] { 0, lastCol, 1, lastCol, 2, lastCol };
+            return true;
+        }
+
+        // Check diagonals
+        if (lastRow == lastCol && board[0, 0] == player && board[1, 1] == player && board[2, 2] == player)
+        {
+            winningCombination = new[] { 0, 0, 1, 1, 2, 2 };
+            return true;
+        }
+
+        if (lastRow + lastCol == 2 && board[0, 2] == player && board[1, 1] == player && board[2, 0] == player)
+        {
+            winningCombination = new[] { 0, 2, 1, 1, 2, 0 };
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool IsBoardFull()
+    {
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                if (string.IsNullOrEmpty(board[i, j]))
+                    return false;
+        return true;
+    }
+
+    private string GetCellClass(int row, int col)
+    {
+        for (int i = 0; i < winningCombination.Length; i += 2)
+        {
+            if (winningCombination[i] == row && winningCombination[i + 1] == col)
+                return "winner";
+        }
+        return "";
+    }
+
+    private void ResetGame()
+    {
+        board = new string[3,3];
+        xIsNext = true;
+        gameOver = false;
+        gameOverMessage = "";
+        winningCombination = new int[6];
+    }
+}
 

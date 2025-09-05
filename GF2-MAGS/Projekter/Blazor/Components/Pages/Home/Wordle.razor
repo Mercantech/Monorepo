@@ -1,42 +1,336 @@
 @page "/wordle"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
 
-<div class="container">
+<div class="container mt-4" @onkeydown="HandlePhysicalKeyboard" tabindex="0" @ref="gameContainer">
     <div class="row">
-        <div class="col-12">
-            <h1>Wordle</h1>
+        <div class="col-12 text-center">
+            <h1 class="mb-4">Wordle</h1>
+            
+            <div class="game-board mb-4">
+                @for (int row = 0; row < 6; row++)
+                {
+                    <div class="word-row">
+                        @for (int col = 0; col < 5; col++)
+                        {
+                            var currentRow = row;
+                            var currentCol = col;
+                            var letter = row < guesses.Count 
+                                ? guesses[row][col].ToString() 
+                                : currentRow == guesses.Count 
+                                    ? (currentCol < currentGuess.Length ? currentGuess[col].ToString() : "") 
+                                    : "";
+                            var state = GetLetterState(row, col, letter);
+                            <div class="letter-box @state @(currentRow == guesses.Count && currentCol == currentGuess.Length ? "active" : "")">
+                                @letter
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+
+            @if (errorMessage != "")
+            {
+                <div class="alert alert-danger">@errorMessage</div>
+            }
+
+            @if (isGameOver)
+            {
+                <div class="alert @(hasWon ? "alert-success" : "alert-danger")">
+                    <h4>@(hasWon ? "Tillykke! Du vandt!" : "Spillet er slut!")</h4>
+                    <p>Ordet var: @targetWord</p>
+                    <button class="btn btn-primary" @onclick="StartNewGame">Spil igen</button>
+                </div>
+            }
+
+            <div class="keyboard">
+                @foreach (var row in keyboardLayout)
+                {
+                    <div class="keyboard-row">
+                        @foreach (var key in row)
+                        {
+                            var keyState = GetKeyboardKeyState(key);
+                            <button class="keyboard-key @keyState" 
+                                    @onclick="() => HandleKeyPress(key)"
+                                    disabled="@isGameOver">
+                                @key
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>
 
-<div class="iframe-container">
-    <iframe 
-        src="https://mercantec.notion.site/ebd/112dab5ca23780fa81e6e44c3b97da4f" 
-        class="responsive-iframe"
-        title="Wordle opgavebeskrivelse"
-        loading="lazy"
-        allowfullscreen>
-    </iframe>
-</div>
-
 <style>
-    .iframe-container {
-        position: relative;
-        width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        margin: 20px 0;
+    .game-board {
+        display: inline-block;
     }
 
-    .responsive-iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
+    .word-row {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 5px;
+    }
+
+    .letter-box {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .correct {
+        background-color: #6aaa64;
+        color: white;
+        border-color: #6aaa64;
+    }
+
+    .present {
+        background-color: #c9b458;
+        color: white;
+        border-color: #c9b458;
+    }
+
+    .absent {
+        background-color: #787c7e;
+        color: white;
+        border-color: #787c7e;
+    }
+
+    .input-area input {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .letter-box.active {
+        border-color: #000;
+        border-width: 3px;
+    }
+
+    .keyboard {
+        max-width: 500px;
+        margin: 20px auto;
+    }
+
+    .keyboard-row {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        margin-bottom: 4px;
+    }
+
+    .keyboard-key {
+        min-width: 40px;
+        height: 50px;
         border: none;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        background-color: #d3d6da;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    .keyboard-key:hover:not(:disabled) {
+        background-color: #bbb;
+    }
+
+    .keyboard-key.correct {
+        background-color: #6aaa64;
+        color: white;
+    }
+
+    .keyboard-key.present {
+        background-color: #c9b458;
+        color: white;
+    }
+
+    .keyboard-key.absent {
+        background-color: #787c7e;
+        color: white;
     }
 </style>
+
+@code {
+    private List<string> wordList = new();
+    private string targetWord = "";
+    private List<string> guesses = new();
+    private string currentGuess = "";
+    private string errorMessage = "";
+    private bool isGameOver = false;
+    private bool hasWon = false;
+    private Random random = new Random();
+    private ElementReference gameContainer;
+    private bool isInitialized = false;
+
+    private readonly string[][] keyboardLayout = new[]
+    {
+        new[] { "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P" },
+        new[] { "A", "S", "D", "F", "G", "H", "J", "K", "L" },
+        new[] { "ENTER", "Z", "X", "C", "V", "B", "N", "M", "⌫" }
+    };
+
+    protected override void OnInitialized()
+    {
+        // Remove StartNewGame() from here
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('.container').focus()");
+            try
+            {
+                var response = await Http.GetFromJsonAsync<WordleResponse>("https://opgaver.mercantec.tech/Opgaver/Wordle");
+                if (response?.wordlist != null)
+                {
+                    wordList = response.wordlist.ToList();
+                    StartNewGame(); // Move StartNewGame() here
+                    isInitialized = true;
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Kunne ikke indlæse ordlisten: " + ex.Message;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private void StartNewGame()
+    {
+        if (!wordList.Any()) // Add safety check
+        {
+            errorMessage = "Ordlisten er ikke indlæst endnu";
+            return;
+        }
+        
+        targetWord = wordList[random.Next(wordList.Count)].ToLower();
+        guesses.Clear();
+        currentGuess = "";
+        errorMessage = "";
+        isGameOver = false;
+        hasWon = false;
+    }
+
+    private void HandleKeyPress(string key)
+    {
+        if (isGameOver) return;
+
+        switch (key)
+        {
+            case "ENTER":
+                if (currentGuess.Length == 5)
+                    _ = MakeGuess();
+                break;
+            case "⌫":
+                if (currentGuess.Length > 0)
+                    currentGuess = currentGuess[..^1];
+                break;
+            default:
+                if (currentGuess.Length < 5)
+                    currentGuess += key.ToLower();
+                break;
+        }
+    }
+
+    private string GetKeyboardKeyState(string key)
+    {
+        if (key == "ENTER" || key == "⌫")
+            return "";
+
+        var keyLower = key.ToLower();
+        var state = "";
+
+        foreach (var guess in guesses)
+        {
+            for (int i = 0; i < guess.Length; i++)
+            {
+                if (guess[i].ToString() != keyLower) continue;
+
+                if (guess[i] == targetWord[i])
+                    return "correct";
+                
+                if (targetWord.Contains(guess[i]))
+                    state = "present";
+                else if (state != "present")
+                    state = "absent";
+            }
+        }
+
+        return state;
+    }
+
+    private async Task MakeGuess()
+    {
+        currentGuess = currentGuess.ToLower().Trim();
+        
+        if (currentGuess.Length != 5)
+        {
+            errorMessage = "Ordet skal være på 5 bogstaver";
+            return;
+        }
+
+        if (!wordList.Contains(currentGuess))
+        {
+            errorMessage = "Ordet findes ikke i ordlisten";
+            return;
+        }
+
+        errorMessage = "";
+        guesses.Add(currentGuess);
+        
+        if (currentGuess == targetWord)
+        {
+            hasWon = true;
+            isGameOver = true;
+        }
+        else if (guesses.Count >= 6)
+        {
+            isGameOver = true;
+        }
+
+        currentGuess = "";
+    }
+
+    private string GetLetterState(int row, int col, string letter)
+    {
+        if (string.IsNullOrEmpty(letter) || row >= guesses.Count)
+            return "";
+
+        if (guesses[row][col] == targetWord[col])
+            return "correct";
+
+        if (targetWord.Contains(guesses[row][col]))
+            return "present";
+
+        return "absent";
+    }
+
+    private async Task HandlePhysicalKeyboard(KeyboardEventArgs e)
+    {
+        if (isGameOver) return;
+
+        if (e.Key == "Enter")
+            HandleKeyPress("ENTER");
+        else if (e.Key == "Backspace")
+            HandleKeyPress("⌫");
+        else if (e.Key.Length == 1 && char.IsLetter(e.Key[0]))
+            HandleKeyPress(e.Key.ToUpper());
+    }
+
+    private class WordleResponse
+    {
+        public string[] wordlist { get; set; } = Array.Empty<string>();
+    }
+}
     

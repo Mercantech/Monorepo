@@ -1,5 +1,9 @@
 @page "/enterprice/timemanagment"
 
+@using System.Globalization
+@inject IJSRuntime JS
+@inject Konsol.Enterprice.ADService ADService
+
 <div class="game-hero text-center py-5 mb-4">
     <h1 class="display-4 fw-bold mb-3">Stemple ind/ud-system</h1>
     <p class="lead mb-0">Lav et system hvor brugere kan stemple ind og ud – og hold styr på arbejdstiden!</p>
@@ -10,19 +14,311 @@
         <div class="col-lg-8">
             <div class="card shadow-lg mb-5 border-0 game-card">
                 <div class="card-body p-5">
-                    <h2 class="h4 mb-3 text-primary fw-semibold">Sådan gør du:</h2>
-                    <ul class="list-group list-group-flush mb-4">
-                        <li class="list-group-item">Lav en formular hvor brugeren kan indtaste navn eller ID og stemple ind/ud.</li>
-                        <li class="list-group-item">Gem og vis en oversigt over stemplinger.</li>
-                        <li class="list-group-item"><em>Ekstra:</em> Integrér med AD eller lav ID-kort-simulering.</li>
+                    <h2 class="h4 mb-3 text-primary fw-semibold">Stemple ind/ud</h2>
+                    <EditForm Model="formModel" OnValidSubmit="Stemple">
+                        <div class="row g-2 align-items-end">
+                            <div class="col-md-6">
+                                <InputSelect class="form-select position-relative"
+                                    @bind-Value="formModel.Navn"
+                                    @onchange="OnUserChanged"
+                                    @onfocus="OnDropdownFocus">
+                                    <option value="">@((isLoadingUsers ? "Indlæser brugere..." : "Vælg AD-bruger"))</option>
+                                    @if (isLoadingUsers)
+                                    {
+                                        <option disabled value="">🔄</option>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var user in adUsers)
+                                        {
+                                            <option value="@user.UserName">@user.DisplayName (@user.UserName)</option>
+                                        }
+                                    }
+                                </InputSelect>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <button class="btn btn-primary w-100" type="submit" disabled="@(string.IsNullOrWhiteSpace(formModel.Navn))">
+                                    @StempleKnapTekst
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-check mt-2">
+                            <div class="storage-switch d-flex align-items-center justify-content-center">
+                                <span class="switch-label @(useServerStorage ? "inactive" : "active")">Gem lokalt</span>
+                                <button type="button" class="switch-btn mx-2" @onclick="ToggleStorage" aria-label="Skift gemmeplacering">
+                                    <span class="arrow-container">
+                                        @if (!useServerStorage)
+                                        {
+                                            <i class="bi bi-arrow-left-circle-fill arrow-active"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-arrow-right-circle-fill arrow-active"></i>
+                                        }
+                                    </span>
+                                </button>
+                                <span class="switch-label @(useServerStorage ? "active" : "inactive")">Gem på serveren</span>
+                            </div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(fejlbesked))
+                        {
+                            <div class="text-danger mt-2">@fejlbesked</div>
+                        }
+                    </EditForm>
+
+                    <hr class="my-4" />
+
+                    <h5 class="mb-3">Oversigt over stemplinger</h5>
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Navn</th>
+                                <th>Tidspunkt</th>
+                                <th>Ind/Ud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var s in stemplinger.OrderByDescending(s => s.Tidspunkt))
+                            {
+                                <tr>
+                                    <td>@s.Navn</td>
+                                    <td>@s.Tidspunkt.ToString("dd-MM-yyyy HH:mm:ss")</td>
+                                    <td>@(s.Ind ? "Ind" : "Ud")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <h5 class="mt-4 mb-2">Samlet arbejdstid pr. bruger</h5>
+                    <ul>
+                        @foreach (var navn in UnikkeBrugere)
+                        {
+                            <li><strong>@navn:</strong> @SamletTid(navn).ToString("hh\\:mm\\:ss")</li>
+                        }
                     </ul>
-                    <div class="alert alert-info mt-4">
-                        <strong>Tip:</strong> Prøv at vise samlet arbejdstid for hver bruger!</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@code {
+    class Stempling
+    {
+        public string Navn { get; set; } = string.Empty;
+        public DateTime Tidspunkt { get; set; }
+        public bool Ind { get; set; } // true = ind, false = ud
+    }
+
+    class StempleModel
+    {
+        public string Navn { get; set; } = string.Empty;
+        public bool Ind { get; set; } = true;
+    }
+
+    public class UserInfo
+    {
+        public string DisplayName { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+    }
+
+    private StempleModel formModel = new();
+    private List<Stempling> stemplinger = new();
+    private string fejlbesked = string.Empty;
+    private const string StorageKey = "stemplinger";
+    private List<UserInfo> adUsers = new();
+    private bool _useServerStorage = false;
+    private bool useServerStorage
+    {
+        get => _useServerStorage;
+        set
+        {
+            if (_useServerStorage != value)
+            {
+                _useServerStorage = value;
+                _ = HentStemplingerAsync();
+                StateHasChanged();
+            }
+        }
+    }
+
+    private static readonly string ServerFilePath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(),  "Components", "Pages", "Enterprice", "stemplinger.json");
+
+    private bool isLoadingUsers = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Hent AD-brugere
+        await Task.Run(() =>
+        {
+            adUsers = ADService.GetAllUsers()
+                .Select(ParseUserString)
+                .ToList();
+        });
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await HentStemplingerAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task HentStemplingerAsync()
+    {
+        if (useServerStorage)
+        {
+            stemplinger = await HentStemplingerFraServerAsync();
+        }
+        else
+        {
+            var json = await JS.InvokeAsync<string>("localStorage.getItem", StorageKey);
+            if (!string.IsNullOrWhiteSpace(json))
+            {
+                try
+                {
+                    stemplinger = System.Text.Json.JsonSerializer.Deserialize<List<Stempling>>(json) ?? new();
+                }
+                catch { stemplinger = new(); }
+            }
+            else
+            {
+                stemplinger = new();
+            }
+        }
+    }
+
+    private string StempleKnapTekst =>
+        string.IsNullOrWhiteSpace(formModel.Navn)
+            ? "Vælg bruger"
+            : (NuværendeStateErInd(formModel.Navn) ? "Stemple ud" : "Stemple ind");
+
+    private void OnUserChanged(ChangeEventArgs e)
+    {
+        formModel.Navn = e.Value?.ToString() ?? "";
+        // Sæt automatisk næste handling
+        formModel.Ind = !NuværendeStateErInd(formModel.Navn);
+        fejlbesked = string.Empty;
+    }
+
+    private bool NuværendeStateErInd(string navn)
+    {
+        var sidste = stemplinger.Where(s => s.Navn == navn).OrderByDescending(s => s.Tidspunkt).FirstOrDefault();
+        return sidste?.Ind ?? false; // Default er ude (false)
+    }
+
+    async Task Stemple()
+    {
+        fejlbesked = string.Empty;
+        if (string.IsNullOrWhiteSpace(formModel.Navn))
+        {
+            fejlbesked = "Vælg en AD-bruger!";
+            return;
+        }
+        // Sæt handling ud fra state
+        formModel.Ind = !NuværendeStateErInd(formModel.Navn);
+        // Find sidste stempling for brugeren
+        var sidste = stemplinger.Where(s => s.Navn == formModel.Navn).OrderByDescending(s => s.Tidspunkt).FirstOrDefault();
+        bool sidsteInd = sidste?.Ind ?? false; // Default er ude (false)
+        if (formModel.Ind == sidsteInd)
+        {
+            fejlbesked = sidsteInd
+                ? "Du er allerede stemplet ind. Stem ud før du kan stemple ind igen."
+                : "Du er allerede stemplet ud. Stem ind før du kan stemple ud igen.";
+            return;
+        }
+        stemplinger.Add(new Stempling
+        {
+            Navn = formModel.Navn.Trim(),
+            Tidspunkt = DateTime.Now,
+            Ind = formModel.Ind
+        });
+        formModel.Ind = false;
+        if (useServerStorage)
+            await GemStemplingerTilServerAsync();
+        else
+            await GemStemplingerAsync();
+        await HentStemplingerAsync();
+    }
+
+    async Task GemStemplingerAsync()
+    {
+        var json = System.Text.Json.JsonSerializer.Serialize(stemplinger);
+        await JS.InvokeVoidAsync("localStorage.setItem", StorageKey, json);
+    }
+
+    private Task<List<Stempling>> HentStemplingerFraServerAsync()
+    {
+        if (!System.IO.File.Exists(ServerFilePath))
+            return Task.FromResult(new List<Stempling>());
+        var json = System.IO.File.ReadAllText(ServerFilePath);
+        var data = System.Text.Json.JsonSerializer.Deserialize<List<Stempling>>(json) ?? new();
+        return Task.FromResult(data);
+    }
+
+    private Task GemStemplingerTilServerAsync()
+    {
+        var json = System.Text.Json.JsonSerializer.Serialize(stemplinger);
+        System.IO.File.WriteAllText(ServerFilePath, json);
+        return Task.CompletedTask;
+    }
+
+    IEnumerable<string> UnikkeBrugere => stemplinger.Select(s => s.Navn).Distinct();
+
+    TimeSpan SamletTid(string navn)
+    {
+        var brugerStemplinger = stemplinger.Where(s => s.Navn == navn).OrderBy(s => s.Tidspunkt).ToList();
+        TimeSpan sum = TimeSpan.Zero;
+        for (int i = 0; i < brugerStemplinger.Count - 1; i++)
+        {
+            if (brugerStemplinger[i].Ind && !brugerStemplinger[i + 1].Ind)
+            {
+                sum += brugerStemplinger[i + 1].Tidspunkt - brugerStemplinger[i].Tidspunkt;
+                i++; // spring "ud" over
+            }
+        }
+        return sum;
+    }
+
+    // Parser den streng vi får fra ADService til et objekt
+    private UserInfo ParseUserString(string userString)
+    {
+        // Format: "Navn (brugernavn) - mail"
+        var parts = userString.Split(new[] { "(", ")", "-" }, StringSplitOptions.RemoveEmptyEntries);
+        return new UserInfo
+        {
+            DisplayName = parts.Length > 0 ? parts[0].Trim() : "",
+            UserName = parts.Length > 1 ? parts[1].Trim() : "",
+            Email = parts.Length > 2 ? parts[2].Trim() : ""
+        };
+    }
+
+    private void ToggleStorage()
+    {
+        useServerStorage = !useServerStorage;
+    }
+
+    private async Task OnDropdownFocus()
+    {
+        if (adUsers.Count == 0 && !isLoadingUsers)
+        {
+            isLoadingUsers = true;
+            StateHasChanged();
+            await Task.Run(() =>
+            {
+                adUsers = ADService.GetAllUsers()
+                    .Select(ParseUserString)
+                    .ToList();
+            });
+            isLoadingUsers = false;
+            StateHasChanged();
+        }
+    }
+}
 
 <style>
 .game-hero {
@@ -30,11 +326,77 @@
     color: #fff;
     border-radius: 0 0 2rem 2rem;
     box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+    margin-top: -20px;
 }
 .game-content {
     margin-top: -40px;
 }
 .game-card {
     border-radius: 1.5rem;
+}
+.storage-switch {
+    background: #f8f9fa;
+    border-radius: 2em;
+    padding: 0.5em 1em;
+    min-width: 320px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(27,110,194,0.07);
+}
+.switch-label {
+    font-size: 1.05em;
+    transition: color 0.2s, font-weight 0.2s;
+    color: #888;
+    min-width: 100px;
+    text-align: center;
+}
+.switch-label.active {
+    color: #1b6ec2;
+    font-weight: bold;
+}
+.switch-label.inactive {
+    color: #bbb;
+    font-weight: normal;
+}
+.switch-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow-active {
+    font-size: 2em;
+    color: #1b6ec2;
+    transition: color 0.2s;
+}
+.dropdown-spinner-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 38px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+.dropdown-spinner {
+    width: 2.2em;
+    height: 2.2em;
+    border: 0.3em solid #e3e3e3;
+    border-top: 0.3em solid #1b6ec2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    background: transparent;
+}
+@@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 </style>
