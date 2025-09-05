@@ -1,0 +1,1 @@
+ADO.NET er den grundlæggende 

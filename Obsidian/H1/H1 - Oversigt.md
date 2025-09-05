@@ -1,1 +1,1 @@
-På H1 arbejder I med at bygge en Fullstack Blazor Server applikation
+På H1 arbejder I med at bygge en Fullstack Blazor Server applikation som bruger ADO.NET til at 
