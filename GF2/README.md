@@ -98,8 +98,8 @@ Teoretiske eksempler og demonstrationskode:
 
 ```
 GF2/
-├── Opgaver/          # Grundlæggende programmeringsopgaver
-├── Projekter/        # Praktiske projekter (Blazor, Konsol)
+├── Opgaver/         # Grundlæggende programmeringsopgaver
+├── Projekter/       # Praktiske projekter (Blazor, Konsol)
 ├── WPF/             # Desktop applikationer
 ├── Teori/           # Teoretiske eksempler og demonstrationskode
 ├── UnitTest/        # Automatiserede tests
