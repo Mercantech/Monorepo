@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <NavMenu />
+
+    <main class="main-content">
+        @Body
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    <div class="alert alert-danger" role="alert">
+        <h4>Der opstod en fejl</h4>
+        <p>En uventet fejl er opstået. Prøv at genindlæse siden.</p>
+        <a href="." class="btn btn-primary">Genindlæs</a>
+        <button type="button" class="btn-close" onclick="document.getElementById('blazor-error-ui').style.display = 'none'"></button>
+    </div>
+</div>

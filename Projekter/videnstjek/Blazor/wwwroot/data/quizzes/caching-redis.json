@@ -1,0 +1,250 @@
+{
+    "id": "caching-redis",
+    "title": "Caching med Redis - Performance Optimering",
+    "description": "Test din viden om caching strategier, Redis implementering og performance optimering i .NET",
+    "category": "Backend",
+    "difficulty": "Avanceret",
+    "estimatedTime": "15-20 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er hovedformålet med caching i en API?",
+        "options": {
+          "A": "At reducere hukommelsesforbrug",
+          "B": "At forbedre performance ved at undgå gentagne database kald",
+          "C": "At sikre data konsistens",
+          "D": "At reducere netværk trafik"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Caching kan faktisk øge hukommelsesforbrug ved at gemme data i hukommelsen.",
+          "B": "✅ Caching forbedrer performance ved at undgå gentagne database kald for samme data.",
+          "C": "❌ Caching kan faktisk skabe data konsistens problemer hvis ikke håndteret korrekt.",
+          "D": "❌ Netværk trafik reduceres kun hvis cache er på samme server som API'en."
+        },
+        "learnMore": {
+          "title": "Caching Fundamentals",
+          "description": "Grundlæggende koncepter om caching og dets fordele.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview",
+          "type": "docs",
+          "icon": "fas fa-tachometer-alt"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er forskellen mellem IMemoryCache og IDistributedCache?",
+        "options": {
+          "A": "IMemoryCache er hurtigere end IDistributedCache",
+          "B": "IMemoryCache er lokal til serveren, IDistributedCache kan deles mellem servere",
+          "C": "IMemoryCache kræver mere konfiguration end IDistributedCache",
+          "D": "IDistributedCache virker kun med Redis"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Hastighed afhænger af implementering, ikke interfacet.",
+          "B": "✅ IMemoryCache er lokal til serveren, mens IDistributedCache kan deles mellem flere servere.",
+          "C": "❌ IMemoryCache kræver mindre konfiguration end IDistributedCache.",
+          "D": "❌ IDistributedCache kan implementeres med Redis, SQL Server, eller andre providers."
+        },
+        "learnMore": {
+          "title": "Cache Types in .NET",
+          "description": "Forklaring af forskellige cache typer i .NET.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed",
+          "type": "docs",
+          "icon": "fas fa-server"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvordan definerer du en cache nøgle i .NET?",
+        "options": {
+          "A": "Cache nøgler genereres automatisk af framework'et",
+          "B": "Du skal altid bruge en GUID som cache nøgle",
+          "C": "Du definerer en string der beskriver dataen der caches",
+          "D": "Cache nøgler skal være numeriske"
+        },
+        "correctAnswers": ["C"],
+        "explanations": {
+          "A": "❌ Framework'et genererer ikke automatisk cache nøgler.",
+          "B": "❌ GUIDs er ikke nødvendige - beskrivende strings er bedre.",
+          "C": "✅ Cache nøgler bør være beskrivende strings der identificerer dataen (f.eks. 'all_rooms', 'user_123').",
+          "D": "❌ Cache nøgler kan være strings, ikke kun numeriske værdier."
+        },
+        "learnMore": {
+          "title": "Cache Keys Best Practices",
+          "description": "Best practices for at designe cache nøgler.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-keys",
+          "type": "docs",
+          "icon": "fas fa-key"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvad sker der når du kalder _cache.TryGetValue()?",
+        "options": {
+          "A": "Data hentes altid fra databasen",
+          "B": "Metoden returnerer true hvis data findes i cache, false hvis ikke",
+          "C": "Cache'et bliver automatisk ryddet",
+          "D": "Data bliver automatisk opdateret i cache'et"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ TryGetValue() henter kun fra cache, ikke fra database.",
+          "B": "✅ TryGetValue() returnerer true hvis data findes i cache, false hvis ikke, og output parameteren indeholder dataen.",
+          "C": "❌ Cache'et ryddes ikke automatisk af TryGetValue().",
+          "D": "❌ Data opdateres ikke automatisk af TryGetValue()."
+        },
+        "learnMore": {
+          "title": "TryGetValue Method",
+          "description": "Dokumentation for TryGetValue() metoden i IMemoryCache.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue",
+          "type": "docs",
+          "icon": "fas fa-search"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvordan sætter du data i cache med en bestemt levetid?",
+        "options": {
+          "A": "_cache.Set(key, data)",
+          "B": "_cache.Set(key, data, TimeSpan.FromMinutes(30))",
+          "C": "_cache.Add(key, data, TimeSpan.FromMinutes(30))",
+          "D": "_cache.Store(key, data, 30)"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Uden TimeSpan parameter caches dataen uden udløbsdato.",
+          "B": "✅ _cache.Set(key, data, TimeSpan.FromMinutes(30)) caches dataen i 30 minutter.",
+          "C": "❌ Add() metoden eksisterer ikke i IMemoryCache.",
+          "D": "❌ Store() metoden eksisterer ikke i IMemoryCache."
+        },
+        "learnMore": {
+          "title": "Cache Expiration",
+          "description": "Guide til at sætte cache udløbsdatoer i .NET.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-expiration",
+          "type": "docs",
+          "icon": "fas fa-clock"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er cache invalidation?",
+        "options": {
+          "A": "At rydde hele cache'et automatisk",
+          "B": "At fjerne specifikke cache entries når data ændrer sig",
+          "C": "At reducere cache størrelsen",
+          "D": "At kryptere cache data"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Cache invalidation handler om specifikke entries, ikke hele cache'et.",
+          "B": "✅ Cache invalidation er at fjerne specifikke cache entries når de underliggende data ændrer sig.",
+          "C": "❌ Cache størrelse reduceres ikke automatisk ved invalidation.",
+          "D": "❌ Kryptering er ikke relateret til cache invalidation."
+        },
+        "learnMore": {
+          "title": "Cache Invalidation",
+          "description": "Strategier for cache invalidation i .NET.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-invalidation",
+          "type": "docs",
+          "icon": "fas fa-trash"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvornår bør du IKKE cache data?",
+        "options": {
+          "A": "Når data ændrer sig ofte",
+          "B": "Når data er statisk og sjældent ændrer sig",
+          "C": "Når data er offentlig og ikke følsom",
+          "D": "Når data bruges af mange brugere"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ Data der ændrer sig ofte bør ikke caches, da det kan give forkerte resultater.",
+          "B": "❌ Statisk data er perfekt til caching.",
+          "C": "❌ Offentlig data kan ofte caches sikkert.",
+          "D": "❌ Data der bruges af mange brugere er netop godt til caching."
+        },
+        "learnMore": {
+          "title": "When Not to Cache",
+          "description": "Guide til at identificere data der ikke bør caches.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#when-to-cache",
+          "type": "docs",
+          "icon": "fas fa-exclamation-circle"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvad er fordelene ved Redis over IMemoryCache?",
+        "options": {
+          "A": "Redis er altid hurtigere end IMemoryCache",
+          "B": "Redis kan deles mellem flere servere og overleve server restarts",
+          "C": "Redis kræver mindre konfiguration end IMemoryCache",
+          "D": "Redis bruger mindre hukommelse end IMemoryCache"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Hastighed afhænger af netværk og Redis konfiguration.",
+          "B": "✅ Redis kan deles mellem flere servere og overlever server restarts, hvilket IMemoryCache ikke kan.",
+          "C": "❌ Redis kræver mere konfiguration end IMemoryCache.",
+          "D": "❌ Redis bruger ikke mindre hukommelse - det kører som en separat proces."
+        },
+        "learnMore": {
+          "title": "Redis vs Memory Cache",
+          "description": "Sammenligning af Redis og IMemoryCache i .NET.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed#redis",
+          "type": "docs",
+          "icon": "fas fa-balance-scale"
+        }
+      },
+      {
+        "id": 9,
+        "questionText": "Hvordan implementerer du Redis caching i .NET?",
+        "options": {
+          "A": "Redis er indbygget i .NET og kræver ingen ekstra konfiguration",
+          "B": "Du skal installere Redis package og konfigurere IDistributedCache",
+          "C": "Redis kan kun bruges med Azure",
+          "D": "Redis kræver at du skriver custom caching kode"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Redis er ikke indbygget i .NET - det kræver ekstra packages.",
+          "B": "✅ Du skal installere Redis package og konfigurere IDistributedCache i Program.cs.",
+          "C": "❌ Redis kan køre lokalt, i Docker, eller på Azure - det er ikke Azure-specifikt.",
+          "D": "❌ Du behøver ikke skrive custom caching kode - IDistributedCache giver standard interface."
+        },
+        "learnMore": {
+          "title": "Redis Setup in .NET",
+          "description": "Guide til at opsætte Redis caching i .NET applikationer.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed#redis",
+          "type": "docs",
+          "icon": "fas fa-database"
+        }
+      },
+      {
+        "id": 10,
+        "questionText": "Hvad er en god cache levetid for en værelsesliste?",
+        "options": {
+          "A": "1 sekund - for at sikre data er altid frisk",
+          "B": "30-60 sekunder - for at balancere performance og data friskhed",
+          "C": "24 timer - for maksimal performance",
+          "D": "Aldrig - værelseslister bør aldrig caches"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ 1 sekund giver minimal performance forbedring og øger database belastning.",
+          "B": "✅ 30-60 sekunder giver god performance forbedring uden at data bliver for gammelt.",
+          "C": "❌ 24 timer kan give forkerte data hvis værelser tilføjes eller fjernes.",
+          "D": "❌ Værelseslister kan caches sikkert med passende levetid."
+        },
+        "learnMore": {
+          "title": "Cache Duration Guidelines",
+          "description": "Retningslinjer for at vælge cache levetider.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview#cache-expiration",
+          "type": "docs",
+          "icon": "fas fa-hourglass-half"
+        }
+      }
+    ]
+  }

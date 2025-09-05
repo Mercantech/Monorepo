@@ -1,0 +1,76 @@
+﻿@inject NavigationManager Navigation
+
+<div class="sidebar">
+    <nav class="nav-menu">
+        <div class="nav-header">
+            <button @onclick="NavigateToHome" class="nav-brand">
+                <i class="fas fa-brain me-2"></i>Videnstjek
+            </button>
+        </div>
+        
+        <ul class="nav-list">
+            <li class="nav-item">
+                <button @onclick="NavigateToHome" class="nav-link">
+                    <i class="fas fa-home me-2"></i>Hjem
+                </button>
+            </li>
+            
+            <!-- GF2 Kategori -->
+            <li class="nav-item">
+                <button @onclick="@(() => NavigateToCategory("gf2"))" class="nav-link">
+                    <i class="fas fa-graduation-cap me-2"></i>GF2
+                </button>
+            </li>
+            
+            <!-- Backend Kategori -->
+            <li class="nav-item">
+                <button @onclick="@(() => NavigateToCategory("backend"))" class="nav-link">
+                    <i class="fas fa-server me-2"></i>Backend
+                </button>
+            </li>
+            
+            <!-- Frontend Kategori -->
+            <li class="nav-item">
+                <button @onclick="@(() => NavigateToCategory("frontend"))" class="nav-link">
+                    <i class="fas fa-desktop me-2"></i>Frontend
+                </button>
+            </li>
+            
+            <!-- Alle Quizzer -->
+            <li class="nav-item">
+                <button @onclick="NavigateToQuizzes" class="nav-link">
+                    <i class="fas fa-question-circle me-2"></i>Alle Quizzer
+                </button>
+            </li>
+            
+            <li class="nav-item">
+                <button @onclick="NavigateToAbout" class="nav-link">
+                    <i class="fas fa-info-circle me-2"></i>Om
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+@code {
+    private void NavigateToHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+    
+    private void NavigateToQuizzes()
+    {
+        Navigation.NavigateTo("/quizzes");
+    }
+    
+    private void NavigateToAbout()
+    {
+        Navigation.NavigateTo("/about");
+    }
+    
+    private void NavigateToCategory(string categoryPrefix)
+    {
+        // Navigate to quizzes page with category filter
+        Navigation.NavigateTo($"/quizzes?category={categoryPrefix}");
+    }
+}

@@ -1,0 +1,459 @@
+@page "/admin"
+@using Blazor.Service
+@using Blazor.Models
+@inject IQuizService QuizService
+@inject IQuizIndexGenerator QuizIndexGenerator
+@inject NavigationManager Navigation
+
+<PageTitle>Admin - Quiz Administration</PageTitle>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h1 class="display-5 fw-bold text-primary mb-2">Quiz Administration</h1>
+                    <p class="lead text-muted">Administrer og rediger quizzer</p>
+                </div>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-success btn-lg" @onclick="() => ShowAddQuizModal()">
+                        <i class="fas fa-plus me-2"></i>Ny Quiz
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg" @onclick="GenerateIndex" disabled="@isGeneratingIndex">
+                        @if (isGeneratingIndex)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        }
+                        else
+                        {
+                            <i class="fas fa-sync me-2"></i>
+                        }
+                        Generer Index
+                    </button>
+                </div>
+            </div>
+
+            @if (quizzes == null)
+            {
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Indlæser...</span>
+                    </div>
+                    <p class="mt-3">Indlæser quizzer...</p>
+                </div>
+            }
+            else if (!quizzes.Any())
+            {
+                <div class="text-center">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Ingen quizzer tilgængelige. Opret din første quiz!
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Titel</th>
+                                <th>Kategori</th>
+                                <th>Sværhedsgrad</th>
+                                <th>Spørgsmål</th>
+                                <th>Handlinger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var quiz in quizzes)
+                            {
+                                <tr>
+                                    <td><code>@quiz.Id</code></td>
+                                    <td>
+                                        <strong>@quiz.Title</strong>
+                                        <br><small class="text-muted">@quiz.Description</small>
+                                    </td>
+                                    <td><span class="badge bg-primary">@quiz.Category</span></td>
+                                    <td>
+                                        <span class="badge bg-@GetDifficultyColor(quiz.Difficulty)">
+                                            @quiz.Difficulty
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">@quiz.Questions.Count spørgsmål</span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-outline-primary btn-sm" @onclick="() => EditQuiz(quiz)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-sm" @onclick="() => DeleteQuiz(quiz.Id)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Quiz Modal -->
+@if (showModal)
+{
+    <div class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(editingQuiz == null ? "Tilføj Ny Quiz" : "Rediger Quiz")</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <form @onsubmit="SaveQuiz">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="quizId" class="form-label">Quiz ID</label>
+                                                                        <input type="text" class="form-control" id="quizId" 
+                                               value="@currentQuiz.Id" @onchange="(e) => FormatQuizId(e.Value?.ToString())" required />
+                                <div class="form-text">Kun små bogstaver, tal og bindestreger</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="quizTitle" class="form-label">Titel</label>
+                                <input type="text" class="form-control" id="quizTitle" 
+                                       @bind="currentQuiz.Title" required />
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="quizDescription" class="form-label">Beskrivelse</label>
+                            <textarea class="form-control" id="quizDescription" rows="3" 
+                                      @bind="currentQuiz.Description" required></textarea>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="quizCategory" class="form-label">Kategori</label>
+                                <input type="text" class="form-control" id="quizCategory" 
+                                       @bind="currentQuiz.Category" required />
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="quizDifficulty" class="form-label">Sværhedsgrad</label>
+                                <select class="form-select" id="quizDifficulty" @bind="currentQuiz.Difficulty" required>
+                                    <option value="">Vælg sværhedsgrad</option>
+                                    <option value="Begynder">Begynder</option>
+                                    <option value="Mellem">Mellem</option>
+                                    <option value="Avanceret">Avanceret</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="quizTime" class="form-label">Estimeret tid</label>
+                                <input type="text" class="form-control" id="quizTime" 
+                                       @bind="currentQuiz.EstimatedTime" required 
+                                       placeholder="f.eks. 10-15 minutter" />
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        
+                        <h6 class="mb-3">Spørgsmål</h6>
+                        @for (int i = 0; i < currentQuiz.Questions.Count; i++)
+                        {
+                            var questionIndex = i;
+                            var question = currentQuiz.Questions[i];
+                            
+                            <div class="card mb-3">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <span>Spørgsmål @(questionIndex + 1)</span>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" 
+                                            @onclick="() => RemoveQuestion(questionIndex)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Spørgsmålstekst</label>
+                                        <textarea class="form-control" rows="2" 
+                                                  @bind="question.QuestionText" required></textarea>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Svar muligheder</label>
+                                            @foreach (var option in question.Options.ToList())
+                                            {
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">@option.Key</span>
+                                                    <input type="text" class="form-control" 
+                                                           @bind="question.Options[option.Key]" required />
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Korrekte svar</label>
+                                            @foreach (var option in question.Options.ToList())
+                                            {
+                                                <div class="form-check">
+                                                                                                <input class="form-check-input" type="checkbox" 
+                                                   id="correct_@(questionIndex)_@(option.Key)"
+                                                   checked="@(question.CorrectAnswers.Contains(option.Key))"
+                                                   @onchange="(e) => OnCorrectAnswerChanged(questionIndex, option.Key, e)" />
+                                                    <label class="form-check-label" for="correct_@(questionIndex)_@(option.Key)">
+                                                        @option.Key
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <label class="form-label">Forklaringer</label>
+                                        @foreach (var option in question.Options.ToList())
+                                        {
+                                            <div class="mb-2">
+                                                <label class="form-label small">Forklaring for @option.Key:</label>
+                                                <textarea class="form-control" rows="2" 
+                                                          @bind="question.Explanations[option.Key]" 
+                                                          placeholder="Forklaring for dette svar..."></textarea>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        
+                        <div class="text-center mb-3">
+                            <button type="button" class="btn btn-outline-primary" @onclick="AddQuestion">
+                                <i class="fas fa-plus me-2"></i>Tilføj spørgsmål
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Annuller</button>
+                    <button type="button" class="btn btn-primary" @onclick="SaveQuiz">Gem Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<Quiz>? quizzes;
+    private bool showModal = false;
+    private Quiz? editingQuiz;
+    private Quiz currentQuiz = new();
+    private int nextQuestionId = 1;
+    private bool isGeneratingIndex = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadQuizzes();
+    }
+
+    private async Task LoadQuizzes()
+    {
+        try
+        {
+            quizzes = await QuizService.GetAllQuizzesAsync();
+        }
+        catch (Exception)
+        {
+            quizzes = new List<Quiz>();
+        }
+    }
+
+    private void ShowAddQuizModal()
+    {
+        editingQuiz = null;
+        currentQuiz = new Quiz
+        {
+            Id = "",
+            Title = "",
+            Description = "",
+            Category = "",
+            Difficulty = "",
+            EstimatedTime = "",
+            Questions = new List<QuizQuestion>()
+        };
+        nextQuestionId = 1;
+        showModal = true;
+    }
+
+    private void EditQuiz(Quiz quiz)
+    {
+        editingQuiz = quiz;
+        currentQuiz = new Quiz
+        {
+            Id = quiz.Id,
+            Title = quiz.Title,
+            Description = quiz.Description,
+            Category = quiz.Category,
+            Difficulty = quiz.Difficulty,
+            EstimatedTime = quiz.EstimatedTime,
+            Questions = quiz.Questions.Select(q => new QuizQuestion
+            {
+                Id = q.Id,
+                QuestionText = q.QuestionText,
+                Options = new Dictionary<string, string>(q.Options),
+                CorrectAnswers = new List<string>(q.CorrectAnswers),
+                Explanations = new Dictionary<string, string>(q.Explanations)
+            }).ToList()
+        };
+        nextQuestionId = currentQuiz.Questions.Count > 0 ? currentQuiz.Questions.Max(q => q.Id) + 1 : 1;
+        showModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+        editingQuiz = null;
+        currentQuiz = new();
+    }
+
+    private void AddQuestion()
+    {
+        var newQuestion = new QuizQuestion
+        {
+            Id = nextQuestionId++,
+            QuestionText = "",
+            Options = new Dictionary<string, string>
+            {
+                { "A", "" },
+                { "B", "" },
+                { "C", "" },
+                { "D", "" }
+            },
+            CorrectAnswers = new List<string>(),
+            Explanations = new Dictionary<string, string>
+            {
+                { "A", "" },
+                { "B", "" },
+                { "C", "" },
+                { "D", "" }
+            }
+        };
+        
+        currentQuiz.Questions.Add(newQuestion);
+    }
+
+    private void RemoveQuestion(int index)
+    {
+        if (index >= 0 && index < currentQuiz.Questions.Count)
+        {
+            currentQuiz.Questions.RemoveAt(index);
+        }
+    }
+
+    private void OnCorrectAnswerChanged(int questionIndex, string option, ChangeEventArgs e)
+    {
+        if (questionIndex >= 0 && questionIndex < currentQuiz.Questions.Count)
+        {
+            var question = currentQuiz.Questions[questionIndex];
+            var isChecked = e.Value is bool checkedValue && checkedValue;
+            
+            if (isChecked && !question.CorrectAnswers.Contains(option))
+            {
+                question.CorrectAnswers.Add(option);
+            }
+            else if (!isChecked && question.CorrectAnswers.Contains(option))
+            {
+                question.CorrectAnswers.Remove(option);
+            }
+        }
+    }
+
+    private void UpdateCorrectAnswer(int questionIndex, string option, bool isCorrect)
+    {
+        if (questionIndex >= 0 && questionIndex < currentQuiz.Questions.Count)
+        {
+            var question = currentQuiz.Questions[questionIndex];
+            if (isCorrect && !question.CorrectAnswers.Contains(option))
+            {
+                question.CorrectAnswers.Add(option);
+            }
+            else if (!isCorrect && question.CorrectAnswers.Contains(option))
+            {
+                question.CorrectAnswers.Remove(option);
+            }
+        }
+    }
+
+    private async Task SaveQuiz()
+    {
+        // Validate quiz
+        if (string.IsNullOrWhiteSpace(currentQuiz.Id) || 
+            string.IsNullOrWhiteSpace(currentQuiz.Title) ||
+            currentQuiz.Questions.Count == 0)
+        {
+            // Show error message
+            return;
+        }
+
+        try
+        {
+            // Here you would typically save to the JSON file or database
+            // For now, we'll just close the modal and refresh the list
+            CloseModal();
+            await LoadQuizzes();
+            
+            // Show success message
+        }
+        catch (Exception)
+        {
+            // Show error message
+        }
+    }
+
+    private async Task DeleteQuiz(string quizId)
+    {
+        // Here you would typically delete from the JSON file or database
+        // For now, we'll just refresh the list
+        await LoadQuizzes();
+    }
+
+    private void FormatQuizId(string? value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            currentQuiz.Id = value.ToLower().Replace(" ", "-");
+        }
+    }
+
+    private string GetDifficultyColor(string difficulty)
+    {
+        return difficulty.ToLower() switch
+        {
+            "begynder" => "success",
+            "mellem" => "warning",
+            "avanceret" => "danger",
+            _ => "secondary"
+        };
+    }
+
+    private async Task GenerateIndex()
+    {
+        isGeneratingIndex = true;
+        StateHasChanged();
+
+        try
+        {
+            await QuizIndexGenerator.GenerateIndexAsync();
+            await LoadQuizzes(); // Reload quizzes to reflect any changes
+        }
+        catch (Exception ex)
+        {
+            // Log error or show user message
+            Console.WriteLine($"Fejl ved generering af index: {ex.Message}");
+        }
+        finally
+        {
+            isGeneratingIndex = false;
+            StateHasChanged();
+        }
+    }
+}

@@ -1,0 +1,250 @@
+{
+    "id": "gf2-kapitel-6-arrays-lists-dictionary",
+    "title": "GF2 Kapitel 6 - Arrays, Lists & Dictionary",
+    "description": "Test din viden om arrays, lister og dictionaries i C# - hvordan man opretter, tilgår og manipulerer datastrukturer",
+    "category": "GF2",
+    "difficulty": "Begynder",
+    "estimatedTime": "10-12 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvilke af følgende er korrekte måder at oprette et array i C#?",
+        "options": {
+          "A": "int[] numbers = new int[10];",
+          "B": "int[] numbers = {1, 2, 3, 4, 5};",
+          "C": "int numbers[] = new int[10];",
+          "D": "int[] numbers = new int[] {1, 2, 3};"
+        },
+        "correctAnswers": ["A", "B", "D"],
+        "explanations": {
+          "A": "✅ Korrekt - opretter et array med 10 elementer.",
+          "B": "✅ Korrekt - opretter og initialiserer array med værdier.",
+          "C": "❌ Forkert syntaks - [] skal komme efter typen, ikke efter navnet.",
+          "D": "✅ Korrekt - eksplicit størrelse med initialisering."
+        },
+        "learnMore": {
+          "title": "Arrays in C#",
+          "description": "Microsofts dokumentation om arrays i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays",
+          "type": "docs",
+          "icon": "fas fa-list"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er det korrekte indeks for det første element i et array?",
+        "options": {
+          "A": "1",
+          "B": "0",
+          "C": "-1",
+          "D": "Det afhænger af arrayets størrelse"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Arrays starter altid fra indeks 0, ikke 1.",
+          "B": "✅ Arrays i C# starter altid fra indeks 0.",
+          "C": "❌ Negative indekser er ikke gyldige i standard arrays.",
+          "D": "❌ Indekset er altid 0 for det første element, uanset størrelse."
+        },
+        "learnMore": {
+          "title": "Array Indexing in C#",
+          "description": "Microsofts guide til array indeksering.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays#array-access",
+          "type": "docs",
+          "icon": "fas fa-hashtag"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvilke af følgende er korrekte måder at oprette en List i C#?",
+        "options": {
+          "A": "List<int> numbers = new List<int>();",
+          "B": "List<int> numbers = new List<int> {1, 2, 3};",
+          "C": "List numbers = new List();",
+          "D": "using System.Collections.Generic; List<string> names = new List<string>();"
+        },
+        "correctAnswers": ["A", "B", "D"],
+        "explanations": {
+          "A": "✅ Korrekt - opretter en tom liste af integers.",
+          "B": "✅ Korrekt - opretter og initialiserer liste med værdier.",
+          "C": "❌ Forkert - List skal have type parameter <int>.",
+          "D": "✅ Korrekt - inkluderer using statement og opretter string liste."
+        },
+        "learnMore": {
+          "title": "List<T> in C#",
+          "description": "Microsofts dokumentation om List<T> i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1",
+          "type": "docs",
+          "icon": "fas fa-list-ol"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvilke af følgende er korrekte metoder til at manipulere en List?",
+        "options": {
+          "A": "Add()",
+          "B": "Remove()",
+          "C": "Insert()",
+          "D": "Clear()"
+        },
+        "correctAnswers": ["A", "B", "C", "D"],
+        "explanations": {
+          "A": "✅ Add() tilføjer et element til slutningen af listen.",
+          "B": "✅ Remove() fjerner et element fra listen.",
+          "C": "✅ Insert() indsætter et element på en specifik position.",
+          "D": "✅ Clear() fjerner alle elementer fra listen."
+        },
+        "learnMore": {
+          "title": "List Methods in C#",
+          "description": "Microsofts guide til List metoder.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1#methods",
+          "type": "docs",
+          "icon": "fas fa-tools"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er hovedforskellen mellem arrays og lister?",
+        "options": {
+          "A": "Arrays har fast størrelse, lister har dynamisk størrelse",
+          "B": "Arrays bruger mindre hukommelse end lister",
+          "C": "Lister har flere indbyggede metoder end arrays",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ Arrays har fast størrelse, lister kan ændre størrelse dynamisk.",
+          "B": "✅ Arrays bruger mindre hukommelse da de ikke har ekstra metadata.",
+          "C": "✅ Lister har mange indbyggede metoder som Add(), Remove(), etc.",
+          "D": "✅ Alle tre forskelle er korrekte mellem arrays og lister."
+        },
+        "learnMore": {
+          "title": "Arrays vs Lists in C#",
+          "description": "Sammenligning af arrays og lister i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays",
+          "type": "docs",
+          "icon": "fas fa-balance-scale"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvilke af følgende er korrekte måder at oprette en Dictionary i C#?",
+        "options": {
+          "A": "Dictionary<string, int> ageMap = new Dictionary<string, int>();",
+          "B": "Dictionary<string, int> ageMap = new Dictionary<string, int> {{'Alice', 25}, {'Bob', 30}};",
+          "C": "Dictionary ageMap = new Dictionary();",
+          "D": "using System.Collections.Generic; Dictionary<int, string> names = new Dictionary<int, string>();"
+        },
+        "correctAnswers": ["A", "B", "D"],
+        "explanations": {
+          "A": "✅ Korrekt - opretter en tom dictionary med string keys og int values.",
+          "B": "✅ Korrekt - opretter og initialiserer dictionary med nøgle-værdi par.",
+          "C": "❌ Forkert - Dictionary skal have type parametre <TKey, TValue>.",
+          "D": "✅ Korrekt - inkluderer using statement og opretter dictionary med int keys."
+        },
+        "learnMore": {
+          "title": "Dictionary<TKey,TValue> in C#",
+          "description": "Microsofts dokumentation om Dictionary i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2",
+          "type": "docs",
+          "icon": "fas fa-book"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvordan tilgår man en værdi i en Dictionary?",
+        "options": {
+          "A": "dictionary['key']",
+          "B": "dictionary['key']",
+          "C": "dictionary.GetValue('key')",
+          "D": "dictionary.Find('key')"
+        },
+        "correctAnswers": ["A", "B"],
+        "explanations": {
+          "A": "✅ Korrekt - bruger [] notation med nøglen.",
+          "B": "✅ Korrekt - samme som A, bare med forskellige anførselstegn.",
+          "C": "❌ GetValue() er ikke en Dictionary metode.",
+          "D": "❌ Find() er ikke en Dictionary metode."
+        },
+        "learnMore": {
+          "title": "Dictionary Access in C#",
+          "description": "Microsofts guide til at tilgå Dictionary værdier.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2#properties",
+          "type": "docs",
+          "icon": "fas fa-key"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvilke af følgende er korrekte metoder til at manipulere en Dictionary?",
+        "options": {
+          "A": "Add(key, value)",
+          "B": "Remove(key)",
+          "C": "ContainsKey(key)",
+          "D": "Clear()"
+        },
+        "correctAnswers": ["A", "B", "C", "D"],
+        "explanations": {
+          "A": "✅ Add() tilføjer et nøgle-værdi par til dictionary.",
+          "B": "✅ Remove() fjerner et nøgle-værdi par fra dictionary.",
+          "C": "✅ ContainsKey() tjekker om en nøgle eksisterer i dictionary.",
+          "D": "✅ Clear() fjerner alle nøgle-værdi par fra dictionary."
+        },
+        "learnMore": {
+          "title": "Dictionary Methods in C#",
+          "description": "Microsofts guide til Dictionary metoder.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2#methods",
+          "type": "docs",
+          "icon": "fas fa-cogs"
+        }
+      },
+      {
+        "id": 9,
+        "questionText": "Hvad er fordelene ved at bruge en Dictionary frem for en List?",
+        "options": {
+          "A": "Hurtig opslag baseret på nøgle (O(1) kompleksitet)",
+          "B": "Nøgle-værdi par struktur",
+          "C": "Effektiv til at finde specifikke elementer",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ Dictionary bruger hashmap implementering for hurtig opslag.",
+          "B": "✅ Dictionary er designet til nøgle-værdi par, List er kun værdier.",
+          "C": "✅ Dictionary er meget effektiv til at finde elementer baseret på nøgle.",
+          "D": "✅ Alle tre fordele er korrekte ved brug af Dictionary."
+        },
+        "learnMore": {
+          "title": "Dictionary Benefits in C#",
+          "description": "Fordele ved at bruge Dictionary i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2#remarks",
+          "type": "docs",
+          "icon": "fas fa-star"
+        }
+      },
+      {
+        "id": 10,
+        "questionText": "Hvilke af følgende er korrekte måder at loope gennem en Dictionary?",
+        "options": {
+          "A": "foreach (var kvp in dictionary)",
+          "B": "foreach (KeyValuePair<string, int> kvp in dictionary)",
+          "C": "for (int i = 0; i < dictionary.Count; i++)",
+          "D": "foreach (string key in dictionary.Keys)"
+        },
+        "correctAnswers": ["A", "B", "D"],
+        "explanations": {
+          "A": "✅ Korrekt - var lader compileren udlede KeyValuePair typen.",
+          "B": "✅ Korrekt - eksplicit KeyValuePair type med generics.",
+          "C": "❌ Forkert - Dictionary understøtter ikke indeksering med int.",
+          "D": "✅ Korrekt - looper gennem alle nøgler i dictionary."
+        },
+        "learnMore": {
+          "title": "Iterating Dictionary in C#",
+          "description": "Microsofts guide til at iterere gennem Dictionary.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2#examples",
+          "type": "docs",
+          "icon": "fas fa-sync"
+        }
+      }
+    ]
+  }

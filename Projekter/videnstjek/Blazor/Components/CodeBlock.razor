@@ -1,0 +1,147 @@
+@using System.Text.RegularExpressions
+
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-language">@Language</span>
+        <button class="code-copy-btn" @onclick="CopyCode" title="Kopier kode">
+            <i class="fas fa-copy"></i>
+        </button>
+    </div>
+    <pre class="code-content"><code class="language-@Language.ToLower()" @ref="codeElement">@FormattedCode</code></pre>
+</div>
+
+@code {
+    [Parameter] public string Code { get; set; } = "";
+    [Parameter] public string Language { get; set; } = "csharp";
+    [Inject] private IJSRuntime JSRuntime { get; set; } = default!;
+
+    private ElementReference codeElement;
+    private string FormattedCode => FormatCode(Code, Language);
+    private bool _highlightingApplied = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && Language.ToLower() == "csharp" && !_highlightingApplied)
+        {
+            await ApplySyntaxHighlighting();
+            _highlightingApplied = true;
+        }
+    }
+
+    private async Task ApplySyntaxHighlighting()
+    {
+        try
+        {
+            // Small delay to ensure element is ready
+            await Task.Delay(10);
+            await JSRuntime.InvokeVoidAsync("syntaxHighlighting.highlightCSharp", codeElement);
+        }
+        catch (Exception)
+        {
+            // Handle error silently
+        }
+    }
+
+    private async Task CopyCode()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", Code);
+            // You could add a toast notification here
+        }
+        catch (Exception)
+        {
+            // Handle copy error silently
+        }
+    }
+
+    private string FormatCode(string code, string language)
+    {
+        if (string.IsNullOrEmpty(code)) return code;
+
+        return language.ToLower() switch
+        {
+            "csharp" => FormatCSharpCode(code),
+            "javascript" => FormatJavaScriptCode(code),
+            "html" => FormatHtmlCode(code),
+            "css" => FormatCssCode(code),
+            _ => code
+        };
+    }
+
+    private string FormatCSharpCode(string code)
+    {
+        // Remove extra whitespace and format C# code
+        var formatted = code.Trim();
+        
+        // Add line breaks after semicolons and braces
+        formatted = Regex.Replace(formatted, @"([{};])(?![^{}]*})", "$1\n");
+        
+        // Add line breaks before keywords that start new statements
+        formatted = Regex.Replace(formatted, @"\s+(if|else|for|while|foreach|switch|case|default|return|break|continue|try|catch|finally|using|namespace|class|interface|struct|enum|public|private|protected|internal|static|virtual|override|abstract|sealed|readonly|const|var|new|this|base|async|await)\s+", "\n$1 ");
+        
+        // Add line breaks after opening braces
+        formatted = Regex.Replace(formatted, @"{\s*", "{\n    ");
+        
+        // Add line breaks before closing braces
+        formatted = Regex.Replace(formatted, @"\s*}", "\n}");
+        
+        // Add proper indentation
+        var lines = formatted.Split('\n');
+        var result = new List<string>();
+        var indentLevel = 0;
+        
+        foreach (var line in lines)
+        {
+            var trimmedLine = line.Trim();
+            if (string.IsNullOrEmpty(trimmedLine))
+            {
+                result.Add("");
+                continue;
+            }
+            
+            // Decrease indent before closing braces
+            if (trimmedLine.StartsWith("}"))
+            {
+                indentLevel = Math.Max(0, indentLevel - 1);
+            }
+            
+            // Add indentation
+            var indentedLine = new string(' ', indentLevel * 4) + trimmedLine;
+            result.Add(indentedLine);
+            
+            // Increase indent after opening braces
+            if (trimmedLine.EndsWith("{"))
+            {
+                indentLevel++;
+            }
+        }
+        
+        return string.Join("\n", result);
+    }
+
+    private string FormatJavaScriptCode(string code)
+    {
+        // Basic JavaScript formatting
+        var formatted = code.Trim();
+        formatted = Regex.Replace(formatted, @"([{};])(?![^{}]*})", "$1\n");
+        formatted = Regex.Replace(formatted, @"\s+(if|else|for|while|foreach|switch|case|default|return|break|continue|try|catch|finally|function|const|let|var|async|await)\s+", "\n$1 ");
+        return formatted;
+    }
+
+    private string FormatHtmlCode(string code)
+    {
+        // Basic HTML formatting
+        var formatted = code.Trim();
+        formatted = Regex.Replace(formatted, @"<([^>]+)>", "<$1>\n");
+        return formatted;
+    }
+
+    private string FormatCssCode(string code)
+    {
+        // Basic CSS formatting
+        var formatted = code.Trim();
+        formatted = Regex.Replace(formatted, @"([{};])", "$1\n");
+        return formatted;
+    }
+}

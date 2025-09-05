@@ -1,0 +1,250 @@
+{
+    "id": "bogus-faker",
+    "title": "Bogus (Faker) - Test Data Generering",
+    "description": "Test din viden om Bogus biblioteket, hvordan man genererer realistisk test data og best practices for data seeding",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er hovedformålet med Bogus (Faker) biblioteket?",
+        "options": {
+          "A": "At kryptere data i produktion",
+          "B": "At generere realistisk test data til development og testing",
+          "C": "At optimere database performance",
+          "D": "At validere bruger-input"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Bogus er ikke til kryptering af produktion data.",
+          "B": "✅ Bogus er designet til at generere realistisk test data til development og testing formål.",
+          "C": "❌ Database performance er ikke hovedformålet med Bogus.",
+          "D": "❌ Input validering er ikke det Bogus bruges til."
+        },
+        "learnMore": {
+          "title": "Bogus Documentation",
+          "description": "Officiel dokumentation for Bogus biblioteket og dets formål.",
+          "url": "https://github.com/bchavez/Bogus",
+          "type": "docs",
+          "icon": "fas fa-book-open"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er en af hovedfordelene ved at bruge Bogus i stedet for hardcodede test værdier?",
+        "options": {
+          "A": "Det gør koden hurtigere at køre",
+          "B": "Det giver varieret, realistisk data der kan opdage edge cases",
+          "C": "Det eliminerer behovet for unit tests",
+          "D": "Det reducerer hukommelsesforbruget"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Bogus påvirker ikke kode-performance direkte.",
+          "B": "✅ Realistisk data hjælper med at opdage problemer som hardcodede værdier ikke kan.",
+          "C": "❌ Bogus erstatter ikke unit tests - det forbedrer dem.",
+          "D": "❌ Hukommelsesforbrug påvirkes ikke af valg af test data."
+        },
+        "learnMore": {
+          "title": "Why Use Fake Data in Testing",
+          "description": "En forklaring af fordelene ved realistisk test data.",
+          "url": "https://www.baeldung.com/java-faker-library",
+          "type": "article",
+          "icon": "fas fa-test-tube"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvornår bør du IKKE bruge Bogus?",
+        "options": {
+          "A": "I development miljøer",
+          "B": "I produktion miljøer",
+          "C": "I unit tests",
+          "D": "I integration tests"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Development miljøer er netop hvor Bogus er nyttigt.",
+          "B": "✅ Bogus bør aldrig bruges i produktion - kun i development og testing.",
+          "C": "❌ Unit tests er et perfekt sted at bruge Bogus.",
+          "D": "❌ Integration tests kan også drage fordel af Bogus."
+        },
+        "learnMore": {
+          "title": "Bogus Security Considerations",
+          "description": "Vigtige sikkerhedsaspekter ved brug af Bogus.",
+          "url": "https://github.com/bchavez/Bogus#security",
+          "type": "docs",
+          "icon": "fas fa-shield-alt"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvad er formålet med at bruge seeds i Bogus?",
+        "options": {
+          "A": "At gøre data generation hurtigere",
+          "B": "At sikre reproducerbare tests med samme data hver gang",
+          "C": "At kryptere genererede data",
+          "D": "At reducere hukommelsesforbrug"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Seeds påvirker ikke hastigheden af data generation.",
+          "B": "✅ Seeds sikrer at samme data genereres hver gang, hvilket gør tests reproducerbare.",
+          "C": "❌ Seeds er ikke til kryptering.",
+          "D": "❌ Seeds påvirker ikke hukommelsesforbrug."
+        },
+        "learnMore": {
+          "title": "Bogus Seeding",
+          "description": "Guide til at bruge seeds i Bogus for reproducerbare tests.",
+          "url": "https://github.com/bchavez/Bogus#seeding",
+          "type": "docs",
+          "icon": "fas fa-seedling"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er en best practice ved brug af Bogus i relationelle databaser?",
+        "options": {
+          "A": "Altid generere alle data samtidigt i én operation",
+          "B": "Generere forældre-entiteter først, derefter afhængige entiteter",
+          "C": "Ignorere foreign key constraints",
+          "D": "Bruge samme ID for alle genererede entiteter"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ At generere alt samtidigt kan skabe problemer med relationer.",
+          "B": "✅ Du skal generere forældre først for at kunne referere til dem i afhængige entiteter.",
+          "C": "❌ Foreign key constraints skal respekteres for at opretholde dataintegritet.",
+          "D": "❌ Unikke ID'er er vigtige for at undgå konflikter."
+        },
+        "learnMore": {
+          "title": "Database Seeding Best Practices",
+          "description": "Best practices for at seed relationelle databaser med test data.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding",
+          "type": "docs",
+          "icon": "fas fa-database"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er formålet med lokalisering i Bogus?",
+        "options": {
+          "A": "At gøre data generation hurtigere",
+          "B": "At generere data der matcher et bestemt sprog/region (f.eks. danske navne og adresser)",
+          "C": "At reducere hukommelsesforbrug",
+          "D": "At kryptere genererede data"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Lokalisering påvirker ikke hastighed.",
+          "B": "✅ Lokalisering sikrer at data matcher det ønskede sprog/region (danske navne, adresser osv.).",
+          "C": "❌ Lokalisering påvirker ikke hukommelsesforbrug.",
+          "D": "❌ Lokalisering er ikke til kryptering."
+        },
+        "learnMore": {
+          "title": "Bogus Localization",
+          "description": "Guide til at bruge lokalisering i Bogus for region-specifik data.",
+          "url": "https://github.com/bchavez/Bogus#localization",
+          "type": "docs",
+          "icon": "fas fa-globe"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad er en vigtig best practice ved brug af Bogus i API testing?",
+        "options": {
+          "A": "Altid generere maksimalt antal records for at teste performance",
+          "B": "Generere kun det antal records der er nødvendige for testen",
+          "C": "Ignorere data validering i genererede objekter",
+          "D": "Bruge hardcodede værdier sammen med Bogus"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ At generere for mange records kan gøre tests langsomme og unødvendige.",
+          "B": "✅ Generer kun det antal records der er nødvendige for at teste funktionaliteten.",
+          "C": "❌ Data validering er vigtig selv for genererede objekter.",
+          "D": "❌ Blanding af hardcodede værdier og Bogus kan skabe inkonsistens."
+        },
+        "learnMore": {
+          "title": "API Testing Best Practices",
+          "description": "Best practices for API testing med test data.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/testing/integration-tests",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvad er formålet med betingede regler i Bogus?",
+        "options": {
+          "A": "At gøre data generation hurtigere",
+          "B": "At skabe relationer mellem forskellige felter i samme entitet",
+          "C": "At reducere hukommelsesforbrug",
+          "D": "At kryptere genererede data"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Betingede regler påvirker ikke hastighed.",
+          "B": "✅ Betingede regler tillader dig at skabe realistiske relationer mellem felter (f.eks. alder påvirker indkomst).",
+          "C": "❌ Betingede regler påvirker ikke hukommelsesforbrug.",
+          "D": "❌ Betingede regler er ikke til kryptering."
+        },
+        "learnMore": {
+          "title": "Bogus Conditional Rules",
+          "description": "Guide til at bruge betingede regler i Bogus for realistisk data.",
+          "url": "https://github.com/bchavez/Bogus#rules",
+          "type": "docs",
+          "icon": "fas fa-link"
+        }
+      },
+      {
+        "id": 9,
+        "questionText": "Hvad er en fordel ved at bruge Bogus i stedet for manuel test data oprettelse?",
+        "options": {
+          "A": "Det eliminerer behovet for at skrive kode",
+          "B": "Det sparer tid og sikrer konsistent data struktur",
+          "C": "Det gør alle tests automatisk grønne",
+          "D": "Det eliminerer behovet for database"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Du skal stadig skrive kode til at definere Bogus regler.",
+          "B": "✅ Bogus sparer tid på manuel data oprettelse og sikrer konsistent struktur.",
+          "C": "❌ Bogus garanterer ikke at tests passerer - det giver kun test data.",
+          "D": "❌ Bogus eliminerer ikke behovet for database - det hjælper med at populere den."
+        },
+        "learnMore": {
+          "title": "Benefits of Automated Test Data",
+          "description": "Fordele ved automatiseret test data generation.",
+          "url": "https://www.c-sharpcorner.com/article/automated-test-data-generation-using-bogus/",
+          "type": "article",
+          "icon": "fas fa-clock"
+        }
+      },
+      {
+        "id": 10,
+        "questionText": "Hvad er en vigtig sikkerhedsforanstaltning ved brug af Bogus?",
+        "options": {
+          "A": "Altid kryptere genererede data",
+          "B": "Kun bruge Bogus i development og test miljøer, aldrig i produktion",
+          "C": "Ignorere alle sikkerhedsadvarsler",
+          "D": "Bruge samme data i alle miljøer"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Kryptering af test data er ikke nødvendig.",
+          "B": "✅ Bogus bør kun bruges i development og test miljøer for at undgå sikkerhedsrisici.",
+          "C": "❌ Sikkerhedsadvarsler skal aldrig ignoreres.",
+          "D": "❌ Forskellige miljøer bør have forskellige data."
+        },
+        "learnMore": {
+          "title": "Environment-Specific Configuration",
+          "description": "Guide til at konfigurere applikationer for forskellige miljøer.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/environments",
+          "type": "docs",
+          "icon": "fas fa-cog"
+        }
+      }
+    ]
+  }

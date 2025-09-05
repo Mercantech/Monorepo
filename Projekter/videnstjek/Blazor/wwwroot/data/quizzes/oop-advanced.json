@@ -1,0 +1,188 @@
+{
+    "id": "oop-advanced",
+    "title": "Udvidet OOP & Trådprogrammering i C#",
+    "description": "Test din viden om delegates, asynkron programmering, thread safety og OOP-konceptet i C#",
+    "categories": ["Backend", "Frontend"],
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad kaldes en funktion pointer i C#, som kan referere til metoder?",
+        "options": {
+          "A": "Callback",
+          "B": "Delegate",
+          "C": "Lambda",
+          "D": "Interface"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ En callback er en metode, der kaldes efter en opgave – ofte via en delegate.",
+          "B": "✅ En delegate er en funktion pointer i C#, der kan referere til metoder.",
+          "C": "❌ Lambda er en kortfattet måde at skrive anonyme metoder på, men ikke selve typen.",
+          "D": "❌ Et interface definerer en kontrakt, ikke en funktion pointer."
+        },
+        "learnMore": {
+          "title": "Delegates in C#",
+          "description": "Microsofts dokumentation om delegates, hvordan de fungerer, og hvordan de bruges til callbacks.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er forskellen på Thread og Task i moderne C#?",
+        "options": {
+          "A": "Thread er mere ressourceeffektiv end Task",
+          "B": "Task bruger ThreadPool internt og er lettere at arbejde med",
+          "C": "Task kan ikke køre parallelt",
+          "D": "Thread understøtter async/await"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Threads er tungere end Tasks.",
+          "B": "✅ Tasks er moderne, bruger ThreadPool internt og spiller godt med async/await.",
+          "C": "❌ Tasks kan køre parallelt, da de bruger flere tråde bagved.",
+          "D": "❌ async/await er designet til Task-baseret programmering, ikke Thread direkte."
+        },
+        "learnMore": {
+          "title": "Task-based Asynchronous Programming",
+          "description": "Læs om forskellen mellem Threads og Tasks i .NET og hvorfor Tasks er det anbefalede valg.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-based-asynchronous-programming",
+          "type": "docs",
+          "icon": "fas fa-tasks"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er en race condition?",
+        "options": {
+          "A": "Når en variabel ændres af flere tråde samtidigt og giver uforudsigelige resultater",
+          "B": "Når en tråd kører hurtigere end en anden",
+          "C": "Når to tråde konkurrerer om CPU-tid",
+          "D": "Når en tråd er i sleep-tilstand"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ En race condition opstår når flere tråde tilgår samme variabel samtidigt uden synkronisering.",
+          "B": "❌ Hastighedsforskelle er ikke det samme som race conditions.",
+          "C": "❌ CPU-planlægning er normalt, men ikke en race condition.",
+          "D": "❌ Sleep handler blot om at en tråd venter."
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvilken teknik sikrer at kun én tråd ad gangen kan udføre en kritisk sektion?",
+        "options": {
+          "A": "await",
+          "B": "lock",
+          "C": "volatile",
+          "D": "continue"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ await handler om asynkron programmering, ikke låsning.",
+          "B": "✅ lock sikrer at kun én tråd kan køre koden ad gangen.",
+          "C": "❌ volatile sikrer kun at en variabel altid læses fra hovedhukommelsen.",
+          "D": "❌ continue bruges i loops, ikke trådsynkronisering."
+        },
+        "learnMore": {
+          "title": "lock statement in C#",
+          "description": "Microsofts dokumentation om lock og trådsynkronisering i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/lock",
+          "type": "docs",
+          "icon": "fas fa-lock"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad gør Interlocked.Increment(ref counter)?",
+        "options": {
+          "A": "Øger counter sikkert og atomisk, selv med flere tråde",
+          "B": "Øger counter, men kan give race conditions",
+          "C": "Låser hele programmet indtil counter er øget",
+          "D": "Kan kun bruges i async/await-metoder"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ Interlocked.Increment udfører en atomisk operation uden behov for lock.",
+          "B": "❌ Netop pointen er at undgå race conditions.",
+          "C": "❌ Programmet låses ikke, kun operationen er atomisk.",
+          "D": "❌ Interlocked kan bruges uafhængigt af async/await."
+        },
+        "learnMore": {
+          "title": "Interlocked Class",
+          "description": "Dokumentation for Interlocked-klassen i .NET, inkl. atomiske operationer.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.threading.interlocked",
+          "type": "docs",
+          "icon": "fas fa-microchip"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvorfor kan man ikke bare bruge Threads i Blazor WebAssembly?",
+        "options": {
+          "A": "Fordi Threads ikke findes i C#",
+          "B": "Fordi browseren kun tillader én UI-tråd",
+          "C": "Fordi async/await ikke er understøttet i Blazor",
+          "D": "Fordi det er for langsomt"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Threads findes i C#, men ikke alle platforme understøtter dem.",
+          "B": "✅ Browseren kører Blazor WASM med én UI-tråd, så man må bruge async/await i stedet.",
+          "C": "❌ async/await er netop den anbefalede tilgang i Blazor.",
+          "D": "❌ Hastighed er ikke hovedårsagen."
+        },
+        "learnMore": {
+          "title": "Async programming in Blazor WebAssembly",
+          "description": "Forklaring på hvorfor async/await er den rigtige tilgang i Blazor WASM.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/synchronous?view=aspnetcore-8.0",
+          "type": "docs",
+          "icon": "fas fa-globe"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad er forskellen på async/await og parallelle tråde?",
+        "options": {
+          "A": "async/await bruges til I/O-ventetid, mens tråde bruges til CPU-arbejde",
+          "B": "async/await opretter altid nye tråde",
+          "C": "Tråde kan kun bruges i konsolprogrammer",
+          "D": "De er det samme i C#"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ async/await er perfekt til I/O, mens tråde bruges til CPU-tunge operationer.",
+          "B": "❌ async/await bruger ikke altid nye tråde – ofte kører det på samme tråd.",
+          "C": "❌ Tråde kan bruges i mange typer programmer.",
+          "D": "❌ De er fundamentalt forskellige koncepter."
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvad betyder det at en metode i en baseklasse er markeret som abstract?",
+        "options": {
+          "A": "At metoden kan kaldes direkte fra baseklassen",
+          "B": "At metoden skal implementeres i en afledt klasse",
+          "C": "At metoden er skjult for andre klasser",
+          "D": "At metoden kører hurtigere end en normal metode"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Abstrakte metoder kan ikke kaldes direkte.",
+          "B": "✅ Abstrakte metoder er en kontrakt, der SKAL implementeres i afledte klasser.",
+          "C": "❌ Access modifiers styrer synlighed, ikke abstract.",
+          "D": "❌ Abstract har intet med performance at gøre."
+        },
+        "learnMore": {
+          "title": "Abstract Classes and Methods",
+          "description": "Microsofts docs om abstrakte klasser og metoder i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract",
+          "type": "docs",
+          "icon": "fas fa-book-open"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,154 @@
+{
+    "id": "gf2-kapitel-2-expressions-operators",
+    "title": "GF2 Kapitel 2 - Expressions og Operatører",
+    "description": "Test din viden om C# expressions, aritmetiske operatorer, sammenligningsoperatorer og logiske operatorer",
+    "category": "GF2",
+    "difficulty": "Begynder",
+    "estimatedTime": "6-8 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvilke af følgende er korrekte aritmetiske operatorer i C#?",
+        "options": {
+          "A": "+ (plus)",
+          "B": "- (minus)",
+          "C": "** (eksponent)",
+          "D": "% (modulus)"
+        },
+        "correctAnswers": ["A", "B", "D"],
+        "explanations": {
+          "A": "✅ + bruges til addition (5 + 3 = 8).",
+          "B": "✅ - bruges til subtraktion (5 - 3 = 2).",
+          "C": "❌ ** er ikke en aritmetisk operator i C# - brug Math.Pow() i stedet.",
+          "D": "✅ % bruges til modulus/rest (10 % 3 = 1)."
+        },
+        "learnMore": {
+          "title": "Arithmetic Operators in C#",
+          "description": "Microsofts dokumentation om aritmetiske operatorer i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators",
+          "type": "docs",
+          "icon": "fas fa-calculator"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvilke af følgende er korrekte sammenligningsoperatorer i C#?",
+        "options": {
+          "A": "== (lig med)",
+          "B": "!= (ikke lig med)",
+          "C": "= (tildeling)",
+          "D": "<= (mindre end eller lig med)"
+        },
+        "correctAnswers": ["A", "B", "D"],
+        "explanations": {
+          "A": "✅ == sammenligner om to værdier er lige (5 == 5 er true).",
+          "B": "✅ != sammenligner om to værdier er forskellige (5 != 3 er true).",
+          "C": "❌ = er en tildelingsoperator, ikke en sammenligningsoperator - brug == til sammenligning.",
+          "D": "✅ <= sammenligner om en værdi er mindre end eller lig med en anden (5 <= 5 er true)."
+        },
+        "learnMore": {
+          "title": "Comparison Operators in C#",
+          "description": "Microsofts dokumentation om sammenligningsoperatorer i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators",
+          "type": "docs",
+          "icon": "fas fa-balance-scale"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er resultatet af følgende expression: (5 > 3) && (2 < 4)?",
+        "options": {
+          "A": "true",
+          "B": "false",
+          "C": "5",
+          "D": "2"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ (5 > 3) er true OG (2 < 4) er true, så true && true = true.",
+          "B": "❌ Begge betingelser er sande, så resultatet er true.",
+          "C": "❌ Expression returnerer en bool værdi, ikke et tal.",
+          "D": "❌ Expression returnerer en bool værdi, ikke et tal."
+        },
+        "learnMore": {
+          "title": "Logical Operators in C#",
+          "description": "Microsofts dokumentation om logiske operatorer i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators",
+          "type": "docs",
+          "icon": "fas fa-project-diagram"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvilke af følgende er korrekte logiske operatorer i C#?",
+        "options": {
+          "A": "&& (logisk OG)",
+          "B": "|| (logisk ELLER)",
+          "C": "! (logisk IKKE)",
+          "D": "& (bitwise OG)"
+        },
+        "correctAnswers": ["A", "B", "C"],
+        "explanations": {
+          "A": "✅ && er logisk OG - true hvis begge betingelser er sande.",
+          "B": "✅ || er logisk ELLER - true hvis mindst én betingelse er sand.",
+          "C": "✅ ! er logisk IKKE - negerer en betingelse.",
+          "D": "❌ & er bitwise OG, ikke logisk OG - det er forskellige operatorer."
+        },
+        "learnMore": {
+          "title": "Boolean Logical Operators",
+          "description": "Microsofts guide til logiske operatorer i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er resultatet af følgende expression: 10 % 3?",
+        "options": {
+          "A": "1",
+          "B": "3",
+          "C": "3.33",
+          "D": "0"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ 10 % 3 = 1 (resten når 10 divideres med 3).",
+          "B": "❌ 3 er ikke resten - det er kvotienten.",
+          "C": "❌ Modulus returnerer heltal, ikke decimaler.",
+          "D": "❌ 10 går ikke op i 3, så resten er ikke 0."
+        },
+        "learnMore": {
+          "title": "Modulus Operator in C#",
+          "description": "Forklaring af modulus operatoren i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#remainder-operator-",
+          "type": "docs",
+          "icon": "fas fa-percentage"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvilke af følgende er korrekte typer af expressions i C#?",
+        "options": {
+          "A": "Bogstavelige udtryk (literals)",
+          "B": "Variable udtryk",
+          "C": "Aritmetiske udtryk",
+          "D": "Logiske udtryk"
+        },
+        "correctAnswers": ["A", "B", "C", "D"],
+        "explanations": {
+          "A": "✅ Bogstavelige udtryk er direkte værdier som 5 eller \"Hej\".",
+          "B": "✅ Variable udtryk er variabler der gemmer værdier.",
+          "C": "✅ Aritmetiske udtryk bruger matematiske operatorer (5 + 3).",
+          "D": "✅ Logiske udtryk evaluerer til true/false (5 > 3)."
+        },
+        "learnMore": {
+          "title": "Expressions in C#",
+          "description": "Microsofts dokumentation om expressions i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      }
+    ]
+  }

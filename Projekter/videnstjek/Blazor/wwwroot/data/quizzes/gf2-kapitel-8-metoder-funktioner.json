@@ -1,0 +1,187 @@
+{
+  "id": "gf2-kapitel-8-metoder-funktioner",
+  "title": "GF2 Kapitel 8 - Metoder & Funktioner",
+  "description": "Test din viden om metoder, parametre, returværdier, overloading, rekursion og valgfrie parametre i C#",
+  "categories": ["GF2"],
+  "difficulty": "Begynder",
+  "estimatedTime": "10-15 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvilke dele består en metode i C# af?",
+      "options": {
+        "A": "Kun metodenavn og metodekrop",
+        "B": "Adgangsmodifikator, returtype, metodenavn, parametre og metodekrop",
+        "C": "Kun returtype og metodenavn",
+        "D": "Kun parametre og metodekrop"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ En metode består af flere dele end kun navn og krop.",
+        "B": "✅ En metode består af: adgangsmodifikator, returtype, metodenavn, parametre og metodekrop.",
+        "C": "❌ Der mangler flere vigtige dele som adgangsmodifikator og parametre.",
+        "D": "❌ Der mangler vigtige dele som adgangsmodifikator og returtype."
+      },
+      "learnMore": {
+        "title": "Metoder i C#",
+        "description": "Microsofts dokumentation om metoder og deres syntaks i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods",
+        "type": "docs",
+        "icon": "fas fa-code"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvad betyder 'void' som returtype?",
+      "options": {
+        "A": "At metoden returnerer en tom værdi",
+        "B": "At metoden ikke returnerer noget",
+        "C": "At metoden returnerer null",
+        "D": "At metoden returnerer en string"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 'void' betyder ikke at returnere en tom værdi.",
+        "B": "✅ 'void' betyder at metoden ikke returnerer noget - den udfører kun en handling.",
+        "C": "❌ 'void' er ikke det samme som at returnere null.",
+        "D": "❌ 'void' er ikke en string returtype."
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvad er forskellen mellem en parameter og et argument?",
+      "options": {
+        "A": "Der er ingen forskel",
+        "B": "Parameter er i metodedefinitionen, argument er ved metodens kald",
+        "C": "Argument er i metodedefinitionen, parameter er ved metodens kald",
+        "D": "Parameter er altid en string, argument er altid et tal"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Der er en vigtig forskel mellem disse to begreber.",
+        "B": "✅ Parameter er variablen i metodedefinitionen, argument er den faktiske værdi der sendes ved kald.",
+        "C": "❌ Det er omvendt - parameter er i definitionen, argument er ved kaldet.",
+        "D": "❌ Det handler ikke om datatyper, men om hvor de bruges."
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad er method overloading?",
+      "options": {
+        "A": "At en metode kører for længe",
+        "B": "At have flere metoder med samme navn men forskellige parametre",
+        "C": "At en metode kalder sig selv",
+        "D": "At en metode returnerer for mange værdier"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Overloading handler ikke om køretid, men om metodesignaturer.",
+        "B": "✅ Method overloading betyder at have flere metoder med samme navn men forskellige parametre.",
+        "C": "❌ Det beskriver rekursion, ikke overloading.",
+        "D": "❌ Overloading handler ikke om antal returværdier."
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvad er rekursion?",
+      "options": {
+        "A": "At en metode kalder en anden metode",
+        "B": "At en metode kalder sig selv",
+        "C": "At en metode returnerer en værdi",
+        "D": "At en metode tager parametre"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det beskriver et almindeligt metodkald, ikke rekursion.",
+        "B": "✅ Rekursion er når en metode kalder sig selv - ofte brugt til at løse problemer der kan opdeles i mindre delproblemer.",
+        "C": "❌ Det beskriver en almindelig returværdi, ikke rekursion.",
+        "D": "❌ Det beskriver almindelige parametre, ikke rekursion."
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvad sker der i denne kode: public int Factorial(int n) { if (n <= 1) return 1; else return n * Factorial(n - 1); }",
+      "options": {
+        "A": "Metoden beregner summen af alle tal fra 1 til n",
+        "B": "Metoden beregner fakultet af n (n!)",
+        "C": "Metoden beregner kvadratet af n",
+        "D": "Metoden beregner kvadratroden af n"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Dette ville være en sum-funktion, ikke fakultet.",
+        "B": "✅ Dette er en rekursiv fakultet-funktion der beregner n! = n × (n-1) × (n-2) × ... × 1.",
+        "C": "❌ Dette ville være n * n, ikke fakultet.",
+        "D": "❌ Dette ville være √n, ikke fakultet."
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvad er valgfrie parametre?",
+      "options": {
+        "A": "Parametre der ikke kan bruges",
+        "B": "Parametre med standardværdier der kan udelades ved kald",
+        "C": "Parametre der altid skal være null",
+        "D": "Parametre der kun kan bruges én gang"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Valgfrie parametre kan sagtens bruges.",
+        "B": "✅ Valgfrie parametre har standardværdier og kan udelades ved metodens kald.",
+        "C": "❌ Valgfrie parametre behøver ikke være null.",
+        "D": "❌ Valgfrie parametre kan bruges mange gange."
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "Hvilken syntaks bruges til valgfrie parametre?",
+      "options": {
+        "A": "public void Method(int param = 5)",
+        "B": "public void Method(int param?)",
+        "C": "public void Method(int param = null)",
+        "D": "public void Method(int? param)"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ Dette er korrekt syntaks for valgfrie parametre med standardværdi 5.",
+        "B": "❌ Dette er nullable int syntaks, ikke valgfrie parametre.",
+        "C": "❌ int kan ikke være null, og syntaksen er forkert.",
+        "D": "❌ Dette er nullable int syntaks, ikke valgfrie parametre."
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvorfor er metoder vigtige i UI-udvikling som Blazor?",
+      "options": {
+        "A": "Kun for at gøre koden hurtigere",
+        "B": "For modularitet, genbrug og lettere vedligeholdelse",
+        "C": "Kun for at spare hukommelse",
+        "D": "Kun for at gøre koden kortere"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Metoder handler ikke kun om hastighed.",
+        "B": "✅ Metoder giver modularitet, genbrug af kode, lettere vedligeholdelse og bedre læselighed.",
+        "C": "❌ Metoder handler ikke kun om hukommelse.",
+        "D": "❌ Metoder handler ikke kun om kodelængde."
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvad er forskellen mellem statiske og instansmetoder?",
+      "options": {
+        "A": "Der er ingen forskel",
+        "B": "Statiske kaldes på klassen, instansmetoder kaldes på objekter",
+        "C": "Instansmetoder kaldes på klassen, statiske kaldes på objekter",
+        "D": "Statiske er hurtigere end instansmetoder"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Der er en vigtig forskel i hvordan de kaldes.",
+        "B": "✅ Statiske metoder kaldes direkte på klassen (ClassName.Method()), instansmetoder kaldes på objekter (object.Method()).",
+        "C": "❌ Det er omvendt - statiske på klassen, instansmetoder på objekter.",
+        "D": "❌ Det handler ikke om hastighed, men om hvordan de kaldes."
+      }
+    }
+  ]
+}

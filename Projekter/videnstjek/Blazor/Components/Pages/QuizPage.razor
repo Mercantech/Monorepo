@@ -1,0 +1,717 @@
+@page "/quiz"
+@page "/quiz/{QuizId}"
+@using Blazor.Service
+@using Blazor.Models
+@using Blazor.Components
+@inject IQuizService QuizService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@implements IDisposable
+
+<PageTitle>Quiz - Videnstjek</PageTitle>
+
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1055;">
+    @if (showToast)
+    {
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-warning text-dark">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong class="me-auto">Vent venligst</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" @onclick="HideToast"></button>
+            </div>
+            <div class="toast-body">
+                @toastMessage
+            </div>
+        </div>
+    }
+</div>
+
+@if (currentQuiz == null)
+{
+    <div class="container py-5">
+        <div class="text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+            <p class="mt-3">Indlæser quiz...</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold text-primary mb-3">@currentQuiz.Title</h1>
+                    <p class="lead">@currentQuiz.Description</p>
+                    
+                    <div class="quiz-info mb-4">
+                        <div class="d-flex justify-content-center gap-4">
+                            <span class="badge bg-primary">@currentQuiz.Category</span>
+                            <span class="badge bg-@GetDifficultyColor(currentQuiz.Difficulty)">@currentQuiz.Difficulty</span>
+                            <span class="badge bg-info">@currentQuiz.EstimatedTime</span>
+                        </div>
+                        @if (currentQuestionIndex == 0)
+                        {
+                            <div class="mt-2">
+                                <small class="text-muted">
+                                    <i class="fas fa-keyboard me-1"></i>
+                                    Tip: Brug <kbd>A</kbd>, <kbd>B</kbd>, <kbd>C</kbd>, <kbd>D</kbd> til at vælge svar og <kbd>Enter</kbd> til at bekræfte
+                                </small>
+                            </div>
+                        }
+                    </div>
+                    
+                    <div class="progress mb-3" style="height: 8px;">
+                        <div class="progress-bar bg-primary" role="progressbar" 
+                             style="width: @((currentQuestionIndex + 1) * 100 / currentQuiz.Questions.Count)%" 
+                             aria-valuenow="@(currentQuestionIndex + 1)" 
+                             aria-valuemin="0" 
+                             aria-valuemax="@currentQuiz.Questions.Count"></div>
+                    </div>
+                    <small class="text-muted">Spørgsmål @(currentQuestionIndex + 1) af @currentQuiz.Questions.Count</small>
+                </div>
+
+                @if (currentQuestionIndex < currentQuiz.Questions.Count)
+                {
+                    var question = currentQuiz.Questions[currentQuestionIndex];
+                    <div class="quiz-card card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            <h3 class="card-title mb-4">
+                                @if (ContainsCode(question.QuestionText))
+                                {
+                                    @RenderQuestionWithCode(question.QuestionText)
+                                }
+                                else
+                                {
+                                    @question.QuestionText
+                                }
+                            </h3>
+                            
+                            <div class="answer-info mb-3">
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <strong>Vælg præcis @question.ExpectedAnswerCount svar@(question.ExpectedAnswerCount == 1 ? "" : "er")</strong>
+                                </div>
+                            </div>
+                            
+                            <div class="options-container">
+                                @foreach (var option in question.ShuffledOptions)
+                                {
+                                    var isSelected = selectedAnswers.Contains(option.Key);
+                                    var originalKey = question.ShuffledToOriginalMapping[option.Key];
+                                    var isCorrect = question.CorrectAnswers.Contains(originalKey);
+                                    var showResult = quizCompleted;
+                                    var isDisabled = !isSelected && selectedAnswers.Count >= question.ExpectedAnswerCount;
+                                    
+                                    <div class="option-item @(isSelected ? "selected" : "") 
+                                         @(showResult ? (isCorrect ? "correct" : (isSelected && !isCorrect ? "incorrect" : "")) : "")
+                                         @(isDisabled ? "disabled" : "")"
+                                         @onclick="() => SelectAnswer(option.Key)"
+                                         data-key="@option.Key">
+                                        <div class="option-content">
+                                            <span class="option-letter">
+                                                @option.Key)
+                                            </span>
+                                            <span class="option-text">@option.Value</span>
+                                        </div>
+                                        @if (showResult)
+                                        {
+                                            @if (isCorrect)
+                                            {
+                                                <i class="fas fa-check-circle text-success"></i>
+                                            }
+                                            else if (isSelected && !isCorrect)
+                                            {
+                                                <i class="fas fa-times-circle text-danger"></i>
+                                            }
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="selection-status mb-3">
+                                <small class="text-muted">
+                                    @if (selectedAnswers.Count == question.ExpectedAnswerCount)
+                                    {
+                                        <span class="text-success">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            Du har valgt det korrekte antal svar
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-info">
+                                            <i class="fas fa-info-circle me-1"></i>
+                                            Du har valgt @selectedAnswers.Count af @question.ExpectedAnswerCount svar
+                                        </span>
+                                    }
+                                </small>
+                            </div>
+
+                            @if (quizCompleted)
+                            {
+                                <div class="explanation mt-4 p-4 bg-light rounded">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fas fa-lightbulb me-2"></i>Forklaring
+                                    </h5>
+                                    <div class="mb-3">
+                                        <strong>Korrekte svar:</strong> 
+                                        @{
+                                            var correctShuffledKeys = question.CorrectAnswers
+                                                .Select(originalKey => question.ShuffledToOriginalMapping
+                                                    .FirstOrDefault(x => x.Value == originalKey).Key)
+                                                .Where(key => !string.IsNullOrEmpty(key))
+                                                .OrderBy(key => key); // Sort by A, B, C, D
+                                        }
+                                        @string.Join(", ", correctShuffledKeys.Select(a => a + ")"))
+                                    </div>
+                                    <div class="explanation-text">
+                                        @{
+                                            // Sort explanations by shuffled keys (A, B, C, D order)
+                                            var sortedExplanations = question.Explanations
+                                                .Select(kvp => new
+                                                {
+                                                    OriginalKey = kvp.Key,
+                                                    Explanation = kvp.Value,
+                                                    ShuffledKey = question.ShuffledToOriginalMapping
+                                                        .FirstOrDefault(x => x.Value == kvp.Key).Key
+                                                })
+                                                .Where(x => !string.IsNullOrEmpty(x.ShuffledKey))
+                                                .OrderBy(x => x.ShuffledKey); // Sort by A, B, C, D
+                                        }
+                                        @foreach (var explanation in sortedExplanations)
+                                        {
+                                            <div class="mb-2">
+                                                <strong>@explanation.ShuffledKey):</strong> @explanation.Explanation
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                @if (question.LearnMore != null)
+                                {
+                                    <div class="learn-more mt-4 p-4 bg-gradient-light rounded">
+                                        <h5 class="text-success mb-3">
+                                            <i class="fas fa-graduation-cap me-2"></i>Læs mere om emnet
+                                        </h5>
+                                        <div class="learn-more-content">
+                                            <h6 class="text-dark mb-2">@question.LearnMore.Title</h6>
+                                            <p class="text-muted mb-3">@question.LearnMore.Description</p>
+                                            <a href="@question.LearnMore.Url" 
+                                               target="_blank" 
+                                               rel="noopener noreferrer"
+                                               class="btn btn-outline-success">
+                                                <i class="@GetLearnMoreIcon(question.LearnMore.Type) me-2"></i>
+                                                @GetLearnMoreButtonText(question.LearnMore.Type)
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                            <div class="d-flex justify-content-between mt-4">
+                                @if (currentQuestionIndex > 0)
+                                {
+                                    <button class="btn btn-outline-primary" @onclick="PreviousQuestion">
+                                        <i class="fas fa-arrow-left me-2"></i>Tidligere
+                                    </button>
+                                }
+                                else
+                                {
+                                    <div></div>
+                                }
+
+                                @if (!quizCompleted)
+                                {
+                                    <button class="btn btn-primary" @onclick="SubmitAnswer">
+                                        <i class="fas fa-check me-2"></i>Bekræft svar
+                                    </button>
+                                }
+                                else if (currentQuestionIndex < currentQuiz.Questions.Count - 1)
+                                {
+                                    <button class="btn btn-primary" @onclick="NextQuestion">
+                                        Næste<i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                }
+                                else if (currentQuestionIndex == currentQuiz.Questions.Count - 1 && !showFinalResults)
+                                {
+                                    <button class="btn btn-success" @onclick="ShowFinalResults">
+                                        <i class="fas fa-trophy me-2"></i>Afslut quiz
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (quizCompleted && currentQuestionIndex >= currentQuiz.Questions.Count - 1 && showFinalResults)
+                {
+                    <div class="quiz-completion-overlay">
+                        <div class="results-card card shadow-lg border-0">
+                            <div class="card-body p-4">
+                                <div class="result-icon mb-4">
+                                    @if (score >= currentQuiz.Questions.Count * 0.8)
+                                    {
+                                        <div class="achievement-badge trophy">
+                                            <i class="fas fa-trophy fa-4x text-warning"></i>
+                                            <div class="achievement-text">Ekspert!</div>
+                                        </div>
+                                    }
+                                    else if (score >= currentQuiz.Questions.Count * 0.6)
+                                    {
+                                        <div class="achievement-badge medal">
+                                            <i class="fas fa-medal fa-4x text-success"></i>
+                                            <div class="achievement-text">Godt gået!</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="achievement-badge lightbulb">
+                                            <i class="fas fa-lightbulb fa-4x text-info"></i>
+                                            <div class="achievement-text">Læring!</div>
+                                        </div>
+                                    }
+                                </div>
+                                
+                                <h1 class="display-5 fw-bold text-primary mb-3">Quiz Gennemført! 🎉</h1>
+                                
+                                <div class="score-display mb-4">
+                                    <div class="score-circle">
+                                        <span class="score-number">@score</span>
+                                        <span class="score-total">/ @currentQuiz.Questions.Count</span>
+                                    </div>
+                                    <div class="score-percentage">
+                                        @Math.Round((double)score / currentQuiz.Questions.Count * 100)% korrekte svar
+                                    </div>
+                                </div>
+                                
+                                <div class="score-message mb-4">
+                                    <p class="lead fs-5">@GetScoreMessage()</p>
+                                </div>
+                                
+                                <div class="questions-overview mb-4">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fas fa-list-check me-2"></i>Spørgsmål Oversigt
+                                    </h5>
+                                    <div class="questions-grid">
+                                        @for (int i = 0; i < currentQuiz.Questions.Count; i++)
+                                        {
+                                            var questionIndex = i;
+                                            var question = currentQuiz.Questions[i];
+                                            var isCorrect = questionScores[i];
+                                            
+                                            <div class="question-summary @(isCorrect ? "correct" : "incorrect")">
+                                                <div class="question-number">
+                                                    <span class="number">@(i + 1)</span>
+                                                </div>
+                                                <div class="question-content">
+                                                    <div class="question-text">@question.QuestionText</div>
+                                                    <div class="question-status">
+                                                        @if (isCorrect)
+                                                        {
+                                                            <span class="status-badge correct">
+                                                                <i class="fas fa-check me-1"></i>Korrekt
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="status-badge incorrect">
+                                                                <i class="fas fa-times me-1"></i>Forkert
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                
+                                <div class="action-buttons">
+                                    <div class="row justify-content-center g-3">
+                                        <div class="col-md-4">
+                                            <button class="btn btn-primary btn-lg w-100" @onclick="RestartQuiz">
+                                                <i class="fas fa-redo me-2"></i>Prøv igen
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-outline-primary btn-lg w-100" @onclick="GoToQuizList">
+                                                <i class="fas fa-list me-2"></i>Alle quizzer
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-outline-secondary btn-lg w-100" @onclick="GoHome">
+                                                <i class="fas fa-home me-2"></i>Tilbage til start
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string? QuizId { get; set; }
+
+    private Quiz? currentQuiz;
+    private int currentQuestionIndex = 0;
+    private HashSet<string> selectedAnswers = new();
+    private bool quizCompleted = false;
+    private int score = 0;
+    private List<bool> questionScores = new();
+    private bool showFinalResults = false;
+    
+    // Toast variables
+    private bool showToast = false;
+    private string toastMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(QuizId))
+        {
+            // Default to first quiz if no ID provided
+            var allQuizzes = await QuizService.GetAllQuizzesAsync();
+            currentQuiz = allQuizzes.FirstOrDefault();
+        }
+        else
+        {
+            currentQuiz = await QuizService.GetQuizByIdAsync(QuizId);
+        }
+
+        if (currentQuiz == null)
+        {
+            // Redirect to quiz list if quiz not found
+            Navigation.NavigateTo("/quizzes");
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("addKeyboardListener", DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public async Task HandleKeyPress(string key)
+    {
+        await InvokeAsync(() =>
+        {
+            if (key == "Enter")
+            {
+                if (!quizCompleted && currentQuiz != null)
+                {
+                    var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+                    if (selectedAnswers.Count == currentQuestion.ExpectedAnswerCount)
+                    {
+                        // Submit answer if we have the right number of answers selected
+                        SubmitAnswer();
+                    }
+                    else
+                    {
+                        // Show toast if not enough answers selected
+                        ShowToast($"Vælg venligst {currentQuestion.ExpectedAnswerCount} svar før du bekræfter.");
+                    }
+                }
+                else if (quizCompleted && currentQuestionIndex < currentQuiz?.Questions.Count - 1)
+                {
+                    // Go to next question if quiz is completed and there are more questions
+                    NextQuestion();
+                }
+                else if (quizCompleted && currentQuestionIndex == currentQuiz?.Questions.Count - 1 && !showFinalResults)
+                {
+                    // Show final results if this is the last question
+                    ShowFinalResults();
+                }
+            }
+            else if (key.ToUpper() is "A" or "B" or "C" or "D" or "E" or "F")
+            {
+                // Handle answer selection with keyboard
+                if (!quizCompleted && currentQuiz != null)
+                {
+                    var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+                    if (currentQuestion.ShuffledOptions.ContainsKey(key.ToUpper()))
+                    {
+                        SelectAnswer(key.ToUpper());
+                    }
+                }
+            }
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        JSRuntime.InvokeVoidAsync("removeKeyboardListener");
+    }
+
+    private void SelectAnswer(string option)
+    {
+        if (quizCompleted || currentQuiz == null) return;
+
+        var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+        
+        if (selectedAnswers.Contains(option))
+        {
+            selectedAnswers.Remove(option);
+        }
+        else
+        {
+            // Kun tillad at vælge hvis vi ikke har nået det maksimale antal
+            if (selectedAnswers.Count < currentQuestion.ExpectedAnswerCount)
+            {
+                selectedAnswers.Add(option);
+            }
+        }
+    }
+
+    private void SubmitAnswer()
+    {
+        if (currentQuiz == null) return;
+        
+        var currentQuestion = currentQuiz.Questions[currentQuestionIndex];
+        
+        // Kun tillad svar hvis præcis det forventede antal er valgt
+        if (selectedAnswers.Count != currentQuestion.ExpectedAnswerCount)
+        {
+            ShowToast($"Vælg venligst {currentQuestion.ExpectedAnswerCount} svar før du bekræfter.");
+            return;
+        }
+
+        // Konverter shuffled keys tilbage til originale keys for validering
+        var originalSelectedAnswers = selectedAnswers
+            .Select(shuffledKey => currentQuestion.ShuffledToOriginalMapping[shuffledKey])
+            .ToList();
+
+        var isCorrect = currentQuestion.CorrectAnswers.All(a => originalSelectedAnswers.Contains(a)) &&
+                       originalSelectedAnswers.All(a => currentQuestion.CorrectAnswers.Contains(a));
+
+        if (isCorrect)
+        {
+            score++;
+        }
+
+        // Gem resultatet for dette spørgsmål
+        if (questionScores.Count <= currentQuestionIndex)
+        {
+            questionScores.Add(isCorrect);
+        }
+        else
+        {
+            questionScores[currentQuestionIndex] = isCorrect;
+        }
+
+        quizCompleted = true;
+    }
+
+    private void NextQuestion()
+    {
+        if (currentQuiz != null && currentQuestionIndex < currentQuiz.Questions.Count - 1)
+        {
+            currentQuestionIndex++;
+            selectedAnswers.Clear();
+            quizCompleted = false;
+            
+            // Reshuffle options for the new question
+            var nextQuestion = currentQuiz.Questions[currentQuestionIndex];
+            ReshuffleQuestionOptions(nextQuestion);
+        }
+    }
+
+    private void PreviousQuestion()
+    {
+        if (currentQuestionIndex > 0)
+        {
+            currentQuestionIndex--;
+            selectedAnswers.Clear();
+            quizCompleted = false;
+            
+            // Reshuffle options for the previous question
+            if (currentQuiz != null)
+            {
+                var previousQuestion = currentQuiz.Questions[currentQuestionIndex];
+                ReshuffleQuestionOptions(previousQuestion);
+            }
+        }
+    }
+
+    private void RestartQuiz()
+    {
+        currentQuestionIndex = 0;
+        selectedAnswers.Clear();
+        quizCompleted = false;
+        score = 0;
+        questionScores.Clear();
+        showFinalResults = false;
+        
+        // Reshuffle options for a fresh experience
+        if (currentQuiz != null)
+        {
+            foreach (var question in currentQuiz.Questions)
+            {
+                ReshuffleQuestionOptions(question);
+            }
+        }
+    }
+
+    private void ReshuffleQuestionOptions(QuizQuestion question)
+    {
+        // Create a list of option pairs to shuffle
+        var optionPairs = question.Options.ToList();
+        var random = new Random();
+        
+        // Shuffle the pairs
+        for (int i = optionPairs.Count - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            var temp = optionPairs[i];
+            optionPairs[i] = optionPairs[j];
+            optionPairs[j] = temp;
+        }
+
+        // Create new shuffled options with new keys (A, B, C, D...)
+        question.ShuffledOptions.Clear();
+        question.ShuffledToOriginalMapping.Clear();
+        
+        var newKeys = new[] { "A", "B", "C", "D", "E", "F" }; // Support for up to 6 options
+        
+        for (int i = 0; i < optionPairs.Count; i++)
+        {
+            var newKey = newKeys[i];
+            var originalKey = optionPairs[i].Key;
+            var optionText = optionPairs[i].Value;
+            
+            question.ShuffledOptions[newKey] = optionText;
+            question.ShuffledToOriginalMapping[newKey] = originalKey;
+        }
+    }
+
+    private void FinishQuiz()
+    {
+        quizCompleted = true;
+    }
+
+    private void ShowFinalResults()
+    {
+        showFinalResults = true;
+    }
+
+    private void GoToQuizList()
+    {
+        Navigation.NavigateTo("/quizzes");
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+    private string GetScoreMessage()
+    {
+        if (currentQuiz == null) return "";
+        
+        var percentage = (double)score / currentQuiz.Questions.Count;
+        return percentage switch
+        {
+            >= 0.8 => "Fantastisk! Du har styr på stoffet! 🎉",
+            >= 0.6 => "Godt gået! Du er på rette spor. 👍",
+            >= 0.4 => "Ikke dårligt! Læs forklaringerne og prøv igen. 📚",
+            _ => "Brug forklaringerne til at lære og prøv igen! 💪"
+        };
+    }
+
+    private string GetDifficultyColor(string difficulty)
+    {
+        return difficulty.ToLower() switch
+        {
+            "begynder" => "success",
+            "mellem" => "warning",
+            "avanceret" => "danger",
+            _ => "secondary"
+        };
+    }
+
+    private string GetLearnMoreIcon(string type)
+    {
+        return type.ToLower() switch
+        {
+            "article" => "fas fa-book-open",
+            "video" => "fas fa-video",
+            "website" => "fas fa-external-link-alt",
+            _ => "fas fa-info-circle"
+        };
+    }
+
+    private string GetLearnMoreButtonText(string type)
+    {
+        return type.ToLower() switch
+        {
+            "article" => "Læs artikel",
+            "video" => "Se video",
+            "website" => "Gå til hjemmeside",
+            _ => "Lær mere"
+        };
+    }
+
+    private bool ContainsCode(string text)
+    {
+        return text.Contains("for (") || text.Contains("while (") || text.Contains("if (") || 
+               text.Contains("Console.WriteLine") || text.Contains("int ") || text.Contains("string ") ||
+               text.Contains("List<") || text.Contains("Dictionary<") || text.Contains("foreach (");
+    }
+
+    private RenderFragment RenderQuestionWithCode(string questionText)
+    {
+        return builder =>
+        {
+            var parts = questionText.Split(new[] { ": " }, StringSplitOptions.None);
+            if (parts.Length == 2)
+            {
+                // Question part before ": "
+                builder.OpenElement(0, "span");
+                builder.AddContent(1, parts[0] + ": ");
+                builder.CloseElement();
+
+                // Code block
+                builder.OpenComponent<CodeBlock>(2);
+                builder.AddAttribute(3, "Code", parts[1]);
+                builder.AddAttribute(4, "Language", "csharp");
+                builder.CloseComponent();
+            }
+            else
+            {
+                // Fallback to regular text
+                builder.AddContent(5, questionText);
+            }
+        };
+    }
+
+    private void ShowToast(string message)
+    {
+        toastMessage = message;
+        showToast = true;
+        StateHasChanged();
+        
+        // Auto-hide toast after 3 seconds
+        Task.Delay(3000).ContinueWith(_ => InvokeAsync(() =>
+        {
+            showToast = false;
+            StateHasChanged();
+        }));
+    }
+
+    private void HideToast()
+    {
+        showToast = false;
+        StateHasChanged();
+    }
+}

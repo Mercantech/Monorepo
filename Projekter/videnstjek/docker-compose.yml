@@ -1,0 +1,20 @@
+services:
+  videnstjek-blazor:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: videnstjek-blazor
+    ports:
+      - "8067:8067"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8067
+    restart: unless-stopped
+    networks:
+      - videnstjek-network
+    volumes:
+      - ./Blazor/wwwroot/data:/app/wwwroot/data:ro
+
+networks:
+  videnstjek-network:
+    driver: bridge

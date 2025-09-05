@@ -1,0 +1,202 @@
+{
+    "id": "solid-principles",
+    "title": "SOLID Principper",
+    "description": "Test din viden om SOLID-principperne i objektorienteret programmering og hvordan de hjælper med at skrive ren, vedligeholdelsesvenlig kode",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad står 'S' for i SOLID-principperne?",
+        "options": {
+          "A": "Single Responsibility Principle",
+          "B": "Simple Design Principle",
+          "C": "Static Method Principle",
+          "D": "Service Layer Principle"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ Single Responsibility Principle betyder at en klasse kun skal have én grund til at ændres.",
+          "B": "❌ Simple Design er et andet koncept, ikke en del af SOLID.",
+          "C": "❌ Static Method har intet med SOLID at gøre.",
+          "D": "❌ Service Layer er et arkitekturmønster, ikke et SOLID-princip."
+        },
+        "learnMore": {
+          "title": "Single Responsibility Principle",
+          "description": "Microsofts dokumentation om Single Responsibility Principle og hvordan det implementeres i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#single-responsibility",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad betyder Open/Closed Principle?",
+        "options": {
+          "A": "Koden skal være åben for alle at se",
+          "B": "Klasser skal være åbne for udvidelse, men lukkede for ændring",
+          "C": "Alle metoder skal være public",
+          "D": "Koden skal kunne køre på alle platforme"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Det handler ikke om synlighed af koden.",
+          "B": "✅ Du skal kunne tilføje ny funktionalitet uden at ændre eksisterende kode.",
+          "C": "❌ Access modifiers har intet med Open/Closed at gøre.",
+          "D": "❌ Det handler ikke om platformkompatibilitet."
+        },
+        "learnMore": {
+          "title": "Open/Closed Principle",
+          "description": "En forklaring af Open/Closed Principle med praktiske eksempler i C#.",
+          "url": "https://www.c-sharpcorner.com/article/open-closed-principle-in-c-sharp/",
+          "type": "article",
+          "icon": "fas fa-unlock"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er Liskov Substitution Principle?",
+        "options": {
+          "A": "At alle klasser skal have samme navn",
+          "B": "At afledte klasser skal kunne bruges i stedet for deres baseklasse uden at ændre programmets opførsel",
+          "C": "At alle metoder skal returnere samme type",
+          "D": "At klasser skal være lige store i hukommelsen"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Navngivning har intet med LSP at gøre.",
+          "B": "✅ Hvis du har en baseklasse, skal alle afledte klasser kunne bruges på samme måde.",
+          "C": "❌ Returtyper kan variere mellem afledte klasser.",
+          "D": "❌ Hukommelsesstørrelse er ikke relevant for LSP."
+        },
+        "learnMore": {
+          "title": "Liskov Substitution Principle",
+          "description": "En dybdegående forklaring af LSP med kodeeksempler.",
+          "url": "https://www.baeldung.com/java-liskov-substitution-principle",
+          "type": "article",
+          "icon": "fas fa-exchange-alt"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvad betyder Interface Segregation Principle?",
+        "options": {
+          "A": "At alle klasser skal implementere interfaces",
+          "B": "At interfaces skal være små og specifikke, ikke store og generelle",
+          "C": "At alle metoder i et interface skal være public",
+          "D": "At interfaces skal være gratis at bruge"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Det er ikke et krav at alle klasser implementerer interfaces.",
+          "B": "✅ Store interfaces tvinger klasser til at implementere metoder de ikke bruger.",
+          "C": "❌ Interface-metoder er altid public per definition.",
+          "D": "❌ Det handler ikke om omkostninger."
+        },
+        "learnMore": {
+          "title": "Interface Segregation Principle",
+          "description": "Microsofts guide til Interface Segregation Principle med praktiske eksempler.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles#interface-segregation",
+          "type": "docs",
+          "icon": "fas fa-puzzle-piece"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad betyder Dependency Inversion Principle?",
+        "options": {
+          "A": "At alle dependencies skal være private",
+          "B": "At højniveau-moduler ikke skal afhænge af lavniveau-moduler - begge skal afhænge af abstraktioner",
+          "C": "At alle klasser skal være static",
+          "D": "At dependencies skal være billige at oprette"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Access modifiers har intet med DIP at gøre.",
+          "B": "✅ Højniveau-logik skal afhænge af abstraktioner, ikke konkrete implementeringer.",
+          "C": "❌ Static klasser er ikke relateret til DIP.",
+          "D": "❌ Det handler ikke om omkostninger."
+        },
+        "learnMore": {
+          "title": "Dependency Inversion Principle",
+          "description": "En forklaring af DIP og hvordan det implementeres med dependency injection.",
+          "url": "https://www.c-sharpcorner.com/article/dependency-inversion-principle-in-c-sharp/",
+          "type": "article",
+          "icon": "fas fa-arrows-alt"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvordan hjælper SOLID-principperne med vedligeholdelse af kode?",
+        "options": {
+          "A": "De gør koden hurtigere at køre",
+          "B": "De gør koden lettere at forstå, ændre og udvide uden at bryde eksisterende funktionalitet",
+          "C": "De reducerer hukommelsesforbruget",
+          "D": "De forhindrer alle fejl i at ske"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ SOLID handler ikke primært om performance.",
+          "B": "✅ SOLID gør koden mere modulær og lettere at arbejde med over tid.",
+          "C": "❌ Hukommelsesforbrug påvirkes ikke direkte af SOLID.",
+          "D": "❌ SOLID forhindrer ikke fejl, men gør dem lettere at håndtere."
+        },
+        "learnMore": {
+          "title": "SOLID Principles Benefits",
+          "description": "En oversigt over fordelene ved at følge SOLID-principperne.",
+          "url": "https://www.baeldung.com/solid-principles",
+          "type": "article",
+          "icon": "fas fa-star"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad er et eksempel på brud på Single Responsibility Principle?",
+        "options": {
+          "A": "En klasse der både håndterer brugerdata og sender emails",
+          "B": "En klasse med mange private metoder",
+          "C": "En klasse der implementerer flere interfaces",
+          "D": "En klasse med mange properties"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ En klasse skal ikke håndtere både brugerdata og email-funktionalitet - det er to ansvarsområder.",
+          "B": "❌ Antallet af private metoder påvirker ikke SRP.",
+          "C": "❌ Implementering af interfaces kan være helt fint.",
+          "D": "❌ Antallet af properties påvirker ikke SRP."
+        },
+        "learnMore": {
+          "title": "Single Responsibility Principle Examples",
+          "description": "Praktiske eksempler på SRP og hvordan man refaktorerer kode der bryder det.",
+          "url": "https://www.c-sharpcorner.com/article/single-responsibility-principle-with-example/",
+          "type": "article",
+          "icon": "fas fa-exclamation-triangle"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvordan implementerer man Dependency Inversion Principle i C#?",
+        "options": {
+          "A": "Ved at bruge dependency injection og lade klasser afhænge af interfaces i stedet for konkrete klasser",
+          "B": "Ved at gøre alle metoder virtual",
+          "C": "Ved at bruge static metoder",
+          "D": "Ved at undgå at bruge interfaces"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ DI og interfaces er den primære måde at implementere DIP på.",
+          "B": "❌ Virtual metoder er ikke relateret til DIP.",
+          "C": "❌ Static metoder gør det sværere at implementere DIP.",
+          "D": "❌ Interfaces er netop nøglen til DIP."
+        },
+        "learnMore": {
+          "title": "Dependency Injection in .NET",
+          "description": "Microsofts guide til dependency injection og hvordan det implementerer DIP.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection",
+          "type": "docs",
+          "icon": "fas fa-cog"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,53 @@
+﻿@page "/"
+@inject NavigationManager Navigation
+
+<PageTitle>Videnstjek - Quiz App</PageTitle>
+
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold text-primary mb-4">
+                    <span class="text-gradient">Videnstjek</span>
+                </h1>
+                <p class="lead mb-4">
+                    Test din viden med vores interaktive quizzer! Perfekt til at forberede dig til eksamen 
+                    og sikre at du har styr på stoffet.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="/quizzes" class="btn btn-primary btn-lg px-4" @onclick="NavigateToQuizzes">
+                        <i class="fas fa-play me-2"></i>Start Quiz
+                    </a>
+                    <a href="/about" class="btn btn-primary btn-lg px-4" @onclick="NavigateToAbout">
+                        <i class="fas fa-info-circle me-2"></i>Læs mere
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="quiz-illustration">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-question-circle text-primary"></i>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-lightbulb text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private void NavigateToQuizzes()
+    {
+        Navigation.NavigateTo("/quizzes");
+    }
+    private void NavigateToAbout()
+    {
+        Navigation.NavigateTo("/about");
+    }
+}

@@ -1,0 +1,202 @@
+{
+    "id": "api-calls",
+    "title": "API-kald & HTTP",
+    "description": "Test din viden om API-kald, HTTP-metoder, statuskoder og sikker kommunikation med HTTPS",
+    "category": "Backend, Frontend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvilken HTTP-metode bruges typisk til at hente data fra en server?",
+        "options": {
+          "A": "POST",
+          "B": "GET",
+          "C": "PUT",
+          "D": "DELETE"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ POST bruges til at oprette nye ressourcer.",
+          "B": "✅ GET bruges til at hente data og ændrer ikke noget på serveren.",
+          "C": "❌ PUT bruges til at opdatere eksisterende data.",
+          "D": "❌ DELETE bruges til at slette data."
+        },
+        "learnMore": {
+          "title": "HTTP Methods Explained",
+          "description": "Læs om de mest brugte HTTP-metoder og hvordan de bruges i REST API'er.",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods",
+          "type": "article",
+          "icon": "fas fa-book-open"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvilken statuskode returneres typisk når en ressource oprettes succesfuldt?",
+        "options": {
+          "A": "200 OK",
+          "B": "201 Created",
+          "C": "204 No Content",
+          "D": "404 Not Found"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ 200 OK betyder succes, men bruges mest til GET.",
+          "B": "✅ 201 Created er korrekt, når en ny ressource oprettes.",
+          "C": "❌ 204 No Content bruges når en operation lykkes men intet returneres.",
+          "D": "❌ 404 betyder at ressourcen ikke findes."
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvorfor er HTTPS mere sikker end HTTP?",
+        "options": {
+          "A": "Fordi den er hurtigere",
+          "B": "Fordi data krypteres mellem klient og server",
+          "C": "Fordi den bruger færre statuskoder",
+          "D": "Fordi serveren altid svarer med 200 OK"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ HTTPS kan faktisk være en smule langsommere pga. kryptering.",
+          "B": "✅ HTTPS krypterer al data og verificerer serverens identitet.",
+          "C": "❌ Antallet af statuskoder er det samme.",
+          "D": "❌ Serveren kan stadig returnere fejlstatus under HTTPS."
+        },  
+        "learnMore": {
+          "title": "How HTTPS Works",
+          "description": "En introduktion til HTTPS og SSL/TLS handshake, skrevet af Cloudflare.",
+          "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+          "type": "article",
+          "icon": "fas fa-lock"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvilken af disse HTTP-metoder bruges til at opdatere en ressource delvist?",
+        "options": {
+          "A": "PUT",
+          "B": "PATCH",
+          "C": "POST",
+          "D": "OPTIONS"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ PUT opdaterer hele ressourcen, ikke dele af den.",
+          "B": "✅ PATCH bruges til at ændre specifikke felter i en ressource.",
+          "C": "❌ POST bruges til at oprette nye ressourcer.",
+          "D": "❌ OPTIONS bruges til at se hvilke metoder serveren understøtter."
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad betyder statuskoden 401 Unauthorized?",
+        "options": {
+          "A": "Brugeren er ikke logget ind eller mangler gyldige credentials",
+          "B": "Serveren er gået ned",
+          "C": "Ressourcen findes ikke",
+          "D": "Du har ikke tilladelse, selvom du er logget ind"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ 401 betyder at du mangler gyldig login eller token.",
+          "B": "❌ Det ville være en 5xx serverfejl.",
+          "C": "❌ Det ville være 404 Not Found.",
+          "D": "❌ Det ville være 403 Forbidden."
+        }
+      },    
+      {
+        "id": 6,
+        "questionText": "Hvad betyder statuskoden 204 No Content?",
+        "options": {
+          "A": "Operationen lykkedes, men der er ingen data at returnere",
+          "B": "Serveren er midlertidigt nede",
+          "C": "Din forespørgsel var ugyldig",
+          "D": "En ny ressource blev oprettet"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ 204 betyder at alt gik godt, men svaret er tomt.",
+          "B": "❌ Det ville være 503 Service Unavailable.",
+          "C": "❌ Det ville være 400 Bad Request.",
+          "D": "❌ Det ville være 201 Created."
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvilken HTTP-metode bruges til at spørge serveren hvilke metoder, den understøtter?",
+        "options": {
+          "A": "OPTIONS",
+          "B": "HEAD",
+          "C": "TRACE",
+          "D": "GET"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ OPTIONS returnerer en liste over tilladte metoder.",
+          "B": "❌ HEAD returnerer kun headers – ikke metodeinfo.",
+          "C": "❌ TRACE bruges til fejlfinding.",
+          "D": "❌ GET henter data, men viser ikke understøttede metoder."
+        },
+        "learnMore": {
+          "title": "MDN: OPTIONS method",
+          "description": "Se hvordan OPTIONS-metoden bruges, og hvornår den er nyttig i API-kald.",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS",
+          "type": "docs",
+          "icon": "fas fa-info-circle"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvordan fungerer HEAD-metoden?",
+        "options": {
+          "A": "Den henter hele ressourcen som GET",
+          "B": "Den henter kun headers uden selve indholdet",
+          "C": "Den opretter en ny ressource",
+          "D": "Den sletter ressourcen"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ GET henter hele ressourcen.",
+          "B": "✅ HEAD returnerer kun metadata (headers), ikke indholdet.",
+          "C": "❌ POST bruges til at oprette ressourcer.",
+          "D": "❌ DELETE bruges til at slette ressourcer."
+        }
+      },
+      {
+        "id": 9,
+        "questionText": "Hvad er det første trin i en HTTPS-forbindelse?",
+        "options": {
+          "A": "Serveren sender data krypteret",
+          "B": "Klient og server laver et handshake og aftaler kryptering",
+          "C": "Brugeren logger ind",
+          "D": "Serveren returnerer statuskode 200"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Data krypteres først efter handshake.",
+          "B": "✅ Handshake er første trin – her aftales kryptering.",
+          "C": "❌ Login kan ske senere, men er ikke en del af HTTPS-opstarten.",
+          "D": "❌ Statuskoder har intet at gøre med oprettelsen af krypteret forbindelse."
+        }
+      },
+      {
+        "id": 10,
+        "questionText": "Hvorfor favoriserer Google sider med HTTPS i søgeresultater?",
+        "options": {
+          "A": "Fordi de er hurtigere",
+          "B": "Fordi de har flere statuskoder",
+          "C": "Fordi de er mere sikre og øger brugertillid",
+          "D": "Fordi de altid returnerer JSON"
+        },
+        "correctAnswers": ["C"],
+        "explanations": {
+          "A": "❌ HTTPS kan være en anelse langsommere end HTTP.",
+          "B": "❌ Statuskoder er de samme uanset HTTP eller HTTPS.",
+          "C": "✅ Google vægter sikkerhed højt og belønner HTTPS-sider i SEO.",
+          "D": "❌ HTTPS har intet at gøre med dataformatet (JSON, XML osv.)."
+        }
+      }
+  
+    ]
+  }

@@ -1,0 +1,130 @@
+{
+    "id": "xml-comments",
+    "title": "XML-kommentarer & API-dokumentation",
+    "description": "Test din viden om XML-kommentarer i C#, hvordan man dokumenterer API'er og aktiverer Swagger-dokumentation",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er formålet med XML-kommentarer i C# API'er?",
+        "options": {
+          "A": "At gøre koden hurtigere at køre",
+          "B": "At dokumentere API'er så andre udviklere kan forstå endpoints uden at kende koden",
+          "C": "At kryptere API-endpoints",
+          "D": "At reducere hukommelsesforbruget"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ XML-kommentarer påvirker ikke kode-performance.",
+          "B": "✅ XML-kommentarer giver automatisk API-dokumentation som Swagger kan vise.",
+          "C": "❌ XML-kommentarer er ikke kryptering - de er dokumentation.",
+          "D": "❌ XML-kommentarer påvirker ikke hukommelsesforbrug."
+        },
+        "learnMore": {
+          "title": "XML Documentation Comments",
+          "description": "Microsofts guide til XML-kommentarer i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/",
+          "type": "docs",
+          "icon": "fas fa-comments"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvilken tag bruges til at beskrive hvad en metode gør?",
+        "options": {
+          "A": "<description>",
+          "B": "<summary>",
+          "C": "<method>",
+          "D": "<info>"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ <description> er ikke en standard XML-kommentar tag.",
+          "B": "✅ <summary> bruges til at beskrive hvad metoden gør.",
+          "C": "❌ <method> er ikke en standard XML-kommentar tag.",
+          "D": "❌ <info> er ikke en standard XML-kommentar tag."
+        },
+        "learnMore": {
+          "title": "XML Documentation Tags",
+          "description": "En oversigt over alle tilgængelige XML-kommentar tags i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags",
+          "type": "docs",
+          "icon": "fas fa-tags"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvordan dokumenterer du en parameter i en XML-kommentar?",
+        "options": {
+          "A": "<param name=\"parameterName\">Beskrivelse af parameteren</param>",
+          "B": "<parameter name=\"parameterName\">Beskrivelse af parameteren</parameter>",
+          "C": "<input name=\"parameterName\">Beskrivelse af parameteren</input>",
+          "D": "<arg name=\"parameterName\">Beskrivelse af parameteren</arg>"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ <param name=\"parameterName\"> er den korrekte syntaks for at dokumentere parametre.",
+          "B": "❌ <parameter> er ikke en standard XML-kommentar tag.",
+          "C": "❌ <input> er ikke en standard XML-kommentar tag.",
+          "D": "❌ <arg> er ikke en standard XML-kommentar tag."
+        },
+        "learnMore": {
+          "title": "Documenting Parameters",
+          "description": "Microsofts guide til at dokumentere parametre med XML-kommentarer.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags#param",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvad bruges <response code=\"...\"> taggen til?",
+        "options": {
+          "A": "At definere HTTP-metoder (GET, POST, etc.)",
+          "B": "At beskrive hvilke HTTP-statuskoder der kan returneres og hvorfor",
+          "C": "At specificere response-typen",
+          "D": "At definere API-versioner"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ HTTP-metoder defineres med attributter som [HttpGet], ikke med <response>.",
+          "B": "✅ <response code=\"...\"> beskriver mulige HTTP-statuskoder og deres betydning.",
+          "C": "❌ Response-typen defineres med <returns>, ikke med <response>.",
+          "D": "❌ API-versioner håndteres ikke med <response> tags."
+        },
+        "learnMore": {
+          "title": "Documenting Responses",
+          "description": "En guide til at dokumentere API-responses med XML-kommentarer.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle",
+          "type": "docs",
+          "icon": "fas fa-reply"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad skal du tilføje i din .csproj fil for at generere XML-dokumentation?",
+        "options": {
+          "A": "<GenerateDocumentationFile>true</GenerateDocumentationFile>",
+          "B": "<XMLDocumentation>true</XMLDocumentation>",
+          "C": "<CreateXMLFile>true</CreateXMLFile>",
+          "D": "<EnableXMLDocs>true</EnableXMLDocs>"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ <GenerateDocumentationFile>true</GenerateDocumentationFile> aktiverer XML-dokumentationsgenerering.",
+          "B": "❌ <XMLDocumentation> er ikke en standard property.",
+          "C": "❌ <CreateXMLFile> er ikke en standard property.",
+          "D": "❌ <EnableXMLDocs> er ikke en standard property."
+        },
+        "learnMore": {
+          "title": "Generate XML Documentation",
+          "description": "Microsofts guide til at generere XML-dokumentation i .NET projekter.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/#generate-documentation",
+          "type": "docs",
+          "icon": "fas fa-file-code"
+        }
+      }
+    ]
+  }

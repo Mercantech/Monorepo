@@ -1,0 +1,187 @@
+{
+  "id": "gf2-kapitel-7-loops-iterationer",
+  "title": "GF2 Kapitel 7 - Loops og Iterationer",
+  "description": "Test din viden om for, while, do-while og foreach loops i C# samt iteration over arrays, lister og dictionaries",
+  "categories": ["GF2"],
+  "difficulty": "Begynder",
+  "estimatedTime": "8-12 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvilken loop bruges, når du ved hvor mange gange du vil gentage en blok kode?",
+      "options": {
+        "A": "while loop",
+        "B": "do-while loop",
+        "C": "for loop",
+        "D": "foreach loop"
+      },
+      "correctAnswers": ["C"],
+      "explanations": {
+        "A": "❌ while loop bruges når du vil gentage baseret på en betingelse, ikke et kendt antal gange.",
+        "B": "❌ do-while loop sikrer mindst én iteration, men er ikke optimalt til kendt antal gentagelser.",
+        "C": "✅ for loop er perfekt når du ved hvor mange gange du vil gentage - den har initialisering, betingelse og opdatering.",
+        "D": "❌ foreach loop bruges til at iterere over samlinger, ikke til et kendt antal gentagelser."
+      },
+      "learnMore": {
+        "title": "for Loop i C#",
+        "description": "Microsofts dokumentation om for loops og deres syntaks i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-for-statement",
+        "type": "docs",
+        "icon": "fas fa-repeat"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvad er forskellen mellem while og do-while loop?",
+      "options": {
+        "A": "Der er ingen forskel",
+        "B": "do-while sikrer at koden køres mindst én gang",
+        "C": "while loop er hurtigere end do-while",
+        "D": "do-while kan kun bruges med arrays"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Der er en vigtig forskel i hvornår betingelsen evalueres.",
+        "B": "✅ do-while evaluerer betingelsen EFTER koden er kørt, så koden køres altid mindst én gang.",
+        "C": "❌ Hastighed er ikke forskellen mellem disse loops.",
+        "D": "❌ do-while kan bruges til mange formål, ikke kun arrays."
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvilken loop er bedst til at iterere over alle elementer i en List<string>?",
+      "options": {
+        "A": "for loop med indeks",
+        "B": "while loop",
+        "C": "foreach loop",
+        "D": "do-while loop"
+      },
+      "correctAnswers": ["C"],
+      "explanations": {
+        "A": "❌ for loop virker, men foreach er mere læsbar og sikker for samlinger.",
+        "B": "❌ while loop er ikke optimalt til at iterere over samlinger.",
+        "C": "✅ foreach loop er designet til at iterere over samlinger og er mere læsbar og sikker.",
+        "D": "❌ do-while er ikke optimalt til samlinger."
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad gør 'break' i en loop?",
+      "options": {
+        "A": "Stopper den nuværende iteration og fortsætter med næste",
+        "B": "Afslutter hele loopet før det normalt ville slutte",
+        "C": "Starter loopet forfra",
+        "D": "Ændrer loopets retning"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det beskriver 'continue', ikke 'break'.",
+        "B": "✅ break afslutter loopet helt og springer ud af det.",
+        "C": "❌ break starter ikke loopet forfra.",
+        "D": "❌ break ændrer ikke retning, det stopper loopet."
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvad gør 'continue' i en loop?",
+      "options": {
+        "A": "Afslutter hele loopet",
+        "B": "Stopper den nuværende iteration og fortsætter med næste",
+        "C": "Starter loopet forfra",
+        "D": "Ændrer loopets hastighed"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det beskriver 'break', ikke 'continue'.",
+        "B": "✅ continue springer resten af den nuværende iteration over og fortsætter med næste.",
+        "C": "❌ continue starter ikke loopet forfra.",
+        "D": "❌ continue ændrer ikke hastighed, det springer iteration over."
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvilken syntaks bruges til at iterere over en Dictionary<string, int>?",
+      "options": {
+        "A": "foreach (string key in dictionary)",
+        "B": "foreach (KeyValuePair<string, int> kvp in dictionary)",
+        "C": "foreach (int value in dictionary)",
+        "D": "for (int i = 0; i < dictionary.Count; i++)"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Dette itererer kun over nøglerne, ikke nøgle/værdi-parrene.",
+        "B": "✅ KeyValuePair<string, int> giver adgang til både nøgle og værdi i hver iteration.",
+        "C": "❌ Dette itererer kun over værdierne, ikke nøgle/værdi-parrene.",
+        "D": "❌ for loop med indeks virker ikke direkte med Dictionary."
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvordan itererer du over en 2D-liste (List<List<int>>)?",
+      "options": {
+        "A": "Kun med en enkelt foreach loop",
+        "B": "Med nested for loops",
+        "C": "Med nested foreach loops",
+        "D": "Både B og C er korrekte"
+      },
+      "correctAnswers": ["D"],
+      "explanations": {
+        "A": "❌ En enkelt foreach loop kan ikke håndtere 2D-strukturer.",
+        "B": "✅ Nested for loops virker med indekser: for (int i = 0; i < outer.Count; i++) for (int j = 0; j < outer[i].Count; j++)",
+        "C": "✅ Nested foreach loops virker også: foreach (List<int> inner in outer) foreach (int item in inner)",
+        "D": "✅ Begge metoder er korrekte - for loops med indekser eller nested foreach loops."
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "Hvad er forskellen mellem numbers.Length og names.Count?",
+      "options": {
+        "A": "Der er ingen forskel",
+        "B": "Length bruges til arrays, Count til lister",
+        "C": "Count er hurtigere end Length",
+        "D": "Length kan kun bruges med strings"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Der er en vigtig forskel i hvilke datatyper de bruges med.",
+        "B": "✅ Length er en property på arrays, Count er en property på lister og andre samlinger.",
+        "C": "❌ Hastighed er ikke forskellen - det handler om datatyper.",
+        "D": "❌ Length bruges med arrays, ikke kun strings."
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvilken loop vil udskrive tallene 0 til 4?",
+      "options": {
+        "A": "for (int i = 0; i <= 4; i++)",
+        "B": "for (int i = 0; i < 5; i++)",
+        "C": "for (int i = 1; i < 5; i++)",
+        "D": "Både A og B er korrekte"
+      },
+      "correctAnswers": ["D"],
+      "explanations": {
+        "A": "✅ i <= 4 betyder i går fra 0 til 4 (inklusiv 4).",
+        "B": "✅ i < 5 betyder i går fra 0 til 4 (eksklusiv 5).",
+        "C": "❌ Dette starter ved 1, så det vil udskrive 1 til 4.",
+        "D": "✅ Begge loops vil udskrive 0, 1, 2, 3, 4."
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvad sker der i denne kode: for (int i = 0; i < 10; i++) { if (i == 5) break; Console.WriteLine(i); }",
+      "options": {
+        "A": "Udskriver tallene 0 til 9",
+        "B": "Udskriver tallene 0 til 4",
+        "C": "Udskriver tallene 1 til 5",
+        "D": "Udskriver intet"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ break stopper loopet når i == 5, så 5-9 udskrives ikke.",
+        "B": "✅ Loopet kører fra 0 til 4, og når i bliver 5, stopper break loopet.",
+        "C": "❌ Loopet starter ved 0, ikke 1.",
+        "D": "❌ Loopet udskriver faktisk 0, 1, 2, 3, 4."
+      }
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+    "id": "rate-limiting-security",
+    "title": "Rate Limiting & Sikkerhed",
+    "description": "Test din viden om rate limiting, brute force beskyttelse og login sikkerhed",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "8-12 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er hovedformålet med rate limiting i login endpoints?",
+        "options": {
+          "A": "At øge server-performance ved at begrænse antal requests",
+          "B": "At forhindre brute force angreb ved at begrænse login forsøg",
+          "C": "At spare database-ressourcer ved at cache login data",
+          "D": "At forbedre brugeroplevelsen ved hurtigere login"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Performance er en bivirkning, ikke hovedformålet.",
+          "B": "✅ Rate limiting beskytter mod automatiserede angreb der prøver at gætte passwords.",
+          "C": "❌ Database-ressourcer er ikke hovedformålet med rate limiting.",
+          "D": "❌ Rate limiting kan faktisk gøre login langsommere ved mislykkede forsøg."
+        },
+        "learnMore": {
+          "title": "Brute Force Protection",
+          "description": "OWASP guide til at forhindre brute force angreb.",
+          "url": "https://owasp.org/www-community/attacks/Brute_force_attack",
+          "type": "article",
+          "icon": "fas fa-shield-alt"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvilken HTTP status kode returneres når en konto er låst på grund af for mange mislykkede login forsøg?",
+        "options": {
+          "A": "401 Unauthorized",
+          "B": "403 Forbidden",
+          "C": "429 Too Many Requests",
+          "D": "503 Service Unavailable"
+        },
+        "correctAnswers": ["C"],
+        "explanations": {
+          "A": "❌ 401 bruges ved forkerte credentials, ikke når kontoen er låst.",
+          "B": "❌ 403 bruges ved autorisationsfejl, ikke rate limiting.",
+          "C": "✅ 429 'Too Many Requests' er standard status kode for rate limiting.",
+          "D": "❌ 503 bruges når serveren er nede, ikke ved rate limiting."
+        },
+        "learnMore": {
+          "title": "HTTP Status Codes for Rate Limiting",
+          "description": "Microsofts guide til HTTP status koder og deres brug.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-8.0#http-status-codes",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad betyder 'progressive delays' i rate limiting?",
+        "options": {
+          "A": "At alle brugere får længere ventetid efterhånden som dagen går",
+          "B": "At hver mislykket login forsøg resulterer i længere ventetid før næste forsøg",
+          "C": "At serveren automatisk lukker ned efter et bestemt antal requests",
+          "D": "At brugere får forskellige ventetider baseret på deres rolle"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Progressive delays er ikke baseret på tid på dagen.",
+          "B": "✅ Hver fejl øger ventetiden, hvilket gør brute force angreb ineffektive.",
+          "C": "❌ Serveren lukker ikke ned - den påfører kun ventetider.",
+          "D": "❌ Ventetider er baseret på antal fejl, ikke brugerroller."
+        },
+        "learnMore": {
+          "title": "Progressive Delays in Security",
+          "description": "En artikel om progressive delays som sikkerhedsteknik.",
+          "url": "https://auth0.com/blog/brute-forcing-hashes/",
+          "type": "article",
+          "icon": "fas fa-clock"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvorfor er det vigtigt at rydde fejl-cache ved succesfuldt login?",
+        "options": {
+          "A": "At spare hukommelse på serveren",
+          "B": "At give brugeren en frisk start og fjerne eventuelle lockouts",
+          "C": "At forbedre database-performance",
+          "D": "At sikre at alle brugere får samme ventetid"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Hukommelse er ikke hovedformålet - sikkerhed er vigtigere.",
+          "B": "✅ Succesfuldt login bekræfter at brugeren er legitim, så lockouts og delays fjernes.",
+          "C": "❌ Database-performance påvirkes ikke af fejl-cache.",
+          "D": "❌ Alle brugere får ikke samme ventetid - det afhænger af deres fejlhistorik."
+        },
+        "learnMore": {
+          "title": "Cache Management in Security",
+          "description": "Best practices for cache management i sikkerhedskritiske applikationer.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory",
+          "type": "docs",
+          "icon": "fas fa-database"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er en 'account lockout' i rate limiting?",
+        "options": {
+          "A": "En permanent blokering af en konto efter forkerte passwords",
+          "B": "En midlertidig blokering af login-forsøg efter et bestemt antal fejl",
+          "C": "En automatisk sletning af brugerdata ved mistænkelig aktivitet",
+          "D": "En besked til administratoren om at gennemgå en konto"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Lockouts er midlertidige, ikke permanente.",
+          "B": "✅ Kontoen låses midlertidigt for at forhindre vedvarende angreb.",
+          "C": "❌ Data slettes ikke automatisk - kun login-forsøg blokeres.",
+          "D": "❌ Det kan være en del af monitoring, men er ikke selve lockout-funktionen."
+        },
+        "learnMore": {
+          "title": "Account Lockout Strategies",
+          "description": "Strategier for account lockout og recovery.",
+          "url": "https://learn.microsoft.com/en-us/azure/active-directory/authentication/concept-authentication-strengths",
+          "type": "docs",
+          "icon": "fas fa-user-lock"
+        }
+      }
+    ]
+  }

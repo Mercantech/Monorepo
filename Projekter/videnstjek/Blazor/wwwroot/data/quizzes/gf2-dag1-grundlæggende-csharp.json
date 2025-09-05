@@ -1,0 +1,250 @@
+{
+  "id": "gf2-kapitel-1-grundlæggende-csharp",
+  "title": "GF2 Kapitel 1 - Dit første program & Variabler",
+  "description": "Test din viden om C# grundlæggende koncepter: namespace, class, static, void, Main metode og variabeltyper",
+  "category": "GF2",
+  "difficulty": "Begynder",
+  "estimatedTime": "8-12 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvad er formålet med 'namespace' i C#?",
+      "options": {
+        "A": "At definere en metode",
+        "B": "At organisere kode og separere den i logiske grupper",
+        "C": "At erklære en variabel",
+        "D": "At definere en datatype"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Namespace bruges ikke til at definere metoder - det gør man med 'void' eller datatype + navn.",
+        "B": "✅ Namespace bruges til at organisere kode og separere den i logiske grupper, så man kan undgå navnekonflikter.",
+        "C": "❌ Namespace bruges ikke til at erklære variabler - det gør man med datatype + navn.",
+        "D": "❌ Namespace definerer ikke datatyper - det er keywords som 'int', 'string', 'bool' osv."
+      },
+      "learnMore": {
+        "title": "Namespaces in C#",
+        "description": "Microsofts officielle dokumentation om namespaces i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/namespaces",
+        "type": "docs",
+        "icon": "fas fa-code"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvad betyder 'static' i en Main metode?",
+      "options": {
+        "A": "At metoden ikke kan ændres",
+        "B": "At metoden kan kaldes uden at lave en instans af klassen",
+        "C": "At metoden returnerer en værdi",
+        "D": "At metoden kun kan bruges én gang"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 'static' gør ikke metoden uændret - det handler om hvordan metoden kaldes.",
+        "B": "✅ 'static' betyder at Main metoden kan kaldes direkte uden at lave en instans af Program klassen.",
+        "C": "❌ 'static' påvirker ikke om metoden returnerer en værdi - det gør 'void' eller datatype.",
+        "D": "❌ 'static' betyder ikke at metoden kun kan bruges én gang."
+      },
+      "learnMore": {
+        "title": "Static Methods in C#",
+        "description": "Microsofts guide til static metoder i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/static",
+        "type": "docs",
+        "icon": "fas fa-cog"
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvad betyder 'void' i en metode?",
+      "options": {
+        "A": "At metoden er tom",
+        "B": "At metoden ikke returnerer noget",
+        "C": "At metoden er privat",
+        "D": "At metoden er hurtig"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 'void' betyder ikke at metoden er tom - den kan indeholde kode.",
+        "B": "✅ 'void' betyder at metoden ikke returnerer nogen værdi - den udfører kun handlinger.",
+        "C": "❌ 'void' handler ikke om synlighed - det gør 'public', 'private' osv.",
+        "D": "❌ 'void' påvirker ikke hastigheden af metoden."
+      },
+      "learnMore": {
+        "title": "Void Methods in C#",
+        "description": "Microsofts dokumentation om void metoder i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods",
+        "type": "docs",
+        "icon": "fas fa-arrow-right"
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvilken datatype bruges til at gemme hele tal i C#?",
+      "options": {
+        "A": "string",
+        "B": "int",
+        "C": "bool",
+        "D": "char"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 'string' bruges til tekst, ikke hele tal.",
+        "B": "✅ 'int' bruges til hele tal (heltal) i C#.",
+        "C": "❌ 'bool' bruges til sand/falsk værdier (true/false).",
+        "D": "❌ 'char' bruges til enkelttegn, ikke hele tal."
+      },
+      "learnMore": {
+        "title": "Integer Types in C#",
+        "description": "Microsofts guide til heltal typer i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types",
+        "type": "docs",
+        "icon": "fas fa-hashtag"
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvilke af følgende er korrekte måder at erklære og initialisere en variabel i C#?",
+      "options": {
+        "A": "int nummer; nummer = 5;",
+        "B": "int nummer = 5;",
+        "C": "var nummer = 5;",
+        "D": "int nummer, tal = 10;"
+      },
+      "correctAnswers": ["A", "B", "C", "D"],
+      "explanations": {
+        "A": "✅ Korrekt - først erklæring, derefter tildeling.",
+        "B": "✅ Korrekt - erklæring og initialisering på samme linje.",
+        "C": "✅ Korrekt - 'var' lader compileren udlede typen automatisk.",
+        "D": "✅ Korrekt - man kan erklære flere variabler på samme linje."
+      },
+      "learnMore": {
+        "title": "Variable Declaration in C#",
+        "description": "Microsofts guide til variabel erklæring i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/variables",
+        "type": "docs",
+        "icon": "fas fa-code"
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvilken datatype bruges til at gemme tekst i C#?",
+      "options": {
+        "A": "text",
+        "B": "string",
+        "C": "char",
+        "D": "str"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 'text' er ikke en datatype i C#.",
+        "B": "✅ 'string' bruges til at gemme tekst i C#.",
+        "C": "❌ 'char' bruges kun til enkelttegn, ikke hele tekststrenge.",
+        "D": "❌ 'str' er ikke en datatype i C# - det er 'string'."
+      },
+      "learnMore": {
+        "title": "String Type in C#",
+        "description": "Microsofts dokumentation om string typen i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types#the-string-type",
+        "type": "docs",
+        "icon": "fas fa-quote-left"
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvilke af følgende er korrekte måder at skrive tekst til konsollen i C#?",
+      "options": {
+        "A": "Console.Write(\"Hej verden\");",
+        "B": "Console.WriteLine(\"Hej verden\");",
+        "C": "Console.Write(\"Hej \" + navn);",
+        "D": "print(\"Hej verden\");"
+      },
+      "correctAnswers": ["A", "B", "C"],
+      "explanations": {
+        "A": "✅ Console.Write() skriver tekst uden linjeskift.",
+        "B": "✅ Console.WriteLine() skriver tekst med linjeskift efter.",
+        "C": "✅ Console.Write() kan også bruges med variabler og concatenation.",
+        "D": "❌ 'print' er ikke en C# metode - det er Console.Write() eller Console.WriteLine()."
+      },
+      "learnMore": {
+        "title": "Console Class in C#",
+        "description": "Microsofts dokumentation om Console klassen i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/api/system.console",
+        "type": "docs",
+        "icon": "fas fa-terminal"
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "Hvilke af følgende er korrekte måder at formatere en streng med en variabel i C#?",
+      "options": {
+        "A": "string message = \"Hej \" + navn + \"!\";",
+        "B": "string message = $\"Hej {navn}!\";",
+        "C": "string message = String.Format(\"Hej {0}!\", navn);",
+        "D": "Console.WriteLine(\"Hej {0}!\", navn);"
+      },
+      "correctAnswers": ["A", "B", "C", "D"],
+      "explanations": {
+        "A": "✅ String concatenation med + operatoren er korrekt.",
+        "B": "✅ String interpolation med $ er korrekt og moderne.",
+        "C": "✅ String.Format() er også korrekt.",
+        "D": "✅ Console.WriteLine() kan også formatere direkte med {0} placeholders."
+      },
+      "learnMore": {
+        "title": "String Interpolation in C#",
+        "description": "Microsofts guide til string interpolation i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated",
+        "type": "docs",
+        "icon": "fas fa-magic"
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvilke af følgende er primitive datatyper i C#?",
+      "options": {
+        "A": "int",
+        "B": "string",
+        "C": "bool",
+        "D": "char"
+      },
+      "correctAnswers": ["A", "C", "D"],
+      "explanations": {
+        "A": "✅ 'int' er en primitiv datatype til hele tal.",
+        "B": "❌ 'string' er en reference type, ikke primitiv - den er en klasse.",
+        "C": "✅ 'bool' er en primitiv datatype til sand/falsk værdier.",
+        "D": "✅ 'char' er en primitiv datatype til enkelttegn."
+      },
+      "learnMore": {
+        "title": "Built-in Types in C#",
+        "description": "Microsofts dokumentation om indbyggede typer i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types",
+        "type": "docs",
+        "icon": "fas fa-check-circle"
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvilke af følgende er korrekte egenskaber ved Main metoden i C#?",
+      "options": {
+        "A": "Den skal være static",
+        "B": "Den er programmets startpunkt",
+        "C": "Den skal have void som returtype",
+        "D": "Den skal have string[] args som parameter"
+      },
+      "correctAnswers": ["A", "B", "C", "D"],
+      "explanations": {
+        "A": "✅ Main metoden skal være static for at kunne kaldes uden instans.",
+        "B": "✅ Main metoden er programmets startpunkt - den køres automatisk.",
+        "C": "✅ Main metoden skal have void som returtype (returnerer ikke noget).",
+        "D": "✅ Main metoden skal have string[] args parameter for kommandolinje argumenter."
+      },
+      "learnMore": {
+        "title": "Main Method in C#",
+        "description": "Microsofts guide til Main metoden i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/main-command-line",
+        "type": "docs",
+        "icon": "fas fa-play"
+      }
+    }
+  ]
+}

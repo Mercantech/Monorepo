@@ -1,0 +1,186 @@
+{
+    "id": "gf2-kapitel-4-klasser-objekter",
+    "title": "GF2 Kapitel 4 - Klasser og Objekter",
+    "description": "Test din viden om objektorienteret programmering i C#: klasser, objekter, properties, metoder og instantiering",
+    "category": "GF2",
+    "difficulty": "Begynder",
+    "estimatedTime": "8-10 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er en klasse i C#?",
+        "options": {
+          "A": "En skabelon til at oprette objekter",
+          "B": "En samling af data og metoder",
+          "C": "En datatype der definerer egenskaber og adfærd",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ En klasse fungerer som en skabelon til at oprette objekter.",
+          "B": "✅ En klasse indeholder både data (properties) og metoder.",
+          "C": "✅ En klasse definerer egenskaber og adfærd for objekter.",
+          "D": "✅ Alle svar er korrekte - en klasse er en skabelon der indeholder data og metoder."
+        },
+        "learnMore": {
+          "title": "Classes in C#",
+          "description": "Microsofts dokumentation om klasser i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvilke af følgende er korrekte måder at oprette et objekt i C#?",
+        "options": {
+          "A": "Car myCar = new Car();",
+          "B": "Car myCar = new Car() { Brand = \"Ford\", Model = \"Mustang\" };",
+          "C": "var myCar = new Car();",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ Grundlæggende objekt oprettelse med new nøgleordet.",
+          "B": "✅ Objekt oprettelse med object initializer syntax.",
+          "C": "✅ Objekt oprettelse med var nøgleordet (type inference).",
+          "D": "✅ Alle metoder er korrekte måder at oprette objekter på."
+        },
+        "learnMore": {
+          "title": "Object Creation in C#",
+          "description": "Microsofts dokumentation om objekt oprettelse i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes#creating-objects"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er forskellen mellem properties og metoder i en klasse?",
+        "options": {
+          "A": "Properties repræsenterer data/tilstand, metoder repræsenterer adfærd/handlinger",
+          "B": "Properties er variabler, metoder er funktioner",
+          "C": "Properties gemmer værdier, metoder udfører handlinger",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ Properties repræsenterer tilstanden, metoder repræsenterer adfærden.",
+          "B": "✅ Properties er variabler der gemmer data, metoder er funktioner der udfører handlinger.",
+          "C": "✅ Properties gemmer værdier, metoder udfører handlinger.",
+          "D": "✅ Alle svar beskriver korrekt forskellen mellem properties og metoder."
+        },
+        "learnMore": {
+          "title": "Properties vs Methods in C#",
+          "description": "Microsofts dokumentation om properties og metoder i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvilke af følgende er korrekte måder at tilgå properties og metoder på et objekt?",
+        "options": {
+          "A": "myCar.Brand = \"Ford\";",
+          "B": "myCar.StartEngine();",
+          "C": "string brand = myCar.Brand;",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ Korrekt syntaks for at sætte en property værdi.",
+          "B": "✅ Korrekt syntaks for at kalde en metode.",
+          "C": "✅ Korrekt syntaks for at læse en property værdi.",
+          "D": "✅ Alle syntakser er korrekte for at tilgå properties og metoder."
+        },
+        "learnMore": {
+          "title": "Accessing Object Members in C#",
+          "description": "Microsofts dokumentation om at tilgå objekt medlemmer i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes#accessing-members"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er 'new' nøgleordet brugt til i C#?",
+        "options": {
+          "A": "At oprette nye objekter",
+          "B": "At allokere hukommelse til et objekt",
+          "C": "At kalde en konstruktør",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ 'new' bruges til at oprette nye objekter fra en klasse.",
+          "B": "✅ 'new' allokerer hukommelse til det nye objekt.",
+          "C": "✅ 'new' kalder klassens konstruktør for at initialisere objektet.",
+          "D": "✅ Alle svar er korrekte - 'new' gør alle disse ting."
+        },
+        "learnMore": {
+          "title": "New Keyword in C#",
+          "description": "Microsofts dokumentation om new nøgleordet i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/new-operator"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er objektorienteret programmering (OOP)?",
+        "options": {
+          "A": "En programmeringsparadigme baseret på objekter",
+          "B": "En måde at organisere kode i klasser og objekter",
+          "C": "En metode til at modellere virkelige verden i kode",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ OOP er et programmeringsparadigme der fokuserer på objekter.",
+          "B": "✅ OOP organiserer kode i klasser og objekter.",
+          "C": "✅ OOP gør det muligt at modellere virkelige verden i kode.",
+          "D": "✅ Alle svar beskriver korrekt hvad OOP er."
+        },
+        "learnMore": {
+          "title": "Object-Oriented Programming in C#",
+          "description": "Microsofts dokumentation om OOP i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad vil følgende kode udskrive? Car myCar = new Car(); myCar.Brand = \"Toyota\"; myCar.Model = \"Camry\"; Console.WriteLine(myCar.Brand + \" \" + myCar.Model);",
+        "options": {
+          "A": "Toyota Camry",
+          "B": "Ford Mustang",
+          "C": "Ingen output",
+          "D": "Fejl i koden"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ Koden opretter et Car objekt, sætter Brand til \"Toyota\" og Model til \"Camry\", og udskriver begge værdier.",
+          "B": "❌ Brand og Model er sat til \"Toyota\" og \"Camry\", ikke \"Ford\" og \"Mustang\".",
+          "C": "❌ Koden vil udskrive output til konsollen.",
+          "D": "❌ Koden er syntaktisk korrekt og vil køre uden fejl."
+        },
+        "learnMore": {
+          "title": "Object Property Assignment in C#",
+          "description": "Microsofts dokumentation om at tildele værdier til objekt properties.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvilke af følgende er korrekte syntakser for at definere en klasse i C#?",
+        "options": {
+          "A": "public class Car { }",
+          "B": "class Car { }",
+          "C": "public class Car { public string Brand; }",
+          "D": "Alle ovenstående er korrekte"
+        },
+        "correctAnswers": ["D"],
+        "explanations": {
+          "A": "✅ Tom klasse med public access modifier er korrekt.",
+          "B": "✅ Tom klasse uden access modifier er korrekt (default internal).",
+          "C": "✅ Klasse med property er korrekt.",
+          "D": "✅ Alle syntakser er korrekte - klasser kan være tomme eller indeholde medlemmer."
+        },
+        "learnMore": {
+          "title": "Class Declaration in C#",
+          "description": "Microsofts dokumentation om klasse deklaration i C#.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/class"
+        }
+      }
+    ]
+  }
