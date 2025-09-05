@@ -5,11 +5,15 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <TextBlock Text="Taxa Prisberegner" FontSize="24" Margin="0,0,0,20"/>
-            <Button Click="NotionButton_Click" Background="Transparent" BorderThickness="0">
-                <Viewbox Stretch="Uniform" Width="100" Height="100">
-                    <Image Source="https://gf2.mercantec.tech/Notion.png"/>
-                </Viewbox>
-            </Button>
+
+            <TextBlock Text="Antal km der skal køres:" Margin="0,0,0,10"/>
+            <TextBox x:Name="kmTextBox" Margin="0,0,0,20"/>
+
+            <CheckBox x:Name="vomitCheckBox" Content="Er der kastet op i bilen?" Margin="0,0,0,20"/>
+
+            <Button Content="Beregn Pris" Click="CalculatePrice_Click" Margin="0,0,0,20"/>
+
+            <TextBlock x:Name="resultTextBlock" FontSize="16" TextWrapping="Wrap"/>
         </StackPanel>
     </Grid>
 </Page>

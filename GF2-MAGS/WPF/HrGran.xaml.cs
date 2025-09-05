@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPF
 {
@@ -25,21 +13,66 @@ namespace WPF
         {
             InitializeComponent();
         }
-        private void NotionButton_Click(object sender, RoutedEventArgs e)
+
+        private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            string url = "https://mercantec.notion.site/Hr-Gran-Juletr-er-103dab5ca237806880cff089ccd45d2c?pvs=74";
-            try
+            if (double.TryParse(lengthTextBox.Text, out double length) && double.TryParse(widthTextBox.Text, out double width))
             {
-                ProcessStartInfo psi = new ProcessStartInfo
+                double area = length * width;
+                string treeType = (treeTypeComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                if (treeType == null)
                 {
-                    FileName = url,
-                    UseShellExecute = true
-                };
-                Process.Start(psi);
+                    resultTextBlock.Text = "Vælg venligst en type af træer.";
+                    return;
+                }
+
+                double treeCost = 0;
+                double salePrice = 0;
+                double treesPerM2 = 0;
+                double soilPreparationCost = 0;
+                double expectedLoss = 0;
+
+                switch (treeType)
+                {
+                    case "Ædelgran":
+                        treeCost = 15;
+                        salePrice = 75;
+                        treesPerM2 = 1;
+                        soilPreparationCost = 5;
+                        expectedLoss = 0.10;
+                        break;
+                    case "Nordmannsgran":
+                        treeCost = 13;
+                        salePrice = 85;
+                        treesPerM2 = 1;
+                        soilPreparationCost = 8;
+                        expectedLoss = 0.15;
+                        break;
+                    case "Rødgran":
+                        treeCost = 10;
+                        salePrice = 45;
+                        treesPerM2 = 2;
+                        soilPreparationCost = 4;
+                        expectedLoss = 0.20;
+                        break;
+                }
+
+                double numberOfTrees = area * treesPerM2;
+                double totalTreeCost = numberOfTrees * treeCost;
+                double totalSoilPreparationCost = area * soilPreparationCost;
+                double totalCost = totalTreeCost + totalSoilPreparationCost;
+
+                double expectedSurvivingTrees = numberOfTrees * (1 - expectedLoss);
+                double totalRevenue = expectedSurvivingTrees * salePrice;
+
+                resultTextBlock.Text = $"Antal træer der kan plantes: {numberOfTrees}\n" +
+                                       $"Total omkostning: {totalCost} kr.\n" +
+                                       $"Forventet afkast: {totalRevenue} kr.";
             }
-            catch (System.Exception ex)
+            else
             {
-                MessageBox.Show("Der opstod en fejl ved åbning af linket: " + ex.Message);
+                resultTextBlock.Text = "Indtast venligst gyldige værdier for længde og bredde.";
             }
         }
     }
