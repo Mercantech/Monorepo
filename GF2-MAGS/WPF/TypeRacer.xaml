@@ -1,11 +1,43 @@
 ﻿<Page x:Class="WPF.TypeRacer"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="HrGran">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-            <TextBlock Text="TypeRacer" FontSize="24" Margin="0,0,0,20"/>
-            <Button Click="NotionButton_Click" Background="Transparent" BorderThickness="0">
+      Title="TypeRacer">
+
+    <Grid Margin="20">
+        <StackPanel>
+            <!-- Overskrift -->
+            <TextBlock Text="TypeRacer" FontSize="24" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+
+            <!-- Live WPM og Nøjagtighed -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="WPM: " FontSize="16"/>
+                <TextBlock Name="LiveWPMText" FontSize="16" Margin="5,0,20,0"/>
+                <TextBlock Text="Nøjagtighed: " FontSize="16"/>
+                <TextBlock Name="LiveAccuracyText" FontSize="16"/>
+            </StackPanel>
+
+            <!-- Tekst der skal skrives -->
+            <RichTextBox Name="DisplayText" IsReadOnly="True" BorderThickness="0" Background="Transparent" 
+                         FontSize="16" Margin="0,0,0,10"/>
+
+            <!-- Indtastningsfelt -->
+            <TextBox Name="InputTextBox" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                     AcceptsReturn="True" FontSize="16" Margin="0,0,0,10" IsReadOnly="True" 
+                     TextChanged="InputTextBox_TextChanged"/>
+
+            <!-- Startknap -->
+            <Button Content="Start" Click="StartButton_Click" Width="100" Height="30" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+            <!-- Resultatvisning -->
+            <StackPanel Name="ResultPanel" Visibility="Collapsed" Margin="0,20,0,0">
+                <TextBlock Text="Resultater" FontSize="20" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                <TextBlock Name="FinalWPMText" FontSize="16" Margin="0,0,0,5"/>
+                <TextBlock Name="FinalAccuracyText" FontSize="16"/>
+                <Button Content="Prøv igen" Click="RetryButton_Click" Width="100" Height="30" HorizontalAlignment="Center" Margin="20,10,0,0"/>
+            </StackPanel>
+
+            <!-- Notion-knap -->
+            <Button Click="NotionButton_Click" Background="Transparent" BorderThickness="0" Margin="0,20,0,0">
                 <Viewbox Stretch="Uniform" Width="100" Height="100">
                     <Image Source="https://gf2.mercantec.tech/Notion.png"/>
                 </Viewbox>

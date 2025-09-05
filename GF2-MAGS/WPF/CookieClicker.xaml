@@ -1,26 +1,48 @@
 ﻿<Page x:Class="WPF.CookieClicker"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CookieClicker">
+      Title="Cookie Clicker">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
 
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <!-- Perfect Cookie Image -->
-            <Viewbox Stretch="Uniform" Width="200" Height="200">
-                <Image Source="https://gf2.mercantec.tech/PerfectCookie.png"/>
-            </Viewbox>
-
-            <!-- Notion Link Button -->
-            <Button Click="NotionButton_Click" Background="Transparent" BorderThickness="0">
-                <Viewbox Stretch="Uniform" Width="100" Height="100">
-                    <Image Source="https://gf2.mercantec.tech/Notion.png"/>
-                </Viewbox>
+        <!-- Cookie Display and Click Area -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+            <TextBlock Text="Cookies:" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="cookieCountTextBlock" Text="0" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <Button Click="CookieButton_Click" Width="200" Height="200" Margin="0,0,0,20" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="https://gf2.mercantec.tech/PerfectCookie.png" Stretch="Fill"/>
             </Button>
         </StackPanel>
+
+        <!-- Upgrades Section -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                <TextBlock Text="Upgrades:" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                <!-- Grandmas Upgrade -->
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" VerticalAlignment="Center">
+                    <Image Source="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/Grandma-icon.png" Width="40" Height="40" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="grandmaCountTextBlock" Text="Grandmas: 0" FontSize="16" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button x:Name="BuyGrandmaButton" Content="Buy Grandma (Cost: 100)" Click="BuyGrandma_Click" Width="250" Margin="0,5,0,20" Background="#FFB6C1" FontSize="16"/>
+
+                <!-- Factories Upgrade -->
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" VerticalAlignment="Center">
+                    <Image Source="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/Factory-icon.png" Width="40" Height="40" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="factoryCountTextBlock" Text="Factories: 0" FontSize="16" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button x:Name="BuyFactoryButton" Content="Buy Factory (Cost: 500)" Click="BuyFactory_Click" Width="250" Margin="0,5,0,20" Background="#87CEFA" FontSize="16"/>
+
+                <!-- Mines Upgrade -->
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0" VerticalAlignment="Center">
+                    <Image Source="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/512/Mine-icon.png" Width="40" Height="40" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="mineCountTextBlock" Text="Mines: 0" FontSize="16" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button x:Name="BuyMineButton" Content="Buy Mine (Cost: 2000)" Click="BuyMine_Click" Width="250" Margin="0,5,0,20" Background="#90EE90" FontSize="16"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
