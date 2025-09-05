@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
-                "mode": "preview",
+                "file": "H1/H1 - Oversigt.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "OSI-Modellen"
+              "title": "H1 - Oversigt"
             }
           }
         ]
@@ -171,14 +171,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c23d559a304926ba",
+  "active": "92a44750e2882671",
   "lastOpenFiles": [
+    "Database/Postgres/Postgres.md",
+    "H1/H1 - Oversigt.md",
+    "Database/Postgres",
+    "Database",
+    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
     "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
     "Infrastruktur/Cisco CCNA/CCNA for programmør.md",
     "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
-    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
     "CSharp/Dotnet/ADO.NET/ADO.NET.md",
-    "H1/H1 - Oversigt.md",
     "CSharp/Dotnet/ADO.NET",
     "H3/Oversigt.md",
     "H1",
@@ -212,14 +215,11 @@
     "Infrastruktur/Cisco CCNA/06. Data Link Layer.md",
     "Infrastruktur/Active-Diretory/Oversigt.md",
     "Infrastruktur/Cisco CCNA/05. Number Systems.md",
-    "Infrastruktur/Cisco CCNA/04. Physical Layer.md",
     "Infrastruktur/Cisco CCNA",
     "Infrastruktur/Active-Diretory",
     "Infrastruktur",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
-    "CSharp/Web API med CSharp",
-    "CSharp/SignalR",
     "Assets/Pasted image 20250904224530.png",
     "GF2/Canva.canvas",
     "CSharp-Bogen/Canva.canvas",
