@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "H3/Oversigt.md",
+                "file": "H1/H1 - Oversigt.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Oversigt"
+              "title": "H1 - Oversigt"
             }
           }
         ]
@@ -173,6 +173,9 @@
   },
   "active": "c23d559a304926ba",
   "lastOpenFiles": [
+    "H3/Oversigt.md",
+    "H1/H1 - Oversigt.md",
+    "H1",
     "H6/Oversigt.md",
     "H5/Oversigt.md",
     "Assets/Pasted image 20250905084358.png",
@@ -212,14 +215,11 @@
     "Infrastruktur/Cisco CCNA",
     "Infrastruktur/Active-Diretory",
     "Infrastruktur",
-    "CSharp/Web API med CSharp/Swagger.md",
-    "CSharp/Web API med CSharp/Scalar.md",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "CSharp/Web API med CSharp",
     "CSharp/SignalR",
     "CSharp/Dotnet",
-    "CSharp/CSharp-Bogen",
     "Assets/Pasted image 20250904224530.png",
     "GF2/Canva.canvas",
     "CSharp-Bogen/Canva.canvas",

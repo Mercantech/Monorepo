@@ -1,0 +1,1 @@
+På H1 arbejder I med at bygge en Fullstack Blazor Server applikation
