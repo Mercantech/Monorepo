@@ -1,0 +1,130 @@
+{
+    "id": "data-serialization",
+    "title": "Data Serialisering & JSON",
+    "description": "Test din viden om JSON håndtering, data mapping og serialisering i C# med System.Text.Json",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er den anbefalede måde at serialisere JSON i moderne C#?",
+        "options": {
+          "A": "Newtonsoft.Json",
+          "B": "System.Text.Json",
+          "C": "DataContractJsonSerializer",
+          "D": "JavaScriptSerializer"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Newtonsoft.Json var populær tidligere, men System.Text.Json er nu anbefalet.",
+          "B": "✅ System.Text.Json er hurtigere, indbygget i .NET og den anbefalede løsning.",
+          "C": "❌ DataContractJsonSerializer er ældre og mindre effektiv.",
+          "D": "❌ JavaScriptSerializer er forældet og bør ikke bruges."
+        },
+        "learnMore": {
+          "title": "System.Text.Json Overview",
+          "description": "Microsofts officielle dokumentation om System.Text.Json og hvorfor det er anbefalet.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad gør [JsonPropertyName] attributten?",
+        "options": {
+          "A": "Gør en property readonly",
+          "B": "Mapper JSON-felter til C# properties med forskellige navne",
+          "C": "Validerer JSON-data",
+          "D": "Krypterer property-værdier"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ readonly gør properties skrivebeskyttede, ikke relateret til JSON mapping.",
+          "B": "✅ [JsonPropertyName] tillader dig at matche JSON-felter med dine egne property-navne.",
+          "C": "❌ Validering sker ikke automatisk med denne attribut.",
+          "D": "❌ Kryptering er ikke en funktion i [JsonPropertyName]."
+        },
+        "learnMore": {
+          "title": "Customize property names and values",
+          "description": "Microsofts guide til at bruge [JsonPropertyName] og andre JSON attributter.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/customize-properties",
+          "type": "docs",
+          "icon": "fas fa-tag"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad sker der hvis du prøver at deserialisere ugyldig JSON?",
+        "options": {
+          "A": "Programmet crasher med en fatal fejl",
+          "B": "En JsonException kastes, som du kan fange med try-catch",
+          "C": "Objektet oprettes med null-værdier",
+          "D": "Intet sker - deserialiseringen ignorerer fejl"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Programmet crasher ikke - en exception kastes i stedet.",
+          "B": "✅ JsonException kastes og kan håndteres elegant med try-catch.",
+          "C": "❌ Deserialiseringen fejler helt, ikke delvist.",
+          "D": "❌ Fejl ignoreres ikke - de skal håndteres eksplicit."
+        },
+        "learnMore": {
+          "title": "Handle overflow JSON",
+          "description": "Microsofts guide til fejlhåndtering i System.Text.Json.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/handle-overflow",
+          "type": "docs",
+          "icon": "fas fa-exclamation-triangle"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvordan serialiserer du en liste af objekter til JSON?",
+        "options": {
+          "A": "JsonSerializer.Serialize<List<T>>(liste)",
+          "B": "JsonSerializer.Serialize(liste)",
+          "C": "JsonSerializer.SerializeArray(liste)",
+          "D": "JsonSerializer.ToJson(liste)"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Type-parameteren er ikke nødvendig - Serialize() kan udlede typen.",
+          "B": "✅ JsonSerializer.Serialize(liste) fungerer automatisk med alle typer inklusive lister.",
+          "C": "❌ Der findes ingen SerializeArray metode.",
+          "D": "❌ ToJson er ikke en del af System.Text.Json API'et."
+        },
+        "learnMore": {
+          "title": "Serialize to JSON",
+          "description": "Microsofts dokumentation om hvordan man serialiserer objekter til JSON.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to",
+          "type": "docs",
+          "icon": "fas fa-arrow-right"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er en vigtig best practice ved deserialisering af ekstern JSON?",
+        "options": {
+          "A": "Altid stole på at JSON'en er korrekt formateret",
+          "B": "Valider data efter deserialisering og håndter fejl med try-catch",
+          "C": "Brug kun Newtonsoft.Json til ekstern data",
+          "D": "Ignorer alle fejl for at undgå crashes"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Du skal aldrig stole blindt på ekstern data - valider altid.",
+          "B": "✅ Validering og fejlhåndtering er kritiske for robuste applikationer.",
+          "C": "❌ System.Text.Json er fint til ekstern data - det handler om validering.",
+          "D": "❌ At ignorere fejl giver ustabile applikationer og sikkerhedsrisici."
+        },
+        "learnMore": {
+          "title": "JSON security in .NET",
+          "description": "Microsofts guide til sikker JSON-håndtering og validering.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/security",
+          "type": "docs",
+          "icon": "fas fa-shield-alt"
+        }
+      }
+    ]
+  }

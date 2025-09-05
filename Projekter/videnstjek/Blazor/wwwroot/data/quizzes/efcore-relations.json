@@ -1,0 +1,202 @@
+{
+    "id": "efcore-relations",
+    "title": "EF Core Relationer & Datamodellering",
+    "description": "Test din viden om 1:1, 1:n og n:m relationer i Entity Framework Core og hvordan man designer effektive databaser",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad betyder 1:1 relation i datamodellering?",
+        "options": {
+          "A": "Én entitet har præcis én relateret entitet",
+          "B": "Én entitet har mange relaterede entiteter",
+          "C": "Mange entiteter kan være relateret til mange andre",
+          "D": "Én entitet kan være relateret til alle andre"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ 1:1 betyder at én entitet har præcis én relateret entitet, som User og UserInfo.",
+          "B": "❌ Det beskriver en 1:n relation.",
+          "C": "❌ Det beskriver en n:m relation.",
+          "D": "❌ Det er ikke en standard relationstype i datamodellering."
+        },
+        "learnMore": {
+          "title": "EF Core Relationships",
+          "description": "Microsofts guide til relationer i Entity Framework Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships",
+          "type": "docs",
+          "icon": "fas fa-project-diagram"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvornår bruger man en 1:1 relation i stedet for at putte alt i én tabel?",
+        "options": {
+          "A": "Når man vil gøre databasen større",
+          "B": "Når man vil normalisere data og undgå at hente unødvendige felter",
+          "C": "Når man vil gøre queries langsommere",
+          "D": "Når man vil undgå at bruge foreign keys"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ 1:1 relationer gør ikke databasen større - de hjælper med normalisering.",
+          "B": "✅ Normalisering giver hurtigere queries og mindre dataoverførsel.",
+          "C": "❌ Normalisering gør queries hurtigere, ikke langsommere.",
+          "D": "❌ 1:1 relationer bruger stadig foreign keys."
+        },
+        "learnMore": {
+          "title": "Database Normalization",
+          "description": "En forklaring af database normalisering og dens fordele.",
+          "url": "https://www.guru99.com/database-normalization.html",
+          "type": "article",
+          "icon": "fas fa-database"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er forskellen på 1:n og n:m relationer?",
+        "options": {
+          "A": "1:n har kun én foreign key, n:m har to",
+          "B": "1:n betyder at én entitet har mange relaterede, n:m betyder at mange kan være relateret til mange andre",
+          "C": "1:n er hurtigere end n:m",
+          "D": "1:n bruger ikke join-tabeller, n:m gør"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Antallet af foreign keys er ikke den primære forskel.",
+          "B": "✅ 1:n er hierarkisk (hotel har værelser), n:m er netværksbaseret (brugere booker værelser).",
+          "C": "❌ Hastighed afhænger af implementering, ikke relationstype.",
+          "D": "❌ Både 1:n og n:m kan bruge join-tabeller afhængigt af implementering."
+        },
+        "learnMore": {
+          "title": "One-to-Many vs Many-to-Many",
+          "description": "En dybdegående forklaring af forskellen mellem relationstyper.",
+          "url": "https://www.baeldung.com/jpa-many-to-many",
+          "type": "article",
+          "icon": "fas fa-sitemap"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvordan konfigurerer du en 1:n relation i EF Core?",
+        "options": {
+          "A": "modelBuilder.Entity<Hotel>().HasOne(h => h.Rooms).WithMany(r => r.Hotel)",
+          "B": "modelBuilder.Entity<Hotel>().HasMany(h => h.Rooms).WithOne(r => r.Hotel)",
+          "C": "modelBuilder.Entity<Hotel>().HasMany(h => h.Rooms).WithMany(r => r.Hotel)",
+          "D": "modelBuilder.Entity<Hotel>().HasOne(h => h.Rooms).WithOne(r => r.Hotel)"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ HasOne/WithMany er for 1:1 relationer.",
+          "B": "✅ HasMany/WithOne er korrekt for 1:n relationer.",
+          "C": "❌ HasMany/WithMany er for n:m relationer.",
+          "D": "❌ HasOne/WithOne er for 1:1 relationer."
+        },
+        "learnMore": {
+          "title": "EF Core One-to-Many",
+          "description": "Microsofts guide til 1:n relationer i EF Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#one-to-many",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er formålet med en join-tabel i n:m relationer?",
+        "options": {
+          "A": "At gøre databasen hurtigere",
+          "B": "At gemme ekstra data om relationen (som datoer, priser)",
+          "C": "At undgå at bruge foreign keys",
+          "D": "At reducere antallet af tabeller"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Join-tabeller gør ikke nødvendigvis databasen hurtigere.",
+          "B": "✅ Join-tabeller kan indeholde metadata om relationen (startdato, slutdato, pris).",
+          "C": "❌ Join-tabeller bruger stadig foreign keys.",
+          "D": "❌ Join-tabeller øger antallet af tabeller, ikke reducerer det."
+        },
+        "learnMore": {
+          "title": "Many-to-Many with Join Table",
+          "description": "En guide til n:m relationer med join-tabeller i EF Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#many-to-many",
+          "type": "docs",
+          "icon": "fas fa-table"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er fordelene ved at bruge navigation properties i EF Core?",
+        "options": {
+          "A": "De gør alle queries hurtigere automatisk",
+          "B": "De giver type-sikker adgang til relaterede data og understøtter lazy loading",
+          "C": "De eliminerer behovet for foreign keys",
+          "D": "De reducerer hukommelsesforbruget"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Navigation properties gør ikke alle queries hurtigere - det afhænger af hvordan de bruges.",
+          "B": "✅ Navigation properties giver type-sikkerhed og understøtter lazy/eager loading.",
+          "C": "❌ Foreign keys er stadig nødvendige i databasen.",
+          "D": "❌ Navigation properties kan faktisk øge hukommelsesforbruget ved lazy loading."
+        },
+        "learnMore": {
+          "title": "Navigation Properties in EF Core",
+          "description": "Microsofts dokumentation om navigation properties.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#navigation-properties",
+          "type": "docs",
+          "icon": "fas fa-route"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad sker der hvis du ikke konfigurerer relationer eksplicit i OnModelCreating?",
+        "options": {
+          "A": "EF Core kan ikke oprette databasen",
+          "B": "EF Core bruger konventioner til at gætte relationerne baseret på property-navne",
+          "C": "Alle relationer bliver n:m som standard",
+          "D": "Du skal altid skrive SQL-manuelt"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ EF Core kan stadig oprette databasen med konventioner.",
+          "B": "✅ EF Core har intelligente konventioner der kan gætte de fleste relationer.",
+          "C": "❌ Standardrelationer afhænger af property-navne og typer, ikke altid n:m.",
+          "D": "❌ EF Core genererer stadig SQL automatisk."
+        },
+        "learnMore": {
+          "title": "EF Core Conventions",
+          "description": "Microsofts guide til EF Core konventioner og hvordan de fungerer.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/modeling/relationships#conventions",
+          "type": "docs",
+          "icon": "fas fa-magic"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvornår bør du bruge Include() i EF Core queries?",
+        "options": {
+          "A": "Altid, for at sikre at al data hentes",
+          "B": "Kun når du faktisk har brug for relaterede data for at undgå N+1 queries",
+          "C": "Kun i development, ikke i produktion",
+          "D": "Kun når du bruger stored procedures"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ At inkludere alt kan give unødvendig dataoverførsel og langsommere queries.",
+          "B": "✅ Include() bør kun bruges når du faktisk har brug for relaterede data.",
+          "C": "❌ Include() kan bruges både i development og produktion.",
+          "D": "❌ Include() er ikke relateret til stored procedures."
+        },
+        "learnMore": {
+          "title": "Loading Related Data",
+          "description": "Microsofts guide til at indlæse relaterede data i EF Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data",
+          "type": "docs",
+          "icon": "fas fa-download"
+        }
+      }
+    ]
+  }

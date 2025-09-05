@@ -1,0 +1,130 @@
+{
+    "id": "error-handling",
+    "title": "Error Handling i C#",
+    "description": "Test din viden om fejlhåndtering i C# og API-kommunikation",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvorfor er det en god idé at fange specifikke exceptions før den generelle Exception?",
+        "options": {
+          "A": "Fordi specifikke exceptions giver bedre kontrol og mere præcise fejlbeskeder",
+          "B": "Fordi det gør programmet hurtigere",
+          "C": "Fordi C# kræver det",
+          "D": "Fordi Exception ikke kan fanges"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ At fange specifikke exceptions gør koden mere robust og giver præcis fejlhåndtering.",
+          "B": "❌ Hastighed er ikke hovedpointen.",
+          "C": "❌ Det er god praksis, men ikke et krav i sproget.",
+          "D": "❌ Exception kan altid fanges, men bør være sidste resort."
+        },
+        "learnMore": {
+          "title": "try-catch i C#",
+          "description": "Microsoft dokumentation om brugen af try-catch til at fange exceptions.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/try-catch",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er fordelen ved at definere en custom exception (f.eks. ApiException)?",
+        "options": {
+          "A": "De er hurtigere at køre",
+          "B": "De kan inkludere ekstra information og gøre fejlhåndtering mere specifik",
+          "C": "De forhindrer alle fejl i at ske",
+          "D": "De erstatter behovet for try-catch"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Performance er ikke forskellen.",
+          "B": "✅ Custom exceptions kan bære ekstra data som statuskoder og gør koden mere læsbar.",
+          "C": "❌ Exceptions forhindrer ikke fejl i at ske – de hjælper med at håndtere dem.",
+          "D": "❌ Du skal stadig bruge try-catch."
+        },
+        "learnMore": {
+          "title": "How to create custom exceptions",
+          "description": "Microsofts guide til at lave dine egne exception klasser.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/standard/exceptions/how-to-create-user-defined-exceptions",
+          "type": "docs",
+          "icon": "fas fa-tools"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvilken exception-type fanges typisk ved netværksfejl i HttpClient?",
+        "options": {
+          "A": "InvalidOperationException",
+          "B": "JsonException",
+          "C": "HttpRequestException",
+          "D": "IOException"
+        },
+        "correctAnswers": ["C"],
+        "explanations": {
+          "A": "❌ InvalidOperationException handler om ugyldig brug af API'et.",
+          "B": "❌ JsonException bruges til fejl i serialisering/deserialisering.",
+          "C": "✅ HttpRequestException er den korrekte exception for netværksfejl.",
+          "D": "❌ IOException bruges til fil- og stream-fejl."
+        },
+        "learnMore": {
+          "title": "HttpRequestException Class",
+          "description": "Dokumentation om HttpRequestException og hvornår den bruges.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception",
+          "type": "docs",
+          "icon": "fas fa-network-wired"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvad betyder statuskoden 429 Too Many Requests?",
+        "options": {
+          "A": "Brugeren mangler authentication",
+          "B": "Serveren er nede midlertidigt",
+          "C": "Der er sendt for mange requests på kort tid",
+          "D": "Serverens gateway er fejlkonfigureret"
+        },
+        "correctAnswers": ["C"],
+        "explanations": {
+          "A": "❌ Det ville være 401 Unauthorized.",
+          "B": "❌ Det ville være 503 Service Unavailable.",
+          "C": "✅ 429 betyder at klienten har overskredet serverens rate limit.",
+          "D": "❌ Det ville være 502 Bad Gateway."
+        },
+        "learnMore": {
+          "title": "HTTP 429 Too Many Requests",
+          "description": "MDN-dokumentation om statuskoden 429 og rate limiting.",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+          "type": "docs",
+          "icon": "fas fa-exclamation-triangle"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er exponential backoff i forbindelse med API error handling?",
+        "options": {
+          "A": "At prøve igen med gradvist længere pauser mellem forsøg",
+          "B": "At køre alle retries samtidigt",
+          "C": "At give op efter første fejl",
+          "D": "At ignorere serverens fejlbeskeder"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ Exponential backoff betyder at man venter 1s, 2s, 4s, 8s osv. mellem retries.",
+          "B": "❌ Det ville overbelaste serveren yderligere.",
+          "C": "❌ Det fjerner robustheden i systemet.",
+          "D": "❌ At ignorere fejl giver dårlig brugeroplevelse og ustabilt system."
+        },
+        "learnMore": {
+          "title": "Exponential Backoff and Retry",
+          "description": "Forklaring på exponential backoff som best practice for API retries.",
+          "url": "https://cloud.google.com/storage/docs/retry-strategy",
+          "type": "article",
+          "icon": "fas fa-redo"
+        }
+      }
+    ]
+  }

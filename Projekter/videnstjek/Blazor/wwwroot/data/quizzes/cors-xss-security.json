@@ -1,0 +1,130 @@
+{
+    "id": "cors-xss-security",
+    "title": "CORS & XSS Sikkerhed",
+    "description": "Test din viden om Cross-Origin Resource Sharing, Cross-Site Scripting og hvordan man beskytter webapplikationer mod sikkerhedsangreb",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad står CORS for og hvorfor er det vigtigt?",
+        "options": {
+          "A": "Cross-Origin Resource Sharing - det forhindrer ondsindede websites i at få uautoriseret adgang til andre domæner",
+          "B": "Cross-Origin Request System - det gør alle API-kald hurtigere",
+          "C": "Cross-Origin Response Security - det krypterer al data automatisk",
+          "D": "Cross-Origin Resource Security - det eliminerer alle sikkerhedsrisici"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ CORS er en sikkerhedsmekanisme der forhindrer uautoriseret adgang fra andre domæner.",
+          "B": "❌ CORS handler ikke om hastighed, men om sikkerhed.",
+          "C": "❌ CORS krypterer ikke data automatisk.",
+          "D": "❌ CORS eliminerer ikke alle risici - det er en del af sikkerhedsstrategien."
+        },
+        "learnMore": {
+          "title": "CORS Explained",
+          "description": "En autoritativ guide til CORS og hvorfor det er vigtigt for REST API'er.",
+          "url": "https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/",
+          "type": "article",
+          "icon": "fas fa-shield-alt"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad betyder det hvis en API har 'Access-Control-Allow-Origin: *'?",
+        "options": {
+          "A": "API'et er kun tilgængeligt for lokale requests",
+          "B": "API'et er åbent for alle domæner - hvilket kan være en sikkerhedsrisiko",
+          "C": "API'et er kun tilgængeligt for HTTPS requests",
+          "D": "API'et kræver authentication for alle requests"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ '*' betyder alle domæner, ikke kun lokale.",
+          "B": "✅ '*' tillader alle domæner at kalde API'et, hvilket kan være farligt.",
+          "C": "❌ '*' handler ikke om HTTPS vs HTTP.",
+          "D": "❌ '*' påvirker ikke authentication-krav."
+        },
+        "learnMore": {
+          "title": "CORS Security Risks",
+          "description": "En forklaring af sikkerhedsrisici ved løse CORS-politikker.",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#security_considerations",
+          "type": "docs",
+          "icon": "fas fa-exclamation-triangle"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er Cross-Site Scripting (XSS)?",
+        "options": {
+          "A": "En teknik til at kryptere data mellem domæner",
+          "B": "Et angreb hvor ondsindet JavaScript-kode injiceres på en hjemmeside",
+          "C": "En metode til at dele ressourcer mellem forskellige domæner",
+          "D": "En teknik til at optimere website-performance"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ XSS handler ikke om kryptering af data.",
+          "B": "✅ XSS er et angreb hvor ondsindet kode injiceres gennem uvalideret input.",
+          "C": "❌ Det beskriver CORS, ikke XSS.",
+          "D": "❌ XSS handler ikke om performance-optimering."
+        },
+        "learnMore": {
+          "title": "Cross-Site Scripting (XSS)",
+          "description": "OWASP guide til XSS og hvordan man forhindrer det.",
+          "url": "https://owasp.org/www-community/attacks/xss/",
+          "type": "article",
+          "icon": "fas fa-bug"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvordan kan du forhindre XSS-angreb i din webapplikation?",
+        "options": {
+          "A": "Ved at bruge HTTPS på alle sider",
+          "B": "Ved at validere og sanitize al bruger-input og undgå at outputte uvalideret HTML",
+          "C": "Ved at blokere alle JavaScript-filer",
+          "D": "Ved at bruge CORS-headers"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ HTTPS beskytter mod man-in-the-middle, ikke XSS.",
+          "B": "✅ Input-validering og output-sanitization er de primære forsvarsmekanismer mod XSS.",
+          "C": "❌ At blokere JavaScript vil ødelægge funktionaliteten af de fleste moderne websites.",
+          "D": "❌ CORS beskytter mod cross-origin requests, ikke XSS."
+        },
+        "learnMore": {
+          "title": "XSS Prevention",
+          "description": "Microsofts guide til at forhindre XSS i ASP.NET Core.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/security/cross-site-scripting",
+          "type": "docs",
+          "icon": "fas fa-lock"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er en sikker CORS-konfiguration for et produktionsmiljø?",
+        "options": {
+          "A": "Tillad alle domæner med '*' for maksimal kompatibilitet",
+          "B": "Tillad kun specifikke, godkendte domæner som din frontend kører på",
+          "C": "Deaktiver CORS helt for maksimal sikkerhed",
+          "D": "Tillad kun lokale domæner (localhost)"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ '*' er farligt i produktion - det tillader alle domæner at kalde dit API.",
+          "B": "✅ Kun godkendte domæner bør have adgang i produktion.",
+          "C": "❌ At deaktivere CORS helt vil ødelægge legitim frontend-funktionalitet.",
+          "D": "❌ Kun localhost vil ikke virke når din applikation deployes."
+        },
+        "learnMore": {
+          "title": "Secure CORS Configuration",
+          "description": "En guide til sikker CORS-konfiguration i produktion.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/security/cors",
+          "type": "docs",
+          "icon": "fas fa-cog"
+        }
+      }
+    ]
+  }

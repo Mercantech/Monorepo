@@ -1,0 +1,202 @@
+{
+    "id": "bcrypt-security",
+    "title": "BCrypt & Password Sikkerhed",
+    "description": "Test din viden om BCrypt hashing, password sikkerhed, salt og hvordan man implementerer sikker brugerautentificering i C#",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvorfor er BCrypt bedre end simple hash-funktioner som MD5 til passwords?",
+        "options": {
+          "A": "BCrypt er hurtigere at beregne",
+          "B": "BCrypt er langsomt og derfor svært at brute-force",
+          "C": "BCrypt kan dekrypteres igen",
+          "D": "BCrypt bruger mindre hukommelse"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ BCrypt er faktisk langsommere - det er netop pointen for sikkerhed.",
+          "B": "✅ BCrypt's langsomhed gør det upraktisk at brute-force passwords.",
+          "C": "❌ BCrypt er en one-way hash-funktion - den kan ikke dekrypteres.",
+          "D": "❌ Hukommelsesforbrug er ikke hovedfordelen ved BCrypt."
+        },
+        "learnMore": {
+          "title": "Why BCrypt is Better",
+          "description": "En forklaring af hvorfor BCrypt er bedre end andre hash-funktioner til passwords.",
+          "url": "https://auth0.com/blog/hashing-in-action-understanding-bcrypt/",
+          "type": "article",
+          "icon": "fas fa-shield-alt"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er formålet med salt i password hashing?",
+        "options": {
+          "A": "At gøre passwords længere",
+          "B": "At beskytte mod rainbow table-angreb ved at give hvert password et unikt salt",
+          "C": "At kryptere passwords",
+          "D": "At reducere hash-størrelsen"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Salt påvirker ikke password-længden, kun hash-unikheden.",
+          "B": "✅ Salt gør hver hash unik, selv for identiske passwords, hvilket forhindrer rainbow table-angreb.",
+          "C": "❌ Salt er ikke kryptering - det er en tilføjelse til hashing.",
+          "D": "❌ Salt øger faktisk hash-størrelsen, ikke reducerer den."
+        },
+        "learnMore": {
+          "title": "Password Salting",
+          "description": "Microsofts guide til password sikkerhed og salting.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing",
+          "type": "docs",
+          "icon": "fas fa-key"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvordan hasher du et password med BCrypt i C#?",
+        "options": {
+          "A": "BCrypt.HashPassword(password)",
+          "B": "BCrypt.Encrypt(password)",
+          "C": "BCrypt.Hash(password)",
+          "D": "BCrypt.Protect(password)"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ BCrypt.HashPassword(password) er den korrekte metode til at hashe passwords.",
+          "B": "❌ BCrypt er ikke kryptering - det er hashing.",
+          "C": "❌ Der findes ingen Hash metode - det er HashPassword.",
+          "D": "❌ Protect er ikke en BCrypt-metode."
+        },
+        "learnMore": {
+          "title": "BCrypt.Net-Next Documentation",
+          "description": "Officiel dokumentation for BCrypt.Net-Next pakken.",
+          "url": "https://github.com/BcryptNet/bcrypt.net",
+          "type": "docs",
+          "icon": "fas fa-book-open"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvordan validerer du et password mod en BCrypt hash?",
+        "options": {
+          "A": "BCrypt.Decrypt(password, hash)",
+          "B": "BCrypt.Verify(password, hash)",
+          "C": "BCrypt.Compare(password, hash)",
+          "D": "BCrypt.Match(password, hash)"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ BCrypt kan ikke dekrypteres - det er en one-way hash.",
+          "B": "✅ BCrypt.Verify(password, hash) sammenligner password med hash.",
+          "C": "❌ Der findes ingen Compare metode - det er Verify.",
+          "D": "❌ Der findes ingen Match metode - det er Verify."
+        },
+        "learnMore": {
+          "title": "BCrypt Password Verification",
+          "description": "En guide til at validere passwords med BCrypt.",
+          "url": "https://www.c-sharpcorner.com/article/bcrypt-password-hashing-in-c-sharp/",
+          "type": "article",
+          "icon": "fas fa-check-circle"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad sker der hvis du hasher det samme password to gange med BCrypt?",
+        "options": {
+          "A": "Du får altid den samme hash",
+          "B": "Du får forskellige hashes hver gang pga. automatisk salt",
+          "C": "Anden hash fejler med en fejl",
+          "D": "Du får en dobbelt hash"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ BCrypt genererer automatisk nyt salt hver gang, så hashes bliver forskellige.",
+          "B": "✅ Hver hash får et unikt salt, så identiske passwords giver forskellige hashes.",
+          "C": "❌ BCrypt fejler ikke - det fungerer perfekt hver gang.",
+          "D": "❌ Du får ikke dobbelt hashing - hver hash er komplet og unik."
+        },
+        "learnMore": {
+          "title": "BCrypt Salt Generation",
+          "description": "Forklaring af hvordan BCrypt automatisk genererer salt.",
+          "url": "https://stackoverflow.com/questions/6832445/how-can-bcrypt-have-built-in-salts",
+          "type": "article",
+          "icon": "fas fa-random"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er en rainbow table i kontekst af password sikkerhed?",
+        "options": {
+          "A": "En tabel med farver til UI-design",
+          "B": "En forudberegnet liste over hashes for almindelige passwords",
+          "C": "En database med brugeroplysninger",
+          "D": "En liste over sikre passwords"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Det handler ikke om UI-design eller farver.",
+          "B": "✅ Rainbow tables indeholder forudberegnede hashes for almindelige passwords, som angribere kan bruge.",
+          "C": "❌ Det er ikke en database med brugeroplysninger.",
+          "D": "❌ Det er ikke en liste over sikre passwords."
+        },
+        "learnMore": {
+          "title": "Rainbow Table Attacks",
+          "description": "En forklaring af rainbow table-angreb og hvordan salt beskytter mod dem.",
+          "url": "https://www.techopedia.com/definition/4023/rainbow-table",
+          "type": "article",
+          "icon": "fas fa-table"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad er den korrekte måde at implementere password validering i en login-controller?",
+        "options": {
+          "A": "Sammenlign password direkte med hash fra databasen",
+          "B": "Hash det indtastede password og sammenlign med hash fra databasen",
+          "C": "Brug BCrypt.Verify(password, hash) til at sammenligne",
+          "D": "Dekrypter hash fra databasen og sammenlign med password"
+        },
+        "correctAnswers": ["C"],
+        "explanations": {
+          "A": "❌ Du kan ikke sammenligne password direkte med hash.",
+          "B": "❌ Hashing passwordet igen giver en anden hash pga. nyt salt.",
+          "C": "✅ BCrypt.Verify() håndterer salt og sammenligning korrekt.",
+          "D": "❌ BCrypt hashes kan ikke dekrypteres - de er one-way."
+        },
+        "learnMore": {
+          "title": "Implementing Secure Login",
+          "description": "Microsofts guide til sikker brugerautentificering.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity",
+          "type": "docs",
+          "icon": "fas fa-user-check"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvad er en vigtig best practice ved brug af BCrypt i produktion?",
+        "options": {
+          "A": "Gem passwords i klartekst som backup",
+          "B": "Gem kun den hashede password-streng, aldrig det oprindelige password",
+          "C": "Brug samme salt for alle brugere",
+          "D": "Hash passwords flere gange for ekstra sikkerhed"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ At gemme passwords i klartekst er en alvorlig sikkerhedsfejl.",
+          "B": "✅ Du skal kun gemme den hashede password-streng - aldrig det oprindelige password.",
+          "C": "❌ BCrypt genererer automatisk unikt salt for hver bruger - det skal du ikke ændre.",
+          "D": "❌ BCrypt er allerede designet til at være sikker - dobbelt hashing er unødvendigt og kan skabe problemer."
+        },
+        "learnMore": {
+          "title": "Password Security Best Practices",
+          "description": "OWASP guide til sikker password-håndtering.",
+          "url": "https://owasp.org/www-project-cheat-sheets/cheatsheets/Authentication_Cheat_Sheet.html",
+          "type": "article",
+          "icon": "fas fa-lock"
+        }
+      }
+    ]
+  }

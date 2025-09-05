@@ -1,0 +1,106 @@
+{
+  "id": "jwt-security",
+  "title": "JWT & Token Sikkerhed",
+  "description": "Test din viden om JWT tokens, refresh tokens og sikkerhedsaspekter",
+  "category": "Backend",
+  "difficulty": "Mellem",
+  "estimatedTime": "10-15 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvor bliver et access-token typisk gemt på klienten?",
+      "options": {
+        "A": "I en SQL-database",
+        "B": "I en cookie (ofte HttpOnly)",
+        "C": "I sessionStorage eller localStorage",
+        "D": "I JWT-serveren"
+      },
+      "correctAnswers": ["B", "C"],
+      "explanations": {
+        "A": "❌ SQL er serverside – ikke relevant for klientlagring.",
+        "B": "✅ Cookies – især HttpOnly – er sikre mod XSS og bruges ofte til refresh-tokens.",
+        "C": "✅ localStorage/sessionStorage – nemme at bruge, men sårbare over for XSS.",
+        "D": "❌ JWT er \"self-contained\" – ikke nødvendigt at gemme dem på serveren, medmindre man blacklister eller tracker tokens."
+      },
+      "learnMore": {
+        "title": "JWT Token Storage Best Practices",
+        "description": "Lær om de bedste måder at gemme JWT tokens på klienten, og hvilke sikkerhedsrisici du skal være opmærksom på.",
+        "url": "https://www.descope.com/blog/post/developer-guide-jwt-storage",
+        "type": "article",
+        "icon": "fas fa-book-open"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvad er hovedformålet med refresh tokens?",
+      "options": {
+        "A": "At gøre tokens sværere at forfalske",
+        "B": "At udvide login-sessionen uden at gøre access-tokenet langtidslevende",
+        "C": "At kunne nulstille adgangskoder",
+        "D": "At undgå at bruge cookies"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det er signaturen i JWT, ikke refresh-tokenet, der gør det svært at forfalske.",
+        "B": "✅ Det er præcis formålet – holde brugeren logget ind uden at have farlige langlivede access-tokens.",
+        "C": "❌ Ikke relevant – nulstilling af adgangskode foregår typisk separat.",
+        "D": "❌ Refresh tokens kan netop gemmes i cookies – så dette er misvisende."
+      },
+      "learnMore": {
+        "title": "Refresh Tokens Explained",
+        "description": "Forstå hvordan refresh tokens fungerer og hvorfor de er vigtige for sikkerhed.",
+        "url": "https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/",
+        "type": "article",
+        "icon": "fas fa-shield-alt"
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvilke af følgende er korrekte sikkerhedsaspekter ved JWT tokens?",
+      "options": {
+        "A": "JWT tokens skal altid krypteres",
+        "B": "JWT tokens indeholder en digital signatur",
+        "C": "JWT tokens kan indeholde følsomme data",
+        "D": "JWT tokens har en udløbstid (exp claim)"
+      },
+      "correctAnswers": ["B", "D"],
+      "explanations": {
+        "A": "❌ JWT tokens er signerede, ikke krypterede – de er læsbare for alle.",
+        "B": "✅ JWT tokens indeholder en digital signatur for at sikre autenticitet.",
+        "C": "❌ JWT tokens er base64-encoded og læsbare – gem aldrig følsomme data i dem.",
+        "D": "✅ JWT tokens har typisk en exp (expiration) claim der definerer udløbstid."
+      },
+      "learnMore": {
+        "title": "JWT Security Best Practices",
+        "description": "Lær om de vigtigste sikkerhedsaspekter ved JWT tokens.",
+        "url": "https://tools.ietf.org/html/rfc7519",
+        "type": "docs",
+        "icon": "fas fa-lock"
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad sker der når et JWT access-token udløber?",
+      "options": {
+        "A": "Brugeren bliver automatisk logget ud",
+        "B": "Systemet bruger refresh-tokenet til at få et nyt access-token",
+        "C": "Tokenet bliver automatisk fornyet",
+        "D": "Brugeren skal logge ind igen"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Brugeren bliver ikke automatisk logget ud – systemet forsøger først at forny tokenet.",
+        "B": "✅ Det korrekte flow er at bruge refresh-tokenet til at få et nyt access-token.",
+        "C": "❌ Tokenet fornyes ikke automatisk – det kræver en API-kald med refresh-tokenet.",
+        "D": "❌ Kun hvis refresh-tokenet også er udløbet skal brugeren logge ind igen."
+      },
+      "learnMore": {
+        "title": "JWT Token Refresh Flow",
+        "description": "Forstå det komplette flow for token refresh i JWT-baserede systemer.",
+        "url": "https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/",
+        "type": "article",
+        "icon": "fas fa-sync"
+      }
+    }
+  ]
+}

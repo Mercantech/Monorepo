@@ -1,0 +1,96 @@
+{
+  "quizzes": [
+    {
+      "id": "api-calls",
+      "file": "api-calls.json"
+    },
+    {
+      "id": "bcrypt-security",
+      "file": "bcrypt-security.json"
+    },
+    {
+      "id": "blazor-signalr",
+      "file": "blazor-signalr.json"
+    },
+    {
+      "id": "bogus-faker",
+      "file": "bogus-faker.json"
+    },
+    {
+      "id": "caching-redis",
+      "file": "caching-redis.json"
+    },
+    {
+      "id": "cors-xss-security",
+      "file": "cors-xss-security.json"
+    },
+    {
+      "id": "data-serialization",
+      "file": "data-serialization.json"
+    },
+    {
+      "id": "dtos-data-transfer",
+      "file": "dtos-data-transfer.json"
+    },
+    {
+      "id": "efcore-linq-querying",
+      "file": "efcore-linq-querying.json"
+    },
+    {
+      "id": "efcore-relations",
+      "file": "efcore-relations.json"
+    },
+    {
+      "id": "error-handling",
+      "file": "error-handling.json"
+    },
+    {
+      "id": "gf2-kapitel-1-grundl\u00E6ggende-csharp",
+      "file": "gf2-dag1-grundl\u00E6ggende-csharp.json"
+    },
+    {
+      "id": "gf2-kapitel-2-expressions-operators",
+      "file": "gf2-dag2-expressions-operators.json"
+    },
+    {
+      "id": "gf2-kapitel-3-control-flow",
+      "file": "gf2-dag3-control-flow.json"
+    },
+    {
+      "id": "gf2-kapitel-4-klasser-objekter",
+      "file": "gf2-dag4-klasser-objekter.json"
+    },
+    {
+      "id": "gf2-kapitel-6-arrays-lists-dictionary",
+      "file": "gf2-dag6-arrays-lists-dictionary.json"
+    },
+    {
+      "id": "gf2-kapitel-7-loops-iterationer",
+      "file": "gf2-dag7-loops-iterationer.json"
+    },
+    {
+      "id": "gf2-kapitel-8-metoder-funktioner",
+      "file": "gf2-kapitel-8-metoder-funktioner.json"
+    },
+    {
+      "id": "jwt-security",
+      "file": "jwt-security.json"
+    },
+    {
+      "id": "oop-advanced",
+      "file": "oop-advanced.json"
+    },
+    {
+      "id": "rate-limiting-security",
+      "file": "rate-limiting-security.json"
+    },
+    {
+      "id": "solid-principles",
+      "file": "solid-principles.json"
+    },
+    {
+      "id": "xml-comments",
+      "file": "xml-comments.json"
+    }
+  ]
+}

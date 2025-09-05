@@ -1,0 +1,34 @@
+{
+  "id": "quiz-id",
+  "title": "Quiz Titel",
+  "description": "Beskrivelse af quizzen",
+  "category": "Kategori",
+  "difficulty": "Begynder|Mellem|Avanceret",
+  "estimatedTime": "5-10 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Dit spørgsmål her?",
+      "options": {
+        "A": "Svar mulighed A",
+        "B": "Svar mulighed B", 
+        "C": "Svar mulighed C",
+        "D": "Svar mulighed D"
+      },
+      "correctAnswers": ["A", "B"],
+      "explanations": {
+        "A": "✅ Forklaring af hvorfor A er korrekt.",
+        "B": "✅ Forklaring af hvorfor B er korrekt.",
+        "C": "❌ Forklaring af hvorfor C er forkert.",
+        "D": "❌ Forklaring af hvorfor D er forkert."
+      },
+      "learnMore": {
+        "title": "Titel til læringsmateriale",
+        "description": "Beskrivelse af læringsmaterialet",
+        "url": "https://example.com",
+        "type": "docs|article|video",
+        "icon": "fas fa-book"
+      }
+    }
+  ]
+}

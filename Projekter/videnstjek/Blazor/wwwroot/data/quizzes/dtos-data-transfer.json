@@ -1,0 +1,202 @@
+{
+    "id": "dtos-data-transfer",
+    "title": "DTO'er & Data Transfer Objekter",
+    "description": "Test din viden om DTO'er, deres formål og hvordan de hjælper med at optimere API-performance og datastruktur",
+    "category": "Backend",
+    "difficulty": "Mellem",
+    "estimatedTime": "10-15 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad står DTO for og hvad er formålet?",
+        "options": {
+          "A": "Data Type Object - at definere datatyper",
+          "B": "Data Transfer Object - at overføre data mellem lag uden at eksponere intern struktur",
+          "C": "Database Table Object - at mappe database tabeller",
+          "D": "Data Type Output - at formatere output data"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Data Type Object er ikke det korrekte udtryk.",
+          "B": "✅ DTO står for Data Transfer Object og bruges til at overføre data mellem lag.",
+          "C": "❌ Database Table Object er ikke det korrekte udtryk.",
+          "D": "❌ Data Type Output er ikke det korrekte udtryk."
+        },
+        "learnMore": {
+          "title": "DTO Pattern",
+          "description": "En forklaring af DTO-mønsteret og dets fordele.",
+          "url": "https://www.baeldung.com/java-dto-pattern",
+          "type": "article",
+          "icon": "fas fa-exchange-alt"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er hovedfordelen ved at bruge DTO'er i stedet for at returnere database-entiteter direkte?",
+        "options": {
+          "A": "DTO'er er altid hurtigere at oprette",
+          "B": "DTO'er giver kontrol over hvilke data der eksponeres og kan optimere API-performance",
+          "C": "DTO'er eliminerer behovet for database queries",
+          "D": "DTO'er gør det nemmere at skrive SQL"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ DTO'er er ikke nødvendigvis hurtigere at oprette.",
+          "B": "✅ DTO'er giver kontrol over dataeksponering og kan optimere performance.",
+          "C": "❌ DTO'er eliminerer ikke behovet for database queries.",
+          "D": "❌ DTO'er er ikke relateret til SQL-skrivning."
+        },
+        "learnMore": {
+          "title": "Why Use DTOs",
+          "description": "En forklaring af fordelene ved at bruge DTO'er i stedet for direkte entiteter.",
+          "url": "https://www.c-sharpcorner.com/article/why-we-use-dto-data-transfer-objects/",
+          "type": "article",
+          "icon": "fas fa-rocket"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvad er forskellen mellem en DTO og en ViewModel?",
+        "options": {
+          "A": "Der er ingen forskel - de er det samme",
+          "B": "DTO'er bruges til API-kommunikation, ViewModels til UI-binding",
+          "C": "DTO'er kan kun bruges i backend, ViewModels kun i frontend",
+          "D": "DTO'er er altid mindre end ViewModels"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ DTO'er og ViewModels har forskellige formål og bruges i forskellige lag.",
+          "B": "✅ DTO'er er til dataoverførsel mellem lag, ViewModels til UI-binding.",
+          "C": "❌ Både DTO'er og ViewModels kan bruges i både backend og frontend.",
+          "D": "❌ Størrelsen afhænger af formålet, ikke typen."
+        },
+        "learnMore": {
+          "title": "DTO vs ViewModel",
+          "description": "En sammenligning af DTO'er og ViewModels og hvornår man bruger hver.",
+          "url": "https://stackoverflow.com/questions/1051182/what-are-the-differences-between-dto-vo-pojo-javabeans",
+          "type": "article",
+          "icon": "fas fa-balance-scale"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvordan kan DTO'er hjælpe med at undgå N+1 query problemer?",
+        "options": {
+          "A": "DTO'er eliminerer automatisk alle database queries",
+          "B": "DTO'er kan samle data fra flere entiteter i ét kald og returnere det som ét objekt",
+          "C": "DTO'er cacher altid data i hukommelsen",
+          "D": "DTO'er bruger kun stored procedures"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ DTO'er eliminerer ikke automatisk database queries.",
+          "B": "✅ DTO'er kan samle data fra flere kilder og returnere det som ét optimeret objekt.",
+          "C": "❌ DTO'er cacher ikke automatisk data.",
+          "D": "❌ DTO'er er ikke begrænset til stored procedures."
+        },
+        "learnMore": {
+          "title": "N+1 Query Problem",
+          "description": "En forklaring af N+1 query problemet og hvordan man løser det.",
+          "url": "https://planetscale.com/blog/what-is-n-1-query-problem-and-how-to-solve-it",
+          "type": "article",
+          "icon": "fas fa-search"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvad er en AutoMapper og hvornår bruger man den med DTO'er?",
+        "options": {
+          "A": "En database-mapper der automatisk opretter tabeller",
+          "B": "Et bibliotek der automatisk mapper mellem entiteter og DTO'er for at undgå manuel mapping",
+          "C": "En EF Core funktion der mapper relations",
+          "D": "En JSON-serializer der mapper properties"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ AutoMapper er ikke en database-mapper.",
+          "B": "✅ AutoMapper automatiserer mapping mellem entiteter og DTO'er.",
+          "C": "❌ AutoMapper er ikke en del af EF Core.",
+          "D": "❌ AutoMapper er ikke en JSON-serializer."
+        },
+        "learnMore": {
+          "title": "AutoMapper in .NET",
+          "description": "Microsofts guide til AutoMapper og hvordan man bruger det.",
+          "url": "https://docs.automapper.org/en/stable/Getting-started.html",
+          "type": "docs",
+          "icon": "fas fa-magic"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er fordelene ved at bruge separate DTO'er for input og output?",
+        "options": {
+          "A": "Det gør API'et langsommere",
+          "B": "Det giver bedre kontrol over data-validering og sikkerhed",
+          "C": "Det eliminerer behovet for DataAnnotations",
+          "D": "Det gør det nemmere at skrive SQL"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Separate DTO'er gør ikke API'et langsommere.",
+          "B": "✅ Separate DTO'er giver bedre kontrol over input-validering og output-struktur.",
+          "C": "❌ DataAnnotations kan stadig bruges i DTO'er.",
+          "D": "❌ DTO'er er ikke relateret til SQL-skrivning."
+        },
+        "learnMore": {
+          "title": "Input vs Output DTOs",
+          "description": "En guide til at designe separate DTO'er for input og output.",
+          "url": "https://www.c-sharpcorner.com/article/input-and-output-dto-pattern/",
+          "type": "article",
+          "icon": "fas fa-arrows-alt"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvordan håndterer du validering i DTO'er?",
+        "options": {
+          "A": "Validering sker automatisk i alle DTO'er",
+          "B": "Du kan bruge DataAnnotations som [Required], [EmailAddress] osv. på DTO properties",
+          "C": "Validering skal altid skrives manuelt i controllers",
+          "D": "DTO'er kan ikke valideres"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Validering sker ikke automatisk - du skal konfigurere det.",
+          "B": "✅ DataAnnotations kan bruges på DTO properties for automatisk validering.",
+          "C": "❌ Validering kan automatiseres med DataAnnotations.",
+          "D": "❌ DTO'er kan sagtens valideres med DataAnnotations."
+        },
+        "learnMore": {
+          "title": "Data Annotations in .NET",
+          "description": "Microsofts guide til DataAnnotations og validering.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations",
+          "type": "docs",
+          "icon": "fas fa-check-circle"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvad er en vigtig best practice ved design af DTO'er?",
+        "options": {
+          "A": "DTO'er skal altid være identiske med database-entiteter",
+          "B": "DTO'er skal kun indeholde de data der faktisk er nødvendige for det specifikke use case",
+          "C": "DTO'er skal altid være større end entiteter",
+          "D": "DTO'er skal altid bruge samme navne som entiteter"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ DTO'er skal ikke altid være identiske med entiteter - det er pointen med DTO'er.",
+          "B": "✅ DTO'er skal kun indeholde nødvendig data for det specifikke use case.",
+          "C": "❌ DTO'er skal ikke altid være større - de kan være mindre for at optimere performance.",
+          "D": "❌ DTO'er kan have andre navne end entiteter for bedre læsbarhed."
+        },
+        "learnMore": {
+          "title": "DTO Design Best Practices",
+          "description": "En guide til at designe effektive DTO'er.",
+          "url": "https://www.c-sharpcorner.com/article/dto-design-patterns-and-best-practices/",
+          "type": "article",
+          "icon": "fas fa-star"
+        }
+      }
+    ]
+  }

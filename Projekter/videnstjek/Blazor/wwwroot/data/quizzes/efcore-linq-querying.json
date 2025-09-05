@@ -1,0 +1,250 @@
+{
+    "id": "efcore-linq-querying",
+    "title": "EF Core & LINQ Querying - Avancerede Koncepter",
+    "description": "Test din viden om EF Core querying, Eager vs Lazy Loading, filtering, sorting og RESTful conventions",
+    "category": "Backend",
+    "difficulty": "Avanceret",
+    "estimatedTime": "15-20 minutter",
+    "questions": [
+      {
+        "id": 1,
+        "questionText": "Hvad er hovedforskellen mellem Eager Loading og Lazy Loading i EF Core?",
+        "options": {
+          "A": "Eager Loading er hurtigere end Lazy Loading",
+          "B": "Eager Loading henter relateret data med det samme, Lazy Loading venter til det tilgås",
+          "C": "Lazy Loading kræver mindre hukommelse end Eager Loading",
+          "D": "Eager Loading virker kun med SQL Server, Lazy Loading virker med alle databaser"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Hastighed afhænger af situationen - ikke altid hurtigere.",
+          "B": "✅ Eager Loading henter alt relateret data i én forespørgsel, mens Lazy Loading henter når det tilgås.",
+          "C": "❌ Hukommelsesforbrug afhænger af data mængden, ikke loading typen.",
+          "D": "❌ Begge loading typer virker med alle EF Core understøttede databaser."
+        },
+        "learnMore": {
+          "title": "EF Core Loading Patterns",
+          "description": "Guide til Eager vs Lazy Loading i Entity Framework Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data",
+          "type": "docs",
+          "icon": "fas fa-database"
+        }
+      },
+      {
+        "id": 2,
+        "questionText": "Hvad er N+1 problemet i forbindelse med Lazy Loading?",
+        "options": {
+          "A": "At der genereres for mange SQL forespørgsler når man tilgår relateret data",
+          "B": "At der bruges for meget hukommelse til at cache data",
+          "C": "At der er for mange relationer mellem entiteter",
+          "D": "At der er for mange felter i hver entitet"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ N+1 problemet opstår når man henter N hovedobjekter og derefter 1 forespørgsel per relateret objekt.",
+          "B": "❌ Hukommelsesforbrug er ikke det primære problem med N+1.",
+          "C": "❌ Antal relationer er ikke problemet - det er måden data hentes på.",
+          "D": "❌ Antal felter påvirker ikke N+1 problemet."
+        },
+        "learnMore": {
+          "title": "N+1 Query Problem",
+          "description": "Forklaring af N+1 problemet og hvordan man løser det.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data#eager-loading",
+          "type": "docs",
+          "icon": "fas fa-exclamation-triangle"
+        }
+      },
+      {
+        "id": 3,
+        "questionText": "Hvordan bruger du Eager Loading til at hente en booking med bruger og værelse?",
+        "options": {
+          "A": "var booking = _context.Bookings.Include(b => b.User).Include(b => b.Room).FirstOrDefault()",
+          "B": "var booking = _context.Bookings.Load(b => b.User).Load(b => b.Room).FirstOrDefault()",
+          "C": "var booking = _context.Bookings.With(b => b.User).With(b => b.Room).FirstOrDefault()",
+          "D": "var booking = _context.Bookings.Join(b => b.User).Join(b => b.Room).FirstOrDefault()"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ Include() er den korrekte metode til Eager Loading i EF Core.",
+          "B": "❌ Load() eksisterer ikke i EF Core.",
+          "C": "❌ With() er ikke en EF Core metode.",
+          "D": "❌ Join() bruges til SQL JOINs, ikke til Eager Loading."
+        },
+        "learnMore": {
+          "title": "EF Core Include Method",
+          "description": "Dokumentation for Include() metoden i EF Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data#eager-loading",
+          "type": "docs",
+          "icon": "fas fa-code"
+        }
+      },
+      {
+        "id": 4,
+        "questionText": "Hvad er formålet med .AsQueryable() når man bygger dynamiske queries?",
+        "options": {
+          "A": "At gøre queries hurtigere",
+          "B": "At tillade dynamisk tilføjelse af Where() og OrderBy() klausuler",
+          "C": "At reducere hukommelsesforbrug",
+          "D": "At sikre at queries er type-safe"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ .AsQueryable() påvirker ikke hastighed direkte.",
+          "B": "✅ .AsQueryable() giver dig mulighed for at bygge queries dynamisk med Where(), OrderBy() osv.",
+          "C": "❌ Hukommelsesforbrug påvirkes ikke af .AsQueryable().",
+          "D": "❌ Type-safety er ikke hovedformålet med .AsQueryable()."
+        },
+        "learnMore": {
+          "title": "Dynamic Queries in EF Core",
+          "description": "Guide til at bygge dynamiske queries i EF Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/dynamic-queries",
+          "type": "docs",
+          "icon": "fas fa-magic"
+        }
+      },
+      {
+        "id": 5,
+        "questionText": "Hvordan implementerer du filtering baseret på query parameters?",
+        "options": {
+          "A": "Altid bruge hardcodede WHERE klausuler",
+          "B": "Bruge [FromQuery] attribut og bygge queries dynamisk med .Where()",
+          "C": "Kun tillade filtering på foruddefinerede felter",
+          "D": "Ignorere filtering og returnere alt data"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ Hardcodede WHERE klausuler giver ikke fleksibilitet.",
+          "B": "✅ [FromQuery] med dynamisk .Where() giver fleksibel filtering baseret på bruger input.",
+          "C": "❌ Begrænsning til foruddefinerede felter reducerer fleksibilitet.",
+          "D": "❌ At ignorere filtering kan give performance problemer og dårlig brugeroplevelse."
+        },
+        "learnMore": {
+          "title": "Query Parameters in ASP.NET Core",
+          "description": "Guide til at håndtere query parameters i ASP.NET Core controllers.",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/web-api/action-return-types",
+          "type": "docs",
+          "icon": "fas fa-filter"
+        }
+      },
+      {
+        "id": 6,
+        "questionText": "Hvad er den korrekte måde at implementere dynamisk sorting på?",
+        "options": {
+          "A": "Altid bruge OrderBy() på ID feltet",
+          "B": "Bruge en switch statement til at vælge sorteringsfelt og retning",
+          "C": "Kun tillade sortering på navn feltet",
+          "D": "Ignorere sortering og returnere data i database rækkefølge"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ At altid sortere på ID giver ikke brugeren kontrol.",
+          "B": "✅ En switch statement giver fleksibel kontrol over sorteringsfelt og retning.",
+          "C": "❌ Begrænsning til kun navn feltet reducerer funktionalitet.",
+          "D": "❌ Database rækkefølge er ikke altid den ønskede rækkefølge."
+        },
+        "learnMore": {
+          "title": "Dynamic Sorting in LINQ",
+          "description": "Guide til at implementere dynamisk sorting i LINQ queries.",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/",
+          "type": "docs",
+          "icon": "fas fa-sort"
+        }
+      },
+      {
+        "id": 7,
+        "questionText": "Hvad er en RESTful route konvention?",
+        "options": {
+          "A": "At bruge HTTP metoder til at angive handlinger på ressourcer",
+          "B": "At altid bruge POST til alle operationer",
+          "C": "At bruge camelCase i route navne",
+          "D": "At bruge ental i collection endpoints"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ RESTful konventioner bruger HTTP metoder (GET, POST, PUT, DELETE) til at angive handlinger på ressourcer.",
+          "B": "❌ POST bør kun bruges til at oprette nye ressourcer.",
+          "C": "❌ Route navne bør være lowercase med bindestreger, ikke camelCase.",
+          "D": "❌ Collection endpoints bør bruge flertal (f.eks. /rooms ikke /room)."
+        },
+        "learnMore": {
+          "title": "REST API Design",
+          "description": "Best practices for REST API design og konventioner.",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design",
+          "type": "docs",
+          "icon": "fas fa-route"
+        }
+      },
+      {
+        "id": 8,
+        "questionText": "Hvad er den korrekte route for at hente alle værelser i et hotel?",
+        "options": {
+          "A": "GET /hotels/{id}/rooms",
+          "B": "GET /rooms?hotelId={id}",
+          "C": "GET /getRoomsForHotel?id={id}",
+          "D": "GET /hotelRooms/{hotelId}"
+        },
+        "correctAnswers": ["A"],
+        "explanations": {
+          "A": "✅ /hotels/{id}/rooms følger RESTful konventioner for nested ressourcer.",
+          "B": "❌ Dette er en query parameter tilgang, ikke en nested resource route.",
+          "C": "❌ 'getRoomsForHotel' er ikke RESTful - brug HTTP metoder i stedet.",
+          "D": "❌ 'hotelRooms' er ikke en standard RESTful konvention."
+        },
+        "learnMore": {
+          "title": "Nested Resources in REST",
+          "description": "Guide til at håndtere nested ressourcer i REST APIs.",
+          "url": "https://restfulapi.net/resource-naming/",
+          "type": "docs",
+          "icon": "fas fa-sitemap"
+        }
+      },
+      {
+        "id": 9,
+        "questionText": "Hvad er formålet med .ThenInclude() i EF Core?",
+        "options": {
+          "A": "At tilføje WHERE betingelser til en query",
+          "B": "At inkludere nested relateret data (f.eks. hotel fra room fra booking)",
+          "C": "At sortere resultater",
+          "D": "At begrænse antal returnerede records"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ WHERE betingelser tilføjes med .Where(), ikke .ThenInclude().",
+          "B": "✅ .ThenInclude() bruges til at inkludere nested relateret data (f.eks. hotel fra room fra booking).",
+          "C": "❌ Sortering håndteres med .OrderBy(), ikke .ThenInclude().",
+          "D": "❌ Antal records begrænses med .Take(), ikke .ThenInclude()."
+        },
+        "learnMore": {
+          "title": "EF Core ThenInclude",
+          "description": "Dokumentation for ThenInclude() metoden i EF Core.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/related-data#including-multiple-levels",
+          "type": "docs",
+          "icon": "fas fa-layer-group"
+        }
+      },
+      {
+        "id": 10,
+        "questionText": "Hvornår bør du bruge projection (.Select()) i stedet for .Include()?",
+        "options": {
+          "A": "Altid bruge .Include() for bedre performance",
+          "B": "Når du kun skal bruge specifikke felter fra relateret data",
+          "C": "Kun når du arbejder med store datamængder",
+          "D": "Når du vil have alle felter fra alle relaterede entiteter"
+        },
+        "correctAnswers": ["B"],
+        "explanations": {
+          "A": "❌ .Include() henter hele objekter, hvilket kan være ineffektivt hvis du kun skal bruge få felter.",
+          "B": "✅ .Select() er bedre når du kun skal bruge specifikke felter, da det reducerer data transfer.",
+          "C": "❌ .Select() er nyttigt uanset datamængde når du kun skal bruge specifikke felter.",
+          "D": "❌ Hvis du vil have alle felter, så brug .Include() i stedet."
+        },
+        "learnMore": {
+          "title": "EF Core Projection",
+          "description": "Guide til at bruge projection i EF Core for bedre performance.",
+          "url": "https://learn.microsoft.com/en-us/ef/core/querying/projections",
+          "type": "docs",
+          "icon": "fas fa-chart-line"
+        }
+      }
+    ]
+  }

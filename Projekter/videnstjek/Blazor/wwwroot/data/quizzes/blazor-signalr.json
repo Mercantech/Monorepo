@@ -1,0 +1,119 @@
+{
+  "id": "blazor-signalr",
+  "title": "Blazor & SignalR - Real-time Kommunikation",
+  "description": "Test din viden om Blazor WebAssembly, SignalR real-time kommunikation og WebSocket forbindelser",
+  "categories": ["Frontend", "Backend"],
+  "difficulty": "Mellem",
+  "estimatedTime": "12-15 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvad er SignalR's hovedformål i en Blazor applikation?",
+      "options": {
+        "A": "At håndtere database operationer",
+        "B": "At skabe real-time kommunikation mellem klient og server",
+        "C": "At validere bruger input",
+        "D": "At håndtere authentication"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ SignalR er ikke til database operationer - det er til real-time kommunikation.",
+        "B": "✅ SignalR gør det muligt at sende beskeder i real-time mellem server og klienter.",
+        "C": "❌ Input validering håndteres af Blazor's valideringssystem, ikke SignalR.",
+        "D": "❌ Authentication håndteres af ASP.NET Core Identity eller lignende, ikke SignalR."
+      },
+      "learnMore": {
+        "title": "SignalR med Blazor",
+        "description": "Microsofts dokumentation om hvordan man integrerer SignalR med Blazor WebAssembly.",
+        "url": "https://learn.microsoft.com/en-us/aspnet/core/blazor/tutorials/signalr-blazor",
+        "type": "docs",
+        "icon": "fas fa-broadcast-tower"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvilken transport metode bruger SignalR som standard?",
+      "options": {
+        "A": "WebSockets",
+        "B": "Server-Sent Events (SSE)",
+        "C": "Long Polling",
+        "D": "Den bedste tilgængelige transport automatisk"
+      },
+      "correctAnswers": ["D"],
+      "explanations": {
+        "A": "❌ WebSockets er kun én af de mulige transport metoder.",
+        "B": "❌ SSE er kun én af de mulige transport metoder.",
+        "C": "❌ Long Polling er kun én af de mulige transport metoder.",
+        "D": "✅ SignalR vælger automatisk den bedste transport metode baseret på browser og server support."
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvordan opretter man en SignalR Hub i Blazor?",
+      "options": {
+        "A": "Ved at arve fra Hub<T>",
+        "B": "Ved at arve fra Hub",
+        "C": "Ved at implementere IHub interface",
+        "D": "Ved at bruge [Hub] attribute"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Hub<T> er ikke den korrekte base klasse.",
+        "B": "✅ Man arver fra Hub klassen og definerer metoder som kan kaldes fra klienten.",
+        "C": "❌ IHub er ikke et interface man implementerer direkte.",
+        "D": "❌ [Hub] attribute findes ikke i SignalR."
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad er forskellen mellem Blazor Server og Blazor WebAssembly i forhold til SignalR?",
+      "options": {
+        "A": "Blazor Server bruger ikke SignalR",
+        "B": "Blazor WebAssembly kræver ekstra konfiguration for SignalR",
+        "C": "Blazor Server bruger SignalR internt, WebAssembly kræver eksplicit forbindelse",
+        "D": "Der er ingen forskel"
+      },
+      "correctAnswers": ["C"],
+      "explanations": {
+        "A": "❌ Blazor Server bruger faktisk SignalR internt til kommunikation.",
+        "B": "❌ Begge kræver konfiguration, men på forskellige måder.",
+        "C": "✅ Blazor Server bruger SignalR internt, mens WebAssembly kræver eksplicit forbindelse til SignalR Hub.",
+        "D": "❌ Der er betydelige forskelle i hvordan de håndterer SignalR."
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvilken metode bruges til at sende beskeder til alle forbundne klienter?",
+      "options": {
+        "A": "SendToAllAsync()",
+        "B": "BroadcastAsync()",
+        "C": "Clients.All.SendAsync()",
+        "D": "SendToEveryoneAsync()"
+      },
+      "correctAnswers": ["C"],
+      "explanations": {
+        "A": "❌ SendToAllAsync() er ikke en standard SignalR metode.",
+        "B": "❌ BroadcastAsync() er ikke en standard SignalR metode.",
+        "C": "✅ Clients.All.SendAsync() er den korrekte måde at sende til alle klienter.",
+        "D": "❌ SendToEveryoneAsync() er ikke en standard SignalR metode."
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvordan håndterer man connection state i Blazor WebAssembly med SignalR?",
+      "options": {
+        "A": "Ved at bruge HubConnectionState enum",
+        "B": "Ved at tjekke HubConnection.State property",
+        "C": "Ved at bruge ConnectionState interface",
+        "D": "Ved at implementere IConnectionState"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ HubConnectionState er ikke et enum, men en property.",
+        "B": "✅ HubConnection.State property giver information om forbindelsens tilstand.",
+        "C": "❌ ConnectionState interface findes ikke i SignalR.",
+        "D": "❌ IConnectionState interface findes ikke i SignalR."
+      }
+    }
+  ]
+}
