@@ -13,6 +13,7 @@ En service er et middel til at levere værdi til kunder ved at facilitere de res
 - Software support
 - Network connectivity (se [[Cisco CCNA/OSI-Modellen]] for netværkslag)
 
+
 ### **Value**
 Værdi er den nyttige del af en service, som er defineret af kunden og leveret gennem service output og outcome.
 
@@ -105,6 +106,14 @@ Service Value Chain er en central aktivitet, der omfatter alle aktiviteter og wo
 ## ITIL 4 Fundament
 
 ### **7 Principper**
+
+> [!multi-column]
+> 
+> ![[ITIL7.png]]
+> 
+> > ITIL 4's 7 principper giver en grundlæggende ramme for effektiv IT Service Management. Disse principper hjælper organisationer med at skabe værdi gennem services og forbedre deres service management praksis.
+> > 
+> > Principperne fokuserer på at skabe værdi, starte hvor man er, og arbejde iterativt med feedback for at opnå bedre resultater.
 
 #### **1. Focus on Value**
 Alt hvad vi gør, skal skabe værdi for kunder og stakeholders.
