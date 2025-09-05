@@ -4,40 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "022df5f778b3b8f5",
+        "id": "7aca739353d79828",
         "type": "tabs",
         "children": [
           {
-            "id": "dab0a3ccc44500fc",
+            "id": "c23d559a304926ba",
             "type": "leaf",
-            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Welcome.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Welcome"
+            }
+          }
+        ]
+      },
+      {
+        "id": "6661ee1fa07ac0ee",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9112a75a5fae4b26",
+            "type": "leaf",
             "state": {
               "type": "graph",
               "state": {},
-              "pinned": true,
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
-          },
-          {
-            "id": "7f8678176ae8be8c",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "CSharp/CSharp-Bogen/Canva.canvas",
-                "viewState": {
-                  "x": 1676.5824918812032,
-                  "y": 1223.8697238531113,
-                  "zoom": -2.9104317914873494
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Canva"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -57,7 +57,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -94,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 310.5040512084961
+    "width": 300
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GF1/Spotify Klon.md",
+                "file": "Welcome.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Spotify Klon"
+              "title": "Backlinks for Welcome"
             }
           },
           {
@@ -129,12 +129,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "GF1/Spotify Klon.md",
+                "file": "Welcome.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Spotify Klon"
+              "title": "Outgoing links from Welcome"
             }
           },
           {
@@ -158,31 +158,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GF1/Spotify Klon.md",
+                "file": "Welcome.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Spotify Klon"
-            }
-          },
-          {
-            "id": "172545d0481928dd",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "title": "Outline of Welcome"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,61 +182,61 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-excalidraw-plugin:New drawing": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Create new base": false
     }
   },
-  "active": "7f8678176ae8be8c",
+  "active": "c23d559a304926ba",
   "lastOpenFiles": [
-    "GF1/Spotify Klon.md",
-    "CSS/CSS Spil.md",
-    "CSS",
-    "Untitled 1",
-    "Untitled",
-    "Assets/Pasted image 20250904234705.png",
-    "CSharp/MailService.md",
-    "Infrastruktur/IT-ServiceManagment.md",
-    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
-    "CSharp/SignalR/SignalR.md",
-    "Assets/Pasted image 20250904233108.png",
-    "Assets/Pasted image 20250904233058.png",
-    "Opgaver/Opgaver Oversigt.base",
-    "H1/Oversigt.md",
-    "CSharp/SignalR",
-    "Opgaver/Opgaver oversigt.md",
+    "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
     "Opgaver/Visualisere Benzinpriser.md",
-    "CSharp/CSharp.md",
-    "Assets/Pasted image 20250904232439.png",
     "Opgaver/Selvvalgt API Projekt.md",
+    "Opgaver/Opgaver Oversigt.base",
+    "Opgaver/CTF - Capture The Flag",
     "Opgaver/Binær Kodeomformer.md",
-    "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
-    "Assets/Pasted image 20250904231431.png",
-    "Assets/Pasted image 20250904231424.png",
-    "CSharp/CSharp-Bogen/Canva.canvas",
-    "GF2/Canva.canvas",
-    "Welcome.md",
-    "Excalidraw/Drawing 2025-09-04 23.04.55.excalidraw.md",
-    "Excalidraw",
-    "README.md",
-    "quartz.config.ts",
-    "package.json",
-    "Assets/Pasted image 20250904225510.png",
-    "Assets/Pasted image 20250904225432.png",
-    "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
+    "Opgaver",
+    "Infrastruktur/Cisco CCNA/OSI-Modellen.md",
     "Infrastruktur/Cisco CCNA/Cisco - Netacad.md",
     "Infrastruktur/Cisco CCNA/CCNA for programmør.md",
     "Infrastruktur/Cisco CCNA/16. Network Security Fundamentals.md",
-    "Assets/Pasted image 20250904224536.png",
-    "Assets/Pasted image 20250904224530.png",
     "Infrastruktur/Cisco CCNA/15. Application Layer.md",
     "Infrastruktur/Cisco CCNA/14. Transport Layer.md",
     "Infrastruktur/Cisco CCNA/11. IPv4 Addressing.md",
     "Infrastruktur/Cisco CCNA/09. Address Resolution.md",
     "Infrastruktur/Cisco CCNA/08. Network Layer.md",
     "Infrastruktur/Cisco CCNA/06. Data Link Layer.md",
-    "Assets/3.7.9-lab---install-wireshark.pdf",
-    "Assets/1.9.3-lab---research-it-and-networking-job-opportunities.pdf",
-    "CSharp/Blazor/Overview.canvas"
+    "Infrastruktur/Active-Diretory/Oversigt.md",
+    "Infrastruktur/Cisco CCNA/05. Number Systems.md",
+    "Infrastruktur/Cisco CCNA/04. Physical Layer.md",
+    "Infrastruktur/Cisco CCNA/03. Protocols and Models.md",
+    "Infrastruktur/Cisco CCNA/01. Networking Today.md",
+    "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
+    "Infrastruktur/Cisco CCNA",
+    "Infrastruktur/IT-ServiceManagment.md",
+    "Infrastruktur/Active-Diretory",
+    "Infrastruktur",
+    "CSharp/Web API med CSharp/Swagger.md",
+    "CSharp/Web API med CSharp/Scalar.md",
+    "CSharp/Web API med CSharp/Rolles and Permisions.md",
+    "CSharp/Web API med CSharp/Rate Limiting.md",
+    "CSharp/Web API med CSharp/Oversigt.md",
+    "CSharp/CSharp-Bogen/Canva.canvas",
+    "CSharp/Blazor/Overview.canvas",
+    "CSharp/Web API med CSharp",
+    "CSharp/SignalR",
+    "CSharp/Dotnet",
+    "CSharp/CSharp-Bogen",
+    "Assets/Pasted image 20250904224530.png",
+    "Assets/Pasted image 20250904224525.png",
+    "Assets/Pasted image 20250904224458.png",
+    "Assets/Pasted image 20250904224451.png",
+    "Assets/Pasted image 20250904223538.png",
+    "Assets/Pasted image 20250904223533.png",
+    "Assets/Pasted image 20250904222553.png",
+    "Assets/Pasted image 20250904220942.png",
+    "Assets/Pasted image 20250904220928.png",
+    "GF2/Canva.canvas",
+    "CSharp-Bogen/Canva.canvas",
+    "Blazor/Overview.canvas",
+    "Assets/Pasted image 20250904191921.png"
   ]
 }
