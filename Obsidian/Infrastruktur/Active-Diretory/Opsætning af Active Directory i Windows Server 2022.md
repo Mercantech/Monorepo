@@ -16,3 +16,6 @@
 - [Windows Server 2022 Features](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-2022)
 
 
+## Opsætning af Active Directory i DH Datacenter
+
+I har enten fået udleveret en IP-adresse og adgangskode af jeres underviser eller fået et link til, hvor I kan booke en lokal Windows Server 2022 Maskine. Når vi har det, skal vi forbi
