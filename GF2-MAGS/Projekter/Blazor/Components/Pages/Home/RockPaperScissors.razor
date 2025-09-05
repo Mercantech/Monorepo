@@ -1,0 +1,42 @@
+@page "/rockpaperscissors"
+
+<div class="game-hero text-center py-5 mb-4">
+    <h1 class="display-4 fw-bold mb-3">Sten, Saks, Papir</h1>
+    <p class="lead mb-0">Spil mod computeren og se, hvem der vinder!</p>
+</div>
+
+<div class="container game-content">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg mb-5 border-0 game-card">
+                <div class="card-body p-5">
+                    <h2 class="h4 mb-3 text-primary fw-semibold">Sådan spiller du:</h2>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item">Vælg sten, saks eller papir.</li>
+                        <li class="list-group-item">Computeren vælger også én af mulighederne.</li>
+                        <li class="list-group-item">Programmet afgør vinderen og holder styr på point.</li>
+                        <li class="list-group-item"><em>Ekstra:</em> Spil flere runder og se den samlede score!</li>
+                    </ul>
+                    <div class="alert alert-info mt-4">
+                        <strong>Tip:</strong> Prøv at lave din egen strategi – og se, om du kan slå computeren flere gange i træk!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.game-hero {
+    background: linear-gradient(90deg, #1b6ec2 0%, #3a0647 100%);
+    color: #fff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+}
+.game-content {
+    margin-top: -40px;
+}
+.game-card {
+    border-radius: 1.5rem;
+}
+</style>

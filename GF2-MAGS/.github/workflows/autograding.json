@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "TestInt1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestDouble1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestStrings1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestBool1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestStringInterpolation",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestFloat1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestChar1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestDecimal1",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestString1_Input",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestInt1_Input",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestDouble1_Input",
+      "run": "",
+      "points": 8.33
+    },
+    {
+      "name": "TestBool1_Input",
+      "run": "",
+      "points": 8.37
+    }
+  ]
+}

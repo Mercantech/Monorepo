@@ -1,0 +1,150 @@
+﻿@code {
+    private Dictionary<string, bool> expandedSections = new()
+    {
+        {"Hjemmet", true},
+        {"Enterprise", false},
+        {"Kontoret", false}
+    };
+
+    private void ToggleSection(string sectionName)
+    {
+        if (expandedSections.ContainsKey(sectionName))
+        {
+            expandedSections[sectionName] = !expandedSections[sectionName];
+        }
+    }
+}
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">GF2</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="nav flex-column">
+        <!-- Forside -->
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Forside
+            </NavLink>
+        </div>
+
+        <!-- Hjemmet Section -->
+        <div class="nav-group">
+            <div class="nav-group-header px-3" @onclick="@(() => ToggleSection("Hjemmet"))">
+                <span class="bi bi-house-fill" aria-hidden="true"></span> Hjemmet
+                <span class="bi @(expandedSections["Hjemmet"] ? "bi-chevron-down" : "bi-chevron-right") ms-auto"></span>
+            </div>
+            @if (expandedSections["Hjemmet"])
+            {
+                <div class="nav-group-items">
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="hjemmet">
+                            <span class="bi bi-grid-fill" aria-hidden="true"></span> Oversigt
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="guessanumber">
+                            <span class="bi bi-question-circle" aria-hidden="true"></span> Gæt et tal
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="rockpaperscissors">
+                            <span class="bi bi-hand-index-thumb" aria-hidden="true"></span> Sten, Saks, Papir
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="tic-tac-toe">
+                            <span class="bi bi-grid-3x3" aria-hidden="true"></span> Tic Tac Toe
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="four-in-a-row">
+                            <span class="bi bi-circle-fill" aria-hidden="true"></span> Four in a Row
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="type-racer">
+                            <span class="bi bi-keyboard" aria-hidden="true"></span> Type Racer
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="wordle">
+                            <span class="bi bi-fonts" aria-hidden="true"></span> Wordle
+                        </NavLink>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Kontoret Section -->
+        <div class="nav-group">
+            <div class="nav-group-header px-3" @onclick="@(() => ToggleSection("Kontoret"))">
+                <span class="bi bi-briefcase" aria-hidden="true"></span> Kontoret
+                <span class="bi @(expandedSections["Kontoret"] ? "bi-chevron-down" : "bi-chevron-right") ms-auto"></span>
+            </div>
+            @if (expandedSections["Kontoret"])
+            {
+                <div class="nav-group-items">
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="kontoret">
+                            <span class="bi bi-grid-fill" aria-hidden="true"></span> Oversigt
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="kontoret/landing">
+                            <span class="bi bi-grid-fill" aria-hidden="true"></span> Landing
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="kontoret/aboutus">
+                            <span class="bi bi-people" aria-hidden="true"></span> Om os
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="kontoret/binaryconverter">
+                            <span class="bi bi-code-slash" aria-hidden="true"></span> Binærkodeomformer
+                        </NavLink>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Enterprise Section -->
+        <div class="nav-group">
+            <div class="nav-group-header px-3" @onclick="@(() => ToggleSection("Enterprise"))">
+                <span class="bi bi-building" aria-hidden="true"></span> Enterprise
+                <span class="bi @(expandedSections["Enterprise"] ? "bi-chevron-down" : "bi-chevron-right") ms-auto"></span>
+            </div>
+            @if (expandedSections["Enterprise"])
+            {
+                <div class="nav-group-items">
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="enterprice">
+                            <span class="bi bi-grid-fill" aria-hidden="true"></span> Oversigt
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="enterprice/adusers">
+                            <span class="bi bi-person-lines-fill" aria-hidden="true"></span> Brugeroversigt
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="enterprice/adgroups">
+                            <span class="bi bi-people-fill" aria-hidden="true"></span> Gruppeoversigt
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-4">
+                        <NavLink class="nav-link" href="enterprice/timemanagment">
+                            <span class="bi bi-clock-history" aria-hidden="true"></span> Stemple ind/ud
+                        </NavLink>
+                    </div>
+                </div>
+            }
+        </div>
+    </nav>
+</div>
+

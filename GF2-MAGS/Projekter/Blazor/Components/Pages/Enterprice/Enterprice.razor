@@ -1,0 +1,85 @@
+@page "/enterprice"
+
+<div class="enterprise-hero text-center py-5 mb-4">
+    <h1 class="display-3 fw-bold mb-3">Enterprise</h1>
+    <p class="lead mb-0">Programmering for større virksomheder</p>
+</div>
+
+<div class="container enterprise-content">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg mb-5 border-0 enterprise-card">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4 text-primary fw-semibold">Velkommen til Enterprise</h2>
+                    <p class="mb-4">
+                        I dette projekt er fokus på at <span class="fw-bold">automatisere, sikre og dokumentere processer</span> i en større virksomhed.
+                    </p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/enterprice/adusers">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">👤</div>
+                                    <h4 class="fw-bold mb-2">Brugeroversigt i et AD</h4>
+                                    <p class="mb-0 small">Lav et C# program der med LDAP, forbinder til jeres AD og henter alle jeres brugere! <em>Ekstra:</em> Lav en oversigt (gerne i Blazor), med detaljer omkring jeres brugere!</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/enterprice/adgroups">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">👥</div>
+                                    <h4 class="fw-bold mb-2">Gruppeoversigt fra et AD</h4>
+                                    <p class="mb-0 small">Udvid C# programmet til også at hente alle grupper. <em>Ekstra:</em> Lav en oversigt over alle medlemmer for hver gruppe.</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/enterprice/timemanagment">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">⏰</div>
+                                    <h4 class="fw-bold mb-2">Stemple ind og ud-system</h4>
+                                    <p class="mb-0 small">Brugere stemple ind/ud ved at indtaste navn eller ID. <em>Ekstra:</em> Integrér med AD eller lav ID-kort-simulering.</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div class="col-md-6">
+                            <NavLink class="text-decoration-none" href="/enterprice">
+                                <div class="feature-box p-4 h-100 rounded-4 bg-light shadow-sm">
+                                    <div class="display-5 mb-2">💡</div>
+                                    <h4 class="fw-bold mb-2">Find på jeres egne værktøjer!</h4>
+                                    <p class="mb-0 small">F.eks. overvågning af netværkstrafik, et helpdesk-system eller automatiseret dokumentation.</p>
+                                </div>
+                            </NavLink>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <em class="text-secondary">Målet er at I får trænet scripting og programmering i en kontekst, der matcher den virkelige IT-verden.</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.enterprise-hero {
+    background: linear-gradient(90deg, #3a0647 0%, #1b6ec2 100%);
+    color: #fff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 32px rgba(58,6,71,0.10);
+}
+.enterprise-content {
+    margin-top: -40px;
+}
+.enterprise-card {
+    border-radius: 1.5rem;
+}
+.feature-box {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-box:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(27,110,194,0.10);
+    background: #eaf1fb;
+}
+</style>
