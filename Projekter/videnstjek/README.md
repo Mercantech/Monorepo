@@ -1,4 +1,4 @@
-# Videnstjek - Quiz App
+# Videnstjek - Quiz App - [Repo](https://github.com/Mercantech/videnstjek)
 
 En moderne, interaktiv quiz-app bygget med Blazor WebAssembly til at hjælpe elever med at teste deres viden.
 
