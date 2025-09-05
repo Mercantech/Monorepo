@@ -5,9 +5,14 @@
     <p class="lead mb-0">Kan du gætte det hemmelige tal, computeren har valgt?</p>
 </div>
 
+@if (!string.IsNullOrEmpty(feedback) && gameOver)
+{
+    <div class="alert alert-success mt-3">@feedback</div> <br /><br />
+}
+
 <div class="container game-content">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
+    <div class="three-col-row">
+        <div class="rules-col">
             <div class="card shadow-lg mb-5 border-0 game-card">
                 <div class="card-body p-5">
                     <h2 class="h4 mb-3 text-primary fw-semibold">Sådan spiller du:</h2>
@@ -22,8 +27,156 @@
                 </div>
             </div>
         </div>
+        <div class="number-col">
+            <div class="number-range-focus">
+                <div class="number-range-grid grid-10x10">
+                    @for (int row = 0; row < 10; row++)
+                    {
+                        <div class="number-row">
+                            @for (int col = 0; col < 10; col++)
+                            {
+                                int n = row * 10 + col + 1;
+                                if (possibleNumbers.Contains(n))
+                                {
+                                    <button class="number-btn big-btn" @onclick="() => GuessNumber(n)" disabled="@gameOver">@n</button>
+                                }
+                                else
+                                {
+                                    <button class="number-btn big-btn" disabled>@n</button>
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="history-col">
+            <div class="card shadow-lg mb-5 border-0 game-card">
+                <div class="card-body p-4">
+                    <h2 class="h5 mb-3 text-primary fw-semibold">Dine gæt:</h2>
+                    @if (gameOver)
+                    {
+                        <button class="btn btn-secondary mt-2" @onclick="RestartGame">Spil igen</button> <br /><br />
+                    }
+                    <ul class="guess-list">
+                        @foreach (var entry in guessEntries.AsEnumerable().Reverse())
+                        {
+                            <li class="guess-item">
+                                <span class="guess-number">@entry.Number</span>
+                                <span class="guess-feedback @entry.FeedbackClass">
+                                    @entry.Feedback
+                                    @if (entry.Arrow != null)
+                                    {
+                                        <span class="arrow">@entry.Arrow</span>
+                                    }
+                                </span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+@code {
+    private int min = 1;
+    private int max = 100;
+    private int secretNumber;
+    private int attempts = 0;
+    private int currentGuess;
+    private string feedback = string.Empty;
+    private bool gameOver = false;
+
+    private List<GuessEntry> guessEntries = new();
+    private List<int> possibleNumbers = new();
+
+    protected override void OnInitialized()
+    {
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        var random = new Random();
+        secretNumber = random.Next(min, max + 1);
+        attempts = 0;
+        guessEntries.Clear();
+        feedback = string.Empty;
+        gameOver = false;
+        currentGuess = min;
+        possibleNumbers = Enumerable.Range(min, max).ToList();
+    }
+
+    private void GuessNumber(int n)
+    {
+        currentGuess = n;
+        CheckGuess();
+    }
+
+    private void CheckGuess()
+    {
+        if (gameOver)
+            return;
+
+        if (currentGuess < min || currentGuess > max)
+        {
+            feedback = $"Dit gæt skal være mellem {min} og {max}.";
+            return;
+        }
+
+        attempts++;
+        string entryFeedback;
+        string arrow = null;
+        string feedbackClass = "";
+
+        if (currentGuess < secretNumber)
+        {
+            entryFeedback = "For lavt";
+            arrow = "⬆";
+            feedbackClass = "low";
+            feedback = "For lavt! Prøv igen.";
+            possibleNumbers = possibleNumbers.Where(x => x > currentGuess).ToList();
+        }
+        else if (currentGuess > secretNumber)
+        {
+            entryFeedback = "For højt";
+            arrow = "⬇";
+            feedbackClass = "high";
+            feedback = "For højt! Prøv igen.";
+            possibleNumbers = possibleNumbers.Where(x => x < currentGuess).ToList();
+        }
+        else
+        {
+            entryFeedback = "Korrekt!";
+            feedbackClass = "correct";
+            feedback = $"Tillykke! Du gættede rigtigt på {attempts} forsøg.";
+            gameOver = true;
+        }
+
+        guessEntries.Add(new GuessEntry
+        {
+            Number = currentGuess,
+            Feedback = entryFeedback,
+            Arrow = arrow,
+            FeedbackClass = feedbackClass
+        });
+    }
+
+    private void RestartGame()
+    {
+        StartGame();
+    }
+
+    private class GuessEntry
+    {
+        public int Number { get; set; }
+        public string Feedback { get; set; }
+        public string Arrow { get; set; }
+        public string FeedbackClass { get; set; }
+    }
+}
 
 <style>
 .game-hero {
@@ -31,6 +184,8 @@
     color: #fff;
     border-radius: 0 0 2rem 2rem;
     box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+    margin-top: -20px;
+
 }
 .game-content {
     margin-top: -40px;
@@ -38,4 +193,93 @@
 .game-card {
     border-radius: 1.5rem;
 }
+.guess-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.guess-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: #f8f9fa;
+    box-shadow: 0 1px 4px rgba(27,110,194,0.05);
+}
+.guess-number {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    color: #1b6ec2;
+}
+.guess-feedback {
+    font-size: 1rem;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.guess-feedback.low {
+    color: #c2410c;
+}
+.guess-feedback.high {
+    color: #be185d;
+}
+.guess-feedback.correct {
+    color: #059669;
+    font-weight: bold;
+}
+.arrow {
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
+}
+.number-range-focus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 2.5rem 0;
+    padding: 2rem 0;
+    background: #f3f6fa;
+    border-radius: 2rem;
+    box-shadow: 0 6px 32px rgba(27,110,194,0.10);
+}
+.number-range-grid.grid-10x10 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+.number-row {
+    display: flex;
+    gap: 0.5rem;
+}
+.number-btn.big-btn {
+    width: 4.2rem;
+    height: 4.2rem;
+    font-size: 2rem;
+    border-radius: 1.5rem;
+}
+.three-col-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+.rules-col, .number-col, .history-col {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0 1.2rem;
+}
+.rules-col, .history-col {
+    min-width: 270px;
+}
+.number-col {
+    max-width: 520px;
+}
+
 </style>

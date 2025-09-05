@@ -1,4 +1,5 @@
 @page "/enterprice/adgroups"
+@inject Konsol.Enterprice.ADService ADService
 
 <div class="game-hero text-center py-5 mb-4">
     <h1 class="display-4 fw-bold mb-3">Gruppeoversigt (Active Directory)</h1>
@@ -7,17 +8,55 @@
 
 <div class="container game-content">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
             <div class="card shadow-lg mb-5 border-0 game-card">
-                <div class="card-body p-5">
-                    <h2 class="h4 mb-3 text-primary fw-semibold">Sådan gør du:</h2>
-                    <ul class="list-group list-group-flush mb-4">
-                        <li class="list-group-item">Forbind til jeres AD og hent alle grupper.</li>
-                        <li class="list-group-item">Vis grupperne i en oversigt – fx som en tabel eller liste.</li>
-                        <li class="list-group-item"><em>Ekstra:</em> Vis medlemmer for hver gruppe.</li>
-                    </ul>
-                    <div class="alert alert-info mt-4">
-                        <strong>Tip:</strong> Prøv at lave klikbare grupper, så man kan se medlemmerne!</div>
+                <div class="card-body p-4">
+                    <h2 class="h4 mb-4 text-primary fw-semibold">
+                        <i class="bi bi-people"></i> AD-grupper og medlemmer
+                    </h2>
+                    @if (groupsWithMembers == null)
+                    {
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border text-primary me-3" role="status"></div>
+                            <span>Indlæser grupper og medlemmer...</span>
+                        </div>
+                    }
+                    else if (groupsWithMembers.Count == 0)
+                    {
+                        <div class="alert alert-warning mb-0">
+                            <i class="bi bi-exclamation-triangle"></i> Ingen grupper fundet.
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var group in groupsWithMembers)
+                        {
+                            <div class="card mb-2">
+                                <div class="card-header d-flex justify-content-between align-items-center" style="cursor:pointer;" @onclick="() => ToggleGroup(group.Key)">
+                                    <span><i class="bi bi-people me-2"></i>@group.Key</span>
+                                    <i class="bi" style="font-size:1.2em;" @(expandedGroup == group.Key ? "bi-caret-down-fill" : "bi-caret-right-fill")></i>
+                                </div>
+                                @if (expandedGroup == group.Key)
+                                {
+                                    <div class="card-body">
+                                        @if (group.Value.Count == 0)
+                                        {
+                                            <span class="text-muted">Ingen medlemmer</span>
+                                        }
+                                        else
+                                        {
+                                            <ul class="mb-0">
+                                                @foreach (var member in group.Value)
+                                                {
+                                                    <li>@member</li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -30,6 +69,7 @@
     color: #fff;
     border-radius: 0 0 2rem 2rem;
     box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+    margin-top: -20px;
 }
 .game-content {
     margin-top: -40px;
@@ -37,4 +77,32 @@
 .game-card {
     border-radius: 1.5rem;
 }
+.card-header {
+    background: #f8f9fa;
+    font-weight: 500;
+}
+.card.mb-2 {
+    border-radius: 1rem;
+}
 </style>
+
+@code {
+    private Dictionary<string, List<string>> groupsWithMembers;
+    private string expandedGroup;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(() =>
+        {
+            groupsWithMembers = ADService.GetAllGroupsWithMembers();
+        });
+    }
+
+    private void ToggleGroup(string group)
+    {
+        if (expandedGroup == group)
+            expandedGroup = null;
+        else
+            expandedGroup = group;
+    }
+}
