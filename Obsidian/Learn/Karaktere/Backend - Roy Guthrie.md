@@ -3,11 +3,16 @@ Roy Guthrie underviser i Backend Development - Primært omkring ASP.NET Core og 
 ## De to profiler bag navnet:
 
 ### Roy Fielding
-**Hvem:** Amerikansk datalog og en af skaberne af HTTP-protokollen. Han er bredt anerkendt som "faderen" til REST (Representational State Transfer), som han definerede i sin doktorafhandling i 2000.
-**Hvorfor vigtig:** Han lagde grundstenene for den arkitektur, der ligger til grund for næsten alle moderne web-API'er. Hans principper er kernen i, hvordan vi designer og bygger services, der er skalerbare og interoperable.
+>[!multi-column]
+>**Hvem:** Amerikansk datalog og en af skaberne af HTTP-protokollen. Han er bredt anerkendt som "faderen" til REST (Representational State Transfer), som han definerede i sin doktorafhandling i 2000.
+>**Hvorfor vigtig:** Han lagde grundstenene for den arkitektur, der ligger til grund for næsten alle moderne web-API'er. Hans principper er kernen i, hvordan vi designer og bygger services, der er skalerbare og interoperable.
+>>![[Pasted image 20250906223054.png]]
 
 ### Scott Guthrie
-**Hvem:** Executive Vice President for Microsofts Cloud + AI-gruppe og en af de mest indflydelsesrige personer i Microsofts softwarehistorie.
+>[!multi-column]
+>![[Pasted image 20250906223115.png]]
+>>**Hvem:** Executive Vice President for Microsofts Cloud + AI-gruppe og en af de mest indflydelsesrige personer i Microsofts softwarehistorie.
+
 **Hvorfor vigtig:** Han har spillet en afgørende rolle i udviklingen af ASP.NET og ASP.NET Core, som er de primære frameworks til at bygge backend-applikationer og REST API'er i C#. Han er kendt for sin evne til at forklare komplekse teknologier på en letforståelig måde, og hans arbejde har formet .NET-økosystemet.
 
 ## Design og personlighed af Roy Guthrie

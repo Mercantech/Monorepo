@@ -3,14 +3,16 @@ Ray Ingres underviser i SQL - Primært omkring PostgreSQL. Han er opkaldt efter 
 ## De to profiler bag navnet:
 
 ### Raymond F. Boyce
-![[Pasted image 20250906222354.png]]
-**Hvem:** Amerikansk datalog og forsker hos IBM i 1970'erne.
-**Hvorfor vigtig:** Han var **medudvikler af SQL** sammen med Donald D. Chamberlin. De to skabte det første SQL-sprog (Structured Query Language) i 1970, som blev kaldt SEQUEL (Structured English Query Language). SQL er i dag det mest udbredte sprog til databashåndtering og er standarden for relationelle databaser.
+>[!multi-column]
+>![[Pasted image 20250906222354.png]]
+>>**Hvem:** Amerikansk datalog og forsker hos IBM i 1970'erne.
+>>**Hvorfor vigtig:** Han var **medudvikler af SQL** sammen med Donald D. Chamberlin. De to skabte det første SQL-sprog (Structured Query Language) i 1970, som blev kaldt SEQUEL (Structured English Query Language). SQL er i dag det mest udbredte sprog til databashåndtering og er standarden for relationelle databaser.
 
 ### Ingres (Interactive Graphics and Retrieval System)
-![[Pasted image 20250906222457.png]]
-**Hvem:** Et forskningsprojekt ved University of California, Berkeley i 1970'erne.
-**Hvorfor vigtig:** Ingres var **forløberen til PostgreSQL** og blev udviklet af Michael Stonebraker og hans team. Projektet var banebrydende for moderne databaser og introducerede mange koncepter, der stadig bruges i dag. PostgreSQL (Post-Ingres) er direkte bygget på Ingres' fundament og er en af de mest avancerede open-source databaser.
+>[!multi-column]
+>![[Pasted image 20250906222457.png]]
+>>**Hvem:** Et forskningsprojekt ved University of California, Berkeley i 1970'erne.
+>>**Hvorfor vigtig:** Ingres var **forløberen til PostgreSQL** og blev udviklet af Michael Stonebraker og hans team. Projektet var banebrydende for moderne databaser og introducerede mange koncepter, der stadig bruges i dag. PostgreSQL (Post-Ingres) er direkte bygget på Ingres' fundament og er en af de mest avancerede open-source databaser.
 
 ## Design og personlighed af Ray Ingres
 
