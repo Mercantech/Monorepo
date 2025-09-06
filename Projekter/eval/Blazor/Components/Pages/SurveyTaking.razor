@@ -186,28 +186,20 @@ else
 
                                     case QuestionType.Rating:
                                         <div class="rating-scale">
-                                            <div class="scale-marks">
-                                                @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 5); i++)
-                                                {
-                                                    <div class="scale-mark"></div>
-                                                }
-                                            </div>
-                                            <div class="scale-labels">
-                                                @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 5); i++)
-                                                {
-                                                    <div class="scale-label">@i</div>
-                                                }
-                                            </div>
-                                            <input type="range" 
-                                                   class="form-range" 
-                                                   min="@(question.MinValue ?? 1)" 
-                                                   max="@(question.MaxValue ?? 5)" 
-                                                   step="1"
-                                                   value="@(responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 5)) / 2)"
-                                                   @onchange="@((ChangeEventArgs e) => responses[question.Id].NumericValue = int.Parse(e.Value?.ToString() ?? "3"))" />
-                                            <div class="rating-value-display">
-                                                <div class="rating-value-badge">
-                                                    @(responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 5)) / 2)
+                                            <div class="scale-container">
+                                                <input type="range" 
+                                                       class="form-range" 
+                                                       min="@(question.MinValue ?? 1)" 
+                                                       max="@(question.MaxValue ?? 5)" 
+                                                       step="1"
+                                                       value="@(responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 5)) / 2)"
+                                                       @onchange="@((ChangeEventArgs e) => responses[question.Id].NumericValue = int.Parse(e.Value?.ToString() ?? "3"))" />
+                                                <div class="scale-labels">
+                                                    @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 5); i++)
+                                                    {
+                                                        var currentValue = responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 5)) / 2;
+                                                        <div class="scale-label @(i == currentValue ? "selected" : "")">@i</div>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -215,28 +207,20 @@ else
 
                                     case QuestionType.Scale:
                                         <div class="rating-scale">
-                                            <div class="scale-marks">
-                                                @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 10); i++)
-                                                {
-                                                    <div class="scale-mark"></div>
-                                                }
-                                            </div>
-                                            <div class="scale-labels">
-                                                @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 10); i++)
-                                                {
-                                                    <div class="scale-label">@i</div>
-                                                }
-                                            </div>
-                                            <input type="range" 
-                                                   class="form-range" 
-                                                   min="@(question.MinValue ?? 1)" 
-                                                   max="@(question.MaxValue ?? 10)" 
-                                                   step="1"
-                                                   value="@(responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 10)) / 2)"
-                                                   @onchange="@((ChangeEventArgs e) => responses[question.Id].NumericValue = int.Parse(e.Value?.ToString() ?? "5"))" />
-                                            <div class="rating-value-display">
-                                                <div class="rating-value-badge">
-                                                    @(responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 10)) / 2)
+                                            <div class="scale-container">
+                                                <input type="range" 
+                                                       class="form-range" 
+                                                       min="@(question.MinValue ?? 1)" 
+                                                       max="@(question.MaxValue ?? 10)" 
+                                                       step="1"
+                                                       value="@(responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 10)) / 2)"
+                                                       @onchange="@((ChangeEventArgs e) => responses[question.Id].NumericValue = int.Parse(e.Value?.ToString() ?? "5"))" />
+                                                <div class="scale-labels">
+                                                    @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 10); i++)
+                                                    {
+                                                        var currentValue = responses[question.Id].NumericValue ?? ((question.MinValue ?? 1) + (question.MaxValue ?? 10)) / 2;
+                                                        <div class="scale-label @(i == currentValue ? "selected" : "")">@i</div>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
