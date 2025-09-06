@@ -23,6 +23,12 @@
                     <button class="btn btn-outline-secondary me-2" @onclick="SaveSurvey">
                         <i class="fas fa-save"></i> Gem
                     </button>
+                    @if (!isNewSurvey)
+                    {
+                        <button class="btn btn-outline-info me-2" @onclick="SaveAsNew">
+                            <i class="fas fa-copy"></i> Gem Som Ny
+                        </button>
+                    }
                     <button class="btn btn-primary" @onclick="AddQuestion">
                         <i class="fas fa-plus"></i> Tilføj Spørgsmål
                     </button>
@@ -36,6 +42,18 @@
         <div class="text-center py-5">
             <div class="spinner-border" role="status">
                 <span class="visually-hidden">Indlæser...</span>
+            </div>
+        </div>
+    }
+    else if (survey == null && isNewSurvey)
+    {
+        <div class="text-center py-5">
+            <div class="alert alert-danger">
+                <h4>Fejl ved oprettelse af ny undersøgelse</h4>
+                <p>Der opstod en fejl. Prøv at genindlæse siden.</p>
+                <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo("/admin")">
+                    <i class="fas fa-arrow-left"></i> Tilbage til Admin
+                </button>
             </div>
         </div>
     }
@@ -198,59 +216,79 @@
 
     protected override async Task OnInitializedAsync()
     {
-        isNewSurvey = SurveyId == 0;
-        
-        if (isNewSurvey)
+        try
         {
-            survey = new Survey
-            {
-                Title = "Ny Undersøgelse",
-                IsActive = true,
-                Questions = new List<Question>()
-            };
-        }
-        else
-        {
-            survey = await SurveyService.GetSurveyByIdAsync(SurveyId);
-            if (survey == null)
-            {
-                Navigation.NavigateTo("/admin");
-                return;
-            }
+            isNewSurvey = SurveyId == 0;
             
-            if (survey.ExpiresAt.HasValue)
+            if (isNewSurvey)
             {
-                expiresAtString = survey.ExpiresAt.Value.ToString("yyyy-MM-ddTHH:mm");
+                survey = new Survey
+                {
+                    Id = 0, // Sikrer auto-generering af ID
+                    Title = "Ny Undersøgelse",
+                    IsActive = true,
+                    Questions = new List<Question>()
+                };
             }
+            else
+            {
+                survey = await SurveyService.GetSurveyByIdAsync(SurveyId);
+                if (survey == null)
+                {
+                    await JS.InvokeVoidAsync("alert", "Undersøgelse ikke fundet. Du bliver omdirigeret til admin dashboard.");
+                    Navigation.NavigateTo("/admin");
+                    return;
+                }
+                
+                if (survey.ExpiresAt.HasValue)
+                {
+                    expiresAtString = survey.ExpiresAt.Value.ToString("yyyy-MM-ddTHH:mm");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", $"Fejl ved indlæsning: {ex.Message}");
+            survey = null;
         }
     }
 
     private async Task SaveSurvey()
     {
-        if (string.IsNullOrWhiteSpace(survey!.Title))
+        try
         {
-            await JS.InvokeVoidAsync("alert", "Titel er påkrævet");
-            return;
-        }
+            if (string.IsNullOrWhiteSpace(survey!.Title))
+            {
+                await JS.InvokeVoidAsync("alert", "Titel er påkrævet");
+                return;
+            }
 
-        if (!string.IsNullOrEmpty(expiresAtString) && DateTime.TryParse(expiresAtString, out var expiresAt))
-        {
-            survey.ExpiresAt = expiresAt;
-        }
-        else if (string.IsNullOrEmpty(expiresAtString))
-        {
-            survey.ExpiresAt = null;
-        }
+            if (!string.IsNullOrEmpty(expiresAtString) && DateTime.TryParse(expiresAtString, out var expiresAt))
+            {
+                survey.ExpiresAt = expiresAt;
+            }
+            else if (string.IsNullOrEmpty(expiresAtString))
+            {
+                survey.ExpiresAt = null;
+            }
 
-        if (isNewSurvey)
-        {
-            survey = await SurveyService.CreateSurveyAsync(survey);
-            Navigation.NavigateTo($"/admin/survey/{survey.Id}");
+            if (isNewSurvey)
+            {
+                survey = await SurveyService.CreateSurveyAsync(survey);
+                await JS.InvokeVoidAsync("alert", "Undersøgelse oprettet! Du bliver omdirigeret til redigering.");
+                Navigation.NavigateTo($"/admin/survey/{survey.Id}");
+            }
+            else
+            {
+                await SurveyService.UpdateSurveyAsync(survey);
+                await JS.InvokeVoidAsync("alert", "Undersøgelse gemt!");
+                StateHasChanged(); // Opdater UI
+            }
         }
-        else
+        catch (Exception ex)
         {
-            await SurveyService.UpdateSurveyAsync(survey);
-            await JS.InvokeVoidAsync("alert", "Undersøgelse gemt!");
+            await JS.InvokeVoidAsync("alert", $"Fejl ved gemning: {ex.Message}");
+            await JS.InvokeVoidAsync("console.error", ex.ToString());
         }
     }
 
@@ -284,6 +322,59 @@
         survey!.ExpiresAt = DateTime.Now.AddDays(30);
         expiresAtString = survey.ExpiresAt.Value.ToString("yyyy-MM-ddTHH:mm");
         StateHasChanged();
+    }
+
+    private async Task SaveAsNew()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(survey!.Title))
+            {
+                await JS.InvokeVoidAsync("alert", "Titel er påkrævet");
+                return;
+            }
+
+            // Opret ny survey baseret på den nuværende
+            var newSurvey = new Survey
+            {
+                Id = 0, // Sikrer auto-generering af ID
+                Title = $"{survey.Title} (Kopi)",
+                Description = survey.Description,
+                AccessCode = await SurveyService.GenerateUniqueAccessCodeAsync(),
+                IsActive = false, // Start som inaktiv
+                ExpiresAt = null, // Fjern udløbsdato
+                Questions = new List<Question>()
+            };
+
+            // Kopier spørgsmål
+            foreach (var question in survey.Questions.OrderBy(q => q.Order))
+            {
+                var newQuestion = new Question
+                {
+                    Id = 0, // Sikrer auto-generering af ID
+                    SurveyId = 0, // Vil blive sat når survey gemmes
+                    Text = question.Text,
+                    Description = question.Description,
+                    Type = question.Type,
+                    IsRequired = question.IsRequired,
+                    Order = question.Order,
+                    MinValue = question.MinValue,
+                    MaxValue = question.MaxValue,
+                    Options = question.Options
+                };
+
+                newSurvey.Questions.Add(newQuestion);
+            }
+
+            // Gem den nye survey
+            var savedSurvey = await SurveyService.CreateSurveyAsync(newSurvey);
+            await JS.InvokeVoidAsync("alert", $"Ny undersøgelse oprettet! Adgangskode: {savedSurvey.AccessCode}");
+            Navigation.NavigateTo($"/admin/survey/{savedSurvey.Id}");
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", $"Fejl ved oprettelse af ny undersøgelse: {ex.Message}");
+        }
     }
 
     private void OnExpiresAtChanged(ChangeEventArgs e)

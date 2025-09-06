@@ -55,6 +55,7 @@
                                     <li><a class="dropdown-item" href="/admin/survey/@survey.Id"><i class="fas fa-edit"></i> Rediger</a></li>
                                     <li><a class="dropdown-item" href="/admin/survey/@survey.Id/responses"><i class="fas fa-chart-bar"></i> Svar</a></li>
                                     <li><a class="dropdown-item" href="/survey/@survey.AccessCode" target="_blank"><i class="fas fa-external-link-alt"></i> Forhåndsvis</a></li>
+                                    <li><a class="dropdown-item" @onclick="() => DuplicateSurvey(survey.Id)"><i class="fas fa-copy"></i> Dupliker</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item text-danger" @onclick="() => DeleteSurvey(survey.Id)"><i class="fas fa-trash"></i> Slet</a></li>
                                 </ul>
@@ -116,8 +117,30 @@
     {
         if (await JS.InvokeAsync<bool>("confirm", "Er du sikker på, at du vil slette denne undersøgelse?"))
         {
-            await SurveyService.DeleteSurveyAsync(surveyId);
+            try
+            {
+                await SurveyService.DeleteSurveyAsync(surveyId);
+                await LoadSurveys();
+                await JS.InvokeVoidAsync("alert", "Undersøgelse slettet!");
+            }
+            catch (Exception ex)
+            {
+                await JS.InvokeVoidAsync("alert", $"Fejl ved sletning: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task DuplicateSurvey(int surveyId)
+    {
+        try
+        {
+            var duplicatedSurvey = await SurveyService.DuplicateSurveyAsync(surveyId);
             await LoadSurveys();
+            await JS.InvokeVoidAsync("alert", $"Undersøgelse duplikeret! Ny adgangskode: {duplicatedSurvey.AccessCode}");
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", $"Fejl ved duplikering: {ex.Message}");
         }
     }
 }
