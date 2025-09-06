@@ -1,0 +1,341 @@
+@page "/admin/survey/{SurveyId:int}/question/{QuestionId:int}"
+@page "/admin/survey/{SurveyId:int}/question/new"
+@using Blazor.Data.Models
+@using Blazor.Services
+@inject SurveyService SurveyService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Spørgsmål Editor</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1>@(isNewQuestion ? "Nyt Spørgsmål" : "Rediger Spørgsmål")</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/survey/@SurveyId">@survey?.Title</a></li>
+                            <li class="breadcrumb-item active">@(isNewQuestion ? "Nyt Spørgsmål" : "Rediger Spørgsmål")</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div>
+                    <button class="btn btn-outline-secondary me-2" @onclick="Cancel">
+                        <i class="fas fa-times"></i> Annuller
+                    </button>
+                    <button class="btn btn-primary" @onclick="SaveQuestion">
+                        <i class="fas fa-save"></i> Gem
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (survey == null)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Spørgsmål Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Spørgsmålstekst *</label>
+                            <input type="text" class="form-control" @bind="question!.Text" placeholder="Indtast spørgsmålstekst">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Beskrivelse</label>
+                            <textarea class="form-control" @bind="question!.Description" rows="2" placeholder="Valgfri beskrivelse eller hjælpetekst"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Spørgsmålstype *</label>
+                                    <select class="form-select" @bind="question!.Type" @bind:after="OnQuestionTypeChanged">
+                                        <option value="@QuestionType.Text">Tekst</option>
+                                        <option value="@QuestionType.MultipleChoice">Flervalg</option>
+                                        <option value="@QuestionType.SingleChoice">Enkeltvalg</option>
+                                        <option value="@QuestionType.Rating">Bedømmelse</option>
+                                        <option value="@QuestionType.Scale">Skala</option>
+                                        <option value="@QuestionType.YesNo">Ja/Nej</option>
+                                        <option value="@QuestionType.Date">Dato</option>
+                                        <option value="@QuestionType.Number">Tal</option>
+                                        <option value="@QuestionType.Email">Email</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Rækkefølge</label>
+                                    <input type="number" class="form-control" @bind="question!.Order" min="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @bind="question!.IsRequired">
+                                <label class="form-check-label">Påkrævet spørgsmål</label>
+                            </div>
+                        </div>
+
+                        <!-- Rating/Scale specific settings -->
+                        @if (question!.Type == QuestionType.Rating || question!.Type == QuestionType.Scale)
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Minimum værdi</label>
+                                        <input type="number" class="form-control" @bind="question!.MinValue" min="0">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Maksimum værdi</label>
+                                        <input type="number" class="form-control" @bind="question!.MaxValue" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Multiple Choice / Single Choice options -->
+                        @if (question!.Type == QuestionType.MultipleChoice || question!.Type == QuestionType.SingleChoice)
+                        {
+                            <div class="mb-3">
+                                <label class="form-label">Valgmuligheder</label>
+                                <div class="options-container">
+                                    @for (int i = 0; i < options.Count; i++)
+                                    {
+                                        var index = i;
+                                        <div class="input-group mb-2">
+                                            <input type="text" class="form-control" @bind="options[index].Text" placeholder="Indtast valgmulighed">
+                                            <button class="btn btn-outline-danger" type="button" @onclick="() => RemoveOption(index)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    }
+                                    <button class="btn btn-outline-primary btn-sm" @onclick="AddOption">
+                                        <i class="fas fa-plus"></i> Tilføj Valgmulighed
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- Preview -->
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Forhåndsvisning</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="question-preview">
+                            <h6>@(string.IsNullOrEmpty(question!.Text) ? "Spørgsmålstekst" : question.Text)</h6>
+                            @if (!string.IsNullOrEmpty(question.Description))
+                            {
+                                <p class="text-muted small">@question.Description</p>
+                            }
+                            
+                            @if (question.Type == QuestionType.Text)
+                            {
+                                <input type="text" class="form-control" placeholder="Dit svar..." disabled>
+                            }
+                            else if (question.Type == QuestionType.YesNo)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="preview" disabled>
+                                    <label class="form-check-label">Ja</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="preview" disabled>
+                                    <label class="form-check-label">Nej</label>
+                                </div>
+                            }
+                            else if (question.Type == QuestionType.Rating || question.Type == QuestionType.Scale)
+                            {
+                                <div class="rating-preview">
+                                    @for (int i = question.MinValue ?? 1; i <= (question.MaxValue ?? 5); i++)
+                                    {
+                                        <button class="btn btn-outline-secondary btn-sm me-1" disabled>@i</button>
+                                    }
+                                </div>
+                            }
+                            else if (question.Type == QuestionType.MultipleChoice || question.Type == QuestionType.SingleChoice)
+                            {
+                                @foreach (var option in options)
+                                {
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="@(question.Type == QuestionType.MultipleChoice ? "checkbox" : "radio")" name="preview" disabled>
+                                        <label class="form-check-label">@option.Text</label>
+                                    </div>
+                                }
+                            }
+                            else if (question.Type == QuestionType.Date)
+                            {
+                                <input type="date" class="form-control" disabled>
+                            }
+                            else if (question.Type == QuestionType.Number)
+                            {
+                                <input type="number" class="form-control" placeholder="Indtast tal" disabled>
+                            }
+                            else if (question.Type == QuestionType.Email)
+                            {
+                                <input type="email" class="form-control" placeholder="din@email.dk" disabled>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conditions -->
+                @if (!isNewQuestion && question.Conditions.Any())
+                {
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h6>Forgreninger</h6>
+                        </div>
+                        <div class="card-body">
+                            @foreach (var condition in question.Conditions)
+                            {
+                                <div class="small mb-2">
+                                    <span class="badge bg-info">@condition.Type</span>
+                                    <span>@condition.ParentQuestion.Text</span>
+                                </div>
+                            }
+                            <button class="btn btn-sm btn-outline-primary" @onclick="AddCondition">
+                                <i class="fas fa-plus"></i> Tilføj Forgrening
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public int SurveyId { get; set; }
+    [Parameter] public int QuestionId { get; set; }
+    
+    private Survey? survey;
+    private Question? question;
+    private bool isNewQuestion;
+    private List<QuestionOption> options = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        survey = await SurveyService.GetSurveyByIdAsync(SurveyId);
+        if (survey == null)
+        {
+            Navigation.NavigateTo("/admin");
+            return;
+        }
+
+        isNewQuestion = QuestionId == 0;
+        
+        if (isNewQuestion)
+        {
+            question = new Question
+            {
+                SurveyId = SurveyId,
+                Type = QuestionType.Text,
+                IsRequired = true,
+                Order = survey.Questions.Count + 1,
+                Text = "",
+                Description = "",
+                Options = ""
+            };
+        }
+        else
+        {
+            question = survey.Questions.FirstOrDefault(q => q.Id == QuestionId);
+            if (question == null)
+            {
+                Navigation.NavigateTo($"/admin/survey/{SurveyId}");
+                return;
+            }
+            
+            options = SurveyService.ParseOptions(question.Options);
+        }
+    }
+
+    private async Task SaveQuestion()
+    {
+        if (string.IsNullOrWhiteSpace(question!.Text))
+        {
+            await JS.InvokeVoidAsync("alert", "Spørgsmålstekst er påkrævet");
+            return;
+        }
+
+        // Update options for choice questions
+        if (question.Type == QuestionType.MultipleChoice || question.Type == QuestionType.SingleChoice)
+        {
+            question.Options = SurveyService.SerializeOptions(options);
+        }
+
+        if (isNewQuestion)
+        {
+            question = await SurveyService.CreateQuestionAsync(question);
+        }
+        else
+        {
+            await SurveyService.UpdateQuestionAsync(question);
+        }
+
+        Navigation.NavigateTo($"/admin/survey/{SurveyId}");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo($"/admin/survey/{SurveyId}");
+    }
+
+    private void AddOption()
+    {
+        options.Add(new QuestionOption
+        {
+            Id = Guid.NewGuid().ToString(),
+            Text = "",
+            Order = options.Count + 1
+        });
+    }
+
+    private void RemoveOption(int index)
+    {
+        options.RemoveAt(index);
+    }
+
+    private void OnQuestionTypeChanged()
+    {
+        // Reset options when changing question type
+        if (question!.Type != QuestionType.MultipleChoice && question.Type != QuestionType.SingleChoice)
+        {
+            options.Clear();
+        }
+        else if (options.Count == 0)
+        {
+            AddOption();
+            AddOption();
+        }
+    }
+
+    private void AddCondition()
+    {
+        Navigation.NavigateTo($"/admin/survey/{SurveyId}/question/{question!.Id}/condition/new");
+    }
+}

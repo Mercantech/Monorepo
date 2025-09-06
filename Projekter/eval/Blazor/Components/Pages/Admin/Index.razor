@@ -1,0 +1,123 @@
+@page "/admin"
+@using Blazor.Data.Models
+@using Blazor.Services
+@inject SurveyService SurveyService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Admin Dashboard</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>Admin Dashboard</h1>
+                <button class="btn btn-primary" @onclick="CreateNewSurvey">
+                    <i class="fas fa-plus"></i> Ny Undersøgelse
+                </button>
+            </div>
+        </div>
+    </div>
+
+    @if (surveys == null)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+        </div>
+    }
+    else if (!surveys.Any())
+    {
+        <div class="text-center py-5">
+            <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+            <h3>Ingen undersøgelser endnu</h3>
+            <p class="text-muted">Opret din første undersøgelse for at komme i gang</p>
+            <button class="btn btn-primary" @onclick="CreateNewSurvey">
+                <i class="fas fa-plus"></i> Opret Undersøgelse
+            </button>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var survey in surveys)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">@survey.Title</h5>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/admin/survey/@survey.Id"><i class="fas fa-edit"></i> Rediger</a></li>
+                                    <li><a class="dropdown-item" href="/admin/survey/@survey.Id/responses"><i class="fas fa-chart-bar"></i> Svar</a></li>
+                                    <li><a class="dropdown-item" href="/survey/@survey.AccessCode" target="_blank"><i class="fas fa-external-link-alt"></i> Forhåndsvis</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" @onclick="() => DeleteSurvey(survey.Id)"><i class="fas fa-trash"></i> Slet</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@(survey.Description ?? "Ingen beskrivelse")</p>
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <div class="fw-bold">@survey.Questions.Count</div>
+                                    <small class="text-muted">Spørgsmål</small>
+                                </div>
+                                <div class="col-4">
+                                    <div class="fw-bold">@survey.Responses.Count</div>
+                                    <small class="text-muted">Svar</small>
+                                </div>
+                                <div class="col-4">
+                                    <div class="fw-bold">@survey.AccessCode</div>
+                                    <small class="text-muted">Kode</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    Oprettet: @survey.CreatedAt.ToString("dd/MM/yyyy")
+                                </small>
+                                <span class="badge @(survey.IsActive ? "bg-success" : "bg-secondary")">
+                                    @(survey.IsActive ? "Aktiv" : "Inaktiv")
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private List<Survey>? surveys;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSurveys();
+    }
+
+    private async Task LoadSurveys()
+    {
+        surveys = await SurveyService.GetAllSurveysAsync();
+    }
+
+    private void CreateNewSurvey()
+    {
+        Navigation.NavigateTo("/admin/survey/new");
+    }
+
+    private async Task DeleteSurvey(int surveyId)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", "Er du sikker på, at du vil slette denne undersøgelse?"))
+        {
+            await SurveyService.DeleteSurveyAsync(surveyId);
+            await LoadSurveys();
+        }
+    }
+}

@@ -1,5 +1,6 @@
 using Blazor.Components;
 using Blazor.Data;
+using Blazor.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blazor;
@@ -18,6 +19,9 @@ public class Program
         // Add Entity Framework Core
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        // Add services
+        builder.Services.AddScoped<SurveyService>();
 
         var app = builder.Build();
 
