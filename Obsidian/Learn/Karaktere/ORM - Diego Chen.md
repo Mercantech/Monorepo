@@ -14,8 +14,10 @@ Diego Chen underviser i ORM (Object-Relational Mapping) - Primært omkring Entit
 
 >[!multi-column]
 > Diego Chen er designet som en **regnorm** der symboliserer ORM's rolle som "brobygger" mellem objekter og databaser. Hans udseende reflekterer:
+>![[Pasted image 20250906214810.png]]
 >**Farvepalette:** Jordfarver (brun/beige), der symboliserer forbindelse til "jorden" (databasen) og naturlig integration
 >**Stil:** Smidig og tilpasningsdygtig - perfekt for en der arbejder med forskellige databaser og modeller
 >**Personlighed:** Grundig, forbindende og arbejder "under overfladen" for at skabe smooth integration mellem kode og data
 >>![[Pasted image 20250906214526.png]]
 >>**Specialitet:** At "grave" sig gennem komplekse datastrukturer og skabe elegante forbindelser mellem objektorienteret kode og relationelle databaser
+
