@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learn/Karaktere/CSharp -.md",
+                "file": "Learn/Karaktere/CSharp - Mads Skeeter Hejlsberg.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CSharp -"
+              "title": "CSharp - Mads Skeeter Hejlsberg"
             }
           }
         ]
@@ -173,11 +173,15 @@
   },
   "active": "c23d559a304926ba",
   "lastOpenFiles": [
+    "Assets/Pasted image 20250906114238.png",
+    "Assets/Pasted image 20250906114058.png",
+    "Assets/Pasted image 20250906114009.png",
+    "Assets/Ray Ingres - Front - NameBadge.png",
     "Learn/Karaktere/SQL - Ray Ingres.md",
-    "Learn/Karaktere/CSharp -.md",
+    "Assets/Ray Ingres - Side.png",
+    "Assets/Ray Ingres - Front.png",
+    "Learn/Karaktere/CSharp - Mads Skeeter Hejlsberg.md",
     "Learn/Karaktere",
-    "Assets/Pasted image 20250906113241.png",
-    "Assets/Pasted image 20250906113236.png",
     "H1/H1 - Oversigt.md",
     "Learn",
     "Monorepo/New Git repo.md",
@@ -201,9 +205,6 @@
     "Infrastruktur/IT-ServiceManagment.md",
     "Assets/ITIL7.png",
     "Assets/ITIL.png",
-    "Assets/download (3).png",
-    "Assets/Pasted image 20250905072153.png",
-    "Assets/Pasted image 20250905072058.png",
     "Welcome.md",
     "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
     "Opgaver/Visualisere Benzinpriser.md",
@@ -218,7 +219,6 @@
     "Infrastruktur/Cisco CCNA/14. Transport Layer.md",
     "Infrastruktur/Cisco CCNA/11. IPv4 Addressing.md",
     "Infrastruktur/Cisco CCNA/09. Address Resolution.md",
-    "Infrastruktur/Cisco CCNA/08. Network Layer.md",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "GF2/Canva.canvas",
