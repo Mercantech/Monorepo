@@ -1,0 +1,293 @@
+@page "/admin/survey/{SurveyId:int}"
+@page "/admin/survey/new"
+@using Blazor.Data.Models
+@using Blazor.Services
+@inject SurveyService SurveyService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Survey Builder</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1>@(isNewSurvey ? "Ny Undersøgelse" : "Rediger Undersøgelse")</h1>
+                    @if (!isNewSurvey && survey != null)
+                    {
+                        <p class="text-muted">Adgangskode: <strong>@survey.AccessCode</strong></p>
+                    }
+                </div>
+                <div>
+                    <button class="btn btn-outline-secondary me-2" @onclick="SaveSurvey">
+                        <i class="fas fa-save"></i> Gem
+                    </button>
+                    <button class="btn btn-primary" @onclick="AddQuestion">
+                        <i class="fas fa-plus"></i> Tilføj Spørgsmål
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (survey == null && !isNewSurvey)
+    {
+        <div class="text-center py-5">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <!-- Survey Info Panel -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Undersøgelse Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Titel *</label>
+                            <input type="text" class="form-control" @bind="survey!.Title" placeholder="Indtast titel">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Beskrivelse</label>
+                            <textarea class="form-control" @bind="survey!.Description" rows="3" placeholder="Indtast beskrivelse"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @bind="survey!.IsActive">
+                                <label class="form-check-label">Aktiv</label>
+                            </div>
+                        </div>
+                        @if (survey!.ExpiresAt.HasValue)
+                        {
+                            <div class="mb-3">
+                                <label class="form-label">Udløbsdato</label>
+                                <input type="datetime-local" class="form-control" value="@expiresAtString" @onchange="OnExpiresAtChanged">
+                            </div>
+                        }
+                        else
+                        {
+                            <button class="btn btn-sm btn-outline-secondary" @onclick="AddExpiration">
+                                <i class="fas fa-calendar"></i> Tilføj Udløbsdato
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <!-- Question Types Info -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6>Spørgsmålstyper</h6>
+                    </div>
+                    <div class="card-body">
+                        <small class="text-muted">
+                            <strong>Rating:</strong> Bedømmelse 1-5, 1-10, etc.<br>
+                            <strong>Tekst:</strong> Fritekst svar<br>
+                            <strong>Flervalg:</strong> Flere valgmuligheder<br>
+                            <strong>Enkeltvalg:</strong> En valgmulighed<br>
+                            <strong>Ja/Nej:</strong> Binært svar<br>
+                            <strong>Skala:</strong> Skala spørgsmål
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions Panel -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Spørgsmål (@survey!.Questions.Count)</h5>
+                    </div>
+                    <div class="card-body">
+                        @if (!survey.Questions.Any())
+                        {
+                            <div class="text-center py-4">
+                                <i class="fas fa-question-circle fa-3x text-muted mb-3"></i>
+                                <h5>Ingen spørgsmål endnu</h5>
+                                <p class="text-muted">Tilføj dit første spørgsmål for at komme i gang</p>
+                                <button class="btn btn-primary" @onclick="AddQuestion">
+                                    <i class="fas fa-plus"></i> Tilføj Spørgsmål
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="sortable-questions">
+                                @foreach (var question in survey.Questions.OrderBy(q => q.Order))
+                                {
+                                    <div class="question-item mb-3" data-question-id="@question.Id">
+                                        <div class="card">
+                                            <div class="card-header d-flex justify-content-between align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-grip-vertical text-muted me-2"></i>
+                                                    <span class="badge bg-primary me-2">@question.Type</span>
+                                                    <span>@question.Text</span>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" @onclick="() => EditQuestion(question.Id)"><i class="fas fa-edit"></i> Rediger</a></li>
+                                                        <li><a class="dropdown-item" @onclick="() => AddCondition(question.Id)"><i class="fas fa-code-branch"></i> Tilføj Forgrening</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li><a class="dropdown-item text-danger" @onclick="() => DeleteQuestion(question.Id)"><i class="fas fa-trash"></i> Slet</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                @if (!string.IsNullOrEmpty(question.Description))
+                                                {
+                                                    <p class="text-muted small">@question.Description</p>
+                                                }
+                                                @if (question.Type == QuestionType.Rating || question.Type == QuestionType.Scale)
+                                                {
+                                                    <p class="small">
+                                                        <strong>Skala:</strong> @(question.MinValue ?? 1) - @(question.MaxValue ?? 5)
+                                                    </p>
+                                                }
+                                                @if (question.Type == QuestionType.MultipleChoice || question.Type == QuestionType.SingleChoice)
+                                                {
+                                                    var options = SurveyService.ParseOptions(question.Options);
+                                                    <div class="small">
+                                                        <strong>Valgmuligheder:</strong>
+                                                        <ul class="mb-0">
+                                                            @foreach (var option in options.Take(3))
+                                                            {
+                                                                <li>@option.Text</li>
+                                                            }
+                                                            @if (options.Count > 3)
+                                                            {
+                                                                <li>... og @(options.Count - 3) flere</li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                }
+                                                @if (question.Conditions.Any())
+                                                {
+                                                    <div class="mt-2">
+                                                        <span class="badge bg-info">
+                                                            <i class="fas fa-code-branch"></i> @question.Conditions.Count forgrening(er)
+                                                        </span>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public int SurveyId { get; set; }
+    
+    private Survey? survey;
+    private bool isNewSurvey;
+    private string expiresAtString = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        isNewSurvey = SurveyId == 0;
+        
+        if (isNewSurvey)
+        {
+            survey = new Survey
+            {
+                Title = "Ny Undersøgelse",
+                IsActive = true,
+                Questions = new List<Question>()
+            };
+        }
+        else
+        {
+            survey = await SurveyService.GetSurveyByIdAsync(SurveyId);
+            if (survey == null)
+            {
+                Navigation.NavigateTo("/admin");
+                return;
+            }
+            
+            if (survey.ExpiresAt.HasValue)
+            {
+                expiresAtString = survey.ExpiresAt.Value.ToString("yyyy-MM-ddTHH:mm");
+            }
+        }
+    }
+
+    private async Task SaveSurvey()
+    {
+        if (string.IsNullOrWhiteSpace(survey!.Title))
+        {
+            await JS.InvokeVoidAsync("alert", "Titel er påkrævet");
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(expiresAtString) && DateTime.TryParse(expiresAtString, out var expiresAt))
+        {
+            survey.ExpiresAt = expiresAt;
+        }
+        else if (string.IsNullOrEmpty(expiresAtString))
+        {
+            survey.ExpiresAt = null;
+        }
+
+        if (isNewSurvey)
+        {
+            survey = await SurveyService.CreateSurveyAsync(survey);
+            Navigation.NavigateTo($"/admin/survey/{survey.Id}");
+        }
+        else
+        {
+            await SurveyService.UpdateSurveyAsync(survey);
+            await JS.InvokeVoidAsync("alert", "Undersøgelse gemt!");
+        }
+    }
+
+    private void AddQuestion()
+    {
+        Navigation.NavigateTo($"/admin/survey/{survey!.Id}/question/new");
+    }
+
+    private void EditQuestion(int questionId)
+    {
+        Navigation.NavigateTo($"/admin/survey/{survey!.Id}/question/{questionId}");
+    }
+
+    private void AddCondition(int questionId)
+    {
+        Navigation.NavigateTo($"/admin/survey/{survey!.Id}/question/{questionId}/condition/new");
+    }
+
+    private async Task DeleteQuestion(int questionId)
+    {
+        if (await JS.InvokeAsync<bool>("confirm", "Er du sikker på, at du vil slette dette spørgsmål?"))
+        {
+            await SurveyService.DeleteQuestionAsync(questionId);
+            survey = await SurveyService.GetSurveyByIdAsync(survey!.Id);
+            StateHasChanged();
+        }
+    }
+
+    private void AddExpiration()
+    {
+        survey!.ExpiresAt = DateTime.Now.AddDays(30);
+        expiresAtString = survey.ExpiresAt.Value.ToString("yyyy-MM-ddTHH:mm");
+        StateHasChanged();
+    }
+
+    private void OnExpiresAtChanged(ChangeEventArgs e)
+    {
+        expiresAtString = e.Value?.ToString() ?? "";
+    }
+}

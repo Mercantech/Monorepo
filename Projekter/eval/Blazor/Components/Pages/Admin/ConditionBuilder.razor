@@ -1,0 +1,326 @@
+@page "/admin/survey/{SurveyId:int}/question/{QuestionId:int}/condition/new"
+@page "/admin/survey/{SurveyId:int}/question/{QuestionId:int}/condition/{ConditionId:int}"
+@using Blazor.Data.Models
+@using Blazor.Services
+@inject SurveyService SurveyService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Forgrening Builder</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1>@(isNewCondition ? "Ny Forgrening" : "Rediger Forgrening")</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/survey/@SurveyId">@survey?.Title</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/survey/@SurveyId/question/@QuestionId">@question?.Text</a></li>
+                            <li class="breadcrumb-item active">@(isNewCondition ? "Ny Forgrening" : "Rediger Forgrening")</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div>
+                    <button class="btn btn-outline-secondary me-2" @onclick="Cancel">
+                        <i class="fas fa-times"></i> Annuller
+                    </button>
+                    <button class="btn btn-primary" @onclick="SaveCondition">
+                        <i class="fas fa-save"></i> Gem
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (survey == null || question == null)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Forgrening Konfiguration</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Vælg spørgsmål at evaluere *</label>
+                            <select class="form-select" @bind="condition!.ParentQuestionId" @bind:after="OnParentQuestionChanged">
+                                <option value="0">Vælg spørgsmål...</option>
+                                @foreach (var q in availableQuestions)
+                                {
+                                    <option value="@q.Id">@q.Text (@q.Type)</option>
+                                }
+                            </select>
+                        </div>
+
+                        @if (condition!.ParentQuestionId > 0)
+                        {
+                            <div class="mb-3">
+                                <label class="form-label">Betingelsestype *</label>
+                                <select class="form-select" @bind="condition!.Type" @bind:after="OnConditionTypeChanged">
+                                    <option value="@ConditionType.RatingEquals">Rating = værdi</option>
+                                    <option value="@ConditionType.RatingGreaterThan">Rating &gt; værdi</option>
+                                    <option value="@ConditionType.RatingLessThan">Rating &lt; værdi</option>
+                                    <option value="@ConditionType.RatingBetween">Rating mellem værdier</option>
+                                    <option value="@ConditionType.TextContains">Tekst indeholder</option>
+                                    <option value="@ConditionType.TextEquals">Tekst er lig med</option>
+                                    <option value="@ConditionType.MultipleChoiceSelected">Flervalg valgt</option>
+                                    <option value="@ConditionType.SingleChoiceSelected">Enkeltvalg valgt</option>
+                                    <option value="@ConditionType.YesNoSelected">Ja/Nej valgt</option>
+                                    <option value="@ConditionType.NumberEquals">Tal = værdi</option>
+                                    <option value="@ConditionType.NumberGreaterThan">Tal &gt; værdi</option>
+                                    <option value="@ConditionType.NumberLessThan">Tal &lt; værdi</option>
+                                    <option value="@ConditionType.DateAfter">Dato efter</option>
+                                    <option value="@ConditionType.DateBefore">Dato før</option>
+                                    <option value="@ConditionType.DateBetween">Dato mellem</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Værdi at sammenligne med *</label>
+                                @if (condition.Type == ConditionType.RatingBetween || condition.Type == ConditionType.DateBetween)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" @bind="value1" placeholder="Fra værdi">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" @bind="value2" placeholder="Til værdi">
+                                        </div>
+                                    </div>
+                                }
+                                else if (condition.Type == ConditionType.MultipleChoiceSelected || condition.Type == ConditionType.SingleChoiceSelected)
+                                {
+                                    <select class="form-select" @bind="condition!.Value">
+                                        <option value="">Vælg valgmulighed...</option>
+                                        @if (parentQuestion != null)
+                                        {
+                                            var options = SurveyService.ParseOptions(parentQuestion.Options);
+                                            @foreach (var option in options)
+                                            {
+                                                <option value="@option.Id">@option.Text</option>
+                                            }
+                                        }
+                                    </select>
+                                }
+                                else if (condition.Type == ConditionType.YesNoSelected)
+                                {
+                                    <select class="form-select" @bind="condition!.Value">
+                                        <option value="">Vælg...</option>
+                                        <option value="true">Ja</option>
+                                        <option value="false">Nej</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" @bind="condition!.Value" placeholder="Indtast værdi">
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Operator (valgfri)</label>
+                                <input type="text" class="form-control" @bind="condition!.Operator" placeholder="equals, greater_than, less_than, contains, etc.">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Rækkefølge</label>
+                                <input type="number" class="form-control" @bind="condition!.Order" min="1">
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" @bind="condition!.IsActive">
+                                    <label class="form-check-label">Aktiv</label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- Preview -->
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Forhåndsvisning</h6>
+                    </div>
+                    <div class="card-body">
+                        @if (condition!.ParentQuestionId > 0 && parentQuestion != null)
+                        {
+                            <div class="condition-preview">
+                                <h6>@question!.Text</h6>
+                                <p class="text-muted small">Vises kun hvis:</p>
+                                <div class="alert alert-info">
+                                    <strong>@parentQuestion.Text</strong><br>
+                                    <span class="badge bg-primary">@condition.Type</span>
+                                    @if (condition.Type == ConditionType.RatingBetween || condition.Type == ConditionType.DateBetween)
+                                    {
+                                        <span>@value1 - @value2</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@condition.Value</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-muted">Vælg et spørgsmål for at se forhåndsvisning</p>
+                        }
+                    </div>
+                </div>
+
+                <!-- Help -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6>Hjælp</h6>
+                    </div>
+                    <div class="card-body">
+                        <small class="text-muted">
+                            <strong>Rating:</strong> Bedømmelse spørgsmål (1-5, 1-10, etc.)<br>
+                            <strong>Tekst:</strong> Fritekst spørgsmål<br>
+                            <strong>Valg:</strong> Flervalg eller enkeltvalg spørgsmål<br>
+                            <strong>Dato:</strong> Dato spørgsmål<br>
+                            <strong>Tal:</strong> Tal spørgsmål
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public int SurveyId { get; set; }
+    [Parameter] public int QuestionId { get; set; }
+    [Parameter] public int ConditionId { get; set; }
+    
+    private Survey? survey;
+    private Question? question;
+    private Question? parentQuestion;
+    private QuestionCondition? condition;
+    private bool isNewCondition;
+    private List<Question> availableQuestions = new();
+    private string value1 = "";
+    private string value2 = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        survey = await SurveyService.GetSurveyByIdAsync(SurveyId);
+        if (survey == null)
+        {
+            Navigation.NavigateTo("/admin");
+            return;
+        }
+
+        question = survey.Questions.FirstOrDefault(q => q.Id == QuestionId);
+        if (question == null)
+        {
+            Navigation.NavigateTo($"/admin/survey/{SurveyId}");
+            return;
+        }
+
+        // Find available questions (all questions before current question)
+        availableQuestions = survey.Questions
+            .Where(q => q.Order < question.Order)
+            .OrderBy(q => q.Order)
+            .ToList();
+
+        isNewCondition = ConditionId == 0;
+        
+        if (isNewCondition)
+        {
+            condition = new QuestionCondition
+            {
+                QuestionId = QuestionId,
+                ParentQuestionId = 0,
+                Type = ConditionType.RatingEquals,
+                Value = "",
+                Operator = "equals",
+                Order = 1,
+                IsActive = true
+            };
+        }
+        else
+        {
+            condition = survey.Questions
+                .SelectMany(q => q.Conditions)
+                .FirstOrDefault(c => c.Id == ConditionId);
+            
+            if (condition == null)
+            {
+                Navigation.NavigateTo($"/admin/survey/{SurveyId}/question/{QuestionId}");
+                return;
+            }
+            
+            parentQuestion = availableQuestions.FirstOrDefault(q => q.Id == condition.ParentQuestionId);
+        }
+    }
+
+    private async Task SaveCondition()
+    {
+        if (condition!.ParentQuestionId == 0)
+        {
+            await JS.InvokeVoidAsync("alert", "Vælg et spørgsmål at evaluere");
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(condition.Value) && condition.Type != ConditionType.RatingBetween && condition.Type != ConditionType.DateBetween)
+        {
+            await JS.InvokeVoidAsync("alert", "Værdi er påkrævet");
+            return;
+        }
+
+        // Handle between conditions
+        if (condition.Type == ConditionType.RatingBetween || condition.Type == ConditionType.DateBetween)
+        {
+            if (string.IsNullOrWhiteSpace(value1) || string.IsNullOrWhiteSpace(value2))
+            {
+                await JS.InvokeVoidAsync("alert", "Begge værdier er påkrævet for 'mellem' betingelser");
+                return;
+            }
+            condition.Value = $"{value1}|{value2}";
+        }
+
+        if (isNewCondition)
+        {
+            await SurveyService.CreateConditionAsync(condition);
+        }
+        else
+        {
+            await SurveyService.UpdateConditionAsync(condition);
+        }
+
+        Navigation.NavigateTo($"/admin/survey/{SurveyId}/question/{QuestionId}");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo($"/admin/survey/{SurveyId}/question/{QuestionId}");
+    }
+
+    private void OnParentQuestionChanged()
+    {
+        parentQuestion = availableQuestions.FirstOrDefault(q => q.Id == condition!.ParentQuestionId);
+        StateHasChanged();
+    }
+
+    private void OnConditionTypeChanged()
+    {
+        condition!.Value = "";
+        value1 = "";
+        value2 = "";
+        StateHasChanged();
+    }
+}
