@@ -1,7 +1,159 @@
 ﻿@page "/"
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Evalueringsplatform</PageTitle>
 
-<h1>Hello, world!</h1>
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="hero-title">Evalueringsplatform</h1>
+                <p class="hero-subtitle">Deltag i undersøgelser og giv din feedback til lærerne</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-Welcome to your new app.
+<!-- Main Content -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg floating-card">
+                <div class="card-body p-5">
+                    <div class="text-center mb-5">
+                        <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px;">
+                            <i class="fas fa-key fa-2x text-white"></i>
+                        </div>
+                        <h2 class="fw-bold mb-3">Indtast Adgangskode</h2>
+                        <p class="text-muted">Indtast din 4-cifrede adgangskode for at deltage i undersøgelsen</p>
+                    </div>
+
+                    <form @onsubmit="AccessSurvey" @onsubmit:preventDefault="true">
+                        <div class="mb-4">
+                            <label class="form-label">Adgangskode</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-primary text-white">
+                                    <i class="fas fa-key"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control form-control-lg @(isInvalid ? "is-invalid" : "")" 
+                                       @bind="accessCode" 
+                                       @bind:event="oninput"
+                                       placeholder="Indtast 4-cifret kode"
+                                       maxlength="4"
+                                       autocomplete="off"
+                                       style="text-align: center; font-size: 1.5rem; letter-spacing: 0.5rem;"
+                                       @onkeypress="OnKeyPress">
+                            </div>
+                            @if (isInvalid)
+                            {
+                                <div class="invalid-feedback">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    Ugyldig adgangskode. Prøv igen.
+                                </div>
+                            }
+                        </div>
+
+                        <button type="submit" 
+                                class="btn btn-primary btn-lg w-100 @(isLoading ? "loading" : "")" 
+                                disabled="@isLoading">
+                            @if (isLoading)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                <span>Indlæser...</span>
+                            }
+                            else
+                            {
+                                <i class="fas fa-arrow-right me-2"></i>
+                                <span>Gå til undersøgelse</span>
+                            }
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Din adgangskode er givet til dig af din lærer
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5">
+        <div class="col-md-4 text-center mb-4">
+            <div class="feature-card floating-card">
+                <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <i class="fas fa-shield-alt fa-lg text-white"></i>
+                </div>
+                <h5 class="fw-semibold">Sikker</h5>
+                <p class="text-muted">Dine svar er anonyme og sikre</p>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="feature-card floating-card" style="animation-delay: 0.2s;">
+                <div class="bg-info rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <i class="fas fa-clock fa-lg text-white"></i>
+                </div>
+                <h5 class="fw-semibold">Hurtig</h5>
+                <p class="text-muted">Få minutter at svare på spørgsmålene</p>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="feature-card floating-card" style="animation-delay: 0.4s;">
+                <div class="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <i class="fas fa-mobile-alt fa-lg text-white"></i>
+                </div>
+                <h5 class="fw-semibold">Mobil</h5>
+                <p class="text-muted">Fungerer perfekt på alle enheder</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string accessCode = "";
+    private bool isLoading = false;
+    private bool isInvalid = false;
+
+    private async Task AccessSurvey()
+    {
+        if (string.IsNullOrWhiteSpace(accessCode) || accessCode.Length != 4)
+        {
+            isInvalid = true;
+            return;
+        }
+
+        isLoading = true;
+        isInvalid = false;
+
+        try
+        {
+            // Naviger til survey siden
+            Navigation.NavigateTo($"/survey/{accessCode}");
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", "Fejl ved adgang til survey:", ex.Message);
+            isInvalid = true;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void OnKeyPress(KeyboardEventArgs e)
+    {
+        // Kun tillad tal
+        if (!char.IsDigit(e.Key[0]) && e.Key != "Backspace" && e.Key != "Delete")
+        {
+            // PreventDefault is not available in KeyboardEventArgs
+            // This will be handled by the input validation instead
+        }
+    }
+}
