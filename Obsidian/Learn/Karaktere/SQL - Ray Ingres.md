@@ -10,10 +10,13 @@ Ray Ingres underviser i SQL - Primært omkring PostgreSQL. Han er opkaldt efter 
 **Hvem:** Et forskningsprojekt ved University of California, Berkeley i 1970'erne.
 **Hvorfor vigtig:** Ingres var **forløberen til PostgreSQL** og blev udviklet af Michael Stonebraker og hans team. Projektet var banebrydende for moderne databaser og introducerede mange koncepter, der stadig bruges i dag. PostgreSQL (Post-Ingres) er direkte bygget på Ingres' fundament og er en af de mest avancerede open-source databaser.
 
+## Design og personlighed af Ray Ingres
 
-![Multi-column]
+> [!multi-column]
 >![[Ray Ingres - Side.png]]
+> Ray Ingres er designet som en **professionel og teknisk karakter** med fokus på databaser og SQL. Hans udseende reflekterer:
+>**Farvepalette:** Blå toner, der symboliserer tillid og stabilitet - vigtige egenskaber for databashåndtering
+>**Stil:** Business-casual med skjorte og navneskilt, der understreger hans rolle som underviser
+>**Personlighed:** Struktureret, præcis og fokuseret på detaljer - perfekt for en der underviser i SQL 
 >>![[Ray Ingres - Front.png]]
-
-
-![[Ray Ingres - Front - NameBadge.png]]
+>>![[Ray Ingres - Front - NameBadge.png]]
