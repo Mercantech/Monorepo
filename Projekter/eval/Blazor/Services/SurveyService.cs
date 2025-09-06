@@ -190,7 +190,7 @@ public class SurveyService
     }
 
     // Helper methods
-    private async Task<string> GenerateUniqueAccessCodeAsync()
+    public async Task<string> GenerateUniqueAccessCodeAsync()
     {
         string accessCode;
         bool isUnique;
@@ -205,9 +205,9 @@ public class SurveyService
     }
 
     // JSON helper methods
-    public static List<QuestionOption> ParseOptions(string? optionsJson)
+    public static List<QuestionOption> ParseOptions(JsonDocument? optionsJson)
     {
-        if (string.IsNullOrEmpty(optionsJson))
+        if (optionsJson == null)
             return new List<QuestionOption>();
             
         try
@@ -220,9 +220,13 @@ public class SurveyService
         }
     }
 
-    public static string SerializeOptions(List<QuestionOption> options)
+    public static JsonDocument? SerializeOptions(List<QuestionOption> options)
     {
-        return JsonSerializer.Serialize(options);
+        if (options == null || !options.Any())
+            return null;
+            
+        var jsonString = JsonSerializer.Serialize(options);
+        return JsonDocument.Parse(jsonString);
     }
 
     // Response operations

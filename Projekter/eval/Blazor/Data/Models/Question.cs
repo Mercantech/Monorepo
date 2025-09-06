@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 
 namespace Blazor.Data.Models;
 
@@ -29,7 +30,7 @@ public class Question
     public int? MaxValue { get; set; }
 
     // For multiple choice og single choice
-    public string? Options { get; set; } // JSON string med valgmuligheder
+    public JsonDocument? Options { get; set; } // JSON document med valgmuligheder
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 

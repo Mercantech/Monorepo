@@ -11,26 +11,35 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-6">
                 <div>
-                    <h1>@(isNewSurvey ? "Ny Undersøgelse" : "Rediger Undersøgelse")</h1>
+                    <h1 class="fw-bold mb-2">@(isNewSurvey ? "Ny Undersøgelse" : "Rediger Undersøgelse")</h1>
                     @if (!isNewSurvey && survey != null)
                     {
-                        <p class="text-muted">Adgangskode: <strong>@survey.AccessCode</strong></p>
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="badge bg-primary fs-6">
+                                <i class="fas fa-key me-1"></i>
+                                Adgangskode: @survey.AccessCode
+                            </span>
+                            <span class="badge @(survey.IsActive ? "bg-success" : "bg-secondary")">
+                                <i class="fas @(survey.IsActive ? "fa-check-circle" : "fa-pause-circle") me-1"></i>
+                                @(survey.IsActive ? "Aktiv" : "Inaktiv")
+                            </span>
+                        </div>
                     }
                 </div>
-                <div>
-                    <button class="btn btn-outline-secondary me-2" @onclick="SaveSurvey">
-                        <i class="fas fa-save"></i> Gem
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-secondary hover-lift" @onclick="SaveSurvey">
+                        <i class="fas fa-save me-2"></i> Gem
                     </button>
                     @if (!isNewSurvey)
                     {
-                        <button class="btn btn-outline-info me-2" @onclick="SaveAsNew">
-                            <i class="fas fa-copy"></i> Gem Som Ny
+                        <button class="btn btn-outline-info hover-lift" @onclick="SaveAsNew">
+                            <i class="fas fa-copy me-2"></i> Gem Som Ny
                         </button>
                     }
-                    <button class="btn btn-primary" @onclick="AddQuestion">
-                        <i class="fas fa-plus"></i> Tilføj Spørgsmål
+                    <button class="btn btn-primary hover-lift" @onclick="AddQuestion">
+                        <i class="fas fa-plus me-2"></i> Tilføj Spørgsmål
                     </button>
                 </div>
             </div>
@@ -51,7 +60,7 @@
             <div class="alert alert-danger">
                 <h4>Fejl ved oprettelse af ny undersøgelse</h4>
                 <p>Der opstod en fejl. Prøv at genindlæse siden.</p>
-                <button class="btn btn-primary" @onclick="() => Navigation.NavigateTo("/admin")">
+                <button class="btn btn-primary" @onclick="GoToAdmin">
                     <i class="fas fa-arrow-left"></i> Tilbage til Admin
                 </button>
             </div>
@@ -380,5 +389,10 @@
     private void OnExpiresAtChanged(ChangeEventArgs e)
     {
         expiresAtString = e.Value?.ToString() ?? "";
+    }
+
+    private void GoToAdmin()
+    {
+        Navigation.NavigateTo("/admin");
     }
 }
