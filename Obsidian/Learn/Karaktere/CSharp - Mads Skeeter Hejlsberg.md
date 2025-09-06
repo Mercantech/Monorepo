@@ -1,4 +1,18 @@
-:MaLogoCSharp: Mads Skeeter Hejlsberg, er pindsvinet som underviser i C# - Han er opkaldt efter 3 vigtige profiler i C#'s udvikling. Nemlig Anders Hejlsberg, Mads Torgersen og Jon Skeet aka. Skeeter! 
+:MaLogoCSharp: Mads "Skeeter" Hejlsberg, er pindsvinet som underviser i C# - Han er opkaldt efter 3 vigtige profiler i C#'s udvikling. Nemlig [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg), [Mads Torgersen](https://devblogs.microsoft.com/dotnet/author/madst/) og [Jon Skeet aka. Skeeter](https://codeblog.jonskeet.uk/)!
+
+## De tre profiler bag navnet:
+
+### Anders Hejlsberg
+**Hvem:** Dansk softwarearkitekt og programmør, der har arbejdet hos Microsoft siden 1996.
+**Hvorfor vigtig:** Han er **hovedarkitekten bag C#** og ledede udviklingen af sproget fra starten. Han var også med til at designe TypeScript og var tidligere hovedarkitekt for Delphi og Turbo Pascal. Hejlsberg er kendt for at skabe elegante og kraftfulde programmeringssprog.
+
+### Mads Torgersen
+**Hvem:** Program Manager for C# hos Microsoft og har været med i C#-teamet i mange år.
+**Hvorfor vigtig:** Han er **ansvarlig for C#'s fremtidige retning** og har været med til at designe mange af de nye features i moderne C#. Han er ofte set på konferencer og i videoer, hvor han forklarer nye C#-funktioner og best practices.
+
+### Jon Skeet (Skeeter)
+**Hvem:** Softwareingeniør hos Google og forfatter af "C# in Depth" bogen.
+**Hvorfor vigtig:** Han er kendt som **"C#-guruen"** og har skrevet den mest omfattende bog om C#. Hans Stack Overflow-profil er en af de mest respekterede inden for C#-fællesskabet, og han er kendt for sine dybdegående svar om komplekse C#-koncepter.
 
 ![[Pasted image 20250906114009.png]]![[Pasted image 20250906114058.png]]
 ![[Pasted image 20250906114238.png]]
