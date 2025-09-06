@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learn/Karaktere/CSharp -.md",
+                "file": "Monorepo/New Git repo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CSharp -"
+              "title": "New Git repo"
             }
           }
         ]
@@ -176,10 +176,10 @@
     "Learn/Karaktere/SQL - Ray Ingres.md",
     "Learn/Karaktere/CSharp -.md",
     "Learn/Karaktere",
+    "Learn",
     "Assets/Pasted image 20250906113241.png",
     "Assets/Pasted image 20250906113236.png",
     "H1/H1 - Oversigt.md",
-    "Learn",
     "Monorepo/New Git repo.md",
     "Monorepo",
     "Database/Postgres/Postgres.md",
