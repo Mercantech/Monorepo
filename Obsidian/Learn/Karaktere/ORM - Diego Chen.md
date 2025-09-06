@@ -3,12 +3,16 @@ Diego Chen underviser i ORM (Object-Relational Mapping) - Primært omkring Entit
 ## De to profiler bag navnet:
 
 ### Diego Vega
-**Hvem:** Program Manager for Entity Framework Core hos Microsoft og har været med i EF Core-teamet i mange år.
-**Hvorfor vigtig:** Han er **ansvarlig for EF Core's udvikling og retning** og har været med til at designe mange af de moderne features i Entity Framework Core. Han er ofte set på konferencer og i videoer, hvor han forklarer EF Core's best practices og nye funktioner.
+>[!multi-column]
+>**Hvem:** Program Manager for Entity Framework Core hos Microsoft og har været med i EF Core-teamet i mange år.
+>**Hvorfor vigtig:** Han er **ansvarlig for EF Core's udvikling og retning** og har været med til at designe mange af de moderne features i Entity Framework Core. Han er ofte set på konferencer og i videoer, hvor han forklarer EF Core's best practices og nye funktioner.
+>>![[Pasted image 20250906222223.png]]
 
 ### Peter Chen
-**Hvem:** Taiwansk datalog og professor, der i 1976 introducerede Entity-Relationship (ER) modellen.
-**Hvorfor vigtig:** Han er **skaberen af ER-modellen**, som er grundlaget for moderne databasedesign og ORM-koncepter. ER-modellen hjalp med at visualisere databaser som en samling af entiteter og deres relationer - præcis det, som ORM værktøjer som EF Core gør i kode.
+>[!multi-column]
+>![[Pasted image 20250906222137.png]]
+>>**Hvem:** Taiwansk datalog og professor, der i 1976 introducerede Entity-Relationship (ER) modellen.
+>>**Hvorfor vigtig:** Han er **skaberen af ER-modellen**, som er grundlaget for moderne databasedesign og ORM-koncepter. ER-modellen hjalp med at visualisere databaser som en samling af entiteter og deres relationer - præcis det, som ORM værktøjer som EF Core gør i kode.
 
 ## Design og personlighed af Diego Chen
 
