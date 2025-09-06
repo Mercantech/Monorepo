@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learn/Karaktere/Backend - Roy Guthrie.md",
-                "mode": "source",
+                "file": "Learn/Karaktere/0. Dyr som undervisere.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Backend - Roy Guthrie"
+              "title": "0. Dyr som undervisere"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -173,8 +173,12 @@
   },
   "active": "c23d559a304926ba",
   "lastOpenFiles": [
-    "Learn/Karaktere/SQL - Ray Ingres.md",
     "Learn/Karaktere/Backend - Roy Guthrie.md",
+    "Assets/Pasted image 20250906220025.png",
+    "Assets/Pasted image 20250906220002.png",
+    "Assets/Pasted image 20250906215920.png",
+    "Assets/Pasted image 20250906215814.png",
+    "Learn/Karaktere/SQL - Ray Ingres.md",
     "Learn/Karaktere/0. Dyr som undervisere.md",
     "Learn/Karaktere/Blazor - Steve Salamander.md",
     "Assets/Pasted image 20250906215116.png",
@@ -188,10 +192,6 @@
     "Monorepo/New Git repo.md",
     "conflict-files-obsidian-git.md",
     "Assets/Ray Ingres - Side.png",
-    "Assets/Ray Ingres - Front.png",
-    "Assets/Ray Ingres - Front - NameBadge.png",
-    "Assets/Pasted image 20250906114238.png",
-    "Assets/Pasted image 20250906114058.png",
     "Learn/Karaktere/CSharp -.md",
     "Learn/Karaktere",
     "Learn",
@@ -218,7 +218,6 @@
     "Opgaver/Opgaver Oversigt.base",
     "Opgaver/CTF - Capture The Flag",
     "Opgaver/Binær Kodeomformer.md",
-    "Infrastruktur/Cisco CCNA/Cisco - Netacad.md",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "GF2/Canva.canvas",
