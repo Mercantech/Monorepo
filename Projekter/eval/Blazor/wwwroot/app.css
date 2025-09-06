@@ -31,6 +31,16 @@
   box-sizing: border-box;
 }
 
+/* Prevent horizontal overflow - but allow hero section to break out */
+*:not(.hero-section) {
+  max-width: 100%;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: var(--font-family);
   line-height: var(--line-height);
@@ -41,14 +51,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  overflow-y: auto;
-  height: 100vh;
-}
-
-html {
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100vh;
+  width: 100%;
 }
 
 /* Layout Struktur - Centreret */
@@ -63,6 +66,8 @@ html {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Sidebar Navigation */
@@ -116,14 +121,6 @@ html {
   text-align: center;
 }
 
-/* Hero Section Wrapper */
-.hero-wrapper {
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
 /* Hero Section - Fuld bredde med bløde kanter */
 .hero-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -132,10 +129,13 @@ html {
   position: relative;
   overflow: hidden;
   margin: 0;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   border-radius: 0 0 2rem 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  max-width: none !important;
 }
 
 /* Hero Section Overlay Effekt */
@@ -154,8 +154,6 @@ html {
 .hero-section .container {
   position: relative;
   z-index: 1;
-  max-width: 100%;
-  padding: 0 1rem;
 }
 
 .hero-title {
@@ -666,6 +664,8 @@ html {
   .hero-section {
     padding: 4rem 0 2rem 0;
     border-radius: 0 0 1.5rem 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
   }
   
   .hero-title {
@@ -690,6 +690,8 @@ html {
   .hero-section {
     padding: 3rem 0 1.5rem 0;
     border-radius: 0 0 1rem 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
   
   .hero-title {

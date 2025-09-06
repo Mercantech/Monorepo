@@ -4,18 +4,17 @@
 @inject SurveyService SurveyService
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
+@implements IAsyncDisposable
 
 <PageTitle>Admin Dashboard</PageTitle>
 
 <!-- Hero Section -->
-<div class="hero-wrapper">
-    <div class="hero-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="hero-title">Admin Dashboard</h1>
-                    <p class="hero-subtitle">Administrer dine evalueringsundersøgelser og få indsigt i feedback</p>
-                </div>
+<div class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="hero-title">Admin Dashboard</h1>
+                <p class="hero-subtitle">Administrer dine evalueringsundersøgelser og få indsigt i feedback</p>
             </div>
         </div>
     </div>
@@ -205,6 +204,37 @@
         catch (Exception ex)
         {
             await JS.InvokeVoidAsync("alert", $"Fejl ved ændring af status: {ex.Message}");
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Restore scroll position on first render
+            await JS.InvokeVoidAsync("restoreScrollPosition");
+        }
+    }
+
+    private async Task SaveScrollPosition()
+    {
+        await JS.InvokeVoidAsync("saveScrollPosition");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            // Save scroll position when component is disposed
+            await SaveScrollPosition();
+        }
+        catch (JSDisconnectedException)
+        {
+            // Ignore JS disconnect errors during disposal
+        }
+        catch (InvalidOperationException)
+        {
+            // Ignore JS interop errors during disposal
         }
     }
 }

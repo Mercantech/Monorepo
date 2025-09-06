@@ -5,6 +5,7 @@
 @inject SurveyService SurveyService
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
+@implements IAsyncDisposable
 
 <PageTitle>Undersøgelse - @(survey?.Title ?? "Indlæser...")</PageTitle>
 
@@ -434,5 +435,36 @@ else
     private void GoHome()
     {
         Navigation.NavigateTo("/");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Restore scroll position on first render
+            await JS.InvokeVoidAsync("restoreScrollPosition");
+        }
+    }
+
+    private async Task SaveScrollPosition()
+    {
+        await JS.InvokeVoidAsync("saveScrollPosition");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            // Save scroll position when component is disposed
+            await SaveScrollPosition();
+        }
+        catch (JSDisconnectedException)
+        {
+            // Ignore JS disconnect errors during disposal
+        }
+        catch (InvalidOperationException)
+        {
+            // Ignore JS interop errors during disposal
+        }
     }
 }
