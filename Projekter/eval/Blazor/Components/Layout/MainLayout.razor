@@ -1,19 +1,67 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="/" class="nav-brand">
+            <i class="fas fa-clipboard-list"></i>
+            Evalueringsplatform
+        </a>
+        <nav class="nav-menu">
+            <a href="/" class="nav-link @(IsActive("/") ? "active" : "")">
+                <i class="fas fa-home"></i>
+                Forside
+            </a>
+            <a href="/admin" class="nav-link @(IsActive("/admin") ? "active" : "")">
+                <i class="fas fa-cog"></i>
+                Admin Dashboard
+            </a>
+            <a href="/counter" class="nav-link @(IsActive("/counter") ? "active" : "")">
+                <i class="fas fa-plus"></i>
+                Counter
+            </a>
+            <a href="/weather" class="nav-link @(IsActive("/weather") ? "active" : "")">
+                <i class="fas fa-cloud"></i>
+                Weather
+            </a>
+        </nav>
+    </div>
 
-        <article class="content px-4">
+    <!-- Main Content -->
+    <main class="main-content">
+        <article class="content">
             @Body
         </article>
     </main>
 </div>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+<!-- Error UI -->
+<div id="blazor-error-ui" class="blazor-error-boundary" data-nosnippet>
+    <div class="d-flex align-items-center justify-content-center min-vh-100">
+        <div class="card shadow-lg" style="max-width: 500px;">
+            <div class="card-body text-center p-5">
+                <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px;">
+                    <i class="fas fa-exclamation-triangle fa-2x text-white"></i>
+                </div>
+                <h3 class="fw-bold mb-3">Der opstod en fejl</h3>
+                <p class="text-muted mb-4">En uventet fejl er opstået i applikationen.</p>
+                <div class="d-flex gap-2 justify-content-center">
+                    <a href="." class="btn btn-primary">
+                        <i class="fas fa-refresh me-2"></i>Genindlæs side
+                    </a>
+                    <button class="btn btn-outline-secondary" onclick="document.getElementById('blazor-error-ui').style.display='none'">
+                        <i class="fas fa-times me-2"></i>Luk
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@code {
+    private bool IsActive(string path)
+    {
+        // Simple path matching - in a real app you'd use NavigationManager
+        return false; // This will be handled by individual pages
+    }
+}

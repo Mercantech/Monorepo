@@ -1,0 +1,433 @@
+@page "/survey/{AccessCode}"
+@using Blazor.Services
+@using Blazor.Data.Models
+@using System.Text.Json
+@inject SurveyService SurveyService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<PageTitle>Undersøgelse - @(survey?.Title ?? "Indlæser...")</PageTitle>
+
+@if (isLoading)
+{
+    <div class="min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <div class="spinner-border text-primary mb-4" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+            <h4 class="text-muted">Indlæser undersøgelse...</h4>
+        </div>
+    </div>
+}
+else if (survey == null)
+{
+    <div class="min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5 text-center">
+                            <div class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px;">
+                                <i class="fas fa-exclamation-triangle fa-2x text-white"></i>
+                            </div>
+                            <h2 class="fw-bold mb-3">Undersøgelse ikke fundet</h2>
+                            <p class="text-muted mb-4">Adgangskoden @AccessCode er ikke gyldig eller undersøgelsen er ikke aktiv.</p>
+                            <button class="btn btn-primary hover-lift" @onclick="GoHome">
+                                <i class="fas fa-home me-2"></i>Tilbage til forsiden
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (!survey.IsActive)
+{
+    <div class="min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5 text-center">
+                            <div class="bg-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px;">
+                                <i class="fas fa-pause-circle fa-2x text-white"></i>
+                            </div>
+                            <h2 class="fw-bold mb-3">Undersøgelse er inaktiv</h2>
+                            <p class="text-muted mb-4">Denne undersøgelse er ikke aktiv i øjeblikket.</p>
+                            <button class="btn btn-primary hover-lift" @onclick="GoHome">
+                                <i class="fas fa-home me-2"></i>Tilbage til forsiden
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (isSubmitted)
+{
+    <div class="min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5 text-center">
+                            <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px;">
+                                <i class="fas fa-check-circle fa-2x text-white"></i>
+                            </div>
+                            <h2 class="fw-bold mb-3">Tak for dit svar!</h2>
+                            <p class="text-muted mb-4">Din besvarelse er blevet gemt og sendt til din lærer.</p>
+                            <button class="btn btn-primary hover-lift" @onclick="GoHome">
+                                <i class="fas fa-home me-2"></i>Tilbage til forsiden
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="hero-title">@survey.Title</h1>
+                    @if (!string.IsNullOrEmpty(survey.Description))
+                    {
+                        <p class="hero-subtitle">@survey.Description</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <!-- Survey Form -->
+                <form @onsubmit="SubmitSurvey" @onsubmit:preventDefault="true">
+                @foreach (var question in survey.Questions.OrderBy(q => q.Order))
+                {
+                    <div class="quiz-card mb-4 fade-in">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <span class="badge bg-primary me-3 mt-1">@(survey.Questions.OrderBy(q => q.Order).ToList().IndexOf(question) + 1)</span>
+                                <div class="flex-grow-1">
+                                    <h5 class="fw-semibold mb-2">@question.Text</h5>
+                                    @if (!string.IsNullOrEmpty(question.Description))
+                                    {
+                                        <p class="text-muted small mb-3">@question.Description</p>
+                                    }
+                                    @if (question.IsRequired)
+                                    {
+                                        <span class="badge bg-danger small">Påkrævet</span>
+                                    }
+                                </div>
+                            </div>
+
+                                @switch (question.Type)
+                                {
+                                    case QuestionType.Text:
+                                        <textarea class="form-control" 
+                                                  rows="3" 
+                                                  placeholder="Indtast dit svar her..."
+                                                  @bind="responses[question.Id].TextValue"></textarea>
+                                        break;
+
+                                    case QuestionType.Email:
+                                        <input type="email" 
+                                               class="form-control" 
+                                               placeholder="din@email.dk"
+                                               @bind="responses[question.Id].TextValue">
+                                        break;
+
+                                    case QuestionType.Number:
+                                        <input type="number" 
+                                               class="form-control" 
+                                               placeholder="Indtast et tal"
+                                               @bind="responses[question.Id].NumericValue">
+                                        break;
+
+                                    case QuestionType.Date:
+                                        <input type="date" 
+                                               class="form-control" 
+                                               @bind="responses[question.Id].DateValue">
+                                        break;
+
+                                    case QuestionType.YesNo:
+                                        <div class="btn-group w-100" role="group">
+                                            <input type="radio" 
+                                                   class="btn-check" 
+                                                   name="question_@question.Id" 
+                                                   id="yes_@question.Id" 
+                                                   value="true"
+                                                   @onchange="@(() => responses[question.Id].BooleanValue = true)">
+                                            <label class="btn btn-outline-success" for="yes_@question.Id">
+                                                <i class="fas fa-check me-2"></i>Ja
+                                            </label>
+
+                                            <input type="radio" 
+                                                   class="btn-check" 
+                                                   name="question_@question.Id" 
+                                                   id="no_@question.Id" 
+                                                   value="false"
+                                                   @onchange="@(() => responses[question.Id].BooleanValue = false)">
+                                            <label class="btn btn-outline-danger" for="no_@question.Id">
+                                                <i class="fas fa-times me-2"></i>Nej
+                                            </label>
+                                        </div>
+                                        break;
+
+                                    case QuestionType.Rating:
+                                        <div class="rating-container">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <small class="text-muted">@(question.MinValue ?? 1)</small>
+                                                <small class="text-muted">@(question.MaxValue ?? 5)</small>
+                                            </div>
+                                            <div class="rating-buttons d-flex justify-content-center gap-2">
+                                                @for (int i = (question.MinValue ?? 1); i <= (question.MaxValue ?? 5); i++)
+                                                {
+                                                    int rating = i;
+                                                    <button type="button" 
+                                                            class="btn @(responses[question.Id].NumericValue == rating ? "btn-primary" : "btn-outline-primary") rating-btn"
+                                                            @onclick="@(() => responses[question.Id].NumericValue = rating)">
+                                                        @rating
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+                                        break;
+
+                                    case QuestionType.Scale:
+                                        <div class="scale-container">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <small class="text-muted">@(question.MinValue ?? 1)</small>
+                                                <small class="text-muted">@(question.MaxValue ?? 10)</small>
+                                            </div>
+                                            <input type="range" 
+                                                   class="form-range" 
+                                                   min="@(question.MinValue ?? 1)" 
+                                                   max="@(question.MaxValue ?? 10)" 
+                                                   @bind="responses[question.Id].NumericValue">
+                                            <div class="text-center mt-2">
+                                                <span class="badge bg-primary fs-6">@(responses[question.Id].NumericValue ?? 0)</span>
+                                            </div>
+                                        </div>
+                                        break;
+
+                                    case QuestionType.MultipleChoice:
+                                        var multipleOptions = SurveyService.ParseOptions(question.Options);
+                                        @foreach (var option in multipleOptions)
+                                        {
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" 
+                                                       type="checkbox" 
+                                                       id="mc_@(question.Id)_@(option.Id)" 
+                                                       value="@option.Id"
+                                                       @onchange="@((ChangeEventArgs e) => ToggleMultipleChoice(question.Id, int.Parse(option.Id), bool.Parse(e.Value?.ToString() ?? "false")))">
+                                                <label class="form-check-label" for="mc_@(question.Id)_@(option.Id)">
+                                                    @option.Text
+                                                </label>
+                                            </div>
+                                        }
+                                        break;
+
+                                    case QuestionType.SingleChoice:
+                                        var singleOptions = SurveyService.ParseOptions(question.Options);
+                                        @foreach (var option in singleOptions)
+                                        {
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" 
+                                                       type="radio" 
+                                                       name="sc_@(question.Id)" 
+                                                       id="sc_@(question.Id)_@(option.Id)" 
+                                                       value="@option.Id"
+                                                       @onchange="@(() => responses[question.Id].TextValue = option.Id.ToString())">
+                                                <label class="form-check-label" for="sc_@(question.Id)_@(option.Id)">
+                                                    @option.Text
+                                                </label>
+                                            </div>
+                                        }
+                                        break;
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-5">
+                        <button type="submit" 
+                                class="btn btn-primary btn-lg px-5 hover-lift @(isSubmitting ? "loading" : "")" 
+                                disabled="@isSubmitting">
+                            @if (isSubmitting)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                <span>Sender svar...</span>
+                            }
+                            else
+                            {
+                                <i class="fas fa-paper-plane me-2"></i>
+                                <span>Send svar</span>
+                            }
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string AccessCode { get; set; } = "";
+
+    private Blazor.Data.Models.Survey? survey;
+    private bool isLoading = true;
+    private bool isSubmitted = false;
+    private bool isSubmitting = false;
+    private Dictionary<int, ResponseData> responses = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            survey = await SurveyService.GetSurveyByAccessCodeAsync(AccessCode);
+            
+            if (survey != null && survey.IsActive)
+            {
+                // Initialize responses
+                foreach (var question in survey.Questions)
+                {
+                    responses[question.Id] = new ResponseData
+                    {
+                        QuestionId = question.Id
+                    };
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", "Fejl ved indlæsning af survey:", ex.Message);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task SubmitSurvey()
+    {
+        if (survey == null) return;
+
+        isSubmitting = true;
+
+        try
+        {
+            // Validate required questions
+            var requiredQuestions = survey.Questions.Where(q => q.IsRequired).ToList();
+            foreach (var question in requiredQuestions)
+            {
+                var response = responses[question.Id];
+                bool hasAnswer = false;
+
+                switch (question.Type)
+                {
+                    case QuestionType.Text:
+                    case QuestionType.Email:
+                        hasAnswer = !string.IsNullOrWhiteSpace(response.TextValue);
+                        break;
+                    case QuestionType.Number:
+                    case QuestionType.Rating:
+                    case QuestionType.Scale:
+                        hasAnswer = response.NumericValue.HasValue;
+                        break;
+                    case QuestionType.Date:
+                        hasAnswer = response.DateValue.HasValue;
+                        break;
+                    case QuestionType.YesNo:
+                        hasAnswer = response.BooleanValue.HasValue;
+                        break;
+                    case QuestionType.MultipleChoice:
+                    case QuestionType.SingleChoice:
+                        hasAnswer = !string.IsNullOrWhiteSpace(response.TextValue);
+                        break;
+                }
+
+                if (!hasAnswer)
+                {
+                    await JS.InvokeVoidAsync("alert", $"Spørgsmål '{question.Text}' er påkrævet");
+                    isSubmitting = false;
+                    return;
+                }
+            }
+
+            // Create response
+            var responseEntity = new Response
+            {
+                SurveyId = survey.Id,
+                StudentName = "Anonym", // Anonymous response
+                StudentEmail = "",
+                SubmittedAt = DateTime.UtcNow,
+                IpAddress = "" // Could be filled with actual IP
+            };
+
+            // Add response data
+            foreach (var kvp in responses)
+            {
+                var responseData = kvp.Value;
+                responseData.ResponseId = 0; // Will be set when response is saved
+                responseData.Data = JsonSerializer.Serialize(new
+                {
+                    TextValue = responseData.TextValue,
+                    NumericValue = responseData.NumericValue,
+                    DateValue = responseData.DateValue,
+                    BooleanValue = responseData.BooleanValue
+                });
+            }
+
+            responseEntity.ResponseData = responses.Values.ToList();
+
+            // Save response
+            await SurveyService.CreateResponseAsync(responseEntity);
+            isSubmitted = true;
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", $"Fejl ved indsendelse af svar: {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+
+    private void ToggleMultipleChoice(int questionId, int optionId, bool isSelected)
+    {
+        var response = responses[questionId];
+        var selectedOptions = string.IsNullOrEmpty(response.TextValue) 
+            ? new List<int>() 
+            : response.TextValue.Split(',').Select(int.Parse).ToList();
+
+        if (isSelected)
+        {
+            if (!selectedOptions.Contains(optionId))
+                selectedOptions.Add(optionId);
+        }
+        else
+        {
+            selectedOptions.Remove(optionId);
+        }
+
+        response.TextValue = string.Join(",", selectedOptions);
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+}
