@@ -1,33 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <!-- Sidebar Navigation -->
-    <div class="sidebar">
-        <a href="/" class="nav-brand">
-            <i class="fas fa-clipboard-list"></i>
-            Evalueringsplatform
-        </a>
-        <nav class="nav-menu">
-            <a href="/" class="nav-link @(IsActive("/") ? "active" : "")">
-                <i class="fas fa-home"></i>
-                Forside
-            </a>
-            <a href="/admin" class="nav-link @(IsActive("/admin") ? "active" : "")">
-                <i class="fas fa-cog"></i>
-                Admin Dashboard
-            </a>
-            <a href="/counter" class="nav-link @(IsActive("/counter") ? "active" : "")">
-                <i class="fas fa-plus"></i>
-                Counter
-            </a>
-            <a href="/weather" class="nav-link @(IsActive("/weather") ? "active" : "")">
-                <i class="fas fa-cloud"></i>
-                Weather
-            </a>
-        </nav>
-    </div>
 
-    <!-- Main Content -->
+
+    <!-- Main Content - Centreret -->
     <main class="main-content">
         <article class="content">
             @Body
@@ -58,10 +34,4 @@
     </div>
 </div>
 
-@code {
-    private bool IsActive(string path)
-    {
-        // Simple path matching - in a real app you'd use NavigationManager
-        return false; // This will be handled by individual pages
-    }
-}
+
