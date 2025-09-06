@@ -48,6 +48,9 @@ public class SurveyService
         // Generer unik 4-cifret adgangskode
         survey.AccessCode = await GenerateUniqueAccessCodeAsync();
         
+        // Sæt ID til 0 for at sikre auto-generering
+        survey.Id = 0;
+        
         _context.Surveys.Add(survey);
         await _context.SaveChangesAsync();
         return survey;
@@ -68,6 +71,54 @@ public class SurveyService
             _context.Surveys.Remove(survey);
             await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task<Survey> DuplicateSurveyAsync(int id)
+    {
+        var originalSurvey = await GetSurveyByIdAsync(id);
+        if (originalSurvey == null)
+        {
+            throw new ArgumentException("Survey ikke fundet");
+        }
+
+        // Opret ny survey med kopieret data
+        var duplicatedSurvey = new Survey
+        {
+            Id = 0, // Sikrer auto-generering af ID
+            Title = $"{originalSurvey.Title} (Kopi)",
+            Description = originalSurvey.Description,
+            AccessCode = await GenerateUniqueAccessCodeAsync(),
+            IsActive = false, // Start som inaktiv
+            ExpiresAt = null, // Fjern udløbsdato
+            Questions = new List<Question>()
+        };
+
+        // Kopier spørgsmål
+        foreach (var question in originalSurvey.Questions.OrderBy(q => q.Order))
+        {
+            var duplicatedQuestion = new Question
+            {
+                Id = 0, // Sikrer auto-generering af ID
+                SurveyId = 0, // Vil blive sat når survey gemmes
+                Text = question.Text,
+                Description = question.Description,
+                Type = question.Type,
+                IsRequired = question.IsRequired,
+                Order = question.Order,
+                MinValue = question.MinValue,
+                MaxValue = question.MaxValue,
+                Options = question.Options,
+                ResponseData = new List<ResponseData>() // Tom liste for svar
+            };
+
+            duplicatedSurvey.Questions.Add(duplicatedQuestion);
+        }
+
+        // Gem den duplikerede survey
+        _context.Surveys.Add(duplicatedSurvey);
+        await _context.SaveChangesAsync();
+
+        return duplicatedSurvey;
     }
 
     // Question operations
