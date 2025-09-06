@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learn/Karaktere/ORM - Diego Chen.md",
+                "file": "Learn/Karaktere/Backend - Roy Guthrie.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ORM - Diego Chen"
+              "title": "Backend - Roy Guthrie"
             }
           }
         ]
@@ -173,12 +173,17 @@
   },
   "active": "c23d559a304926ba",
   "lastOpenFiles": [
+    "Learn/Karaktere/SQL - Ray Ingres.md",
+    "Learn/Karaktere/Backend - Roy Guthrie.md",
+    "Learn/Karaktere/0. Dyr som undervisere.md",
+    "Learn/Karaktere/Blazor - Steve Salamander.md",
+    "Assets/Pasted image 20250906215116.png",
+    "Assets/Pasted image 20250906214947.png",
+    "Learn/Karaktere/ORM - Diego Chen.md",
+    "Assets/Pasted image 20250906214810.png",
     "Assets/Pasted image 20250906214526.png",
     "Assets/Pasted image 20250906214519.png",
-    "Learn/Karaktere/Blazor - Steve Salamander.md",
-    "Learn/Karaktere/ORM - Diego Chen.md",
     "Learn/Karaktere/CSharp - Mads Skeeter Hejlsberg.md",
-    "Learn/Karaktere/SQL - Ray Ingres.md",
     "Learn/Karaktere/ORM - X X X",
     "Monorepo/New Git repo.md",
     "conflict-files-obsidian-git.md",
@@ -187,12 +192,9 @@
     "Assets/Ray Ingres - Front - NameBadge.png",
     "Assets/Pasted image 20250906114238.png",
     "Assets/Pasted image 20250906114058.png",
-    "Assets/Pasted image 20250906114009.png",
     "Learn/Karaktere/CSharp -.md",
     "Learn/Karaktere",
     "Learn",
-    "Assets/Pasted image 20250906113241.png",
-    "Assets/Pasted image 20250906113236.png",
     "H1/H1 - Oversigt.md",
     "Monorepo",
     "Database/Postgres/Postgres.md",
@@ -208,7 +210,6 @@
     "H1",
     "H6/Oversigt.md",
     "H5/Oversigt.md",
-    "Assets/Pasted image 20250905084358.png",
     "Infrastruktur/IT-ServiceManagment.md",
     "Welcome.md",
     "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
@@ -218,7 +219,6 @@
     "Opgaver/CTF - Capture The Flag",
     "Opgaver/Binær Kodeomformer.md",
     "Infrastruktur/Cisco CCNA/Cisco - Netacad.md",
-    "Infrastruktur/Cisco CCNA/16. Network Security Fundamentals.md",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "GF2/Canva.canvas",
