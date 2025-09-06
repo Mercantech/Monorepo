@@ -3,9 +3,13 @@ Steve Salamander underviser i Blazor - Microsoft's moderne web framework. Han er
 ## Profilen bag navnet:
 
 ### Steve Sanderson
-![[Pasted image 20250906222625.png]]
-**Hvem:** Principal Software Engineer hos Microsoft og hovedarkitekt for Blazor.
-**Hvorfor vigtig:** Han er **skaberen af Blazor** og har været med til at designe hele frameworket fra bunden. Sanderson er kendt for sine innovative løsninger inden for web development og har været en drivende kraft bag Blazor's WebAssembly-baserede tilgang til at køre C# direkte i browseren.
+
+>[!multi-column]
+>![[Pasted image 20250906222625.png]]
+>>**Hvem:** Principal Software Engineer hos Microsoft og hovedarkitekt for Blazor.
+>>**Hvorfor vigtig:** Han er **skaberen af Blazor** og har været med til at designe hele frameworket fra bunden. Sanderson er kendt for sine innovative løsninger inden for web development og har været en drivende kraft bag Blazor's 
+>>WebAssembly-baserede tilgang til at køre C# direkte i browseren.
+
 
 ## Design og personlighed af Steve Salamander
 
