@@ -161,3 +161,11 @@ I skal lave et system der automatisk kan lave både fakturaer og kvitteringer n�
 - Hvad gør I hvis folk vil have det på papir?
 
 
+## Database mistet?
+
+
+Vores konkurrent har mistet alt deres data, er det muligt at det sker for os? Hvad er planen, hvad skal vi gøre? Vi vil gerne have en nødplan for hvis vi skulle bliver udsat for et ransomware hack som vores konkurrent.
+
+## Sensitivt brugerdata
+
+En af vores nabo hoteller har fået hacket deres database, hvor alt personligt data lå i plain text, hvor dumt, godt vi ikke har samme setup. Vi gemmer ikke bare vores data i plan text vel? vel??
