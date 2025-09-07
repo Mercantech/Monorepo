@@ -161,11 +161,51 @@ I skal lave et system der automatisk kan lave både fakturaer og kvitteringer n�
 - Hvad gør I hvis folk vil have det på papir?
 
 
-## Database mistet?
+## Manglende data 
 
+### Hvad er problemet?
+Vores konkurrent har mistet ALT deres data! Det er ikke sjovt, og det kan faktisk ske for os også. Hvad hvis vi bliver hacket med ransomware? Eller hvad hvis serveren brænder? Eller hvad hvis nogen sletter alt ved et uheld?
 
-Vores konkurrent har mistet alt deres data, er det muligt at det sker for os? Hvad er planen, hvad skal vi gøre? Vi vil gerne have en nødplan for hvis vi skulle bliver udsat for et ransomware hack som vores konkurrent.
+![[Pasted image 20250907212052.png]]
 
-## Sensitivt brugerdata
+**Det der er træls:**
+- Alt data kan forsvinde på et sekund
+- Ingen backup = ingen business
+- Kunder bliver sure hvis deres data forsvinder
+- Det koster kassen at komme tilbage efter et hack
+- Konkurrenterne griner af os
 
-En af vores nabo hoteller har fået hacket deres database, hvor alt personligt data lå i plain text, hvor dumt, godt vi ikke har samme setup. Vi gemmer ikke bare vores data i plan text vel? vel??
+### Hvad skal I lave?
+I skal lave en nødplan der sikrer at vi aldrig mister vores data. Det skal være så godt at vi kan grine af konkurrenterne når de mister deres data.
+
+### Ting at tænke over
+- Hvor ofte skal I lave backup?
+- Hvor gemmer I backup så det er sikkert?
+- Hvordan tester I at backup virker?
+- Hvad gør I hvis serveren brænder?
+- Hvordan kommer I tilbage efter et hack?
+- Hvordan sikrer I at backup ikke bliver hacket?
+
+---
+
+## Sensitivt brugerdata 🔒
+
+### Hvad er problemet?
+En af vores nabo hoteller har fået hacket deres database, og alt personligt data lå i plain text! Hvor dumt! Godt vi ikke har samme setup... vel? VEL?? 😅
+
+**Det der er træls:**
+- Folk kan læse alle passwords og personlige oplysninger
+- Det er ikke lovligt at gemme data sådan
+- Kunder bliver sure og sagsøger os
+- Vores ry bliver ødelagt
+- Vi får bøder for at bryde GDPR
+
+### Hvad skal I lave?
+I skal sikre at al personligt data er krypteret og sikkert. Ingen skal kunne læse det hvis de hacker os.
+
+### Ting at tænke over
+- Hvordan krypterer I passwords?
+- Hvordan gemmer I personlige oplysninger sikkert?
+- Hvad gør I hvis nogen alligevel hacker os?
+- Hvordan sikrer I at kun rigtige brugere kan se deres data?
+- Hvordan tester I at jeres sikkerhed virker?
