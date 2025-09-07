@@ -19,16 +19,18 @@ Projektet er opdelt i en partiel klasse `ActiveDirectoryService` med separate fi
 - **Få en liste af alle brugere** - Henter alle brugere med detaljerede oplysninger
 - **Få en kombineret liste af alle grupper og deres medlemmer** - Viser grupper med deres medlemmer
 - **Søg efter specifikke brugere eller grupper** - Søg baseret på navn, email, afdeling, titel eller beskrivelse
+- **Avanceret søgning** - Multi-kriterie søgning med flere filtre
+- **Find brugere i specifik gruppe** - Viser alle brugere i en bestemt gruppe
 - **Runtime konfiguration** - Mulighed for at ændre forbindelsesindstillinger under kørsel
-- **Forbindelsestest** - Test forbindelsen til AD serveren
+- **Forbindelsestest** - Test forbindelsen til AD serveren med detaljeret information
 
 ## Standard Konfiguration
 
 Programmet kommer med følgende standard indstillinger:
-- **Server**: 10.133.71.100
-- **Brugernavn**: adReader
-- **Adgangskode**: Merc1234!
-- **Domæne**: mags.local
+- **Server**: 10.133.71.111
+- **Brugernavn**: Admin
+- **Adgangskode**: Cisco1234!
+- **Domæne**: Hotel.local
 
 ## Kørsel
 
@@ -53,6 +55,7 @@ Programmet viser en interaktiv menu med følgende muligheder:
 5. **Søg efter grupper** - Søg efter grupper baseret på navn eller beskrivelse
 6. **Opdater forbindelsesindstillinger** - Ændre server, brugernavn, adgangskode eller domæne
 7. **Test forbindelse** - Test forbindelsen til AD serveren
+8. **Avanceret søgning** - Multi-kriterie søgning og find brugere i grupper
 0. **Afslut** - Afslut programmet
 
 ## Søgefunktioner
