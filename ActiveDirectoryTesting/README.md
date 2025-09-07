@@ -2,6 +2,17 @@
 
 En C# konsol-applikation til at teste forbindelse til Active Directory via LDAP og udføre forskellige operationer på brugere og grupper.
 
+## Arkitektur
+
+Projektet er opdelt i en partiel klasse `ActiveDirectoryService` med separate filer for hver større funktion:
+
+- **ActiveDirectoryService.cs** - Hovedfil med modeller og grundlæggende struktur
+- **ActiveDirectoryService.Connection.cs** - Forbindelseslogik og test funktioner
+- **ActiveDirectoryService.Groups.cs** - Gruppeoperationer og visning
+- **ActiveDirectoryService.Users.cs** - Brugeroperationer og visning  
+- **ActiveDirectoryService.Search.cs** - Avancerede søgefunktioner
+- **Program.cs** - Hovedprogram og menu system
+
 ## Funktioner
 
 - **Få en liste af alle grupper** - Henter alle grupper fra AD med navn og beskrivelse
