@@ -186,6 +186,9 @@
   },
   "active": "8b1ec45818b23d45",
   "lastOpenFiles": [
+    "Machine Learning/Clustering.md",
+    "Machine Learning/Cross Validation.md",
+    "Machine Learning/Classification.md",
     "Learn/Karaktere/0. Dyr som undervisere.md",
     "Learn/Karaktere/SQL - Ray Ingres.md",
     "Learn/Karaktere/Infrastructure - Radia Hopper.md",
@@ -227,8 +230,6 @@
     "Infrastruktur/IT-ServiceManagment.md",
     "Welcome.md",
     "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
-    "Opgaver/Visualisere Benzinpriser.md",
-    "Opgaver/Selvvalgt API Projekt.md",
     "Opgaver/Opgaver Oversigt.base",
     "Opgaver/CTF - Capture The Flag",
     "CSharp/CSharp-Bogen/Canva.canvas",
