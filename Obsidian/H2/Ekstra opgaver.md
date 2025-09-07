@@ -209,3 +209,28 @@ I skal sikre at al personligt data er krypteret og sikkert. Ingen skal kunne læ
 - Hvad gør I hvis nogen alligevel hacker os?
 - Hvordan sikrer I at kun rigtige brugere kan se deres data?
 - Hvordan tester I at jeres sikkerhed virker?
+
+
+## Hosting Lokalt 💰
+
+### Hvad er problemet?
+Deploy.Mercantec.Tech har rakt ud til os omkring deres hosting omkostninger - vores platform er blevet så populær, så de efterspørger 20.000 kr. pr måned for server omkostninger! Det synes vi er en stor omkostning og det må kunne gøres bedre on-prem.
+
+**Det der er træls:**
+- 20.000 kr. om måneden er mange penge
+- Vi har allerede en server med AD
+- Vi betaler for noget vi måske kan gøre selv
+- Det er svært at kontrollere når det er hos andre
+- Vi vil gerne have mere kontrol over vores system
+
+### Hvad skal I lave?
+I skal undersøge muligheden for at deploye lokalt på vores egen server. Host lokalt og test det - efterspørg eventuelt om hostnavnene og Cloudflare ved Deploy.mercantec.tech, det har de sagt vi kan få gratis ved dem!
+
+### Ting at tænke over
+- Hvordan deployer I på vores egen server?
+- Hvordan sikrer I at det virker lige så godt?
+- Hvad gør I hvis serveren går ned?
+- Hvordan håndterer I trafik og brugere?
+- Hvordan sikrer I at det er sikkert?
+- Hvad koster det at køre lokalt vs. i skyen?
+- Hvordan integrerer I med vores AD? 
