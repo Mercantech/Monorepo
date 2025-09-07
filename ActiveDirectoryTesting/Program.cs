@@ -33,10 +33,10 @@ namespace ActiveDirectoryTesting
     // Konfigurationsklasse for runtime indstillinger
     public class ADConfig
     {
-        public string Server { get; set; } = "10.133.71.100";
-        public string Username { get; set; } = "adReader";
-        public string Password { get; set; } = "Merc1234!";
-        public string Domain { get; set; } = "mags.local";
+        public string Server { get; set; } = "10.133.71.111";
+        public string Username { get; set; } = "Admin";
+        public string Password { get; set; } = "Cisco1234!";
+        public string Domain { get; set; } = "Hotel.local";
     }
 
     // Hovedklasse for AD tester
@@ -92,8 +92,6 @@ namespace ActiveDirectoryTesting
                     Console.WriteLine($"Fejl: {ex.Message}");
                 }
 
-                Console.WriteLine("\nTryk på en tast for at fortsætte...");
-                Console.ReadKey();
                 Console.Clear();
             }
         }
@@ -147,15 +145,89 @@ namespace ActiveDirectoryTesting
 
         private void TestConnection()
         {
-            Console.WriteLine("Tester forbindelse...");
+            Console.WriteLine("=== Test Forbindelse til Active Directory ===");
+            Console.WriteLine();
+            
+            // Vis forbindelsesoplysninger
+            Console.WriteLine("Forbindelsesoplysninger:");
+            Console.WriteLine($"  Server: {_config.Server}");
+            Console.WriteLine($"  Domæne: {_config.Domain}");
+            Console.WriteLine($"  Brugernavn: {_config.Username}");
+            Console.WriteLine($"  Port: 389 (standard LDAP)");
+            Console.WriteLine();
+            
+            Console.WriteLine("Forsøger at oprette forbindelse...");
+            
             try
             {
-                using var connection = GetConnection();
-                Console.WriteLine("Forbindelse succesfuld!");
+                // Vis hvad der sker
+                Console.WriteLine("  → Opretter NetworkCredential...");
+                var credential = new NetworkCredential($"{_config.Username}@{_config.Domain}", _config.Password);
+                
+                Console.WriteLine("  → Opretter LdapConnection...");
+                var connection = new LdapConnection(_config.Server)
+                {
+                    Credential = credential,
+                    AuthType = AuthType.Negotiate
+                };
+                
+                Console.WriteLine("  → Tester autentificering (Bind)...");
+                connection.Bind();
+                
+                Console.WriteLine();
+                Console.WriteLine("✅ Forbindelse succesfuld!");
+                Console.WriteLine($"   Forbundet til: {_config.Server}");
+                Console.WriteLine($"   Autentificeret som: {_config.Username}@{_config.Domain}");
+                Console.WriteLine($"   Autentificeringstype: {connection.AuthType}");
+                
+                // Test en simpel søgning for at verificere at vi kan læse data
+                Console.WriteLine();
+                Console.WriteLine("Tester dataadgang...");
+                var testSearchRequest = new SearchRequest(
+                    $"DC={_config.Domain.Split('.')[0]},DC={_config.Domain.Split('.')[1]}",
+                    "(objectClass=*)",
+                    SearchScope.Base,
+                    "objectClass"
+                );
+                
+                var testResponse = (SearchResponse)connection.SendRequest(testSearchRequest);
+                Console.WriteLine("  → Dataadgang verificeret!");
+                Console.WriteLine($"   Base DN: {testResponse.Entries[0].DistinguishedName}");
+                
+                connection.Dispose();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Forbindelse fejlede: {ex.Message}");
+                Console.WriteLine();
+                Console.WriteLine("❌ Forbindelse fejlede!");
+                Console.WriteLine($"   Fejltype: {ex.GetType().Name}");
+                Console.WriteLine($"   Fejlbesked: {ex.Message}");
+                
+                // Giv specifikke fejlforslag baseret på fejltypen
+                if (ex.Message.Contains("timeout") || ex.Message.Contains("time-out"))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("💡 Mulige løsninger:");
+                    Console.WriteLine("   - Tjek at serveren er tilgængelig");
+                    Console.WriteLine("   - Tjek netværksforbindelse");
+                    Console.WriteLine("   - Tjek firewall indstillinger");
+                }
+                else if (ex.Message.Contains("authentication") || ex.Message.Contains("credentials"))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("💡 Mulige løsninger:");
+                    Console.WriteLine("   - Tjek brugernavn og adgangskode");
+                    Console.WriteLine("   - Tjek at brugeren har adgang til AD");
+                    Console.WriteLine("   - Tjek domænenavn");
+                }
+                else if (ex.Message.Contains("server") || ex.Message.Contains("host"))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("💡 Mulige løsninger:");
+                    Console.WriteLine("   - Tjek server IP/adresse");
+                    Console.WriteLine("   - Tjek at LDAP service kører på serveren");
+                    Console.WriteLine("   - Tjek port 389 er åben");
+                }
             }
         }
 
