@@ -24,10 +24,10 @@ namespace ActiveDirectoryTesting
     // Konfigurationsklasse for runtime indstillinger
     public class ADConfig
     {
-        public string Server { get; set; } = "10.133.71.111";
+        public string Server { get; set; } = "10.133.71.112";
         public string Username { get; set; } = "Admin";
         public string Password { get; set; } = "Cisco1234!";
-        public string Domain { get; set; } = "Hotel.local";
+        public string Domain { get; set; } = "demo.local";
     }
 
     // Partiel klasse for Active Directory Service
