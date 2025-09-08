@@ -21,3 +21,10 @@
 I har enten fået udleveret en IP-adresse og adgangskode af jeres underviser eller fået et link til, hvor I kan booke en lokal Windows Server 2022 Maskine. Når vi har det, skal vi forbinde til den, på Windows bruger vi følgende  Remote Desktop Connection
 
 ![[Pasted image 20250905084358.png]]
+
+
+### Opsætning af AD Domain Server - trin for trin guide
+
+
+
+![[Pasted image 20250908103327.png]]
