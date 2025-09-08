@@ -76,7 +76,18 @@ namespace ActiveDirectoryTesting
                     "mail",
                     "department",
                     "title",
-                    "distinguishedName"
+                    "distinguishedName",
+                    "givenName",
+                    "sn",
+                    "displayName",
+                    "company",
+                    "physicalDeliveryOfficeName",
+                    "telephoneNumber",
+                    "mobile",
+                    "manager",
+                    "lastLogon",
+                    "pwdLastSet",
+                    "userAccountControl"
                 );
 
                 try
@@ -92,8 +103,55 @@ namespace ActiveDirectoryTesting
                             Email = entry.Attributes["mail"]?[0]?.ToString() ?? "N/A",
                             Department = entry.Attributes["department"]?[0]?.ToString() ?? "N/A",
                             Title = entry.Attributes["title"]?[0]?.ToString() ?? "N/A",
-                            DistinguishedName = entry.Attributes["distinguishedName"]?[0]?.ToString() ?? "N/A"
+                            DistinguishedName = entry.Attributes["distinguishedName"]?[0]?.ToString() ?? "N/A",
+                            FirstName = entry.Attributes["givenName"]?[0]?.ToString() ?? "N/A",
+                            LastName = entry.Attributes["sn"]?[0]?.ToString() ?? "N/A",
+                            DisplayName = entry.Attributes["displayName"]?[0]?.ToString() ?? "N/A",
+                            Company = entry.Attributes["company"]?[0]?.ToString() ?? "N/A",
+                            Office = entry.Attributes["physicalDeliveryOfficeName"]?[0]?.ToString() ?? "N/A",
+                            Phone = entry.Attributes["telephoneNumber"]?[0]?.ToString() ?? "N/A",
+                            Mobile = entry.Attributes["mobile"]?[0]?.ToString() ?? "N/A",
+                            Manager = entry.Attributes["manager"]?[0]?.ToString() ?? "N/A"
                         };
+
+                        // Parse lastLogon (kan være byte array)
+                        if (entry.Attributes.Contains("lastLogon"))
+                        {
+                            var lastLogonValue = entry.Attributes["lastLogon"][0];
+                            if (lastLogonValue is byte[] lastLogonBytes && lastLogonBytes.Length == 8)
+                            {
+                                var ticks = BitConverter.ToInt64(lastLogonBytes, 0);
+                                if (ticks > 0)
+                                {
+                                    user.LastLogon = DateTime.FromFileTime(ticks);
+                                }
+                            }
+                        }
+
+                        // Parse passwordLastSet
+                        if (entry.Attributes.Contains("pwdLastSet"))
+                        {
+                            var pwdLastSetValue = entry.Attributes["pwdLastSet"][0];
+                            if (pwdLastSetValue is byte[] pwdLastSetBytes && pwdLastSetBytes.Length == 8)
+                            {
+                                var ticks = BitConverter.ToInt64(pwdLastSetBytes, 0);
+                                if (ticks > 0)
+                                {
+                                    user.PasswordLastSet = DateTime.FromFileTime(ticks);
+                                }
+                            }
+                        }
+
+                        // Parse userAccountControl for enabled status
+                        if (entry.Attributes.Contains("userAccountControl"))
+                        {
+                            var uacValue = entry.Attributes["userAccountControl"][0]?.ToString();
+                            if (int.TryParse(uacValue, out int uac))
+                            {
+                                // Bit 2 (0x0002) = ACCOUNTDISABLE
+                                user.IsEnabled = (uac & 0x0002) == 0;
+                            }
+                        }
 
                         users.Add(user);
                     }
