@@ -19,12 +19,7 @@ services:
     volumes:
       - ./test-results:/app/test-results
     networks:
-      - h2-network
-    dns:
-      - 8.8.8.8
-      - 8.8.4.4
-    extra_hosts:
-      - "ad-server:10.133.71.100"
+      network_mode: host
     restart: unless-stopped
 
   # Blazor WASM App
