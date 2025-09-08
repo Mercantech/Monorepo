@@ -8,8 +8,9 @@
 **Domain Name System (DNS)** er internettet og netværkets "telefonbog" - det oversætter menneskevenlige domænenavne til IP-adresser.
 
 ```mermaid
-graph LR
-    A[Klient: Hvad er server01.demo.local?] --> B[DNS Server]
+graph TD
+    A[Klient: Hvad er server01.demo.local?] 
+    A --> B[DNS Server]
     B --> C[Svar: 192.168.1.10]
     C --> A
 ```
