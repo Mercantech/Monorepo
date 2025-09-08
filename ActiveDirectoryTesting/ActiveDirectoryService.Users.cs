@@ -163,13 +163,183 @@ namespace ActiveDirectoryTesting
             
             foreach (var user in users.OrderBy(u => u.Name))
             {
-                Console.WriteLine($"Navn: {user.Name}");
-                Console.WriteLine($"Brugernavn: {user.Username}");
-                Console.WriteLine($"Email: {user.Email}");
-                Console.WriteLine($"Afdeling: {user.Department}");
-                Console.WriteLine($"Titel: {user.Title}");
-                Console.WriteLine(new string('-', 50));
+                ShowUserDetails(user);
+                Console.WriteLine();
             }
+        }
+
+        /// <summary>
+        /// Viser detaljerede oplysninger om en bruger (samme format som /me)
+        /// </summary>
+        /// <param name="user">Brugeren at vise oplysninger for</param>
+        public void ShowUserDetails(ADUser user)
+        {
+            try
+            {
+                // Hent brugerens grupper
+                Console.WriteLine("Henter brugerens roller/grupper...");
+                var groups = GetUserGroups(user.Username);
+                Console.WriteLine($"Fundet {groups.Count} roller/grupper");
+
+                // Grundlæggende information
+                Console.WriteLine("👤 GRUNDLÆGGENDE INFORMATION");
+                Console.WriteLine($"   Navn: {user.DisplayName}");
+                Console.WriteLine($"   Brugernavn: {user.Username}");
+                Console.WriteLine($"   Email: {user.Email}");
+                Console.WriteLine($"   Firma: {user.Company}");
+                Console.WriteLine($"   Afdeling: {user.Department}");
+                Console.WriteLine($"   Titel: {user.Title}");
+                Console.WriteLine($"   Kontor: {user.Office}");
+                Console.WriteLine();
+
+                // Kontakt information
+                Console.WriteLine("📞 KONTAKT INFORMATION");
+                Console.WriteLine($"   Telefon: {user.Phone}");
+                Console.WriteLine($"   Mobil: {user.Mobile}");
+                Console.WriteLine($"   Manager: {user.Manager}");
+                Console.WriteLine();
+
+                // Konto status
+                Console.WriteLine("🔐 KONTO STATUS");
+                Console.WriteLine($"   Status: {(user.IsEnabled ? "✅ Aktiv" : "❌ Deaktiveret")}");
+                if (user.LastLogon.HasValue)
+                {
+                    Console.WriteLine($"   Sidste login: {user.LastLogon.Value:dd/MM/yyyy HH:mm:ss}");
+                }
+                else
+                {
+                    Console.WriteLine("   Sidste login: Aldrig");
+                }
+                if (user.PasswordLastSet.HasValue)
+                {
+                    Console.WriteLine($"   Adgangskode ændret: {user.PasswordLastSet.Value:dd/MM/yyyy HH:mm:ss}");
+                }
+                else
+                {
+                    Console.WriteLine("   Adgangskode ændret: Ukendt");
+                }
+                Console.WriteLine();
+
+                // Grupper/Roller
+                Console.WriteLine($"👥 ROLLER/GRUPPER ({groups.Count})");
+                if (groups.Count > 0)
+                {
+                    foreach (var group in groups.OrderBy(g => g))
+                    {
+                        Console.WriteLine($"   • {group}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("   Ingen roller/grupper fundet");
+                }
+                Console.WriteLine();
+
+                // Tekniske detaljer
+                Console.WriteLine("🔧 TEKNISKE DETALJER");
+                Console.WriteLine($"   Distinguished Name: {user.DistinguishedName}");
+                Console.WriteLine($"   Forbindelse: {_config.Server}");
+                Console.WriteLine($"   Domæne: {_config.Domain}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Fejl ved hentning af brugeroplysninger: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Henter grupper for en specifik bruger
+        /// </summary>
+        /// <param name="username">Brugernavnet</param>
+        /// <returns>Liste af gruppenavne</returns>
+        public List<string> GetUserGroups(string username)
+        {
+            var groups = new List<string>();
+
+            using (var connection = GetConnection())
+            {
+                // Først find brugerens distinguished name
+                var userSearchRequest = new SearchRequest(
+                    GetBaseDN(),
+                    $"(samAccountName={username})",
+                    SearchScope.Subtree,
+                    "distinguishedName"
+                );
+
+                try
+                {
+                    var userResponse = (SearchResponse)connection.SendRequest(userSearchRequest);
+                    
+                    if (userResponse.Entries.Count == 0)
+                    {
+                        return groups;
+                    }
+
+                    var userDN = userResponse.Entries[0].Attributes["distinguishedName"][0]?.ToString();
+                    if (string.IsNullOrEmpty(userDN))
+                    {
+                        return groups;
+                    }
+
+                    // Søg efter grupper hvor brugeren er medlem
+                    var groupSearchRequest = new SearchRequest(
+                        GetBaseDN(),
+                        $"(member={userDN})",
+                        SearchScope.Subtree,
+                        "cn",
+                        "description"
+                    );
+
+                    var groupResponse = (SearchResponse)connection.SendRequest(groupSearchRequest);
+
+                    foreach (SearchResultEntry entry in groupResponse.Entries)
+                    {
+                        if (entry.Attributes.Contains("cn"))
+                        {
+                            var groupName = entry.Attributes["cn"][0]?.ToString();
+                            if (!string.IsNullOrEmpty(groupName))
+                            {
+                                groups.Add(groupName);
+                            }
+                        }
+                    }
+
+                    // Prøv også med recursive group membership (hvis understøttet)
+                    try
+                    {
+                        var recursiveGroupSearchRequest = new SearchRequest(
+                            GetBaseDN(),
+                            $"(member:1.2.840.113556.1.4.1941:={userDN})",
+                            SearchScope.Subtree,
+                            "cn"
+                        );
+
+                        var recursiveResponse = (SearchResponse)connection.SendRequest(recursiveGroupSearchRequest);
+
+                        foreach (SearchResultEntry entry in recursiveResponse.Entries)
+                        {
+                            if (entry.Attributes.Contains("cn"))
+                            {
+                                var groupName = entry.Attributes["cn"][0]?.ToString();
+                                if (!string.IsNullOrEmpty(groupName) && !groups.Contains(groupName))
+                                {
+                                    groups.Add(groupName);
+                                }
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        // Ignorer fejl for recursive search - det er ikke altid understøttet
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Fejl ved hentning af grupper for {username}: {ex.Message}");
+                }
+            }
+
+            return groups;
         }
 
         /// <summary>
