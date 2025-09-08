@@ -39,12 +39,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastruktur/Active-Diretory/Network Infrastructure.md",
+                "file": "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Network Infrastructure"
+              "title": "DNS og Active Directory"
             }
           }
         ],
@@ -200,9 +200,9 @@
   },
   "active": "479cf405823111b5",
   "lastOpenFiles": [
-    "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
-    "Infrastruktur/Active-Diretory/Network Infrastructure.md",
     "Infrastruktur/Active-Diretory/DHCP og Active Directory.md",
+    "Infrastruktur/Active-Diretory/Network Infrastructure.md",
+    "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
     "Infrastruktur/Active-Diretory/Roller og adgang.md",
     "Infrastruktur/Active-Diretory/Active Directory Installation.md",
     "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
