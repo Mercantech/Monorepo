@@ -42,7 +42,7 @@ namespace ActiveDirectoryTesting
         public string Domain { get; set; } = "demo.local";
     }
 
-    // Partiel klasse for Active Directory Service
+    // Partiel klasse for Active Directory Service 
     public partial class ActiveDirectoryService
     {
         private ADConfig _config;
