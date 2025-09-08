@@ -35,6 +35,10 @@
             Console.WriteLine("Lav en variabel af typen double og tildel den en værdi komma (decimal) værdi af 5 og en 1/4");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
+            // Double kan indeholde decimaltal med høj præcision
+            // 5 og 1/4 = 5.25
+            double decimalNumber = 5.25;
+            Console.WriteLine(decimalNumber);
 
         }
 
@@ -44,6 +48,9 @@
             Console.WriteLine("Lav en variabel af typen string og tildel den en værdi - den skal indeholde teksten 'Hello, World' med et udråbstegn til sidst!");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
+            // String bruges til tekst og skal være i anførselstegn
+            string greeting = "Hello, World!";
+            Console.WriteLine(greeting);
         }
 
         public static void Bool1()
@@ -52,6 +59,9 @@
             Console.WriteLine("Lav en variabel af typen bool og tildel den en sandhedsværdi (true/false).");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
+            // Bool kan kun være true eller false (sand eller falsk)
+            bool isTrue = true;
+            Console.WriteLine(isTrue);
 
         }
 
@@ -62,6 +72,10 @@
             Console.WriteLine("Lav to string variabeler og udskriv dem ved brug af string interpolation.");
             Console.WriteLine("De skal være 'Hello, ' og 'World!'");
             // Lav opgaven herunder!
+            // String interpolation bruger $ foran strengen og {} omkring variabler
+            string part1 = "Hello, ";
+            string part2 = "World!";
+            Console.WriteLine($"{part1}{part2}");
         }
 
         public static void StringInterpolation2()
@@ -80,6 +94,9 @@
             Console.WriteLine("Kombiner dem nu til én sætning:");
 
             // Løsning med string interpolation
+            // Vi skal kombinere: "Hej" + "!" + "med" + "dig" til "Hej med dig!"
+            // Bemærk rækkefølgen: del1, del4, del3, del2
+            Console.WriteLine($"{del1} {del4} {del3}{del2}");
             
         }
 
@@ -89,6 +106,10 @@
             Console.WriteLine("Lav en variabel af typen float og tildel den en værdi af 3 + 0.14");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
+            // Float bruges til decimaltal med lavere præcision end double
+            // Bemærk 'f' efter tallet - det fortæller C# at det er en float
+            float piApprox = 3.14f;
+            Console.WriteLine(piApprox);
         }
 
         public static void Char1()
@@ -97,6 +118,10 @@
             Console.WriteLine("Lav en variabel af typen char og tildel den en værdi af det første bogstav i alfabetet (Det skal være stort!)");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
+            // Char bruges til enkelte tegn og skal være i enkelte anførselstegn
+            // Det første bogstav i alfabetet er A (stort)
+            char firstLetter = 'A';
+            Console.WriteLine(firstLetter);
         }
 
         public static void Decimal1()
@@ -105,6 +130,11 @@
             Console.WriteLine("Lav en variabel af typen decimal og tildel den en værdi af 100 og en halv");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
+            // Decimal bruges til meget præcise decimaltal, ofte til penge
+            // Bemærk 'm' efter tallet - det fortæller C# at det er en decimal
+            // 100 og en halv = 100.5
+            decimal preciseNumber = 100.5m;
+            Console.WriteLine(preciseNumber);
         }
     }
 }

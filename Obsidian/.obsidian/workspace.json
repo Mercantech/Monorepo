@@ -39,12 +39,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Opgaver/Lommeregner med Historik.md",
+                "file": "Opgaver/Todo Liste med Kategorier.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lommeregner med Historik"
+              "title": "Todo Liste med Kategorier"
             }
           }
         ],
@@ -198,10 +198,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "92a44750e2882671",
+  "active": "479cf405823111b5",
   "lastOpenFiles": [
-    "Opgaver/Untitled.md",
     "Opgaver/Lommeregner med Historik.md",
+    "Opgaver/Todo Liste med Kategorier.md",
+    "Opgaver/Untitled.md",
     "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
     "Opgaver/Opgaver Oversigt.base",
     "CSS/Untitled.md",
@@ -230,7 +231,6 @@
     "Learn/Karaktere/Infrastructure - Radia Hopper.md",
     "Learn/Karaktere/ORM - Diego Chen.md",
     "Learn/Karaktere/CSharp - Mads Skeeter Hejlsberg.md",
-    "Learn/Karaktere/Backend - Roy Guthrie.md",
     "Assets/Pasted image 20250906223115.png",
     "Assets/Pasted image 20250906223113.png",
     "Assets/Pasted image 20250906223054.png",
