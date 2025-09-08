@@ -1,186 +1,250 @@
 {
-    "id": "gf2-kapitel-3-control-flow",
-    "title": "GF2 Kapitel 3 - Control Flow",
-    "description": "Test din viden om control flow i C#: if/else statements, switch statements, ternary operator, brugerinput og scope",
-    "category": "GF2",
-    "difficulty": "Begynder",
-    "estimatedTime": "8-10 minutter",
-    "questions": [
-      {
-        "id": 1,
-        "questionText": "Hvilke af følgende er korrekte if/else statement syntakser i C#?",
-        "options": {
-          "A": "if (betingelse) { // kode }",
-          "B": "if (betingelse) { // kode } else { // kode }",
-          "C": "if (betingelse) { // kode } else if (betingelse2) { // kode }",
-          "D": "if (betingelse) { // kode } else if (betingelse2) { // kode } else { // kode }"
-        },
-        "correctAnswers": ["A", "B", "C", "D"],
-        "explanations": {
-          "A": "✅ Grundlæggende if statement syntaks er korrekt.",
-          "B": "✅ If-else statement syntaks er korrekt.",
-          "C": "✅ If-else if statement syntaks er korrekt.",
-          "D": "✅ Komplet if-else if-else statement syntaks er korrekt."
-        },
-        "learnMore": {
-          "title": "If Statements in C#",
-          "description": "Microsofts dokumentation om if statements i C#.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-if-statement"
-        }
+  "id": "gf2-kapitel-3-control-flow",
+  "title": "GF2 Kapitel 3 - Control Flow",
+  "description": "Test din viden om control flow i C#: if/else statements, switch statements, ternary operator, brugerinput og scope",
+  "category": "GF2",
+  "difficulty": "Begynder",
+  "estimatedTime": "8-10 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvad vil følgende kode udskrive? bool result = (10 > 5) && (3 < 1); if (result) Console.WriteLine(\"Sand\"); else Console.WriteLine(\"Falsk\");",
+      "options": {
+        "A": "Sand",
+        "B": "Falsk",
+        "C": "Compile error",
+        "D": "Runtime error"
       },
-      {
-        "id": 2,
-        "questionText": "Hvad er den korrekte syntaks for en switch statement i C#?",
-        "options": {
-          "A": "switch (variabel) { case værdi1: // kode break; }",
-          "B": "switch (variabel) { case værdi1: // kode break; default: // kode break; }",
-          "C": "switch (variabel) { case værdi1: // kode break; case værdi2: // kode break; default: // kode break; }",
-          "D": "Alle ovenstående er korrekte"
-        },
-        "correctAnswers": ["D"],
-        "explanations": {
-          "A": "✅ Grundlæggende switch syntaks er korrekt.",
-          "B": "✅ Switch med default case er korrekt.",
-          "C": "✅ Switch med flere cases og default er korrekt.",
-          "D": "✅ Alle syntakser er korrekte - switch kan have 1 eller flere cases, med eller uden default."
-        },
-        "learnMore": {
-          "title": "Switch Statements in C#",
-          "description": "Microsofts dokumentation om switch statements i C#.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-switch-statement"
-        }
+      "correctAnswers": [
+        "B"
+      ],
+      "explanations": {
+        "A": "❌ (10 > 5) er sand, men (3 < 1) er falsk, så && giver falsk.",
+        "B": "✅ && kræver begge betingelser er sande. Da (3 < 1) er falsk, bliver result falsk.",
+        "C": "❌ Koden er syntaktisk korrekt.",
+        "D": "❌ Der opstår ingen runtime fejl."
       },
-      {
-        "id": 3,
-        "questionText": "Hvad er den korrekte syntaks for ternary operator i C#?",
-        "options": {
-          "A": "resultat = (betingelse) ? værdiHvisSand : værdiHvisFalsk;",
-          "B": "resultat = betingelse ? værdiHvisSand : værdiHvisFalsk;",
-          "C": "resultat = (betingelse) ? værdiHvisSand : værdiHvisFalsk",
-          "D": "A og B er begge korrekte"
-        },
-        "correctAnswers": ["D"],
-        "explanations": {
-          "A": "✅ Parenteser omkring betingelsen er valgfrie men korrekte.",
-          "B": "✅ Parenteser omkring betingelsen er valgfrie men korrekte.",
-          "C": "❌ Mangler semikolon i slutningen.",
-          "D": "✅ Både A og B er korrekte - parenteser omkring betingelsen er valgfrie."
-        },
-        "learnMore": {
-          "title": "Ternary Operator in C#",
-          "description": "Microsofts dokumentation om conditional operator (ternary) i C#.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator"
-        }
-      },
-      {
-        "id": 4,
-        "questionText": "Hvilke af følgende er korrekte måder at læse brugerinput i C#?",
-        "options": {
-          "A": "string input = Console.ReadLine();",
-          "B": "int.TryParse(Console.ReadLine(), out int number);",
-          "C": "double.TryParse(Console.ReadLine(), out double value);",
-          "D": "bool.TryParse(Console.ReadLine(), out bool flag);"
-        },
-        "correctAnswers": ["A", "B", "C", "D"],
-        "explanations": {
-          "A": "✅ Console.ReadLine() læser tekst input fra brugeren.",
-          "B": "✅ int.TryParse() konverterer tekst til heltal med fejlhåndtering.",
-          "C": "✅ double.TryParse() konverterer tekst til decimaltal med fejlhåndtering.",
-          "D": "✅ bool.TryParse() konverterer tekst til boolean med fejlhåndtering."
-        },
-        "learnMore": {
-          "title": "Console.ReadLine() in C#",
-          "description": "Microsofts dokumentation om Console.ReadLine() i C#.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.console.readline"
-        }
-      },
-      {
-        "id": 5,
-        "questionText": "Hvad er forskellen mellem lokalt og globalt scope i C#?",
-        "options": {
-          "A": "Lokalt scope: variabler kun synlige i deres metode/blok",
-          "B": "Globalt scope: variabler synlige overalt i programmet",
-          "C": "Lokale variabler er sikrere end globale variabler",
-          "D": "Alle ovenstående er korrekte"
-        },
-        "correctAnswers": ["D"],
-        "explanations": {
-          "A": "✅ Lokale variabler er kun synlige inden for deres metode eller blok.",
-          "B": "✅ Globale variabler er synlige fra enhver del af programmet.",
-          "C": "✅ Lokale variabler er sikrere da de ikke kan påvirkes fra andre steder.",
-          "D": "✅ Alle svar er korrekte - lokalt scope begrænser synlighed, globalt scope gør variabler tilgængelige overalt."
-        },
-        "learnMore": {
-          "title": "Variable Scope in C#",
-          "description": "Microsofts dokumentation om variable scope i C#.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/basic-concepts#scopes"
-        }
-      },
-      {
-        "id": 6,
-        "questionText": "Hvilke problemer kan globale variabler skabe i C#?",
-        "options": {
-          "A": "Utilsigtet ændring fra forskellige steder i koden",
-          "B": "Navnekonflikter med lokale variabler",
-          "C": "Sværere at teste og vedligeholde koden",
-          "D": "Alle ovenstående er korrekte"
-        },
-        "correctAnswers": ["D"],
-        "explanations": {
-          "A": "✅ Globale variabler kan ændres fra flere steder, hvilket kan skabe uforudsigelig opførsel.",
-          "B": "✅ Navnekonflikter kan opstå når lokale og globale variabler har samme navn.",
-          "C": "✅ Globale variabler gør det sværere at isolere og teste specifik funktionalitet.",
-          "D": "✅ Alle problemer er korrekte - globale variabler kan skabe alle disse udfordringer."
-        },
-        "learnMore": {
-          "title": "Global Variables Best Practices",
-          "description": "Microsofts dokumentation om best practices for variable scope.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions"
-        }
-      },
-      {
-        "id": 7,
-        "questionText": "Hvad vil følgende kode udskrive? int num = 15; if (num > 10) { Console.WriteLine(\"Større end 10\"); } else if (num > 5) { Console.WriteLine(\"Større end 5\"); } else { Console.WriteLine(\"Mindre end eller lig med 5\"); }",
-        "options": {
-          "A": "Større end 10",
-          "B": "Større end 5",
-          "C": "Mindre end eller lig med 5",
-          "D": "Ingen af ovenstående"
-        },
-        "correctAnswers": ["A"],
-        "explanations": {
-          "A": "✅ Da num = 15 og 15 > 10 er sandt, udføres den første if-blok.",
-          "B": "❌ Denne blok udføres kun hvis den første betingelse er falsk.",
-          "C": "❌ Denne blok udføres kun hvis begge betingelser er falske.",
-          "D": "❌ A er korrekt - koden udskriver 'Større end 10'."
-        },
-        "learnMore": {
-          "title": "If-Else Logic in C#",
-          "description": "Microsofts dokumentation om if-else statement logik.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-if-statement"
-        }
-      },
-      {
-        "id": 8,
-        "questionText": "Hvilke af følgende er korrekte måder at håndtere brugerinput med fejlhåndtering?",
-        "options": {
-          "A": "if (int.TryParse(input, out int result)) { // brug result }",
-          "B": "if (double.TryParse(input, out double result)) { // brug result }",
-          "C": "if (bool.TryParse(input, out bool result)) { // brug result }",
-          "D": "Alle ovenstående er korrekte"
-        },
-        "correctAnswers": ["D"],
-        "explanations": {
-          "A": "✅ int.TryParse() returnerer true hvis konvertering lykkes, false hvis ikke.",
-          "B": "✅ double.TryParse() returnerer true hvis konvertering lykkes, false hvis ikke.",
-          "C": "✅ bool.TryParse() returnerer true hvis konvertering lykkes, false hvis ikke.",
-          "D": "✅ Alle TryParse() metoder giver sikker fejlhåndtering uden at kaste exceptions."
-        },
-        "learnMore": {
-          "title": "TryParse Methods in C#",
-          "description": "Microsofts dokumentation om TryParse metoder i C#.",
-          "url": "https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse"
-        }
+      "learnMore": {
+        "title": "If Statements in C#",
+        "description": "Microsofts dokumentation om if statements i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-if-statement"
       }
-    ]
-  }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvad sker der hvis du glemmer 'break;' i en switch case i C#?",
+      "options": {
+        "A": "Koden kompilerer ikke - der kommer en fejl",
+        "B": "Koden kører videre til næste case (fall-through)",
+        "C": "Programmet crasher",
+        "D": "Intet særligt sker"
+      },
+      "correctAnswers": [
+        "A"
+      ],
+      "explanations": {
+        "A": "✅ C# kræver eksplicit break, return eller goto i hver case - ellers får du compile error.",
+        "B": "❌ I modsætning til C/Java tillader C# ikke implicit fall-through.",
+        "C": "❌ Programmet når aldrig at køre da det ikke kompilerer.",
+        "D": "❌ Der sker noget meget specifikt - en compile error."
+      },
+      "learnMore": {
+        "title": "Switch Statements in C#",
+        "description": "Microsofts dokumentation om switch statements i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-switch-statement"
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvilken af følgende ternary operator syntakser vil give en compile error?",
+      "options": {
+        "A": "string result = (age >= 18) ? \"Voksen\" : \"Barn\";",
+        "B": "int value = (x > 0) ? x : -x;",
+        "C": "bool isValid = (input != null) ? true : false",
+        "D": "double price = (discount > 0) ? originalPrice * 0.9 : originalPrice;"
+      },
+      "correctAnswers": [
+        "C"
+      ],
+      "explanations": {
+        "A": "✅ Korrekt syntaks med parenteser og semikolon.",
+        "B": "✅ Korrekt syntaks med matematiske operationer.",
+        "C": "❌ Mangler semikolon i slutningen - vil give compile error.",
+        "D": "✅ Korrekt syntaks med matematiske beregninger."
+      },
+      "learnMore": {
+        "title": "Ternary Operator in C#",
+        "description": "Microsofts dokumentation om conditional operator (ternary) i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator"
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad returnerer Console.ReadLine() hvis brugeren bare trykker Enter uden at skrive noget?",
+      "options": {
+        "A": "null",
+        "B": "En tom string (\"\")",
+        "C": "Et mellemrum (\" \")",
+        "D": "En exception kastes"
+      },
+      "correctAnswers": [
+        "B"
+      ],
+      "explanations": {
+        "A": "❌ Console.ReadLine() returnerer kun null ved EOF (Ctrl+Z på Windows).",
+        "B": "✅ Når brugeren bare trykker Enter returneres en tom string.",
+        "C": "❌ Der returneres ikke et mellemrum, men en helt tom string.",
+        "D": "❌ Der kastes ingen exception ved tom input."
+      },
+      "learnMore": {
+        "title": "Console.ReadLine() in C#",
+        "description": "Microsofts dokumentation om Console.ReadLine() i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/api/system.console.readline"
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvad sker der i følgende kode? int x = 10; if (true) { int x = 20; Console.WriteLine(x); }",
+      "options": {
+        "A": "Udskriver 10",
+        "B": "Udskriver 20",
+        "C": "Compile error - kan ikke redeclarere x",
+        "D": "Runtime error"
+      },
+      "correctAnswers": [
+        "C"
+      ],
+      "explanations": {
+        "A": "❌ Koden kompilerer ikke, så der udskrives intet.",
+        "B": "❌ Koden kompilerer ikke, så der udskrives intet.",
+        "C": "✅ C# tillader ikke at redeclarere en variabel med samme navn i samme scope eller nested scope.",
+        "D": "❌ Det er en compile-time error, ikke runtime error."
+      },
+      "learnMore": {
+        "title": "Variable Scope in C#",
+        "description": "Microsofts dokumentation om variable scope i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/basic-concepts#scopes"
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvad vil følgende kode udskrive? string result = (5 > 3) ? \"Større\" : (5 < 3) ? \"Mindre\" : \"Lig med\"; Console.WriteLine(result);",
+      "options": {
+        "A": "Større",
+        "B": "Mindre",
+        "C": "Lig med",
+        "D": "Compile error"
+      },
+      "correctAnswers": [
+        "A"
+      ],
+      "explanations": {
+        "A": "✅ Da 5 > 3 er sandt, returneres \"Større\" uden at evaluere resten.",
+        "B": "❌ Den anden betingelse evalueres ikke da den første er sand.",
+        "C": "❌ Default værdien bruges ikke da den første betingelse er sand.",
+        "D": "❌ Nested ternary operators er gyldige i C#."
+      },
+      "learnMore": {
+        "title": "Ternary Operator in C#",
+        "description": "Microsofts dokumentation om conditional operator (ternary) i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator"
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvad vil følgende kode udskrive? int num = 15; if (num > 10) { Console.WriteLine(\"Større end 10\"); } else if (num > 5) { Console.WriteLine(\"Større end 5\"); } else { Console.WriteLine(\"Mindre end eller lig med 5\"); }",
+      "options": {
+        "A": "Større end 10",
+        "B": "Større end 5",
+        "C": "Mindre end eller lig med 5",
+        "D": "Ingen af ovenstående"
+      },
+      "correctAnswers": [
+        "A"
+      ],
+      "explanations": {
+        "A": "✅ Da num = 15 og 15 > 10 er sandt, udføres den første if-blok.",
+        "B": "❌ Denne blok udføres kun hvis den første betingelse er falsk.",
+        "C": "❌ Denne blok udføres kun hvis begge betingelser er falske.",
+        "D": "❌ A er korrekt - koden udskriver 'Større end 10'."
+      },
+      "learnMore": {
+        "title": "If-Else Logic in C#",
+        "description": "Microsofts dokumentation om if-else statement logik.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-if-statement"
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "Hvad vil int.TryParse(\"abc\", out int result) returnere, og hvad bliver værdien af result?",
+      "options": {
+        "A": "Returnerer true, result bliver 0",
+        "B": "Returnerer false, result bliver 0",
+        "C": "Returnerer false, result bliver -1",
+        "D": "Kaster en FormatException"
+      },
+      "correctAnswers": [
+        "B"
+      ],
+      "explanations": {
+        "A": "❌ TryParse returnerer false når konvertering fejler.",
+        "B": "✅ TryParse returnerer false ved fejl og sætter out parameteren til default værdi (0 for int).",
+        "C": "❌ Default værdi for int er 0, ikke -1.",
+        "D": "❌ TryParse kaster aldrig exceptions - det er hele pointen med TryParse."
+      },
+      "learnMore": {
+        "title": "TryParse Methods in C#",
+        "description": "Microsofts dokumentation om TryParse metoder i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse"
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvad vil følgende switch statement udskrive? int day = 3; switch (day) { case 1: case 2: Console.WriteLine(\"Weekday\"); break; case 3: Console.WriteLine(\"Wednesday\"); case 4: Console.WriteLine(\"Thursday\"); break; default: Console.WriteLine(\"Other\"); break; }",
+      "options": {
+        "A": "Wednesday",
+        "B": "Wednesday Thursday",
+        "C": "Compile error",
+        "D": "Thursday"
+      },
+      "correctAnswers": [
+        "C"
+      ],
+      "explanations": {
+        "A": "❌ Koden kompilerer ikke på grund af manglende break efter case 3.",
+        "B": "❌ Koden kompilerer ikke på grund af manglende break efter case 3.",
+        "C": "✅ C# kræver eksplicit break, return eller goto - case 3 mangler break før case 4.",
+        "D": "❌ Koden kompilerer ikke på grund af manglende break efter case 3."
+      },
+      "learnMore": {
+        "title": "Switch Fall-through in C#",
+        "description": "Microsofts dokumentation om switch fall-through regler i C#.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-switch-statement"
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvilken af følgende if-statements er mest effektiv når du tjekker flere betingelser?",
+      "options": {
+        "A": "if (condition1 && condition2 && condition3)",
+        "B": "if (condition1) { if (condition2) { if (condition3) { } } }",
+        "C": "if (condition1 || condition2 || condition3)",
+        "D": "De er alle lige effektive"
+      },
+      "correctAnswers": [
+        "A"
+      ],
+      "explanations": {
+        "A": "✅ && operatoren bruger short-circuit evaluation - stopper ved første false betingelse.",
+        "B": "❌ Nested if-statements skaber unødvendig indentation og er mindre læsbare.",
+        "C": "❌ || operatoren er til OR logik, ikke AND logik som spørgsmålet antyder.",
+        "D": "❌ A er mest effektiv på grund af short-circuit evaluation."
+      },
+      "learnMore": {
+        "title": "Logical Operators in C#",
+        "description": "Microsofts dokumentation om logiske operatorer og short-circuit evaluation.",
+        "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators"
+      }
+    }
+  ]
+}
