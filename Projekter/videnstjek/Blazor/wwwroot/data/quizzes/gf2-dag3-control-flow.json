@@ -25,7 +25,7 @@
         "D": "❌ Der opstår ingen runtime fejl."
       },
       "learnMore": {
-        "title": "If Statements in C#",
+        "title": "If Statements in C# ",
         "description": "Microsofts dokumentation om if statements i C#.",
         "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements#the-if-statement"
       }
