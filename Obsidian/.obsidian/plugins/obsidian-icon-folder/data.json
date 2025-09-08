@@ -6,6 +6,8 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiGamepad",
+      "LiCalculator",
       "MaH4Logo",
       "MaH3Logo",
       "MaSignalR",
@@ -18,9 +20,7 @@
       "MaOsi",
       "MaDotNet",
       "MaLogoCSharp",
-      "MaSwaggerNobg",
-      "MaSwagger",
-      "MaScalar"
+      "MaSwaggerNobg"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -79,5 +79,7 @@
   "CSharp/SignalR": "MaSignalR",
   "CSharp/SignalR/SignalR.md": "MaSignalR",
   "H3/Oversigt.md": "MaH3Logo",
-  "H4/Oversigt.md": "MaH4Logo"
+  "H4/Oversigt.md": "MaH4Logo",
+  "Opgaver/Lommeregner med Historik.md": "LiCalculator",
+  "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md": "LiGamepad"
 }

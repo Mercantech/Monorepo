@@ -39,12 +39,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
+                "file": "Opgaver/Lommeregner med Historik.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DNS og Active Directory"
+              "title": "Lommeregner med Historik"
             }
           }
         ],
@@ -198,11 +198,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "479cf405823111b5",
+  "active": "92a44750e2882671",
   "lastOpenFiles": [
+    "Opgaver/Untitled.md",
+    "Opgaver/Lommeregner med Historik.md",
+    "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
+    "Opgaver/Opgaver Oversigt.base",
+    "CSS/Untitled.md",
+    "CSS/CSS Spil.md",
+    "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
     "Infrastruktur/Active-Diretory/DHCP og Active Directory.md",
     "Infrastruktur/Active-Diretory/Network Infrastructure.md",
-    "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
     "Infrastruktur/Active-Diretory/Roller og adgang.md",
     "Infrastruktur/Active-Diretory/Active Directory Installation.md",
     "Infrastruktur/Active-Diretory/Opsætning af Active Directory i Windows Server 2022.md",
@@ -225,7 +231,6 @@
     "Learn/Karaktere/ORM - Diego Chen.md",
     "Learn/Karaktere/CSharp - Mads Skeeter Hejlsberg.md",
     "Learn/Karaktere/Backend - Roy Guthrie.md",
-    "Learn/Karaktere/Blazor - Steve Salamander.md",
     "Assets/Pasted image 20250906223115.png",
     "Assets/Pasted image 20250906223113.png",
     "Assets/Pasted image 20250906223054.png",
@@ -235,17 +240,12 @@
     "Assets/Radia Hopper - Profile.png",
     "Assets/Pasted image 20250906222223.png",
     "Learn/Karaktere/ORM - X X X",
-    "Monorepo/New Git repo.md",
-    "conflict-files-obsidian-git.md",
-    "Learn/Karaktere/CSharp -.md",
     "Learn/Karaktere",
     "Learn",
-    "H1/H1 - Oversigt.md",
     "Monorepo",
     "Database/Postgres",
     "Database",
     "CSharp/Dotnet/ADO.NET",
-    "H1",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "GF2/Canva.canvas",
