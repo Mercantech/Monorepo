@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Opgaver
 {
@@ -34,7 +35,21 @@ namespace Opgaver
                 "Lav et program som gemmer 5 fornavne som brugeren indtaster i et array."
             );
             // Lav opgaven herunder!
-            string[] navne = new string[5];
+            string[] navne = new string[5]; // Array med plads til 5 navne
+            
+            // Få navne fra brugeren
+            for (int i = 0; i < navne.Length; i++)
+            {
+                Console.Write($"Indtast navn {i + 1}: ");
+                navne[i] = Console.ReadLine();
+            }
+            
+            // Udskriv alle navne
+            Console.WriteLine("\nDe indtastede navne er:");
+            for (int i = 0; i < navne.Length; i++)
+            {
+                Console.WriteLine($"{i + 1}. {navne[i]}");
+            }
         }
 
         public static void Array2()
@@ -44,6 +59,26 @@ namespace Opgaver
                 "Lav et program som gemmer 5 tal i et array og udskriver det største tal."
             );
             // Lav opgaven herunder!
+            int[] tal = new int[5]; // Array med plads til 5 tal
+            
+            // Få tal fra brugeren
+            for (int i = 0; i < tal.Length; i++)
+            {
+                Console.Write($"Indtast tal {i + 1}: ");
+                tal[i] = int.Parse(Console.ReadLine());
+            }
+            
+            // Find det største tal
+            int størst = tal[0]; // Start med første tal som det største
+            for (int i = 1; i < tal.Length; i++)
+            {
+                if (tal[i] > størst)
+                {
+                    størst = tal[i];
+                }
+            }
+            
+            Console.WriteLine($"Det største tal er: {størst}");
         }
 
         public static void Array3()
@@ -54,6 +89,21 @@ namespace Opgaver
                 og udskriver dem alle i omvendt rækkefølge."
             );
             // Lav opgaven herunder!
+            string[] byer = new string[5]; // Array med plads til 5 bynavne
+            
+            // Få bynavne fra brugeren
+            for (int i = 0; i < byer.Length; i++)
+            {
+                Console.Write($"Indtast by {i + 1}: ");
+                byer[i] = Console.ReadLine();
+            }
+            
+            // Udskriv byerne i omvendt rækkefølge
+            Console.WriteLine("\nByerne i omvendt rækkefølge:");
+            for (int i = byer.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine($"{byer.Length - i}. {byer[i]}");
+            }
         }
 
         public static void List1()
@@ -64,7 +114,22 @@ namespace Opgaver
                 som brugeren indtaster i en liste."
             );
             // Lav opgaven herunder!
-            List<string> navne = new List<string>();
+            List<string> navne = new List<string>(); // Dynamisk liste
+            
+            // Få 5 navne fra brugeren
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Indtast navn {i + 1}: ");
+                string navn = Console.ReadLine();
+                navne.Add(navn); // Tilføj navn til listen
+            }
+            
+            // Udskriv alle navne
+            Console.WriteLine("\nDe indtastede navne er:");
+            for (int i = 0; i < navne.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {navne[i]}");
+            }
         }
 
         public static void List2()
@@ -75,6 +140,29 @@ namespace Opgaver
                 navne indtil de skriver 'stop'. Udskriv alle navnene til sidst."
             );
             // Lav opgaven herunder!
+            List<string> navne = new List<string>();
+            string input = "";
+            
+            Console.WriteLine("Indtast navne (skriv 'stop' for at afslutte):");
+            
+            // Fortsæt indtil brugeren skriver 'stop'
+            while (input.ToLower() != "stop")
+            {
+                Console.Write("Indtast navn: ");
+                input = Console.ReadLine();
+                
+                if (input.ToLower() != "stop")
+                {
+                    navne.Add(input);
+                }
+            }
+            
+            // Udskriv alle navne
+            Console.WriteLine($"\nDu indtastede {navne.Count} navne:");
+            foreach (string navn in navne)
+            {
+                Console.WriteLine($"- {navn}");
+            }
         }
 
         public static void List3()
@@ -85,6 +173,25 @@ namespace Opgaver
                 og programmet udskriver gennemsnittet."
             );
             // Lav opgaven herunder!
+            List<int> tal = new List<int>();
+            
+            // Få 5 tal fra brugeren
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Indtast tal {i + 1}: ");
+                int nummer = int.Parse(Console.ReadLine());
+                tal.Add(nummer);
+            }
+            
+            // Beregn gennemsnit
+            int sum = 0;
+            foreach (int nummer in tal)
+            {
+                sum += nummer;
+            }
+            
+            double gennemsnit = (double)sum / tal.Count;
+            Console.WriteLine($"Gennemsnittet af de 5 tal er: {gennemsnit:F2}");
         }
 
         public static void List4()
@@ -95,6 +202,80 @@ namespace Opgaver
                 og kan fjerne ting fra listen igen. Udskriv listen til sidst."
             );
             // Lav opgaven herunder!
+            List<string> indkøbsliste = new List<string>();
+            bool fortsæt = true;
+            
+            while (fortsæt)
+            {
+                Console.WriteLine("\nVælg en handling:");
+                Console.WriteLine("1. Tilføj vare");
+                Console.WriteLine("2. Fjern vare");
+                Console.WriteLine("3. Vis liste");
+                Console.WriteLine("4. Afslut");
+                Console.Write("Dit valg: ");
+                
+                string valg = Console.ReadLine();
+                
+                switch (valg)
+                {
+                    case "1":
+                        Console.Write("Indtast vare at tilføje: ");
+                        string vare = Console.ReadLine();
+                        indkøbsliste.Add(vare);
+                        Console.WriteLine($"'{vare}' er tilføjet til listen.");
+                        break;
+                        
+                    case "2":
+                        if (indkøbsliste.Count > 0)
+                        {
+                            Console.WriteLine("Nuværende liste:");
+                            for (int i = 0; i < indkøbsliste.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {indkøbsliste[i]}");
+                            }
+                            Console.Write("Indtast nummer på vare at fjerne: ");
+                            int index = int.Parse(Console.ReadLine()) - 1;
+                            
+                            if (index >= 0 && index < indkøbsliste.Count)
+                            {
+                                string fjernet = indkøbsliste[index];
+                                indkøbsliste.RemoveAt(index);
+                                Console.WriteLine($"'{fjernet}' er fjernet fra listen.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ugyldigt nummer!");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Listen er tom!");
+                        }
+                        break;
+                        
+                    case "3":
+                        Console.WriteLine($"\nIndkøbsliste ({indkøbsliste.Count} varer):");
+                        foreach (string item in indkøbsliste)
+                        {
+                            Console.WriteLine($"- {item}");
+                        }
+                        break;
+                        
+                    case "4":
+                        fortsæt = false;
+                        break;
+                        
+                    default:
+                        Console.WriteLine("Ugyldigt valg!");
+                        break;
+                }
+            }
+            
+            Console.WriteLine("\nFinal indkøbsliste:");
+            foreach (string item in indkøbsliste)
+            {
+                Console.WriteLine($"- {item}");
+            }
         }
 
         public static void List5()
