@@ -80,15 +80,8 @@ namespace ActiveDirectoryTesting
                         // Hent medlemmer
                         if (entry.Attributes.Contains("member"))
                         {
-                            foreach (var memberValue in entry.Attributes["member"])
+                            foreach (string member in entry.Attributes["member"])
                             {
-                                // Konverter til string uanset om det er string eller byte array
-                                string member = memberValue switch
-                                {
-                                    string str => str,
-                                    byte[] bytes => System.Text.Encoding.UTF8.GetString(bytes),
-                                    _ => memberValue?.ToString() ?? "Unknown"
-                                };
                                 group.Members.Add(member);
                             }
                         }

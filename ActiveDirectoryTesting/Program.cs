@@ -52,9 +52,6 @@ namespace ActiveDirectoryTesting
                         case "8":
                             _adService.ShowAdvancedSearchMenu();
                             break;
-                        case "9":
-                            _adService.ShowCurrentUserInfo();
-                            break;
                         case "0":
                             Console.WriteLine("Farvel!");
                             return;
@@ -88,7 +85,6 @@ namespace ActiveDirectoryTesting
             Console.WriteLine("6. Opdater forbindelsesindstillinger");
             Console.WriteLine("7. Test forbindelse");
             Console.WriteLine("8. Avanceret søgning");
-            Console.WriteLine("9. /me - Vis min bruger information");
             Console.WriteLine("0. Afslut");
             Console.WriteLine();
             Console.Write("Vælg en option: ");
