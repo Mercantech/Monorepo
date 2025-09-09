@@ -4,18 +4,18 @@
 
 En branch i Git er en let, bevægelig pointer til et specifikt commit. Tænk på det som en parallel udviklingslinje, hvor du kan arbejde på nye features eller eksperimenter uden at påvirke hovedkoden.
 
-```mermaid
-gitgraph
-    commit id: "Initial commit"
-    commit id: "Add login"
-    branch feature
-    checkout feature
-    commit id: "Start new feature"
-    commit id: "Complete feature"
-    checkout main
-    commit id: "Bug fix"
-    merge feature
-    commit id: "Release v1.0"
+```
+main:    A---B---C-------F---G
+              \         /
+feature:       D---E---/
+
+A: Initial commit
+B: Add login  
+C: Bug fix
+D: Start new feature
+E: Complete feature
+F: Merge feature
+G: Release v1.0
 ```
 
 ## Hvorfor Bruge Branches?
@@ -75,61 +75,58 @@ feature:    D---E---/
 ## Merge vs Rebase
 
 ### Merge (Bevarer Historie)
-```mermaid
-gitgraph
-    commit id: "A"
-    commit id: "B"
-    branch feature
-    checkout feature
-    commit id: "D"
-    commit id: "E"
-    checkout main
-    commit id: "C"
-    merge feature
-    commit id: "Merge commit"
+```
+main:    A---B---C-------M
+              \         /
+feature:       D---E---/
+
+M = Merge commit (bevarer branch historie)
 ```
 
 ### Rebase (Lineær Historie)
-```mermaid
-gitgraph
-    commit id: "A"
-    commit id: "B"
-    commit id: "C"
-    commit id: "D'"
-    commit id: "E'"
+```
+Før rebase:
+main:    A---B---C
+              \
+feature:       D---E
+
+Efter rebase:
+main:    A---B---C---D'---E'
+
+D' og E' = Rebasede commits (ny historie)
 ```
 
 ## Branch Strategier
 
 ### Git Flow
-```mermaid
-gitgraph
-    commit id: "Initial"
-    branch develop
-    checkout develop
-    commit id: "Dev work"
-    branch feature/login
-    checkout feature/login
-    commit id: "Login feature"
-    checkout develop
-    merge feature/login
-    checkout main
-    merge develop
-    commit id: "Release v1.0"
+```
+main:     A-----------M-------R
+           \         /       /
+develop:    B---C---D---E---/
+                 \     /
+feature:          F---G
+
+A: Initial commit
+B: Start develop
+C: Dev work  
+F-G: Feature work
+D: Merge feature
+E: Prepare release
+M: Merge to main
+R: Release v1.0
 ```
 
 ### GitHub Flow (Simplere)
-```mermaid
-gitgraph
-    commit id: "Initial"
-    commit id: "Stable"
-    branch feature
-    checkout feature
-    commit id: "New feature"
-    commit id: "Tests pass"
-    checkout main
-    merge feature
-    commit id: "Deploy"
+```
+main:     A---B-------D---E
+               \     /
+feature:        C---/
+
+A: Initial
+B: Stable
+C: New feature + tests
+D: Merge feature  
+E: Deploy
 ```
 
 ## Praktiske Eksempler
