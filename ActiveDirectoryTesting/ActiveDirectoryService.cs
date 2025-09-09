@@ -19,18 +19,30 @@ namespace ActiveDirectoryTesting
         public string Department { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public string DistinguishedName { get; set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = string.Empty;
+        public string Company { get; set; } = string.Empty;
+        public string Office { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public string Mobile { get; set; } = string.Empty;
+        public string Manager { get; set; } = string.Empty;
+        public DateTime? LastLogon { get; set; }
+        public DateTime? PasswordLastSet { get; set; }
+        public bool IsEnabled { get; set; } = true;
+        public List<string> Groups { get; set; } = new List<string>();
     }
 
     // Konfigurationsklasse for runtime indstillinger
     public class ADConfig
     {
         public string Server { get; set; } = "10.133.71.112";
-        public string Username { get; set; } = "Admin";
+        public string Username { get; set; } = "Rasmus";
         public string Password { get; set; } = "Cisco1234!";
         public string Domain { get; set; } = "demo.local";
     }
 
-    // Partiel klasse for Active Directory Service
+    // Partiel klasse for Active Directory Service 
     public partial class ActiveDirectoryService
     {
         private ADConfig _config;
