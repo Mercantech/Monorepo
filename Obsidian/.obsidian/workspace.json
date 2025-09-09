@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git/Branch.md",
+                "file": "Git/Fjern Filer Efter Push.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Branch"
+              "title": "Fjern Filer Efter Push"
             }
           }
         ],
@@ -186,8 +186,8 @@
   },
   "active": "8b1ec45818b23d45",
   "lastOpenFiles": [
-    "Git/Fjern Filer Efter Push.md",
     "Git/Branch.md",
+    "Git/Fjern Filer Efter Push.md",
     "Infrastruktur/Active-Diretory/Roller og adgang.md",
     "Git",
     "Opgaver/Todo Liste med Kategorier.md",
