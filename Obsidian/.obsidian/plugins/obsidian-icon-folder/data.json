@@ -6,9 +6,7 @@
     "emojiStyle": "twemoji",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiListTodo",
-      "LiGamepad",
-      "LiCalculator",
+      "MaHackathon",
       "MaH4Logo",
       "MaH3Logo",
       "MaSignalR",
@@ -20,7 +18,9 @@
       "MaCiscoCcna",
       "MaOsi",
       "MaDotNet",
-      "MaLogoCSharp"
+      "MaLogoCSharp",
+      "MaSwaggerNobg",
+      "MaSwagger"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -80,7 +80,5 @@
   "CSharp/SignalR/SignalR.md": "MaSignalR",
   "H3/Oversigt.md": "MaH3Logo",
   "H4/Oversigt.md": "MaH4Logo",
-  "Opgaver/Lommeregner med Historik.md": "LiCalculator",
-  "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md": "LiGamepad",
-  "Opgaver/Todo Liste med Kategorier.md": "LiListTodo"
+  "Valgfag/Hackathon.md": "MaHackathon"
 }

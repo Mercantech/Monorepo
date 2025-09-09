@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Valgfag/Hackathon.md",
+                "file": "Valgfag/Hobby til Startup – SAAS og MVP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hackathon"
+              "title": "Hobby til Startup – SAAS og MVP"
             }
           }
         ],
@@ -186,9 +186,9 @@
   },
   "active": "8b1ec45818b23d45",
   "lastOpenFiles": [
-    "Valgfag/Hobby til Startup – SAAS og MVP.md",
-    "Valgfag/Hackathon.md",
     "Valgfag/Deploy or Die - Fra kode til internet.md",
+    "Valgfag/Hackathon.md",
+    "Valgfag/Hobby til Startup – SAAS og MVP.md",
     "Database/Postgres/Postgres.md",
     "Opgaver/Todo Liste med Kategorier.md",
     "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
