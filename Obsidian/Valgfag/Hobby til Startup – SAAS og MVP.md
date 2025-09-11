@@ -10,7 +10,7 @@
         
     - Brugertest og feedback (hinanden eller udefra)
         
-    - Lidt basic marketing (landing page, Mailchimp, SEO basics?)
+    - Lidt basic marketing (landing page, Mailchimp, SEO basics)
         
 
 **Slutprodukt**: Et SaaS med login, funktionalitet og muligvis brugere. Også en fin ting til CV’et. Eller noget der dør stille på Heroku – men hey, de prøvede.
