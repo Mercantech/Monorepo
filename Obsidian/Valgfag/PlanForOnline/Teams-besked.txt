@@ -1,0 +1,55 @@
+ELEVSTATUS - FREMMØDE OG RESTERENDE TIMER
+
+Årgang | Navn      | Antal uger | Allerede været på | Mangler
+-------|-----------|------------|-------------------|--------
+2024   | Andreas   | 5          | 0                 | 5
+2024   | Bjarke    | EUV        | 2                 | 20
+2024   | Frederik  | 5          | 0                 | 5
+2023   | Abdi      | EUV        | 2                 | 20
+2023   | Allan     | EUV        | 2                 | 20
+2023   | Ellyas    | EUV        | 2                 | 20
+2023   | Malthe    | 5          | 0                 | 5
+2023   | Mikkel    | EUV        | 2                 | 20
+2023   | Rasmus    | 5          | 0                 | 5
+2023   | Sebastian | 5          | 0                 | 5
+2023   | Walid     | 5          | 0                 | 5
+2022   | Alexander | 5          | 2                 | 3
+2022   | Daniel    | EUV        | 2                 | 20
+2022   | Esben     | EUV        | 2                 | 20
+2022   | Freja     | EUV        | 2                 | 20
+2022   | Kasper    | EUV        | 2                 | 20
+2022   | Kevin     | 5          | 2                 | 3
+2022   | Kim       | 5          | 2                 | 3
+2022   | Oliver    | 5          | 2                 | 3
+2022   | S.        | EUV        | 2                 | 20
+
+---
+
+HEJ ONLINE ELEVER!
+
+Der har været lidt snak om Valgfag for tiden og vi vil gerne prøve at lave noget specielt for jer der læser uddannelsen online! 
+
+Som I måske ved, bliver der ikke flere online for nu. Derudover er det lidt en blandet oplevelse at deltage online på et ellers fysisk eksisterende hold. 
+
+Derfor vil vi gerne lave så vi i løbet af de næste 1-2 år udbyder samlet 5 UGERS ONLINE VALGFAG (hvor andre elever også kan deltage, bare KUN online). 
+
+Dog vil vi så også kræve at I alle får færdiggjort jeres op til 5 ugers valgfag der. Til gengæld vil vi så også gerne designe og undervise i lige præcis hvad I kan blive enige om! 
+
+Så jeg opretter en afstemning, hvor I kan vælge de nuværende kurser eller emner, hvor vi så kan designe et nyt valgfag ud fra jeres samlede interesse! 
+
+Her er listen med hvor mange uger I mangler:
+
+GRUNDEN TIL AT NOGLE AF JER KUN SKAL HAVE 2 UGER, ER GRUNDET AT I ER EUV2 ELEVER. DOG MÅ I STADIG DELTAGE I FLERE, DET SKAL BARE GODKENDES AF JERES VIRKSOMHED.
+
+KRAV TIL DELTAGELSE:
+- Alle skal gennemføre deres påkrævede antal uger
+- EUV2 elever kan deltage i ekstra uger med virksomhedens godkendelse
+- Alle kurser vil være 100% online
+- Indholdet designes efter jeres ønsker og behov
+
+NÆSTE SKRIDT:
+1. Afstemning om kursusindhold kommer snart
+2. Planlægning af de 5 ugers forløb
+3. Koordinering med jeres virksomheder (EUV2 elever)
+
+Vi glæder os til at høre jeres input!
