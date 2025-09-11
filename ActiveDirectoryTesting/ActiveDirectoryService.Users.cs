@@ -23,7 +23,8 @@ namespace ActiveDirectoryTesting
                     "mail",
                     "department",
                     "title",
-                    "distinguishedName"
+                    "distinguishedName",
+                    "description"
                 );
 
                 try
