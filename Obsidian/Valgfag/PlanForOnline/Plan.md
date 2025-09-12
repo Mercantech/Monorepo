@@ -49,8 +49,7 @@
 - 5-ugers forløb = Kort intensivt forløb
 - Alle EUV elever har været på 2 uger og mangler 20 uger
 - 2022 årgangen har allerede været på 2 uger af deres 5-ugers forløb
-## Hej Onli
-ne elever! 👋
+## Hej Online elever! 👋
 
 Der har været lidt snak om Valgfag for tiden og vi vil gerne prøve at lave noget specielt for jer der læser uddannelsen online! 
 
