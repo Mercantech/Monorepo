@@ -20,7 +20,7 @@
 > [!multi-column]
 > 
 > TwinGate er en cloud-baseret Zero Trust Network Access (ZTNA) platform, der giver:
-> > **Sikker adgang** til interne ressourcer
+> **Sikker adgang** til interne ressourcer
 > **Zero Trust arkitektur** - ingen implicit tillid
 > **Enkel administration** via web-interface
 > **Automatisk opdatering** af sikkerhedspolitikker
