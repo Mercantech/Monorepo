@@ -65,17 +65,14 @@
             "id": "cbdf78e6b0df76df",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Projekter/Oversigt.canvas",
-                "viewState": {
-                  "x": 1514.4847398577879,
-                  "y": 702.5384489158162,
-                  "zoom": -1.446907815662109
-                }
+                "file": "Infrastruktur/Twin-gate.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Oversigt"
+              "icon": "lucide-file",
+              "title": "Twin-gate"
             }
           }
         ],
@@ -229,10 +226,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "92a44750e2882671",
+  "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
-    "Projekter/Projekt oversigt.md",
+    "Assets/Pasted image 20250912072611.png",
     "Projekter/Oversigt.canvas",
+    "Projekter/Projekt oversigt.md",
     "Projekter/videnstjek.md",
     "Projekter/eval.md",
     "Assets/Pasted image 20250911220539.png",
