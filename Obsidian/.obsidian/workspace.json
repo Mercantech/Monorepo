@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "H2/Mail-Service.md",
+                "file": "H2/SMTP Protocol.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mail-Service"
+              "title": "SMTP Protocol"
             }
           }
         ],
@@ -228,8 +228,12 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
-    "H2/SMTP Protocol.md",
+    "Assets/Pasted image 20250913132924.png",
+    "Assets/Pasted image 20250913132110.png",
     "H2/Mail-Service.md",
+    "H2/Oversigt.md",
+    "H2/SMTP Protocol.md",
+    "H2/Ekstra opgaver.md",
     "Assets/Email Alternatives.png",
     "Assets/Pasted image 20250913113614.png",
     "Infrastruktur/Twin-gate.md",
@@ -267,14 +271,10 @@
     "Opgaver/Untitled.md",
     "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
     "Opgaver/Opgaver Oversigt.base",
-    "CSS/Untitled.md",
-    "CSS/CSS Spil.md",
-    "Infrastruktur/Active-Diretory/DNS og Active Directory.md",
     "Assets/Pasted image 20250908103327.png",
     "Assets/Pasted image 20250907212052.png",
     "Database/SQL",
     "Projekter/Learn/SQL",
-    "Assets/Pasted image 20250906223115.png",
     "Learn/Karaktere/ORM - X X X",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
