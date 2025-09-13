@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "H2/Ekstra Emner/Aspire.md",
+                "file": "H1/Intro til C#/Intro Til CSharp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Aspire"
+              "title": "Intro Til CSharp"
             }
           }
         ],
@@ -228,8 +228,10 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
-    "H2/Ekstra Emner/Bruno.md",
     "H2/Ekstra Emner/Aspire.md",
+    "H1/Intro til C#/Intro Til CSharp.md",
+    "H1/Intro til C#",
+    "H2/Ekstra Emner/Bruno.md",
     "H2/Ekstra Emner/API-testing.md",
     "Infrastruktur/SMTP Protocol.md",
     "H2/Ekstra Emner",
@@ -271,11 +273,9 @@
     "Infrastruktur/Active-Diretory/Roller og adgang.md",
     "Git",
     "Opgaver/Todo Liste med Kategorier.md",
-    "Opgaver/Lommeregner med Historik.md",
     "Opgaver/Opgaver Oversigt.base",
     "Assets/Pasted image 20250908103327.png",
     "Database/SQL",
-    "Projekter/Learn/SQL",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "CSharp-Bogen/Canva.canvas",
