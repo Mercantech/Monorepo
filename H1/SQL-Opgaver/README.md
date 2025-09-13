@@ -7,7 +7,6 @@ Disse SQL opgaver bruger **SQLTools** i VSCode som hovedværktøj til database d
 ### VSCode Extension
 - **SQL editor** med syntax highlighting og fejlvalidering
 - **Query executor** til at køre SQL statements mod databaser
-- **Database explorer** til at navigere i database strukturer
 - **Connection manager** til at administrere database forbindelser
 
 ### IDE (Integrated Development Environment)
