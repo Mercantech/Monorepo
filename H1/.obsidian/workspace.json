@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
-                "mode": "source",
+                "file": "Projekt/Dokumentation/UMLClassD.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Welcome"
+              "title": "UMLClassD"
             }
           }
         ]
@@ -187,6 +187,13 @@
   },
   "active": "85600c0ae7b151ea",
   "lastOpenFiles": [
+    "Projekt/Dokumentation/boxes.md",
+    "Projekt/Dokumentation/README.md",
+    "Projekt/Dokumentation/arrows.md",
+    "Projekt/Dokumentation/UMLClassD.md",
+    "Banko/README.md",
+    "Banko/Assets/favicon.png",
+    "README.md",
     "Welcome.md"
   ]
 }
