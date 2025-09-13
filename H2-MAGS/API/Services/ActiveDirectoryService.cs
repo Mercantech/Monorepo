@@ -184,6 +184,35 @@ namespace API.Services
 
 
         /// <summary>
+        /// Tester LDAP forbindelsen til Active Directory serveren
+        /// </summary>
+        /// <returns>True hvis forbindelsen lykkes, ellers false</returns>
+        public async Task<bool> TestLDAPConnectionAsync()
+        {
+            try
+            {
+                // Opret LDAP forbindelse
+                using var connection = new LdapConnection(new LdapDirectoryIdentifier(_server, _port));
+                connection.SessionOptions.ProtocolVersion = 3;
+                connection.SessionOptions.SecureSocketLayer = _useSSL;
+                connection.SessionOptions.VerifyServerCertificate = (conn, cert) => true;
+
+                // Opret credentials for AD reader bruger
+                var networkCredential = new NetworkCredential(_username, _password, _domain);
+                connection.Credential = networkCredential;
+
+                // Åbn forbindelse
+                await Task.Run(() => connection.Bind());
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Mapper AD grupper til applikationsroller
         /// </summary>
         /// <param name="adGroups">Liste af AD grupper</param>
