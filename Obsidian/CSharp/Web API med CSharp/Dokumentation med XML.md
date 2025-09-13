@@ -94,4 +94,4 @@ For en konkret implementering, kan man se følgende commit med XML til 2 control
 ![[Pasted image 20250904220928.png]]
 ![[Pasted image 20250904220942.png]]
 
-XML er også generelt acceptere på mange API-værktøjer, såsom Postman, Swagger og [[Bruno]]!
+XML er også generelt acceptere på mange API-værktøjer, såsom Postman, Swagger og [[CSharp/Web API med CSharp/Bruno]]!
