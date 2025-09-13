@@ -5,29 +5,36 @@ H1 består af 10 uger - enten som en helhed med et 10 ugers projekt eller delt o
 
 # Plan for H1 - 8 ugers
 
-## Uge 1 - Intro til C#
+## Uge 1 - Intro til CSharp
 
-Dækker emner som er blevet gennemgået på GF2 - altså [[CSharp-Bogen]] fra kapitel 1 til og med 10. Der er blandet små opgaver den her uge, såsom Wordle, Fire på Stribe og mindre opgaver som træner C#
+Dækker emner som er blevet gennemgået på GF2 - altså [[CSharp-Bogen]] fra kapitel 1 til og med 10. Der er blandet små opgaver den her uge, såsom Wordle, Fire på Stribe og mindre opgaver som træner C#. 
+Her introducere vi også Git 
 
 ## Uge 2 - C# aflevering Banko
 
 Eleverne skal bruge pensum fra første uge til at snyde i et spil banko. De skal finde en datastruktur for at opbevare en række plader med unikke ID'er fra en side og har mulighed for at udvide med Web Scraping, reverse engineering af JS kode og meget mere!
 
-Uge 3 - OOP (De 4 pæle af Objekt Orienteret Programmering)
+## Uge 3 - OOP (De 4 pæle af Objekt Orienteret Programmering)
 
 Vi dækker større emner som Abstraktion, Encapsulering, Arv og Polymorfi - Eleverne bygger en konsol eller UI applikation som minder om deres større projekt
 
 ## Uge 4 - SQL
 
 
-## Uge 5 - Blazor og C#
+## Uge 5 - Blazor og CSharp
 
 
 ## Uge 6 - Blazor og webudvikling
 
 
-## Uge 7 - Pr
+## Uge 7 - Projekt periode
+
+
+## Uge 8 - Eksamen og afslutning af større projekt
 
 
 
 ## Uge 9 & 10  - Netværk 1
+
+
+
