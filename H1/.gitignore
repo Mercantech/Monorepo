@@ -9,3 +9,6 @@ obj/
 .vs/
 .vscode/
 .github/
+
+
+.idea/

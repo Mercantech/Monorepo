@@ -119,7 +119,7 @@ FROM pg_indexes
 WHERE schemaname NOT IN ('information_schema', 'pg_catalog')
 ORDER BY schemaname, tablename, indexname;
 
--- 6. HENT ALLE STORED PROCEDURES
+-- 5. HENT ALLE STORED PROCEDURES
 -- =============================================
 -- @block STORED PROCEDURES
 SELECT '=== ALLE STORED PROCEDURES ===' AS Info;
@@ -137,7 +137,7 @@ WHERE routine_schema NOT IN ('information_schema', 'pg_catalog')
     AND routine_type IN ('FUNCTION', 'PROCEDURE')
 ORDER BY routine_schema, routine_name;
 
--- 7. HENT ALLE FUNKTIONER
+-- 6. HENT ALLE FUNKTIONER
 -- =============================================
 -- @block FUNKTIONER
 SELECT '=== ALLE FUNKTIONER ===' AS Info;
@@ -155,7 +155,7 @@ WHERE routine_schema NOT IN ('information_schema', 'pg_catalog')
     AND routine_type = 'FUNCTION'
 ORDER BY routine_schema, routine_name;
 
--- 8. HENT ALLE VIEWS
+-- 7. HENT ALLE VIEWS
 -- =============================================
 -- @block VIEWS
 SELECT '=== ALLE VIEWS ===' AS Info;
@@ -169,7 +169,7 @@ FROM information_schema.views
 WHERE table_schema NOT IN ('information_schema', 'pg_catalog')
 ORDER BY table_schema, table_name;
 
--- 9. HENT ALLE TRIGGERS
+-- 8. HENT ALLE TRIGGERS
 -- =============================================
 -- @block TRIGGERS
 SELECT '=== ALLE TRIGGERS ===' AS Info;
@@ -186,7 +186,7 @@ FROM information_schema.triggers
 WHERE trigger_schema NOT IN ('information_schema', 'pg_catalog')
 ORDER BY event_object_table, trigger_name;
 
--- 10. HENT DATABASE STATISTIKKER
+-- 9. HENT DATABASE STATISTIKKER
 -- =============================================
 -- @block STATISTIKKER
 SELECT '=== DATABASE STATISTIKKER ===' AS Info;
@@ -201,7 +201,7 @@ SELECT
     (SELECT COUNT(*) FROM information_schema.triggers WHERE trigger_schema NOT IN ('information_schema', 'pg_catalog')) AS TriggerCount,
     (SELECT COUNT(*) FROM pg_indexes WHERE schemaname NOT IN ('information_schema', 'pg_catalog')) AS IndexCount;
 
--- 11. HENT TABEL RELATIONER (ER DIAGRAM DATA)
+-- 10. HENT TABEL RELATIONER (ER DIAGRAM DATA)
 -- =============================================
 -- @block RELATIONER
 SELECT '=== TABEL RELATIONER ===' AS Info;
