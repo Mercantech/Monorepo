@@ -168,10 +168,154 @@ var client = new SmtpClient("smtp.example.com", 587)
 
 **Konklusion:** SMTP er rygraden i moderne e-mail kommunikation. Uden SMTP ville vi ikke kunne sende e-mails på tværs af forskellige platforme og providers. Det er en kritisk del af internettets infrastruktur og uundværligt for både personlig og professionel kommunikation.
 
-Alternativer til SMTP 
+## Mere end bare SMTP
 
 ![[Pasted image 20250913132924.png]]
 
-[[IMAP]]
+Selvom SMTP er standarden til at **sende** e-mails, er der andre protokoller der håndterer **modtagelse** og **synkronisering** af e-mails. Her er de vigtigste:
 
-[[POP3]]
+### **[[IMAP]] - Internet Message Access Protocol**
+
+**Hvad er IMAP?**
+- **Synkroniserer** e-mails mellem server og klient
+- **Bevarer** e-mails på serveren
+- **Multi-device** support - samme e-mails på alle enheder
+- **Mappe struktur** synkroniseres
+
+**Hvornår bruges IMAP?**
+- **Moderne e-mail klienter** (Outlook, Apple Mail, Thunderbird)
+- **Mobil enheder** og tablets
+- **Fleksibel adgang** fra flere lokationer
+- **Team miljøer** hvor flere skal se samme e-mails
+
+**Fordele:**
+- ✅ E-mails tilgængelige overalt
+- ✅ Synkroniseret mappestruktur
+- ✅ Hurtig søgning på server
+- ✅ Delte mailbokse mulige
+
+**Ulemper:**
+- ❌ Kræver internet forbindelse
+- ❌ Kan være langsommere end POP3
+- ❌ Bruger mere server plads
+
+---
+
+### **[[POP3]] - Post Office Protocol version 3**
+
+**Hvad er POP3?**
+- **Henter** e-mails fra server til lokal klient
+- **Downloader** e-mails til computeren
+- **Fjerner** e-mails fra serveren (standard)
+- **Offline** adgang til hentede e-mails
+
+**Hvornår bruges POP3?**
+- **Lokale e-mail klienter** på en specifik computer
+- **Begrænset server plads**
+- **Offline arbejde** uden internet
+- **Sikkerhed** - e-mails gemmes lokalt
+
+**Fordele:**
+- ✅ Hurtig offline adgang
+- ✅ Sparer server plads
+- ✅ Ingen internet krævet efter download
+- ✅ Simpel protokol
+
+**Ulemper:**
+- ❌ E-mails kun på én enhed
+- ❌ Ingen synkronisering
+- ❌ Kan miste e-mails ved computer skade
+- ❌ Ingen mappe synkronisering
+
+---
+
+## Sammenligning af E-mail Protokoller
+
+| Aspekt | **SMTP** | **IMAP** | **POP3** |
+|--------|----------|----------|----------|
+| **Formål** | Sende e-mails | Synkronisere e-mails | Hente e-mails |
+| **Port** | 25/587 | 143/993 | 110/995 |
+| **Sikkerhed** | TLS/SSL | TLS/SSL | TLS/SSL |
+| **Server lagring** | Midlertidig | Permanent | Midlertidig |
+| **Multi-device** | N/A | ✅ Ja | ❌ Nej |
+| **Offline adgang** | N/A | ❌ Begrænset | ✅ Ja |
+| **Kompleksitet** | Medium | Høj | Lav |
+
+---
+
+## Hvad bruges mest i dag?
+
+### **Moderne Standard: IMAP + SMTP**
+```
+📧 Moderne Setup:
+├── SMTP (port 587) → Sende e-mails
+└── IMAP (port 993) → Modtage e-mails
+```
+
+**Hvorfor IMAP er populært:**
+- **Cloud-baseret** arbejdsgang
+- **Mobil-first** tilgang
+- **Team collaboration** muligheder
+- **Backup** og sikkerhed
+
+### **Legacy/Enterprise: POP3 + SMTP**
+```
+📧 Traditionel Setup:
+├── SMTP (port 587) → Sende e-mails
+└── POP3 (port 995) → Hente e-mails
+```
+
+**Hvorfor POP3 stadig bruges:**
+- **Legacy systemer** der ikke er opdateret
+- **Sikkerheds-kritiske** miljøer
+- **Begrænset server plads**
+- **Offline arbejdsgange**
+
+---
+
+## Praktiske Eksempler
+
+### **Gmail Konfiguration:**
+```
+📧 Gmail Setup:
+├── SMTP: smtp.gmail.com:587 (TLS)
+├── IMAP: imap.gmail.com:993 (SSL)
+└── POP3: pop.gmail.com:995 (SSL)
+```
+
+### **Outlook/Hotmail:**
+```
+📧 Outlook Setup:
+├── SMTP: smtp-mail.outlook.com:587 (TLS)
+├── IMAP: outlook.office365.com:993 (SSL)
+└── POP3: outlook.office365.com:995 (SSL)
+```
+
+### **Custom Server:**
+```
+📧 Custom Setup:
+├── SMTP: mail.example.com:587 (TLS)
+├── IMAP: mail.example.com:993 (SSL)
+└── POP3: mail.example.com:995 (SSL)
+```
+
+---
+
+## Anbefalinger
+
+### **Til Privat Brug:**
+- **IMAP + SMTP** for moderne brugere
+- **POP3 + SMTP** kun hvis du foretrækker offline arbejde
+
+### **Til Virksomheder:**
+- **IMAP + SMTP** for team collaboration
+- **Exchange/Office 365** for enterprise features
+
+### **Til Udviklere:**
+- **SMTP** til at sende e-mails fra applikationer
+- **IMAP** til at læse e-mails programmatisk
+- **API'er** (Gmail API, Microsoft Graph) for moderne integration
+
+---
+
+**Konklusion:** Mens SMTP er uundværligt til at sende e-mails, er valget mellem IMAP og POP3 afhængigt af dine behov. IMAP er det moderne valg for de fleste brugere, mens POP3 stadig har sin plads i specifikke scenarier.
