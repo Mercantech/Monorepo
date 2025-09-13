@@ -68,7 +68,7 @@
               "type": "markdown",
               "state": {
                 "file": "Monorepo/New Git repo.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
