@@ -2,23 +2,24 @@
 
 ## Database Schema og IDE
 
-Disse SQL opgaver bruger **dbschema** som hovedværktøj til database design og udvikling. Dbschema fungerer både som:
+Disse SQL opgaver bruger **SQLTools** i VSCode som hovedværktøj til database design og udvikling. SQLTools fungerer som:
 
-### Program
-- **Database design tool** til at skabe og administrere database skemaer
+### VSCode Extension
 - **SQL editor** med syntax highlighting og fejlvalidering
 - **Query executor** til at køre SQL statements mod databaser
-- **Schema visualizer** til at visualisere tabeller og relationer
+- **Database explorer** til at navigere i database strukturer
+- **Connection manager** til at administrere database forbindelser
 
 ### IDE (Integrated Development Environment)
-- **Komplet udviklingsmiljø** for database projekter
+- **Integreret i VSCode** - samme miljø som din kode
 - **IntelliSense** og auto-completion for SQL kommandoer
-- **Version control integration** til at tracke ændringer i database strukturer
-- **Collaborative features** til team-baseret database udvikling
+- **Version control integration** via Git i VSCode
+- **Multi-database support** - forbind til flere databaser samtidigt
 
-### Fordele ved dbschema
-- **Visual database design** - nemt at se tabeller og relationer
+### Fordele ved SQLTools
+- **VSCode integration** - alt i ét udviklingsmiljø
 - **Cross-platform support** - kører på Windows, Mac og Linux
-- **Multiple database support** - MySQL, PostgreSQL, SQL Server, Oracle
-- **Export/Import funktioner** - nemt at dele database designs
+- **Multiple database support** - MySQL, PostgreSQL, SQL Server, Oracle, SQLite
+- **@block support** - kør individuelle SQL sektioner med @block kommentarer
+- **Result viewer** - vis query resultater direkte i VSCode
 
