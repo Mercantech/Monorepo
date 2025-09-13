@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "EksempelDatabase",
+            "group": "EksempelGruppe",
+            "connectString": "postgresql://Brugernavn:Adgangskode@EksempelAdresse.neon.tech/EksempelDB?sslmode=require&channel_binding=require"
+        }
+    ]
+}
