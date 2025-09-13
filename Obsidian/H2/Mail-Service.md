@@ -385,14 +385,6 @@ _logger.LogWarning("⚠️ Kunne ikke sende booking bekræftelse email til: {Ema
 - Hurtig email generation
 
 ## 🎓 Læringsmål for Elever
-
-### **Nye Koncepter**
-1. **Event-driven Programming** - Email sendes ved booking events
-2. **Template Engines** - HTML generation med data
-3. **Error Resilience** - System fortsætter ved email fejl
-4. **User Experience** - Automatiske bekræftelser
-5. **Business Logic Integration** - Email som del af booking process
-
 ### **Best Practices Lært**
 1. **Separation of Concerns** - MailService isoleret fra booking logik
 2. **Fail-Safe Design** - Email fejl stopper ikke booking
@@ -411,5 +403,3 @@ _logger.LogWarning("⚠️ Kunne ikke sende booking bekræftelse email til: {Ema
 - [[Template Engines]]
 
 ---
-
-*Denne dokumentation forklarer hvordan backend email sending fungerer i H2-MAGS systemet og hvilke koncepter eleverne lærer gennem implementeringen.*
