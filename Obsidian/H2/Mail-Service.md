@@ -318,6 +318,88 @@ await _mailService.SendWelcomeEmailAsync(email, username, role);
 
 ---
 
+## 🎯 Praktiske Eksempler
+
+### **Booking Email Flow**
+
+```mermaid
+graph TD
+    A["Bruger opretter booking"] --> B["API validerer booking data"]
+    B --> C["Booking gemmes i database"]
+    C --> D["MailService.SendBookingConfirmationEmailAsync()"]
+    D --> E["HTML template genereres"]
+    E --> F["Email sendes via Gmail SMTP"]
+    F --> G["Bruger modtager bekræftelse"]
+    
+    style A fill:#e1f5fe
+    style G fill:#c8e6c9
+    style D fill:#fff3e0
+```
+
+### **Email Data Flow**
+
+| **Input Data** | **Email Output** |
+|---------------|------------------|
+| Username | Personaliseret hilsen |
+| Room Number | Rum information |
+| Hotel Name | Hotel detaljer |
+| Start/End Date | Check-in/out datoer |
+| Number of Guests | Gæste information |
+| Total Price | Pris oversigt |
+| Booking ID | Reference nummer |
+
+## 🔧 Test og Debugging
+
+### **Test Booking Email**
+```bash
+# Opret en test booking
+POST /api/bookings
+{
+  "userId": "user-id",
+  "roomId": "room-id", 
+  "startDate": "2025-02-01",
+  "endDate": "2025-02-03",
+  "numberOfGuests": 2
+}
+
+# Email sendes automatisk til brugeren
+```
+
+### **Email Logging**
+```csharp
+_logger.LogInformation("📧 Sender booking bekræftelse email til: {Email}", userEmail);
+_logger.LogInformation("✅ Booking bekræftelse email sendt succesfuldt til: {Email}", userEmail);
+_logger.LogWarning("⚠️ Kunne ikke sende booking bekræftelse email til: {Email}", userEmail);
+```
+
+## 📊 Performance Overvejelser
+
+### **Asynkron Email Sending**
+- Booking oprettelse fortsætter selvom email fejler
+- Ingen blocking på brugeroplevelsen
+- Fejlhåndtering der ikke påvirker hovedfunktionalitet
+
+### **Email Template Caching**
+- HTML templates genereres dynamisk
+- Ingen database calls for template data
+- Hurtig email generation
+
+## 🎓 Læringsmål for Elever
+
+### **Nye Koncepter**
+1. **Event-driven Programming** - Email sendes ved booking events
+2. **Template Engines** - HTML generation med data
+3. **Error Resilience** - System fortsætter ved email fejl
+4. **User Experience** - Automatiske bekræftelser
+5. **Business Logic Integration** - Email som del af booking process
+
+### **Best Practices Lært**
+1. **Separation of Concerns** - MailService isoleret fra booking logik
+2. **Fail-Safe Design** - Email fejl stopper ikke booking
+3. **Rich Templates** - Professionelle HTML emails
+4. **Comprehensive Logging** - Sporing af email status
+5. **User-Centric Design** - Værdifuld information i emails
+
 ## 📚 Relaterede Emner
 
 - [[SMTP Protocol]]
@@ -325,6 +407,8 @@ await _mailService.SendWelcomeEmailAsync(email, username, role);
 - [[Email Security Best Practices]]
 - [[HTML Email Design]]
 - [[Async Programming in C#]]
+- [[Event-Driven Architecture]]
+- [[Template Engines]]
 
 ---
 
