@@ -506,4 +506,3 @@ Det er ideelt til:
 - Gaming
 - Financial/trading apps
 - Eventuelt alle applikationer der kræver real-time kommunikation
-
