@@ -311,12 +311,196 @@ app.MapHub<ChatHub>("/chathub");
 3. **Complexity**: Kan blive komplekst ved høj skala
 4. **Learning Curve**: Kræver forståelse af hub pattern
 
+## Praktisk Implementering - Ticket Support System
+
+### Vores Implementering
+
+I vores H2 projekt har vi implementeret et komplet ticket support system med SignalR til real-time kommunikation mellem brugere og support medarbejdere.
+
+#### **API Side - TicketHub**
+
+```csharp
+// H2-MAGS/API/Hubs/TicketHub.cs
+public class TicketHub : Hub
+{
+    // Tilslut til ticket chat
+    public async Task JoinTicketGroup(string ticketId)
+    {
+        var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? Context.ConnectionId;
+        var userRole = Context.User?.FindFirst(ClaimTypes.Role)?.Value ?? "User";
+        var username = Context.User?.FindFirst(ClaimTypes.Name)?.Value ?? "Demo User";
+
+        // Valider adgang til ticket
+        if (!await ValidateTicketAccess(ticketId, userId, userRole))
+        {
+            await Clients.Caller.SendAsync("Error", "Du har ikke adgang til denne ticket");
+            return;
+        }
+
+        // Tilslut til ticket gruppe
+        await Groups.AddToGroupAsync(Context.ConnectionId, $"Ticket_{ticketId}");
+        
+        // Notificer andre i gruppen
+        await Clients.Group($"Ticket_{ticketId}").SendAsync("UserJoined", new
+        {
+            Username = username,
+            UserId = userId,
+            Timestamp = DateTime.UtcNow
+        });
+    }
+
+    // Send besked til ticket chat
+    public async Task SendMessage(string ticketId, string message, bool isInternal = false)
+    {
+        var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? Context.ConnectionId;
+        var username = Context.User?.FindFirst(ClaimTypes.Name)?.Value ?? "Demo User";
+        var userRole = Context.User?.FindFirst(ClaimTypes.Role)?.Value ?? "User";
+
+        // Send besked til alle i ticket gruppen
+        await Clients.Group($"Ticket_{ticketId}").SendAsync("MessageReceived", 
+            username, message, isInternal, DateTime.UtcNow);
+    }
+}
+```
+
+#### **Blazor Client Side - TicketSignalRService**
+
+```csharp
+// H2-MAGS/Blazor/Services/TicketSignalRService.cs
+public class TicketSignalRService : INotifyPropertyChanged, IAsyncDisposable
+{
+    private HubConnection? _hubConnection;
+    private readonly string _hubUrl;
+
+    public async Task InitializeAsync(string token)
+    {
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(_hubUrl, options =>
+            {
+                // For demo mode, skip JWT authentication
+                if (token != "demo-token")
+                {
+                    options.AccessTokenProvider = () => Task.FromResult(token);
+                }
+            })
+            .WithAutomaticReconnect()
+            .Build();
+
+        // Registrer event handlers
+        RegisterEventHandlers();
+        await _hubConnection.StartAsync();
+    }
+
+    public async Task JoinTicketAsync(string ticketId, string userId, string username, string userRole)
+    {
+        await _hubConnection.InvokeAsync("JoinTicketGroup", ticketId);
+    }
+
+    public async Task SendMessageAsync(string message, bool isInternal = false)
+    {
+        if (CurrentTicketId != null)
+        {
+            await _hubConnection.InvokeAsync("SendMessage", CurrentTicketId, message, isInternal);
+        }
+    }
+}
+```
+
+#### **Blazor UI - TicketChat Component**
+
+```razor
+@* H2-MAGS/Blazor/Components/TicketChat.razor *@
+<div class="ticket-chat-container">
+    <div class="chat-header">
+        <h4>Ticket Chat - @TicketNumber</h4>
+        <div class="connection-status">
+            @if (SignalRService.IsConnected)
+            {
+                <span class="status-connected">🟢 Forbundet</span>
+            }
+            else
+            {
+                <span class="status-disconnected">🔴 Ikke forbundet</span>
+            }
+        </div>
+    </div>
+
+    <div class="chat-messages">
+        @foreach (var message in Messages)
+        {
+            <div class="message @(message.IsFromCurrentUser ? "own-message" : "other-message")">
+                <div class="message-header">
+                    <strong>@message.AuthorName</strong>
+                    <span class="message-time">@message.Timestamp.ToString("HH:mm")</span>
+                    @if (message.IsInternal)
+                    {
+                        <span class="internal-badge">Intern</span>
+                    }
+                </div>
+                <div class="message-content">@message.Message</div>
+            </div>
+        }
+    </div>
+</div>
+```
+
+### **Konfiguration**
+
+#### **API Program.cs**
+```csharp
+// Tilføj SignalR til services
+builder.Services.AddSignalR();
+
+// Map SignalR Hub med transport konfiguration
+app.MapHub<TicketHub>("/tickethub", options =>
+{
+    options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
+});
+```
+
+#### **Blazor Program.cs**
+```csharp
+// Registrer TicketSignalRService
+builder.Services.AddScoped<TicketSignalRService>();
+```
+
+### **Funktioner i vores implementering**
+
+1. **Real-time Chat**: Live messaging mellem brugere og support
+2. **Gruppe Management**: Brugere tilslutter specifikke ticket chats
+3. **Authentication**: JWT token baseret authentication (med demo mode)
+4. **Role-based Access**: Forskellige rettigheder for brugere vs. support
+5. **Internal Messages**: Support kan sende interne beskeder
+6. **Typing Indicators**: Viser når brugere skriver
+7. **Auto Reconnect**: Automatisk genopretning af forbindelse
+8. **Connection Status**: Viser forbindelsesstatus i UI
+
+### **Transport Protokoller**
+
+Vores implementering bruger:
+- **WebSockets** (primær transport)
+- **Long Polling** (fallback for ældre browsere)
+
+### **Skalering**
+
+For fremtidig skalering kan vi tilføje:
+- Redis backplane for load balancing
+- SQL Server backplane for persistence
+- Azure Service Bus for cloud skalering
+
 ## Konklusion
 
 SignalR er et kraftfuldt værktøj til real-time web applikationer i .NET. Det gør det nemt at implementere funktionalitet som chat, live dashboards, og collaborative tools uden at skulle håndtere kompleksiteten ved WebSockets eller andre transport protokoller manuelt.
 
+**Vores praktiske implementering viser:**
+- Komplet ticket support system med real-time chat
+- JWT authentication integration
+- Role-based access control
+- Robust error handling og reconnection
+- Clean separation mellem API og Blazor client
+
 Det er ideelt til:
-- Chat applikationer
+- Chat applikationer ✅ (Vores ticket chat)
 - Live dashboards
 - Collaborative tools
 - Gaming
