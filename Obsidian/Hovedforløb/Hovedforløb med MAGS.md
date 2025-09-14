@@ -1,29 +1,118 @@
 
-Datauddannelsen dækker over 6 hovedforløb - her er en oversigt, med fokus på transfer og vertical læring!
+# Datauddannelsen - Hovedforløb Oversigt
 
-[[H1]] - 1. Hovedforløb
+Datauddannelsen dækker over **6 hovedforløb** med fokus på transfer og vertikal læring gennem hele uddannelsen.
 
-På H1 dækker vi grundlæggende emner, som C# - OOP - SQL og Blazor. Der er elevernes første større projekt, så vores fokus er på at få nogle gode programmeringsvaner og give en blød introduktion til programmerings-verdenen og sammentidlig presse dem til at levere kode alle dage på forløbet! 
+---
 
-H2 - 2. Hovedforløb
+## [[H1]] - 1. Hovedforløb
+**Varighed:** 10 uger (50 dage)
 
-Under H2 bygger vi primært videre på de gode vaner og færdigheder fra H1. Vi laver her en dedikeret backend og frontend og bruger størstedelen af tiden på at bygge en stabil og kompleks backend/API. Vi udvider på OOP, ser på HTTPS og API kald samt dækker Server begreber med hosting og Active Diretory management og integration
+**Fokus:** Grundlæggende programmering og første projekt
 
-H3 - 3. Hovedforløb
+**Emner:**
+- C# og objektorienteret programmering (OOP)
+- SQL databasehåndtering
+- Blazor webudvikling
 
-IoT er det store emne på H3 - Vi giver eleverne mere frihed, både i process og specielt til hvad de vil bygge! Vi har nogle krav udenom, fx hvilke protokoller de skal bruge, så det hænger sammen med det pensum der bliver gennemgået!
+**Mål:** Etablere gode programmeringsvaner og give en blød introduktion til programmeringsverdenen, samt sikre daglig kodelevering.
 
-Eleverne for løbende vejledning specielt omkring opbygning af deres projekt, så det hverken bliver for kompleks eller for simpelt.
+---
 
-H4 - 4. Hovedforløb
+## H2 - 2. Hovedforløb
+**Varighed:** 10 uger (50 dage)
 
+**Fokus:** Backend/API udvikling og serverkoncepter
 
+**Emner:**
+- Dedikeret backend og frontend arkitektur
+- Stabil og kompleks backend/API udvikling
+- Udvidet OOP koncepter
+- HTTPS og API kald
+- Server hosting og administration
+- Active Directory management og integration
 
-H5 - 5. Hovedforløb
+**Mål:** Bygge videre på H1's fundament og skabe en solid forståelse for backend udvikling.
 
-Det sidste rigtige hovedforløb inden svendeprøven, er opdelt i 2. Første del, dækker Linux, bygger videre på IoT og taget et nyt begræd ind som er Big Data. 
-Her bygger de i 20 dage, et mindre projekt med dataopsamling, message qeueu systemmer såsom RabbitMQ og laver et morderne data-dashboard. Det åbner eleverne for stillinger og opgaver inden for data-enginering 
+---
 
-H6 - 6. Hovedforløb
+## H3 - 3. Hovedforløb
+**Varighed:** 9 uger (45 dage)
 
-Svendeprøven også kaldet H6, er elevens endelige forløb, hvor de skal lave et 20-dages projekt i grupper som de skal fremlægge for en ekstern censor og det gør grundlag for deres svendeprøve karakter sammen med deres afleveret dokumentation 
+**Fokus:** IoT (Internet of Things) med øget frihed
+
+**Emner:**
+- IoT protokoller og teknologier
+- Hardware integration
+- Sensor data håndtering
+
+**Tilgang:** Eleverne får mere frihed i både proces og projektvalg, med specifikke krav til protokoller der matcher pensum.
+
+**Vejledning:** Løbende vejledning omkring projektopbygning for at sikre passende kompleksitet.
+
+---
+
+## H4 - 4. Hovedforløb
+**Varighed:** 7 uger (35 dage)
+
+**Fokus:** App programmering og udviklingsmetodikker
+
+**Emner:**
+- Flutter cross-platform app udvikling
+- Serverside programmering integration
+- Software test og sikkerhed
+- Udviklingsmetodikker:
+  - SCRUM
+  - Extreme Programming
+  - Andre moderne programmeringsmetodikker
+
+**Mål:** Erfaring udenfor .NET miljøet og forståelse for moderne udviklingsprocesser.
+
+---
+
+## H5 - 5. Hovedforløb
+**Varighed:** 9 uger (45 dage)
+
+**Fokus:** Big Data og valgfrit projekt
+
+### Første del (20 dage)
+**Emner:**
+- Linux administration
+- IoT integration
+- Big Data koncepter
+- Dataopsamling og -behandling
+- Message queue systemer (RabbitMQ)
+- Moderne data-dashboards
+
+**Mål:** Åbne for stillinger inden for data-engineering.
+
+### Anden del (25 dage)
+**Fokus:** Valgfrit projekt og svendeprøve forberedelse
+
+**Emner:**
+- Projektstyring
+- Dokumentation
+- Svendeprøve forberedelse
+
+---
+
+## H6 - 6. Hovedforløb (Svendeprøve)
+**Varighed:** 5 uger (25 dage)
+
+**Fokus:** Endeligt projekt og svendeprøve
+
+**Struktur:**
+- 20-dages gruppeprojekt
+- Fremlæggelse for ekstern censor
+- Omfattende dokumentation
+
+**Bedømmelse:** Grundlag for svendeprøve karakter baseret på projekt og dokumentation.
+
+---
+
+## Overordnet Læringsmål
+
+- **Transfer læring:** Kontinuerlig opbygning af færdigheder gennem alle forløb
+- **Vertikal læring:** Dybdegående forståelse af komplekse teknologier
+- **Praktisk erfaring:** Daglig kodelevering og projektbaseret læring
+- **Industrielle standarder:** Moderne værktøjer og metodikker 
