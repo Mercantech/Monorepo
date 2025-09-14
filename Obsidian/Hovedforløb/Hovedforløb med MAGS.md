@@ -3,6 +3,8 @@ Datauddannelsen dækker over 6 hovedforløb - her er en oversigt, med fokus på 
 
 [[H1]] - 1. Hovedforløb
 
+På 
+
 H2 - 2. Hovedforløb
 
 H3 - 3. Hovedforløb
