@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using API.Data;
 using DomainModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.SignalR;
+using API.Hubs;
 
 namespace API.Services
 {
@@ -13,11 +15,13 @@ namespace API.Services
     {
         private readonly AppDBContext _context;
         private readonly ILogger<TicketService> _logger;
+        private readonly IHubContext<TicketHub> _hubContext;
 
-        public TicketService(AppDBContext context, ILogger<TicketService> logger)
+        public TicketService(AppDBContext context, ILogger<TicketService> logger, IHubContext<TicketHub> hubContext)
         {
             _context = context;
             _logger = logger;
+            _hubContext = hubContext;
         }
 
         /// <summary>
@@ -296,6 +300,18 @@ namespace API.Services
 
             _logger.LogInformation("Ticket oprettet: {TicketNumber} af bruger {UserId}", ticketNumber, userId);
 
+            // Send SignalR notifikation om nyt ticket
+            await _hubContext.Clients.All.SendAsync("TicketCreated", new
+            {
+                TicketId = ticket.Id,
+                TicketNumber = ticket.TicketNumber,
+                Title = ticket.Title,
+                ServiceType = ticket.ServiceType,
+                Priority = ticket.Priority,
+                RequesterId = ticket.RequesterId,
+                CreatedAt = ticket.CreatedAt
+            });
+
             return await GetTicketByIdAsync(ticket.Id, userId, "User");
         }
 
@@ -387,6 +403,17 @@ namespace API.Services
 
             _logger.LogInformation("Ticket opdateret: {TicketId} af bruger {UserId}", ticket.Id, userId);
 
+            // Send SignalR notifikation om ticket opdatering
+            await _hubContext.Clients.Group($"Ticket_{ticket.Id}").SendAsync("TicketUpdated", new
+            {
+                TicketId = ticket.Id,
+                TicketNumber = ticket.TicketNumber,
+                Status = ticket.Status,
+                Priority = ticket.Priority,
+                UpdatedAt = ticket.UpdatedAt,
+                UpdatedBy = userId
+            });
+
             return await GetTicketByIdAsync(ticket.Id, userId, userRole);
         }
 
@@ -435,6 +462,17 @@ namespace API.Services
 
             _logger.LogInformation("Ticket tildelt: {TicketId} til {AssigneeId} af {UserId}", ticketId, assigneeId, userId);
 
+            // Send SignalR notifikation om ticket tildeling
+            await _hubContext.Clients.Group($"Ticket_{ticket.Id}").SendAsync("TicketAssigned", new
+            {
+                TicketId = ticket.Id,
+                TicketNumber = ticket.TicketNumber,
+                AssigneeId = assigneeId,
+                AssigneeName = assignee.Username,
+                AssignedBy = userId,
+                AssignedAt = DateTime.UtcNow
+            });
+
             return await GetTicketByIdAsync(ticket.Id, userId, userRole);
         }
 
@@ -468,6 +506,16 @@ namespace API.Services
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Ticket lukket: {TicketId} af {UserId}", ticketId, userId);
+
+            // Send SignalR notifikation om ticket lukning
+            await _hubContext.Clients.Group($"Ticket_{ticket.Id}").SendAsync("TicketClosed", new
+            {
+                TicketId = ticket.Id,
+                TicketNumber = ticket.TicketNumber,
+                Resolution = resolution,
+                ClosedBy = userId,
+                ClosedAt = ticket.ClosedAt
+            });
 
             return await GetTicketByIdAsync(ticket.Id, userId, userRole);
         }
@@ -534,6 +582,18 @@ namespace API.Services
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Kommentar tilføjet til ticket: {TicketId} af {UserId}", commentDto.TicketId, userId);
+
+            // Send SignalR notifikation om ny kommentar
+            await _hubContext.Clients.Group($"Ticket_{commentDto.TicketId}").SendAsync("CommentAdded", new
+            {
+                CommentId = comment.Id,
+                TicketId = comment.TicketId,
+                Message = comment.Comment,
+                AuthorId = comment.AuthorId,
+                AuthorName = (await _context.Users.FindAsync(userId))!.Username,
+                IsInternal = comment.IsInternal,
+                CreatedAt = comment.CreatedAt
+            });
 
             return new TicketCommentDto
             {
