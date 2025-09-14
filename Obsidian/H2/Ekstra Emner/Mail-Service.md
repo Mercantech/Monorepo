@@ -276,6 +276,7 @@ await _mailService.SendWelcomeEmailAsync(email, username, role);
 ```
 
 ### **Error Resilience**
+
 - Email fejl stopper ikke brugeroprettelse
 - Retry logik for midlertidige fejl
 - Fallback strategier
