@@ -14,18 +14,18 @@ namespace Blazor.Services
         private readonly string _hubUrl;
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        public event Action<string, string, string, bool, DateTime>? MessageReceived;
-        public event Action<string, string, DateTime>? UserJoined;
-        public event Action<string, string, DateTime>? UserLeft;
-        public event Action<string, bool, DateTime>? TypingIndicator;
-        public event Action<string, string, string, DateTime>? StatusUpdated;
-        public event Action<string, string, string, DateTime>? TicketAssigned;
-        public event Action<string, string, string, DateTime>? TicketClosed;
-        public event Action<string, string, string, string, DateTime>? CommentAdded;
-        public event Action<string, string, string, string, DateTime>? TicketCreated;
-        public event Action<string, string, string, DateTime>? TicketUpdated;
-        public event Action<string>? Error;
-        public event Action<string>? Connected;
+        public event Func<string, string, string, bool, DateTime, Task>? MessageReceived;
+        public event Func<string, string, DateTime, Task>? UserJoined;
+        public event Func<string, string, DateTime, Task>? UserLeft;
+        public event Func<string, bool, DateTime, Task>? TypingIndicator;
+        public event Func<string, string, string, DateTime, Task>? StatusUpdated;
+        public event Func<string, string, string, DateTime, Task>? TicketAssigned;
+        public event Func<string, string, string, DateTime, Task>? TicketClosed;
+        public event Func<string, string, string, string, DateTime, Task>? CommentAdded;
+        public event Func<string, string, string, string, DateTime, Task>? TicketCreated;
+        public event Func<string, string, string, DateTime, Task>? TicketUpdated;
+        public event Func<string, Task>? Error;
+        public event Func<string, Task>? Connected;
 
         public bool IsConnected => _hubConnection?.State == HubConnectionState.Connected;
         public string? CurrentTicketId { get; private set; }
@@ -243,64 +243,76 @@ namespace Blazor.Services
         {
             if (_hubConnection == null) return;
 
-            _hubConnection.On<string, string, string, bool, DateTime>("MessageReceived", (id, ticketId, message, isInternal, timestamp) =>
+            _hubConnection.On<string, string, string, bool, DateTime>("MessageReceived", async (id, ticketId, message, isInternal, timestamp) =>
             {
-                MessageReceived?.Invoke(id, ticketId, message, isInternal, timestamp);
+                if (MessageReceived != null)
+                    await MessageReceived(id, ticketId, message, isInternal, timestamp);
             });
 
-            _hubConnection.On<string, string, DateTime>("UserJoined", (username, userId, timestamp) =>
+            _hubConnection.On<string, string, DateTime>("UserJoined", async (username, userId, timestamp) =>
             {
-                UserJoined?.Invoke(username, userId, timestamp);
+                if (UserJoined != null)
+                    await UserJoined(username, userId, timestamp);
             });
 
-            _hubConnection.On<string, string, DateTime>("UserLeft", (username, userId, timestamp) =>
+            _hubConnection.On<string, string, DateTime>("UserLeft", async (username, userId, timestamp) =>
             {
-                UserLeft?.Invoke(username, userId, timestamp);
+                if (UserLeft != null)
+                    await UserLeft(username, userId, timestamp);
             });
 
-            _hubConnection.On<string, bool, DateTime>("TypingIndicator", (username, isTyping, timestamp) =>
+            _hubConnection.On<string, bool, DateTime>("TypingIndicator", async (username, isTyping, timestamp) =>
             {
-                TypingIndicator?.Invoke(username, isTyping, timestamp);
+                if (TypingIndicator != null)
+                    await TypingIndicator(username, isTyping, timestamp);
             });
 
-            _hubConnection.On<string, string, string, DateTime>("StatusUpdated", (ticketId, status, message, timestamp) =>
+            _hubConnection.On<string, string, string, DateTime>("StatusUpdated", async (ticketId, status, message, timestamp) =>
             {
-                StatusUpdated?.Invoke(ticketId, status, message, timestamp);
+                if (StatusUpdated != null)
+                    await StatusUpdated(ticketId, status, message, timestamp);
             });
 
-            _hubConnection.On<string, string, string, DateTime>("TicketAssigned", (ticketId, assigneeId, assigneeName, timestamp) =>
+            _hubConnection.On<string, string, string, DateTime>("TicketAssigned", async (ticketId, assigneeId, assigneeName, timestamp) =>
             {
-                TicketAssigned?.Invoke(ticketId, assigneeId, assigneeName, timestamp);
+                if (TicketAssigned != null)
+                    await TicketAssigned(ticketId, assigneeId, assigneeName, timestamp);
             });
 
-            _hubConnection.On<string, string, string, DateTime>("TicketClosed", (ticketId, resolution, closedBy, timestamp) =>
+            _hubConnection.On<string, string, string, DateTime>("TicketClosed", async (ticketId, resolution, closedBy, timestamp) =>
             {
-                TicketClosed?.Invoke(ticketId, resolution, closedBy, timestamp);
+                if (TicketClosed != null)
+                    await TicketClosed(ticketId, resolution, closedBy, timestamp);
             });
 
-            _hubConnection.On<string, string, string, string, DateTime>("CommentAdded", (commentId, ticketId, message, authorName, timestamp) =>
+            _hubConnection.On<string, string, string, string, DateTime>("CommentAdded", async (commentId, ticketId, message, authorName, timestamp) =>
             {
-                CommentAdded?.Invoke(commentId, ticketId, message, authorName, timestamp);
+                if (CommentAdded != null)
+                    await CommentAdded(commentId, ticketId, message, authorName, timestamp);
             });
 
-            _hubConnection.On<string, string, string, string, DateTime>("TicketCreated", (ticketId, ticketNumber, title, serviceType, timestamp) =>
+            _hubConnection.On<string, string, string, string, DateTime>("TicketCreated", async (ticketId, ticketNumber, title, serviceType, timestamp) =>
             {
-                TicketCreated?.Invoke(ticketId, ticketNumber, title, serviceType, timestamp);
+                if (TicketCreated != null)
+                    await TicketCreated(ticketId, ticketNumber, title, serviceType, timestamp);
             });
 
-            _hubConnection.On<string, string, string, DateTime>("TicketUpdated", (ticketId, status, priority, timestamp) =>
+            _hubConnection.On<string, string, string, DateTime>("TicketUpdated", async (ticketId, status, priority, timestamp) =>
             {
-                TicketUpdated?.Invoke(ticketId, status, priority, timestamp);
+                if (TicketUpdated != null)
+                    await TicketUpdated(ticketId, status, priority, timestamp);
             });
 
-            _hubConnection.On<string>("Error", (message) =>
+            _hubConnection.On<string>("Error", async (message) =>
             {
-                Error?.Invoke(message);
+                if (Error != null)
+                    await Error(message);
             });
 
-            _hubConnection.On<string>("Connected", (message) =>
+            _hubConnection.On<string>("Connected", async (message) =>
             {
-                Connected?.Invoke(message);
+                if (Connected != null)
+                    await Connected(message);
             });
 
             _hubConnection.On<string>("JoinedTicket", (message) =>
