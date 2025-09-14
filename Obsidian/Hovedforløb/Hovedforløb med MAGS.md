@@ -11,7 +11,9 @@ Under H2 bygger vi primært videre på de gode vaner og færdigheder fra H1. Vi 
 
 H3 - 3. Hovedforløb
 
-Det 3. hovedforløb
+IoT er det store emne på H3 - Vi giver eleverne mere frihed, både i process og specielt til hvad de vil bygge! Vi har nogle krav udenom, fx hvilke protokoller de skal bruge, så det hænger sammen med det pensum der bliver gennemgået!
+
+
 
 H4 - 4. Hovedforløb
 
