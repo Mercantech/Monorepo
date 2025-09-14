@@ -84,7 +84,7 @@ Datauddannelsen dækker over **6 hovedforløb** med fokus på transfer og vertik
 - Message queue systemer (RabbitMQ)
 - Moderne data-dashboards
 
-**Mål:** Åbne for stillinger inden for data-engineering.
+**Mål:** Åbne for stillinger inden for data-engineering og udvide erfaring til mere DevOps
 
 ### Anden del (25 dage)
 **Fokus:** Valgfrit projekt og svendeprøve forberedelse
