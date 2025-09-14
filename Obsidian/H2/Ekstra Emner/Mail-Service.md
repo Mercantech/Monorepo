@@ -275,6 +275,7 @@ await _mailService.SendWelcomeEmailAsync(email, username, role);
 // Brugeroprettelse fortsætter uanset email status
 ```
 
+
 ### **Error Resilience**
 
 - Email fejl stopper ikke brugeroprettelse
