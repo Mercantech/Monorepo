@@ -13,11 +13,16 @@ H3 - 3. Hovedforløb
 
 IoT er det store emne på H3 - Vi giver eleverne mere frihed, både i process og specielt til hvad de vil bygge! Vi har nogle krav udenom, fx hvilke protokoller de skal bruge, så det hænger sammen med det pensum der bliver gennemgået!
 
-
+Eleverne for løbende vejledning specielt omkring opbygning af deres projekt, så det hverken bliver for kompleks eller for simpelt.
 
 H4 - 4. Hovedforløb
 
+
+
 H5 - 5. Hovedforløb
+
+Det sidste rigtige hovedforløb inden svendeprøven, er opdelt i 2. Første del, dækker Linux, bygger videre på IoT og taget et nyt begræd ind som er Big Data. 
+Her bygger de i 20 dage, et mindre projekt med dataopsamling, message qeueu systemmer såsom RabbitMQ og laver et morderne data-dashboard. Det åbner eleverne for stillinger og opgaver inden for data-enginering 
 
 H6 - 6. Hovedforløb
 
