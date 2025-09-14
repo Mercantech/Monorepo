@@ -5,6 +5,7 @@ using System;
 using System.Reflection;
 using API.Data;
 using API.Services;
+using API.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -72,6 +73,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllers();
+        
+        // Add SignalR
+        builder.Services.AddSignalR();
         
         // Add Memory Cache for login attempt tracking
         builder.Services.AddMemoryCache();
@@ -176,6 +180,9 @@ public class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        
+        // Map SignalR Hub
+        app.MapHub<TicketHub>("/tickethub");
 
         // Set default port if not specified
         var port = Environment.GetEnvironmentVariable("ASPNETCORE_URLS")?.Split(':').LastOrDefault() ?? "8045";
