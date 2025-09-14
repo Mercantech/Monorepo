@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hovedforløb/Hovedforløb med MAGS.md",
+                "file": "CSS/Tailwind.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hovedforløb med MAGS"
+              "title": "Tailwind"
             }
           },
           {
@@ -252,8 +252,10 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
-    "Projekter/Oversigt.canvas",
+    "CSS/CSS Spil.md",
+    "GF1/Spotify Klon.md",
     "Hovedforløb/Hovedforløb med MAGS.md",
+    "Projekter/Oversigt.canvas",
     "Hovedforløb/H1.md",
     "CSharp/Web API med CSharp/JWT.md",
     "Hovedforløb",
@@ -284,7 +286,6 @@
     "H2/Ekstra Emner",
     "Assets/Pasted image 20250913132110.png",
     "H2/Oversigt.md",
-    "H2/Ekstra opgaver.md",
     "Assets/Pasted image 20250913113614.png",
     "Assets/Pasted image 20250912072611.png",
     "Assets/Pasted image 20250911220539.png",
