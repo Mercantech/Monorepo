@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infrastruktur/SMTP Protocol.md",
+                "file": "CSharp/SignalR/SignalR.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SMTP Protocol"
+              "title": "SignalR"
             }
           },
           {
@@ -252,8 +252,8 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
-    "Assets/Pasted image 20250913132924.png",
     "Infrastruktur/SMTP Protocol.md",
+    "Assets/Pasted image 20250913132924.png",
     "H2/Ekstra Emner/Mail-Service.md",
     "Assets/Email Alternatives.png",
     "Projekter/Projekt oversigt.md",
