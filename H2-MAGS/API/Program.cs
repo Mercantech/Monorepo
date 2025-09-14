@@ -39,6 +39,9 @@ public class Program
         
         // Registrer Mail Service
         builder.Services.AddScoped<MailService>();
+        
+        // Registrer Ticket Service
+        builder.Services.AddScoped<TicketService>();
 
         // Konfigurer JWT Authentication
         var jwtSecretKey = Configuration["Jwt:SecretKey"] ?? Environment.GetEnvironmentVariable("JWT_SECRET_KEY");
