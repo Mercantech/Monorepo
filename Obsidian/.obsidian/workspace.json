@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
+                "file": "H2/Ekstra Emner/Mail-Service.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Multiplayer Tic-Tac-Toe med SignalR"
+              "title": "Mail-Service"
             }
           }
         ],
@@ -228,6 +228,8 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
+    "Projekter/Projekt oversigt.md",
+    "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
     "Opgaver/Opgaver Oversigt.base",
     "Monorepo/New Git repo.md",
     "H1/H1 - Oversigt.md",
@@ -248,7 +250,6 @@
     "Infrastruktur/Twin-gate.md",
     "Assets/Pasted image 20250912072611.png",
     "Projekter/Oversigt.canvas",
-    "Projekter/Projekt oversigt.md",
     "Projekter/videnstjek.md",
     "Projekter/eval.md",
     "Assets/Pasted image 20250911220539.png",
