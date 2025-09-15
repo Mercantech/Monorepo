@@ -256,18 +256,17 @@ namespace API.Services
             var dueDate = CalculateSLA(createDto.Priority);
 
             // Valider booking adgang hvis relevant
-            string? validBookingId = null;
             if (!string.IsNullOrEmpty(createDto.BookingId))
             {
                 var booking = await _context.Bookings
                     .Include(b => b.Room)
                     .FirstOrDefaultAsync(b => b.Id == createDto.BookingId);
 
-                if (booking != null && booking.UserId == userId)
-                {
-                    validBookingId = createDto.BookingId;
-                }
-                // Hvis booking ikke findes eller bruger ikke har adgang, ignorer den
+                if (booking == null)
+                    throw new ArgumentException("Booking ikke fundet");
+
+                if (booking.UserId != userId)
+                    throw new UnauthorizedAccessException("Du har ikke adgang til denne booking");
             }
 
             var ticket = new Ticket
@@ -280,9 +279,9 @@ namespace API.Services
                 Priority = createDto.Priority,
                 Status = "Open",
                 Category = createDto.Category,
-                SubCategory = createDto.SubCategory ?? string.Empty,
+                SubCategory = createDto.SubCategory,
                 RequesterId = userId,
-                BookingId = validBookingId,
+                BookingId = createDto.BookingId,
                 RoomId = createDto.RoomId,
                 HotelId = createDto.HotelId,
                 DueDate = dueDate,
