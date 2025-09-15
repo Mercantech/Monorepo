@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSS/Tailwind.md",
+                "file": "Projekter/Learn/Learn - Learn.mags.dk.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tailwind"
+              "title": "Learn - Learn.mags.dk"
             }
           },
           {
@@ -252,6 +252,8 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
+    "CSS/Tailwind.md",
+    "Projekter/Learn/Learn - Learn.mags.dk.md",
     "CSS/CSS Spil.md",
     "GF1/Spotify Klon.md",
     "Hovedforløb/Hovedforløb med MAGS.md",
@@ -282,10 +284,8 @@
     "H2/Ekstra Emner/Aspire.md",
     "H1/Intro til C#",
     "H2/Ekstra Emner/Bruno.md",
-    "H2/Ekstra Emner/API-testing.md",
     "H2/Ekstra Emner",
     "Assets/Pasted image 20250913132110.png",
-    "H2/Oversigt.md",
     "Assets/Pasted image 20250913113614.png",
     "Assets/Pasted image 20250912072611.png",
     "Assets/Pasted image 20250911220539.png",
