@@ -1,7 +1,7 @@
 ﻿using System;
 using Hjemmet;
 using Kontoret;
-using Enterprice;
+using Konsol.Enterprice;
 
 bool run = true;
 while (run)
@@ -33,8 +33,8 @@ while (run)
             break;
         case "5":
             // Kald ADService
-            ADService adService = new ADService();
-            adService.Start();
+            //ADService adService = new ADService();
+            //adService.Start();
             break;
         case "?":
             PrintMenu();
