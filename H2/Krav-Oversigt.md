@@ -37,13 +37,7 @@
 ### 📝 XML Dokumentation af API
 - [ ] Tilføj XML-kommentarer til alle controllere og endpoints
 - [ ] Brug `<summary>`, `<param>`, `<returns>` og `<response code>` pr. endpoint
-- [ ] Aktivér XML-dokumentation i .csproj-fil
 - [ ] Konfigurer Swagger til at vise XML-dokumentation
-
-### 🛡️ Fejlhåndtering & Sikkerhed
-- [ ] Implementér restriktiv CORS-politik i API
-- [ ] Test at kun frontend kan tilgå API'et
-- [ ] Identificér og beskriv XSS beskyttelse
 
 ### 🗄️ Indsæt data & Repository Pattern
 - [ ] Indsæt eksempeldata i databasen (brugere, værelser, bookinger)
@@ -53,23 +47,19 @@
 
 ### 🚀 Udvidet EF Core og Hosting
 - [ ] Host applikationen på deploy.mercantec.tech
-- [ ] Implementér Eager vs Lazy Loading
-- [ ] Sammenlign performance mellem begge tilgange
-
 ---
 
 ## Uge 4 - Frontend med Blazor
 
 ### 🎯 Opstart af Blazor projekt
-- [ ] Opret Blazor WASM projekt
 - [ ] Konfigurer HTTP client til API kald
 - [ ] Opret service-klasser til API kald med fejlhåndtering
-- [ ] Lav simpel side der viser data fra API
+- [ ] Lav en simpel side der viser data fra API
 
 ### 🔐 Loginsystem med API & Blazor
 - [ ] Opret login/register sider i Blazor
 - [ ] Implementér authentication service i frontend
-- [ ] Håndter JWT tokens i localStorage/sessionStorage
+- [ ] Håndter JWT tokens i localStorage/sessionStorage eller cookies
 - [ ] Opret protected routes/komponenter
 - [ ] Implementér logout funktionalitet
 
@@ -77,7 +67,6 @@
 - [ ] Implementér state management i Blazor app
 - [ ] Håndter global state (user authentication)
 - [ ] Test at state opdateres korrekt mellem komponenter
-- [ ] Dokumentér state management løsning
 
 ### 📱 Skalerbar services & PWA
 - [ ] Implementér mindst én PWA-funktion:
@@ -85,9 +74,6 @@
   - Web App Manifest
   - Offline funktionalitet
   - Push notifications
-- [ ] Refaktor services til at være mere skalerbare
-- [ ] Implementér dependency injection
-- [ ] Opret interfaces for services
 
 ---
 
@@ -124,7 +110,6 @@
 - [ ] Lav og kør EF Core migration
 
 ### ⚡ Intro til SignalR / WebSocket
-- [ ] Læs om og forstå SignalR/WebSocket
 - [ ] Integrér SignalR i Ticket System
 - [ ] Opret SignalR Hub
 - [ ] Implementér realtidsopdateringer (nye tickets, statusopdateringer)
@@ -165,29 +150,3 @@
   - [ ] Tekniske diagrammer er opdateret
 
 ---
-
-## 📊 Release Oversigt
-
-### Release 1 (Uge 2-3)
-- Database & EF Core setup
-- Brugerhåndtering med JWT
-- Database relationer og DTO'er
-- XML dokumentation og sikkerhed
-
-### Release 2 (Uge 4)
-- Blazor frontend med API integration
-- Authentication og state management
-- PWA funktionalitet
-
-### Release 3 (Uge 6)
-- Active Directory integration
-- Administrator dashboard
-- Roller og tilladelser
-
-### Release 4 (Uge 8)
-- Ticket system implementation
-- Real-time funktionalitet med SignalR
-
-### Final Release (Uge 10)
-- Komplet dokumentation
-- Aflevering og eksamen forberedelse
