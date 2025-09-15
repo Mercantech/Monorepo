@@ -47,6 +47,7 @@
 
 ### 🚀 Udvidet EF Core og Hosting
 - [ ] Host applikationen på deploy.mercantec.tech
+- [ ] Lav en avaiable endpoint som enten ser hvilke værelser der er ledigt eller kan finde et ledigt værelse ud fra brugerens ønsker!
 ---
 
 ## Uge 4 - Frontend med Blazor
@@ -122,31 +123,8 @@
 - [ ] Sikr at Main branch er fungerende og stabil
 - [ ] Test at alle features virker korrekt
 - [ ] Fix alle kritiske bugs og fejl
-- [ ] Verificer at alle tests kører succesfuldt
 - [ ] Opret eller opdater README.md med komplet dokumentation
 - [ ] Dokumentér implementerede features
 - [ ] Dokumentér ufærdige features og fremtidige forbedringer
-- [ ] Opret projekt dokumentation (arkitektur diagrammer, database ERD)
 - [ ] Sikr kode kvalitet og standarder
-- [ ] Opret deployment package
 
-### 🎓 Eksamen
-- [ ] **Projekt Status Verificering**
-  - [ ] Main branch fungerende og stabil
-  - [ ] Alle kritiske features virker
-  - [ ] Projekt kan bygges og køres uden fejl
-  - [ ] README.md er opdateret og komplet
-- [ ] **Kode Opdeling og Fremlæggelse Forberedelse**
-  - [ ] Identificer hvem der fremlægger hvilke dele
-  - [ ] Opdel kodebase i logiske sektioner
-  - [ ] Forbered demo data og test scenarier
-- [ ] **Teknisk Forberedelse**
-  - [ ] Test alle demo scenarier på forhånd
-  - [ ] Sikr stabile internet forbindelser
-  - [ ] Forbered backup planer
-- [ ] **Dokumentation og Præsentation**
-  - [ ] Præsentations slides er klar
-  - [ ] Demo script er forberedt
-  - [ ] Tekniske diagrammer er opdateret
-
----
