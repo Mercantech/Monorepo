@@ -145,10 +145,7 @@ Officielle valgfag ville
 - Container scanning (Trivy, Snyk)
 - **Mål**: Sikre containers og secrets
 
-#### **Dag 13: CTF Challenge - "Hack Your Own App"**
-- Setup af sårbar applikation
-- CTF challenges: SQL injection, XSS, CSRF
-- Web Application Firewall (WAF) setup
+#### **Dag 13: CTF Challenge - "Hack en app"**
 - **Mål**: Praktisk sikkerhedstestning gennem CTF
 
 #### **Dag 14: Monitoring & Incident Response**
