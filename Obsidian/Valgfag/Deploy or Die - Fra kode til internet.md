@@ -131,31 +131,31 @@ Officielle valgfag ville
 
 ---
 
-### **Uge 3: "Sikkerhed & Production Ready"**
+### **Uge 3: "Moderne Sikkerhed & CTF Challenge"**
 
-#### **Dag 11: OWASP Top 10 & Secure Coding**
-- Common vulnerabilities
-- Input validation
-- SQL injection prevention
-- **Mål**: Sikker kode praksis
+#### **Dag 11: OWASP Top 10 & Modern Security Headers**
+- OWASP Top 10 (2021) - moderne version
+- Security headers (CSP, HSTS, X-Frame-Options)
+- Input validation og sanitization
+- **Mål**: Moderne sikker kode praksis
 
-#### **Dag 12: Authentication & Authorization - CTF**
-- JWT tokens
-- Password hashing (bcrypt)
-- Role-based access
-- **Mål**: Sikker brugerhåndtering
+#### **Dag 12: Container Security & Secrets Management**
+- Docker security best practices
+- Environment variables vs secrets
+- Container scanning (Trivy, Snyk)
+- **Mål**: Sikre containers og secrets
 
-#### **Dag 13: Database Security & Advanced Backups**
-- Database hardening
-- Automated backup scripts
-- Encryption at rest
-- **Mål**: Sikker datahåndtering
+#### **Dag 13: CTF Challenge - "Hack Your Own App"**
+- Setup af sårbar applikation
+- CTF challenges: SQL injection, XSS, CSRF
+- Web Application Firewall (WAF) setup
+- **Mål**: Praktisk sikkerhedstestning gennem CTF
 
-#### **Dag 14: Penetration Testing & Vulnerability Scanning**
-- OWASP ZAP scanning
-- Manual security testing
-- Security headers
-- **Mål**: Find og fix sikkerhedshuller
+#### **Dag 14: Monitoring & Incident Response**
+- Security monitoring med Dokploy
+- Log analysis og alerting
+- Incident response plan
+- **Mål**: Overvågning og håndtering af sikkerhedsbegivenheder
 
 #### **Dag 15: Aflevering/fremlæggelse**
 
