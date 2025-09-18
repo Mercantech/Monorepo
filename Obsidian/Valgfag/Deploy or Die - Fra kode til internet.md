@@ -172,3 +172,4 @@ Eleverne har en **komplet, sikker, overvåget webapp** der:
 ### Mål inden det er klar til elever
 
 Reducer 3 dage - Fredage skal ikke have teori, men tid til noter og refleksion! Find eksamensform og tag en ekstra dag ud af uge 3! Så vi i alt har 4-4-3 fordeling, måske mindre?
+
