@@ -135,7 +135,7 @@ Officielle valgfag ville
 - SQL injection prevention
 - **Mål**: Sikker kode praksis
 
-#### **Dag 12: Authentication & Authorization**
+#### **Dag 12: Authentication & Authorization - CTF**
 - JWT tokens
 - Password hashing (bcrypt)
 - Role-based access
