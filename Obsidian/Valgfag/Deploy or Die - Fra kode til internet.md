@@ -79,17 +79,14 @@ Officielle valgfag ville
 - Database konfiguration og connection
 - **Mål**: Database kører i container
 
-#### **Dag 5: Web Server Setup (Nginx)**
+#### **Dag 5: Web Server Setup (Nginx) + HTTPS & SSL**
 - Nginx installation og konfiguration
 - Virtual hosts setup
 - Static file serving
-- **Mål**: "Hello World" hjemmeside kører
-
-#### **Dag 6: HTTPS & SSL**
 - Let's Encrypt certifikat
 - Auto-renewal setup
 - HTTP → HTTPS redirect
-- **Mål**: Sikker hjemmeside med HTTPS
+- **Mål**: "Hello World" hjemmeside kører og sikre med HTTPS*
 
 ---
 
@@ -113,22 +110,19 @@ Officielle valgfag ville
 - Backup strategier
 - **Mål**: Data overlever container restarts
 
-#### **Dag 9: Dokploy Installation & Setup**
+#### **Dag 9: Dokploy Installation, Setup & GitHub Integration**
 - Dokploy installation på server
 - Web interface konfiguration
 - Git repository forbindelse
-- **Mål**: Dokploy er klar til deployment
-
-#### **Dag 10: Dokploy Deployment & GitHub Integration**
 - Deploy app via Dokploy interface
 - GitHub webhook setup
 - Automated deployment ved push
-- **Mål**: Push til GitHub = automatisk deploy via Dokploy
+- **Mål**: Dokploy er klar til deployment, Push til GitHub = automatisk deploy via Dokploy
 
-#### **Dag 11: Monitoring & Logging med Dokploy**
+#### **Dag 10: Monitoring & Logging med Dokploy**
 - Dokploy's built-in monitoring
 - Application logging via Dokploy
-- Uptime monitoring (UptimeRobot)
+- Uptime monitoring (UptimeKhana)
 - **Mål**: Overvågning af live app gennem Dokploy
 
 ---
