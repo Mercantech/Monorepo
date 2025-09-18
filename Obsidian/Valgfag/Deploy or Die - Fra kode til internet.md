@@ -73,13 +73,19 @@ Officielle valgfag ville
 - Cloudflare setup
 - **Mål**: Domæne peger på deres server
 
-#### **Dag 4: Web Server Setup (Nginx)**
+#### **Dag 4: Database Setup med Docker**
+- Docker installation
+- Database container (PostgreSQL/MySQL)
+- Database konfiguration og connection
+- **Mål**: Database kører i container
+
+#### **Dag 5: Web Server Setup (Nginx)**
 - Nginx installation og konfiguration
 - Virtual hosts setup
 - Static file serving
 - **Mål**: "Hello World" hjemmeside kører
 
-#### **Dag 5: HTTPS & SSL**
+#### **Dag 6: HTTPS & SSL**
 - Let's Encrypt certifikat
 - Auto-renewal setup
 - HTTP → HTTPS redirect
@@ -87,7 +93,7 @@ Officielle valgfag ville
 
 ---
 
-### **Uge 2: "Containerization & CI/CD"**
+### **Uge 2: "Containerization & CI/CD med Dokploy"**
 
 #### **Dag 6: Docker Grundlæggende**
 - Docker installation
@@ -101,23 +107,29 @@ Officielle valgfag ville
 - Environment variables
 - **Mål**: Full-stack app i containers
 
-#### **Dag 8: GitHub Actions Setup**
-- Workflow filer
-- Automated testing
-- Build og push til registry
-- **Mål**: CI pipeline kører automatisk
+#### **Dag 8: Docker Volumes & Data Persistence**
+- Volume mapping for database
+- Data persistence setup
+- Backup strategier
+- **Mål**: Data overlever container restarts
 
-#### **Dag 9: Automated Deployment**
-- Deploy script via GitHub Actions
-- Server secrets management
-- Zero-downtime deployment
-- **Mål**: Push til GitHub = automatisk deploy
+#### **Dag 9: Dokploy Installation & Setup**
+- Dokploy installation på server
+- Web interface konfiguration
+- Git repository forbindelse
+- **Mål**: Dokploy er klar til deployment
 
-#### **Dag 10: Monitoring & Logging**
+#### **Dag 10: Dokploy Deployment & GitHub Integration**
+- Deploy app via Dokploy interface
+- GitHub webhook setup
+- Automated deployment ved push
+- **Mål**: Push til GitHub = automatisk deploy via Dokploy
+
+#### **Dag 11: Monitoring & Logging med Dokploy**
+- Dokploy's built-in monitoring
+- Application logging via Dokploy
 - Uptime monitoring (UptimeRobot)
-- Application logging
-- Error tracking
-- **Mål**: Overvågning af live app
+- **Mål**: Overvågning af live app gennem Dokploy
 
 ---
 
@@ -135,9 +147,9 @@ Officielle valgfag ville
 - Role-based access
 - **Mål**: Sikker brugerhåndtering
 
-#### **Dag 13: Database Security & Backups**
+#### **Dag 13: Database Security & Advanced Backups**
 - Database hardening
-- Automated backups
+- Automated backup scripts
 - Encryption at rest
 - **Mål**: Sikker datahåndtering
 
