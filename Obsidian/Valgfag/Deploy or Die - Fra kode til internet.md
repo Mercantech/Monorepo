@@ -55,38 +55,42 @@ Officielle valgfag ville
 
 ### **Uge 1: "Server Setup & Grundlæggende Sikkerhed"**
 
-#### **Dag 1: SSH & Server Access**
+#### **Dag 1: SSH & Server Access + Grundlæggende Sikkerhed**
 - Få egen server (DigitalOcean/AWS/Azure) - Vi bruger nok bare Datacenter maskinerne med Twingate
 - SSH setup og Twingate VPN
 - Grundlæggende Linux kommandoer
-- **Mål**: Eleverne kan logge ind på deres server og navigere
-
-#### **Dag 2: Server Hardening & Firewall**
-- UFW/iptables konfiguration
 - SSH sikkerhed (disable root, key-only)
 - System updates og pakke management
-- **Mål**: Server er sikker og opdateret
+- **Mål**: Eleverne kan logge ind på deres server og har grundlæggende sikkerhed
 
-#### **Dag 3: Domæne & DNS**
+#### **Dag 2: Domæne & DNS + Firewall**
 - Køb domæne (eller brug subdomain)
 - DNS konfiguration (A, CNAME records)
 - Cloudflare setup
-- **Mål**: Domæne peger på deres server
+- UFW/iptables konfiguration
+- **Mål**: Domæne peger på deres server og firewall er konfigureret
 
-#### **Dag 4: Database Setup med Docker**
+#### **Dag 3: Database Setup med Docker**
 - Docker installation
 - Database container (PostgreSQL/MySQL)
 - Database konfiguration og connection
 - **Mål**: Database kører i container
 
-#### **Dag 5: Web Server Setup (Nginx) + HTTPS & SSL**
+#### **Dag 4: Web Server Setup (Nginx) + HTTPS & SSL**
 - Nginx installation og konfiguration
 - Virtual hosts setup
 - Static file serving
 - Let's Encrypt certifikat
 - Auto-renewal setup
 - HTTP → HTTPS redirect
-- **Mål**: "Hello World" hjemmeside kører og sikre med HTTPS*
+- **Mål**: "Hello World" hjemmeside kører og sikre med HTTPS
+
+#### **Dag 5: Release & Reflektion**
+- Test af komplet setup
+- Dokumentation af processen
+- Reflektion over læring
+- Forberedelse til uge 2
+- **Mål**: Eleverne har et fungerende setup og har reflekteret over processen
 
 ---
 
