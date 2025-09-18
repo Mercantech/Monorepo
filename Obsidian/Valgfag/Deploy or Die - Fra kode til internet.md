@@ -56,7 +56,7 @@ Officielle valgfag ville
 ### **Uge 1: "Server Setup & Grundlæggende Sikkerhed"**
 
 #### **Dag 1: SSH & Server Access**
-- Få egen server (DigitalOcean/AWS)
+- Få egen server (DigitalOcean/AWS/Azure)
 - SSH setup og key management
 - Grundlæggende Linux kommandoer
 - **Mål**: Eleverne kan logge ind på deres server
