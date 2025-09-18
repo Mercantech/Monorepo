@@ -25,16 +25,82 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Valgfag/PlanForOnline/Plan.md",
+                "file": "Git/Commits - Local vs GitHub.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Plan"
+              "title": "Commits - Local vs GitHub"
+            }
+          },
+          {
+            "id": "46eeb02a25929c4a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Infrastruktur/IT-ServiceManagment.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "IT-ServiceManagment"
+            }
+          },
+          {
+            "id": "321114e539786957",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Infrastruktur/IT-ServiceManagment.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "IT-ServiceManagment"
+            }
+          },
+          {
+            "id": "cbdf78e6b0df76df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Valgfag/Deploy or Die - Fra kode til internet.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Deploy or Die - Fra kode til internet"
+            }
+          },
+          {
+            "id": "9250454c9883de22",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Assets/Pasted image 20250913132924.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20250913132924"
+            }
+          },
+          {
+            "id": "e62329339ae38d0d",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Assets/Email Alternatives.png"
+              },
+              "icon": "lucide-image",
+              "title": "Email Alternatives"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -184,58 +250,58 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8b1ec45818b23d45",
+  "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
     "Projekter/Learn/Learn - Learn.mags.dk.md",
-    "Infrastruktur/SMTP Protocol.md",
-    "Hovedforløb/Hovedforløb med MAGS.md",
-    "Hovedforløb/H1.md",
-    "Hovedforløb",
-    "H2/Ekstra Emner/Mail-Service.md",
-    "H2/Ekstra Emner/Bruno.md",
-    "H2/Ekstra Emner/Aspire.md",
-    "H2/Ekstra Emner/API-testing.md",
-    "H2/Ekstra Emner",
-    "H1/Intro til C#/Intro Til CSharp.md",
-    "H1/Intro til C#",
     "CSS/Tailwind.md",
+    "CSS/CSS Spil.md",
+    "GF1/Spotify Klon.md",
+    "Hovedforløb/Hovedforløb med MAGS.md",
+    "Projekter/Oversigt.canvas",
+    "Hovedforløb/H1.md",
+    "CSharp/Web API med CSharp/JWT.md",
+    "Hovedforløb",
+    "CSharp/Web API med CSharp/Hashing.md",
+    "CSharp/Web API med CSharp/Logging.md",
+    "CSharp/Web API med CSharp/CORS - Cross Origin Resource Sharing.md",
+    "CSharp/Web API med CSharp/Cross Site Scripting - XSS.md",
+    "CSharp/Web API med CSharp/Dokumentation med XML.md",
+    "CSharp/Web API med CSharp/Bruno.md",
+    "CSharp/Web API med CSharp/Bogus.md",
+    "CSharp/CSharp.md",
+    "CSharp/MailService.md",
+    "CSharp/SignalR/SignalR.md",
+    "Infrastruktur/SMTP Protocol.md",
     "Assets/Pasted image 20250913132924.png",
+    "H2/Ekstra Emner/Mail-Service.md",
+    "Assets/Email Alternatives.png",
+    "Projekter/Projekt oversigt.md",
+    "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
+    "Opgaver/Opgaver Oversigt.base",
+    "Monorepo/New Git repo.md",
+    "H1/H1 - Oversigt.md",
+    "H1/Intro til C#/Intro Til CSharp.md",
+    "H2/Ekstra Emner/Aspire.md",
+    "H1/Intro til C#",
+    "H2/Ekstra Emner/Bruno.md",
+    "H2/Ekstra Emner",
     "Assets/Pasted image 20250913132110.png",
     "Assets/Pasted image 20250913113614.png",
-    "Assets/Email Alternatives.png",
-    "Valgfag/Deploy or Die - Fra kode til internet.md",
-    "Valgfag/Hobby til Startup – SAAS og MVP.md",
-    "Valgfag/PlanForOnline/Teams-besked.txt",
-    "Valgfag/PlanForOnline/Plan.md",
-    "Valgfag/PlanForOnline",
-    "Projekter/Learn/SQL/Murder SQL.md",
-    "Projekter/Learn/Karaktere/SQL - Ray Ingres.md",
-    "Projekter/Learn/Karaktere/ORM - Diego Chen.md",
-    "Projekter/Learn/Karaktere/Infrastructure - Radia Hopper.md",
-    "Projekter/Learn/Karaktere/CSharp - Mads Skeeter Hejlsberg.md",
-    "Projekter/Learn/Karaktere/Blazor - Steve Salamander.md",
-    "Projekter/Learn/Karaktere/Backend - Roy Guthrie.md",
-    "Projekter/Learn/Karaktere/0. Dyr som undervisere.md",
-    "Projekter/Learn/SQL",
-    "Projekter/Learn/Karaktere",
-    "Projekter/videnstjek.md",
-    "Projekter/Projekt oversigt.md",
-    "Projekter/Oversigt.canvas",
-    "Projekter/Learn",
-    "Projekter/eval.md",
-    "Projekter",
-    "Infrastruktur/Twin-gate.md",
-    "Git/Commits - Local vs GitHub.md",
-    "GF2/GF2-Video",
     "Assets/Pasted image 20250912072611.png",
     "Assets/Pasted image 20250911220539.png",
     "Assets/Pasted image 20250911220518.png",
+    "Projekter",
     "Assets/Pasted image 20250911220203.png",
+    "GF2/GF2-Video",
+    "GF2/Canva.canvas",
+    "Assets/ITIL7.png",
+    "Valgfag/PlanForOnline/Teams-besked.txt",
+    "Valgfag/PlanForOnline",
+    "Valgfag",
+    "Git",
     "Assets/Pasted image 20250908103327.png",
-    "Assets/Pasted image 20250907212052.png",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
-    "GF2/Canva.canvas",
     "CSharp-Bogen/Canva.canvas",
     "Blazor/Overview.canvas"
   ]
