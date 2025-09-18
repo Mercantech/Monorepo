@@ -48,3 +48,30 @@ Officielle valgfag ville
 6. Lærlingen kan foretage logisk og struktureret fejlfinding på applikations datalag.
 7. Lærlingen kan betjene et version-styringsystem i forbindelse med et udviklingsteam.
 	[EUD](https://www.eud.uddannelsesadministration.dk/Soeg/EUDEnkeltfag/Detaljer.aspx?FAG_ID=169993)
+
+- Valgfag som bliver brugt - 3 valgfag samlet til et!
+    - [Deployment Service](https://www.notion.so/Deployment-Service-1b1dab5ca237803b9b08fdadd0a8c1a8?pvs=21) - 1 uge
+        
+        
+        1. Lærlingen kan redegøre for fordele og ulemper forbundet med forskellige Deployment metoder.
+        2. Lærlingen kan installere og konfigurere Deployment Service til brug ved udrulning af software og operativsystemer over netværk.
+        3. Lærlingen kan installere og tilrette et OS til brug som basis for et Deployment image.
+        4. Lærlingen kan producere pakker og images til udrulning af software og operativsystemer over netværk.
+        5. Lærlingen kan tilføje reference images og nødvendige device drivere til et Deployment Share via Deployment Workbench.
+        6. Lærlingen kan oprette og tilrette Task Sequences i forbindelse med et givent Deployment scenarie.
+        7. Lærlingen kan administrere forskellige roller ud fra individuelle behov, som tredje parts software, hardware, specifikke device drivers osv.
+        8. Lærlingen kan administrere og tilrette software på liveinstallationer via Group Policies.
+        
+        [](https://www.eud.uddannelsesadministration.dk/Soeg/EUDEnkeltfag/Detaljer.aspx?FAG_ID=213731)
+        
+    - [Informationssikkerhed og awareness](https://www.notion.so/Informationssikkerhed-og-awareness-1b1dab5ca237809f90dfc84112951e88?pvs=21) - 1 uge
+        
+        
+        1. Lærlingen kan redegøre for forskellige trusler som fx malware, phishing, ransomware.
+        2. Lærlingen kan redegøre for de grundlæggende principper i NIS2 og CRA's formål og anvendelse i virksomheden.
+        3. Lærlingen kan redegøre for etiske principper i arbejdet med data- og it-sikkerhed.
+        4. Lærlingen kan redegøre for awareness tiltag i virksomheden fx adgangskoder, tofaktorautentificering, og sikkerhedsopdateringer.
+        5. Lærlingen kan på et grundlæggende niveau indtænke risikovurdering ind i løsningen af konkrete hverdagssituationer.
+        
+        [](https://www.eud.uddannelsesadministration.dk/Soeg/EUDEnkeltfag/Detaljer.aspx?FAG_ID=228980)
+        
