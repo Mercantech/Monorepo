@@ -56,10 +56,10 @@ Officielle valgfag ville
 ### **Uge 1: "Server Setup & Grundlæggende Sikkerhed"**
 
 #### **Dag 1: SSH & Server Access**
-- Få egen server (DigitalOcean/AWS/Azure)
-- SSH setup og key management
+- Få egen server (DigitalOcean/AWS/Azure) - Vi bruger nok bare Datacenter maskinerne med Twingate
+- SSH setup og Twingate VPN
 - Grundlæggende Linux kommandoer
-- **Mål**: Eleverne kan logge ind på deres server
+- **Mål**: Eleverne kan logge ind på deres server og navigere
 
 #### **Dag 2: Server Hardening & Firewall**
 - UFW/iptables konfiguration
