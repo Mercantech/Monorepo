@@ -55,38 +55,42 @@ Officielle valgfag ville
 
 ### **Uge 1: "Server Setup & Grundlæggende Sikkerhed"**
 
-#### **Dag 1: SSH & Server Access**
+#### **Dag 1: SSH & Server Access + Grundlæggende Sikkerhed**
 - Få egen server (DigitalOcean/AWS/Azure) - Vi bruger nok bare Datacenter maskinerne med Twingate
 - SSH setup og Twingate VPN
 - Grundlæggende Linux kommandoer
-- **Mål**: Eleverne kan logge ind på deres server og navigere
-
-#### **Dag 2: Server Hardening & Firewall**
-- UFW/iptables konfiguration
 - SSH sikkerhed (disable root, key-only)
 - System updates og pakke management
-- **Mål**: Server er sikker og opdateret
+- **Mål**: Eleverne kan logge ind på deres server og har grundlæggende sikkerhed
 
-#### **Dag 3: Domæne & DNS**
+#### **Dag 2: Domæne & DNS + Firewall**
 - Køb domæne (eller brug subdomain)
 - DNS konfiguration (A, CNAME records)
 - Cloudflare setup
-- **Mål**: Domæne peger på deres server
+- UFW/iptables konfiguration
+- **Mål**: Domæne peger på deres server og firewall er konfigureret
 
-#### **Dag 4: Database Setup med Docker**
+#### **Dag 3: Database Setup med Docker**
 - Docker installation
 - Database container (PostgreSQL/MySQL)
 - Database konfiguration og connection
 - **Mål**: Database kører i container
 
-#### **Dag 5: Web Server Setup (Nginx) + HTTPS & SSL**
+#### **Dag 4: Web Server Setup (Nginx) + HTTPS & SSL**
 - Nginx installation og konfiguration
 - Virtual hosts setup
 - Static file serving
 - Let's Encrypt certifikat
 - Auto-renewal setup
 - HTTP → HTTPS redirect
-- **Mål**: "Hello World" hjemmeside kører og sikre med HTTPS*
+- **Mål**: "Hello World" hjemmeside kører og sikre med HTTPS
+
+#### **Dag 5: Release & Reflektion**
+- Test af komplet setup
+- Dokumentation af processen
+- Reflektion over læring
+- Forberedelse til uge 2
+- **Mål**: Eleverne har et fungerende setup og har reflekteret over processen
 
 ---
 
@@ -127,37 +131,30 @@ Officielle valgfag ville
 
 ---
 
-### **Uge 3: "Sikkerhed & Production Ready"**
+### **Uge 3: "Moderne Sikkerhed & CTF Challenge"**
 
-#### **Dag 11: OWASP Top 10 & Secure Coding**
-- Common vulnerabilities
-- Input validation
-- SQL injection prevention
-- **Mål**: Sikker kode praksis
+#### **Dag 11: OWASP Top 10 & Modern Security Headers**
+- OWASP Top 10 (2021) - moderne version
+- Security headers (CSP, HSTS, X-Frame-Options)
+- Input validation og sanitization
+- **Mål**: Moderne sikker kode praksis
 
-#### **Dag 12: Authentication & Authorization - CTF**
-- JWT tokens
-- Password hashing (bcrypt)
-- Role-based access
-- **Mål**: Sikker brugerhåndtering
+#### **Dag 12: Container Security & Secrets Management**
+- Docker security best practices
+- Environment variables vs secrets
+- Container scanning (Trivy, Snyk)
+- **Mål**: Sikre containers og secrets
 
-#### **Dag 13: Database Security & Advanced Backups**
-- Database hardening
-- Automated backup scripts
-- Encryption at rest
-- **Mål**: Sikker datahåndtering
+#### **Dag 13: CTF Challenge - "Hack en app"**
+- **Mål**: Praktisk sikkerhedstestning gennem CTF
 
-#### **Dag 14: Penetration Testing & Vulnerability Scanning**
-- OWASP ZAP scanning
-- Manual security testing
-- Security headers
-- **Mål**: Find og fix sikkerhedshuller
+#### **Dag 14: Monitoring & Incident Response**
+- Security monitoring med Dokploy
+- Log analysis og alerting
+- Incident response plan
+- **Mål**: Overvågning og håndtering af sikkerhedsbegivenheder
 
-#### **Dag 15: Production Deployment & Go Live**
-- Final deployment
-- Performance optimization
-- Documentation
-- **Mål**: Live, sikker, overvåget app
+#### **Dag 15: Aflevering/fremlæggelse**
 
 ---
 
@@ -171,4 +168,7 @@ Eleverne har en **komplet, sikker, overvåget webapp** der:
 
 ### Mål inden det er klar til elever
 
-Reducer 3 dage - Fredage skal ikke have teori, men tid til noter og refleksion! Find eksamensform og tag en ekstra dag ud af uge 3! Så vi i alt har 4-4-3 fordeling, måske mindre?
+Reducer 3 dage - Fredage skal ikke have teori, men tid til noter og refleksion! Find eksamens-form og tag en ekstra dag ud af uge 3! Så vi i alt har 4-4-3 fordeling, måske mindre?
+
+Guide dem hen til 3 ugers deployment + 2 ugers ML eller 3 ugers game design! 6 uger er okay - så meget kan lade sig gøre
+

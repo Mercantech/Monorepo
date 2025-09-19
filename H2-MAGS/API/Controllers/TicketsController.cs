@@ -27,6 +27,7 @@ namespace API.Controllers
         /// Hent alle tickets med filtrering og paginering
         /// </summary>
         [HttpGet]
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         public async Task<ActionResult<IEnumerable<TicketGetDto>>> GetTickets([FromQuery] TicketSearchDto searchDto)
         {
             try
@@ -54,6 +55,7 @@ namespace API.Controllers
         /// Hent specifik ticket med kommentarer og vedhæftninger
         /// </summary>
         [HttpGet("{id}")]
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         public async Task<ActionResult<TicketGetDto>> GetTicket(string id)
         {
             try
@@ -86,26 +88,27 @@ namespace API.Controllers
         /// Opret nyt ticket (kun booking ejere)
         /// </summary>
         [HttpPost]
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         public async Task<ActionResult<TicketGetDto>> CreateTicket([FromBody] TicketCreateDto createDto)
         {
             try
             {
                 // For demo mode, use demo user ID if no authenticated user
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "demo-user-123";
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "9c93e99f-67b4-4179-b61d-8218d564faa9";
                 if (string.IsNullOrEmpty(userId))
                 {
                     return Unauthorized("Bruger ikke fundet");
                 }
 
                 // Valider at brugeren har adgang til den relaterede booking
-                if (!string.IsNullOrEmpty(createDto.BookingId))
+                /*if (!string.IsNullOrEmpty(createDto.BookingId))
                 {
                     var hasAccess = await _ticketService.ValidateBookingAccessAsync(createDto.BookingId, userId);
                     if (!hasAccess)
                     {
                         return Forbid("Du har ikke adgang til denne booking");
                     }
-                }
+                }*/
 
                 var ticket = await _ticketService.CreateTicketAsync(createDto, userId);
                 return CreatedAtAction(nameof(GetTicket), new { id = ticket.Id }, ticket);
@@ -354,11 +357,13 @@ namespace API.Controllers
         /// Hent mine tickets (tickets hvor brugeren er requester eller assignee)
         /// </summary>
         [HttpGet("my-tickets")]
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         public async Task<ActionResult<IEnumerable<TicketGetDto>>> GetMyTickets([FromQuery] TicketSearchDto searchDto)
         {
             try
             {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                // For demo mode, use demo user ID if no authenticated user
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "9c93e99f-67b4-4179-b61d-8218d564faa9";
                 if (string.IsNullOrEmpty(userId))
                 {
                     return Unauthorized("Bruger ikke fundet");
