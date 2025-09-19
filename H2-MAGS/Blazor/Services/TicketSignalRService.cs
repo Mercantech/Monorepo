@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Options;
 using System.ComponentModel;
+using Blazor.Models;
 
 namespace Blazor.Services
 {
@@ -33,10 +35,10 @@ namespace Blazor.Services
         public string? CurrentUsername { get; private set; }
         public string? CurrentUserRole { get; private set; }
 
-        public TicketSignalRService(ILogger<TicketSignalRService> logger, IConfiguration configuration)
+        public TicketSignalRService(ILogger<TicketSignalRService> logger, IOptions<ApiConfiguration> apiConfig)
         {
             _logger = logger;
-            var apiBaseUrl = configuration["ApiBaseUrl"] ?? "https://25h2-mags.mercantec.tech";
+            var apiBaseUrl = apiConfig.Value.ApiBaseUrl ?? "https://25h2-mags.mercantec.tech/";
             _hubUrl = apiBaseUrl.TrimEnd('/') + "/tickethub";
         }
 
