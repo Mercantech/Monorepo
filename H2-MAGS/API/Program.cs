@@ -162,6 +162,9 @@ public class Program
             Predicate = r => r.Tags.Contains("live")
         });
 
+        // Test CORS endpoint
+        app.MapGet("/test-cors", () => "CORS working!").RequireCors("AllowSpecificOrigins");
+
         app.MapOpenApi();
 
         // Scalar Middleware for OpenAPI

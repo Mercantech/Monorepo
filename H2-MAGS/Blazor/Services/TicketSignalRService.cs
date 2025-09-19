@@ -72,11 +72,19 @@ namespace Blazor.Services
                 await _hubConnection.StartAsync();
                 _logger.LogInformation("SignalR forbindelse etableret");
                 OnPropertyChanged(nameof(IsConnected));
+                Connected?.Invoke("Forbundet til chat systemet");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Fejl ved etablering af SignalR forbindelse");
-                Error?.Invoke("Kunne ikke forbinde til chat systemet");
+                if (ex.Message.Contains("CORS") || ex.Message.Contains("Failed to fetch"))
+                {
+                    Error?.Invoke("CORS fejl: Kunne ikke forbinde til chat systemet. Tjek server konfiguration.");
+                }
+                else
+                {
+                    Error?.Invoke("Kunne ikke forbinde til chat systemet");
+                }
             }
         }
 
