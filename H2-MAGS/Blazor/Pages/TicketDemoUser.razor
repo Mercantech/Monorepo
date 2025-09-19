@@ -4,6 +4,7 @@
 @using Blazor.Components
 @inject TicketSignalRService SignalRService
 @inject APIService APIService
+@inject AuthenticationService AuthService
 @inject ILogger<TicketDemoUser> Logger
 
 <PageTitle>Ticket Demo - Bruger</PageTitle>
@@ -124,6 +125,16 @@
 
     protected override async Task OnInitializedAsync()
     {
+        // Ensure authentication is initialized
+        await AuthService.InitializeAsync();
+        
+        // Check if user is authenticated
+        var isAuthenticated = await AuthService.IsAuthenticatedAsync();
+        if (!isAuthenticated)
+        {
+            Logger.LogWarning("Bruger ikke autentificeret - bruger demo mode");
+        }
+        
         // Initialize SignalR connection
         await SignalRService.InitializeAsync("demo-token");
         

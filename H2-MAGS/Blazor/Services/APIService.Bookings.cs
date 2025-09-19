@@ -1,6 +1,7 @@
 using DomainModels;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Blazor.Models;
 
 namespace Blazor.Services
 {

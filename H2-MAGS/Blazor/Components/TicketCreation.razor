@@ -1,6 +1,7 @@
 @using Blazor.Services
 @using DomainModels
 @inject APIService APIService
+@inject AuthenticationService AuthService
 @inject ILogger<TicketCreation> Logger
 
 <div class="ticket-creation-container">
@@ -78,16 +79,16 @@
             <div class="booking-selection">
                 <div class="booking-filters mb-2">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn @(bookingFilter == "all" ? "btn-primary" : "btn-outline-primary")" @onclick="() => SetBookingFilter(\"all\")">
+                        <button type="button" class="btn @(bookingFilter == "all" ? "btn-primary" : "btn-outline-primary")" @onclick="@(() => SetBookingFilter("all"))">
                             Alle
                         </button>
-                        <button type="button" class="btn @(bookingFilter == "current" ? "btn-primary" : "btn-outline-primary")" @onclick="() => SetBookingFilter(\"current\")">
+                        <button type="button" class="btn @(bookingFilter == "current" ? "btn-primary" : "btn-outline-primary")" @onclick="@(() => SetBookingFilter("current"))">
                             Nuværende
                         </button>
-                        <button type="button" class="btn @(bookingFilter == "upcoming" ? "btn-primary" : "btn-outline-primary")" @onclick="() => SetBookingFilter(\"upcoming\")">
+                        <button type="button" class="btn @(bookingFilter == "upcoming" ? "btn-primary" : "btn-outline-primary")" @onclick="@(() => SetBookingFilter("upcoming"))">
                             Fremtidige
                         </button>
-                        <button type="button" class="btn @(bookingFilter == "past" ? "btn-primary" : "btn-outline-primary")" @onclick="() => SetBookingFilter(\"past\")">
+                        <button type="button" class="btn @(bookingFilter == "past" ? "btn-primary" : "btn-outline-primary")" @onclick="@(() => SetBookingFilter("past"))">
                             Tidligere
                         </button>
                     </div>
@@ -175,6 +176,9 @@
     {
         // Set default values
         ticketCreateDto.Priority = "Medium";
+        
+        // Ensure authentication is initialized
+        await AuthService.InitializeAsync();
         
         // Load user's bookings
         await LoadBookings();
