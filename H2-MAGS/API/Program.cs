@@ -74,8 +74,11 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllers();
         
-        // Add SignalR
-        builder.Services.AddSignalR();
+        // Add SignalR med CORS support
+        builder.Services.AddSignalR(options =>
+        {
+            options.EnableDetailedErrors = true;
+        });
         
         // Add Memory Cache for login attempt tracking
         builder.Services.AddMemoryCache();
@@ -137,7 +140,8 @@ public class Program
                         )
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .WithExposedHeaders("Content-Disposition");
+                        .WithExposedHeaders("Content-Disposition")
+                        .AllowCredentials(); // Nødvendigt for SignalR
                 }
             );
         });
@@ -181,8 +185,9 @@ public class Program
 
         app.MapControllers();
         
-        // Map SignalR Hub with proper negotiation
-        app.MapHub<TicketHub>("/tickethub");
+        // Map SignalR Hub with CORS support
+        app.MapHub<TicketHub>("/tickethub")
+            .RequireCors("AllowSpecificOrigins");
 
         // Set default port if not specified
         var port = Environment.GetEnvironmentVariable("ASPNETCORE_URLS")?.Split(':').LastOrDefault() ?? "8045";
