@@ -20,12 +20,57 @@
     <div class="demo-content">
         @if (string.IsNullOrEmpty(currentTicketId))
         {
-            <div class="ticket-creation-section">
-                <h3>Opret Nyt Ticket</h3>
-                <TicketCreation 
-                    UserId="@demoUserId" 
-                    Username="@demoUsername"
-                    OnTicketCreated="OnTicketCreated" />
+            <div class="ticket-section">
+                <div class="ticket-creation-section">
+                    <h3>Opret Nyt Ticket</h3>
+                    <TicketCreation 
+                        UserId="@demoUserId" 
+                        Username="@demoUsername"
+                        OnTicketCreated="OnTicketCreated" />
+                </div>
+
+                <div class="existing-tickets-section">
+                    <h3>Mine Eksisterende Tickets</h3>
+                    @if (isLoadingTickets)
+                    {
+                        <div class="loading">Henter tickets...</div>
+                    }
+                    else if (existingTickets?.Any() == true)
+                    {
+                        <div class="tickets-list">
+                            @foreach (var ticket in existingTickets)
+                            {
+                                <div class="ticket-card @GetStatusClass(ticket.Status)">
+                                    <div class="ticket-header">
+                                        <h4>@ticket.TicketNumber</h4>
+                                        <span class="status-badge">@ticket.Status</span>
+                                    </div>
+                                    <div class="ticket-content">
+                                        <h5>@ticket.Title</h5>
+                                        <p class="ticket-description">@ticket.Description</p>
+                                        <div class="ticket-meta">
+                                            <span class="priority @ticket.Priority.ToLower()">@ticket.Priority</span>
+                                            <span class="service-type">@ticket.ServiceType</span>
+                                            <span class="created-date">Oprettet: @ticket.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-actions">
+                                        <button class="btn btn-primary" @onclick="() => JoinTicketChat(ticket.Id, ticket.TicketNumber)">
+                                            Chat om Ticket
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="no-tickets">
+                            <p>Du har ingen eksisterende tickets endnu.</p>
+                            <p>Opret dit første ticket ovenfor!</p>
+                        </div>
+                    }
+                </div>
             </div>
         }
         else
@@ -74,6 +119,8 @@
     private string demoUsername = "Demo Bruger";
     private string currentTicketId = string.Empty;
     private string currentTicketNumber = string.Empty;
+    private List<TicketGetDto> existingTickets = new();
+    private bool isLoadingTickets = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -83,6 +130,9 @@
         // Register event handlers
         SignalRService.Connected += OnConnected;
         SignalRService.Error += OnError;
+        
+        // Load existing tickets
+        await LoadExistingTickets();
     }
 
     private async Task OnTicketCreated(string ticketId)
