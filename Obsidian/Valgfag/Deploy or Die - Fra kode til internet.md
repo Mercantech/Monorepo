@@ -141,7 +141,7 @@ Officielle valgfag ville
 
 #### **Dag 12: Container Security & Secrets Management**
 -
-Docker security best practices
+- Docker security best practices
 - Environment variables vs secrets
 - Container scanning (Trivy, Snyk)
 - **Mål**: Sikre containers og secrets
