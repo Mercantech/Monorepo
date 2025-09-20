@@ -172,3 +172,4 @@ Reducer 3 dage - Fredage skal ikke have teori, men tid til noter og refleksion! 
 
 Guide dem hen til 3 ugers deployment + 2 ugers ML eller 3 ugers game design! 6 uger er okay - så meget kan lade sig gøre
 
+---
