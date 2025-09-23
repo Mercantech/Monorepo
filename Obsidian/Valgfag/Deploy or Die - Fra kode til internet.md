@@ -4,14 +4,11 @@
 
 - Lær at deploye et projekt med:
     
-    - Docker, Nginx, server setup (DigitalOcean, Render, Vercel - Localt med Dokploy)
+    - Docker, Nginx, server setup (DigitalOcean, Render, Vercel -> Localt med Dokploy)
         
     - CI/CD pipelines (Github Actions, WebHooks)
         
-    - Domæne, HTTPS (Let’s Encrypt, Cloudflare)
-        
-    - Basic frontend/backend structure (SPA, API)
-        
+    - Domæne, HTTPS (Let’s Encrypt, Cloudflare, Traefik)        
 
 **Slutprodukt**: Deres projekt kører online. Mor kan se det. Og deres GitHub-profil bliver ikke flov.
 

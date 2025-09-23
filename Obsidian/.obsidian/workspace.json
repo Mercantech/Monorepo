@@ -67,12 +67,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSharp/SignalR/SignalR vs HTTPS.md",
+                "file": "Opgaver/BinærKodeomformer/Løsningsnoter.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SignalR vs HTTPS"
+              "title": "Løsningsnoter"
+            }
+          },
+          {
+            "id": "0be222e75e71b1bd",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Opgaver/BinærKodeomformer/Drawing 2025-09-23 20.54.31.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-09-23 20.54.31.excalidraw"
             }
           },
           {
@@ -100,7 +112,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -250,12 +262,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cbdf78e6b0df76df",
+  "active": "0be222e75e71b1bd",
   "lastOpenFiles": [
-    "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
-    "CSharp/SignalR/SignalR vs HTTPS.md",
-    "Opgaver/CTF - Capture The Flag/CTF - Fyrtårn.md",
+    "Assets/Pasted Image 20250923205643_974.png",
+    "Assets/Pasted Image 20250923205633_293.png",
+    "Opgaver/Binær Kodeomformer.md",
+    "Opgaver/BinærKodeomformer/Løsningsnoter.md",
+    "Opgaver/BinærKodeomformer/Drawing 2025-09-23 20.54.31.excalidraw.md",
+    "Opgaver/BinærKodeomformer",
     "Valgfag/Deploy or Die - Fra kode til internet.md",
+    "CSharp/SignalR/SignalR vs HTTPS.md",
+    "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
+    "Opgaver/CTF - Capture The Flag/CTF - Fyrtårn.md",
     "Projekter/Learn/Learn - Learn.mags.dk.md",
     "CSS/Tailwind.md",
     "CSS/CSS Spil.md",
@@ -277,12 +295,8 @@
     "CSharp/SignalR/SignalR.md",
     "Infrastruktur/SMTP Protocol.md",
     "Assets/Pasted image 20250913132924.png",
-    "H2/Ekstra Emner/Mail-Service.md",
     "Assets/Email Alternatives.png",
-    "Projekter/Projekt oversigt.md",
-    "Opgaver/Multiplayer Tic-Tac-Toe med SignalR.md",
     "Opgaver/Opgaver Oversigt.base",
-    "Monorepo/New Git repo.md",
     "H1/Intro til C#",
     "H2/Ekstra Emner",
     "Assets/Pasted image 20250913132110.png",
@@ -298,8 +312,6 @@
     "Valgfag/PlanForOnline/Teams-besked.txt",
     "Valgfag/PlanForOnline",
     "Valgfag",
-    "Git",
-    "Assets/Pasted image 20250908103327.png",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "CSharp-Bogen/Canva.canvas",
