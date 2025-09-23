@@ -62,6 +62,18 @@
             }
           },
           {
+            "id": "6605d2e936fb8821",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Matematik/Geometri.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Geometri"
+            }
+          },
+          {
             "id": "9250454c9883de22",
             "type": "leaf",
             "state": {
@@ -86,7 +98,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -236,10 +248,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "321114e539786957",
+  "active": "6605d2e936fb8821",
   "lastOpenFiles": [
-    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
+    "Assets/Pasted Image 20250923220228_489.png",
     "Matematik/Matematik - Oversigt!.md",
+    "Matematik/Geometri.md",
+    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "Matematik",
     "Infrastruktur/IT-ServiceManagment.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
@@ -270,8 +284,6 @@
     "CSharp/Web API med CSharp/Bruno.md",
     "CSharp/Web API med CSharp/Bogus.md",
     "CSharp/CSharp.md",
-    "CSharp/MailService.md",
-    "CSharp/SignalR/SignalR.md",
     "Assets/Pasted image 20250913132924.png",
     "Assets/Email Alternatives.png",
     "Opgaver/Opgaver Oversigt.base",
