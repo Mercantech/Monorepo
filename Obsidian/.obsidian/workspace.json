@@ -51,12 +51,14 @@
             "id": "321114e539786957",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md"
+                "file": "Matematik/Matematik - Oversigt!.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Løsningsnoter-Drawing"
+              "icon": "lucide-file",
+              "title": "Matematik - Oversigt!"
             }
           },
           {
@@ -234,11 +236,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "92a44750e2882671",
+  "active": "321114e539786957",
   "lastOpenFiles": [
+    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
+    "Matematik/Matematik - Oversigt!.md",
     "Matematik",
     "Infrastruktur/IT-ServiceManagment.md",
-    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
     "Assets/Pasted Image 20250923210301_730.png",
     "Assets/Pasted Image 20250923205706_228.png",
@@ -283,7 +286,6 @@
     "GF2/Canva.canvas",
     "Valgfag/PlanForOnline/Teams-besked.txt",
     "Valgfag/PlanForOnline",
-    "Valgfag",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "CSharp-Bogen/Canva.canvas",
