@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSharp/SignalR/SignalR vs HTTPS.md",
+                "file": "Valgfag/Deploy or Die - Fra kode til internet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SignalR vs HTTPS"
+              "title": "Deploy or Die - Fra kode til internet"
             }
           },
           {
@@ -252,8 +252,8 @@
   },
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
-    "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
     "CSharp/SignalR/SignalR vs HTTPS.md",
+    "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
     "Opgaver/CTF - Capture The Flag/CTF - Fyrtårn.md",
     "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Projekter/Learn/Learn - Learn.mags.dk.md",
