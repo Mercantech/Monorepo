@@ -65,12 +65,14 @@
             "id": "cbdf78e6b0df76df",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md"
+                "file": "Welcome.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Løsningsnoter-Drawing"
+              "icon": "lucide-file",
+              "title": "Welcome"
             }
           },
           {
@@ -96,9 +98,21 @@
               "icon": "lucide-image",
               "title": "Email Alternatives"
             }
+          },
+          {
+            "id": "16ab8668c7a8acd5",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Løsningsnoter-Drawing"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -155,7 +169,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 303.5,
     "collapsed": true
   },
   "right": {
@@ -244,7 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -259,11 +273,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cbdf78e6b0df76df",
+  "active": "16ab8668c7a8acd5",
   "lastOpenFiles": [
+    "CSharp/Dotnet/ADO.NET/ADO.NET.md",
+    "H1/H1 - Oversigt.md",
+    "H1/Intro til C#/Intro Til CSharp.md",
+    "Welcome.md",
+    "CSharp/SignalR/SignalR.md",
+    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
     "Valgfag/Deploy or Die - Fra kode til internet.md",
-    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "Opgaver/BinærKodeomformer",
     "Matematik/Matematik - Oversigt!.md",
     "Matematik/Geometri.md",
@@ -291,11 +310,6 @@
     "CSharp/Web API med CSharp/Cross Site Scripting - XSS.md",
     "CSharp/Web API med CSharp/Dokumentation med XML.md",
     "CSharp/Web API med CSharp/Bruno.md",
-    "CSharp/Web API med CSharp/Bogus.md",
-    "CSharp/CSharp.md",
-    "CSharp/MailService.md",
-    "CSharp/SignalR/SignalR.md",
-    "Infrastruktur/SMTP Protocol.md",
     "Assets/Pasted image 20250913132924.png",
     "Assets/Email Alternatives.png",
     "Opgaver/Opgaver Oversigt.base",
