@@ -65,14 +65,12 @@
             "id": "cbdf78e6b0df76df",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Valgfag/Deploy or Die - Fra kode til internet.md",
-                "mode": "source",
-                "source": false
+                "file": "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md"
               },
-              "icon": "lucide-file",
-              "title": "Deploy or Die - Fra kode til internet"
+              "icon": "excalidraw-icon",
+              "title": "Løsningsnoter-Drawing"
             }
           },
           {
@@ -157,7 +155,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -253,6 +252,7 @@
   "active": "cbdf78e6b0df76df",
   "lastOpenFiles": [
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
+    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "Opgaver/BinærKodeomformer",
     "Matematik/Matematik - Oversigt!.md",
@@ -266,7 +266,6 @@
     "CSharp/SignalR/SignalR vs HTTPS.md",
     "Opgaver/CTF - Capture The Flag/CTF - Datahouse Datacenter.md",
     "Opgaver/CTF - Capture The Flag/CTF - Fyrtårn.md",
-    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Projekter/Learn/Learn - Learn.mags.dk.md",
     "CSS/Tailwind.md",
     "CSS/CSS Spil.md",
