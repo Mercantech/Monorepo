@@ -35,9 +35,6 @@ namespace Opgaver
             );
             // Lav opgaven herunder!
             string[] navne = new string[5];
-            navne[0] = "Anders";
-            navne[1] = "Jóse";
-            navne[2] = "Simon";
          }
 
         public static void Array2()
