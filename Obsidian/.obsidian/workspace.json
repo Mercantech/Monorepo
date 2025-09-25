@@ -103,12 +103,14 @@
             "id": "16ab8668c7a8acd5",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md"
+                "file": "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Løsningsnoter-Drawing"
+              "icon": "lucide-file",
+              "title": "4. Arrays, Lists & Dictionary"
             }
           }
         ],
@@ -275,12 +277,12 @@
   },
   "active": "16ab8668c7a8acd5",
   "lastOpenFiles": [
+    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "CSharp/Dotnet/ADO.NET/ADO.NET.md",
     "H1/H1 - Oversigt.md",
     "H1/Intro til C#/Intro Til CSharp.md",
     "Welcome.md",
     "CSharp/SignalR/SignalR.md",
-    "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
     "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Opgaver/BinærKodeomformer",
