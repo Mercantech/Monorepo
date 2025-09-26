@@ -1,4 +1,4 @@
-### 💡 **1. "Deploy or Die" – Fra kode til internet**
+### 💡 "Deploy or Die" – Fra kode til internet**
 
 > _Motto: “Hvad nytter det at kode, hvis ingen kan se det?”_
 

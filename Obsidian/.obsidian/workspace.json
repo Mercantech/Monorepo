@@ -105,12 +105,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
-                "mode": "preview",
+                "file": "Valgfag/Deploy or Die - Fra kode til internet.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Arrays, Lists & Dictionary"
+              "title": "Deploy or Die - Fra kode til internet"
             }
           }
         ],
@@ -171,8 +171,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5,
-    "collapsed": true
+    "width": 303.5
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -277,6 +276,7 @@
   },
   "active": "16ab8668c7a8acd5",
   "lastOpenFiles": [
+    "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "CSharp/Dotnet/ADO.NET/ADO.NET.md",
     "H1/H1 - Oversigt.md",
@@ -311,7 +311,6 @@
     "CSharp/Web API med CSharp/CORS - Cross Origin Resource Sharing.md",
     "CSharp/Web API med CSharp/Cross Site Scripting - XSS.md",
     "CSharp/Web API med CSharp/Dokumentation med XML.md",
-    "CSharp/Web API med CSharp/Bruno.md",
     "Assets/Pasted image 20250913132924.png",
     "Assets/Email Alternatives.png",
     "Opgaver/Opgaver Oversigt.base",
