@@ -1,29 +1,58 @@
-# Vægt
+# Vægt og Massefylde
 
-I rumfangsopgaver optræder der ofte spørgsmål, hvor rumfanget er kædet sammen med vægt og massefylde. Du skal derfor vide noget om dette. Derfor vil du nu få en gennemgang af sammenhængen mellem rumfang, vægt og massefylde.
+Som datateknikkere arbejder I med data storage, performance og optimering - og præcis som I beregner memory usage og storage requirements, skal I også kunne beregne vægt og massefylde i geometriske sammenhænge.
 
-Massefylde er det samme som vægtfylde og densitet. Her i bogen vil du ofte støde på ordet massefylde.
+> [!multi-column]
+> Hvad er massefylde?
+> Massefylde er det samme som **vægtfylde** og **densitet** - det er hvor "tungt" et materiale er pr. volumen.
+> **Massefylden** af et stof er det antal gram, som 1 cm³ af stoffet vejer.
+> Når jerns massefylde er 7,8 betyder det at:
+> - 1 mm³ jern vejer 7,8 milligram
+> - 1 cm³ jern vejer 7,8 gram  
+> - 1 dm³ jern vejer 7,8 kilo
+> - 1 m³ jern vejer 7,8 tons
 
-Massefylden af et stof er det antal gram, som 1 cm³ af stoffet vejer. Når jerns massefylde er 7,8 betyder det at:
+---
 
-- 1 mm³ jern vejer 7,8 milligram
-- 1 cm³ jern vejer 7,8 gram
-- 1 dm³ jern vejer 7,8 kilo
-- 1 m³ jern vejer 7,8 tons
+> [!multi-column]
+> I datateknologi
+> 
+> Massefylde svarer til:
+> - **Data density** - hvor meget data pr. storage unit
+> - **Memory efficiency** - optimal memory allocation
+> - **Performance metrics** - operations per byte
+> - **Resource optimization** - CPU cycles per operation
+> 
+> Ligesom I optimerer kode for bedre performance, optimerer vi materialer for bedre styrke/vægt ratio!
 
 ## Sammenhængen mellem vægt, rumfang og massefylde
 
-$$Vægt = Rumfang \cdot Massefylde$$
-![[Pasted image 20250926201743.png]]
-### Eksempel
+> [!multi-column]
+> Grundformlen
+> 
+> $$Vægt = Rumfang \cdot Massefylde$$
+> 
+> **Symboler:**
+> - Vægt = m (mass)
+> - Rumfang = V (volume)  
+> - Massefylde = ρ (rho)
+> 
+> $$m = V \cdot \rho$$
 
-Beregn vægten af en aluminiumsplade med længden på 180 cm, bredden på 83 cm og tykkelsen på 3 mm. Massefylden for aluminium er 2,8 g/cm³
+---
 
-**Først beregnes rumfanget:**
-$$V = l \cdot b \cdot h = 180 \cdot 83 \cdot 0,3 = 4482 \text{ cm}^3$$
-
-**Vægten beregnes:**
-$$Vægt = V \cdot \rho = 4482 \cdot 2,8 = 12.549,6 \text{ g} = 12,55 \text{ kg}$$
+> [!multi-column]
+> ![[Pasted image 20250926201743.png]]
+>> Praktisk eksempel
+>> **Opgave:** Beregn vægten af en aluminiumsplade med længden på 180 cm, bredden på 83 cm og tykkelsen på 3 mm. Massefylden for aluminium er 2,8 g/cm³
+>> 
+>> **Løsning:**
+>> 
+>> **1. Beregn rumfanget:**
+>> $$V = l \cdot b \cdot h = 180 \cdot 83 \cdot 0,3 = 4482 \text{ cm}^3$$
+>> 
+>> **2. Beregn vægten:**
+>> $$Vægt = V \cdot \rho = 4482 \cdot 2,8 = 12.549,6 \text{ g} = 12,55 \text{ kg}$$
 
 ### Øvelser
 

@@ -65,28 +65,18 @@
             "id": "6605d2e936fb8821",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Matematik/Geometri/Geometri.md"
+                "file": "Matematik/Geometri/Vægt.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Geometri"
+              "icon": "lucide-file",
+              "title": "Vægt"
             }
           },
           {
             "id": "aac60e581e847070",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Matematik/Geometri/Rumfang og vægt - Draw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Rumfang og vægt - Draw"
-            }
-          },
-          {
-            "id": "4e7080f789fc946b",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
@@ -122,7 +112,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -272,12 +262,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4e7080f789fc946b",
+  "active": "6605d2e936fb8821",
   "lastOpenFiles": [
-    "Matematik/Geometri/Vægt.md",
+    "Matematik/Geometri/Geometri - Oversigt.md",
+    "Matematik/Geometri/Geometri - Draw.md",
     "Matematik/Geometri/Rumfang og vægt - Draw.md",
-    "Matematik/Geometri/Rumfang og vægt.md",
+    "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
     "Matematik/Geometri/Rumfang.md",
+    "Matematik/Geometri/Vægt.md",
+    "Matematik/Geometri/Rumfang og vægt.md",
     "Assets/Pasted image 20250926201821.png",
     "Assets/Pasted image 20250926201743.png",
     "Assets/Pasted image 20250926201731.png",
@@ -288,7 +281,6 @@
     "Assets/Pasted image 20250926201610.png",
     "Assets/Pasted image 20250926201602.png",
     "Assets/Pasted image 20250926201544.png",
-    "Matematik/Geometri/Geometri.md",
     "Matematik/Matematik - Oversigt!.md",
     "Matematik/Geometri",
     "Matematik/Ligninger og funktioner",
@@ -316,8 +308,6 @@
     "Hovedforløb",
     "CSharp/Web API med CSharp/Hashing.md",
     "CSharp/Web API med CSharp/Logging.md",
-    "CSharp/Web API med CSharp/CORS - Cross Origin Resource Sharing.md",
-    "CSharp/Web API med CSharp/Cross Site Scripting - XSS.md",
     "Opgaver/Opgaver Oversigt.base",
     "H1/Intro til C#",
     "H2/Ekstra Emner",
