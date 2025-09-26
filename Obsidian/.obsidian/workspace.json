@@ -65,14 +65,12 @@
             "id": "6605d2e936fb8821",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Matematik/Geometri/Vægt - Øvelser Svar.md",
-                "mode": "source",
-                "source": false
+                "file": "Matematik/Geometri/Rumfang og vægt - Draw.md"
               },
-              "icon": "lucide-file",
-              "title": "Vægt - Øvelser Svar"
+              "icon": "excalidraw-icon",
+              "title": "Rumfang og vægt - Draw"
             }
           },
           {
@@ -169,7 +167,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "e13c7e80a200227d",
@@ -241,8 +240,19 @@
               "icon": "lucide-list",
               "title": "Outline of Welcome"
             }
+          },
+          {
+            "id": "230b30081b159f57",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -264,13 +274,13 @@
   },
   "active": "6605d2e936fb8821",
   "lastOpenFiles": [
+    "Matematik/Geometri/Rumfang.md",
+    "Matematik/Geometri/Rumfang og vægt - Draw.md",
     "Matematik/Geometri/Vægt.md",
     "Matematik/Geometri/Vægt - Øvelser Svar.md",
     "Matematik/Geometri/Geometri - Oversigt.md",
     "Matematik/Geometri/Geometri - Draw.md",
-    "Matematik/Geometri/Rumfang og vægt - Draw.md",
     "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
-    "Matematik/Geometri/Rumfang.md",
     "Matematik/Geometri/Rumfang og vægt.md",
     "Assets/Pasted image 20250926201821.png",
     "Assets/Pasted image 20250926201743.png",

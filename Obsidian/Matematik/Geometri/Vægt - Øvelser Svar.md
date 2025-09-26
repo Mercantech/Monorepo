@@ -14,15 +14,16 @@ Som datateknikkere er det vigtigt at kunne løse komplekse beregninger systemati
 ---
 
 ## Enhedsregning
-**Vigtige enheder:**
-- 1 m³ = 1.000.000 cm³
-- 1 dm³ = 1.000 cm³ = 1 liter
-- 1 kg = 1.000 g
-- 1 ton = 1.000 kg
-**Massefylde enheder:**
-- g/cm³ (gram per kubikcentimeter)
-- kg/dm³ (kilogram per kubikdecimeter)
-- tons/m³ (tons per kubikmeter)
+> [!multi-column]
+> **Vigtige enheder:**
+>    1 m³ = 1.000.000 cm³
+>    1 dm³ = 1.000 cm³ = 1 liter
+>    1 kg = 1.000 g
+>    1 ton = 1.000 kg
+>> **Massefylde enheder:**
+>> g/cm³ (gram per kubikcentimeter)
+>> kg/dm³ (kilogram per kubikdecimeter)
+>> tons/m³ (tons per kubikmeter)
 
 ---
 
@@ -34,9 +35,13 @@ Som datateknikkere er det vigtigt at kunne løse komplekse beregninger systemati
 - Længde: 3000 mm = 300 cm
 - Bredde: 1500 mm = 150 cm  
 - Tykkelse: 20 mm = 2 cm
+
 **2. Beregn rumfang:**
+
 $$V = l \cdot b \cdot h = 300 \cdot 150 \cdot 2 = 90.000 \text{ cm}^3$$
+
 **3. Beregn vægt:**
+
 $$m = V \cdot \rho = 90.000 \cdot 7,8 = 702.000 \text{ g} = 702 \text{ kg}$$
 
 ---
