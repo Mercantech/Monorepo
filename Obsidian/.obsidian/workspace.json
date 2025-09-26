@@ -77,14 +77,24 @@
             "id": "aac60e581e847070",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Matematik/Geometri/Rumfang.md",
-                "mode": "source",
-                "source": false
+                "file": "Matematik/Geometri/Rumfang og vægt - Draw.md"
               },
-              "icon": "lucide-file",
-              "title": "Rumfang"
+              "icon": "excalidraw-icon",
+              "title": "Rumfang og vægt - Draw"
+            }
+          },
+          {
+            "id": "4e7080f789fc946b",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Matematik/Geometri/Rumfang og vægt - Draw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Rumfang og vægt - Draw"
             }
           },
           {
@@ -112,7 +122,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -262,8 +272,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "aac60e581e847070",
+  "active": "4e7080f789fc946b",
   "lastOpenFiles": [
+    "Matematik/Geometri/Vægt.md",
+    "Matematik/Geometri/Rumfang og vægt - Draw.md",
+    "Matematik/Geometri/Rumfang og vægt.md",
+    "Matematik/Geometri/Rumfang.md",
+    "Assets/Pasted image 20250926201821.png",
     "Assets/Pasted image 20250926201743.png",
     "Assets/Pasted image 20250926201731.png",
     "Assets/Pasted image 20250926201720.png",
@@ -273,11 +288,6 @@
     "Assets/Pasted image 20250926201610.png",
     "Assets/Pasted image 20250926201602.png",
     "Assets/Pasted image 20250926201544.png",
-    "Assets/Pasted image 20250926201538.png",
-    "Assets/Pasted image 20250926201531.png",
-    "Matematik/Geometri/Rumfang og vægt.md",
-    "Matematik/Geometri/Rumfang.md",
-    "Matematik/Geometri/Rumfang og vægt - Draw.md",
     "Matematik/Geometri/Geometri.md",
     "Matematik/Matematik - Oversigt!.md",
     "Matematik/Geometri",
