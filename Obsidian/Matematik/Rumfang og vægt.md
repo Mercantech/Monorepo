@@ -15,6 +15,9 @@ Massefylden af et stof er det antal gram, som 1 cm3 af stoffet vejer. Når jerns
           1 m3 jern vejer 7,8 tons
 
 Sammenhængen mellem vægt, rumfang og massefylde er:
+```math
+ f(x)
+ ```
 
 |     |                                                                                  |
 | --- | -------------------------------------------------------------------------------- |
