@@ -95,5 +95,3 @@ b.    Hvor mange m3 sten må Luffe køre med?
 |liter|1,25|5,0 kg|
 |1,3 m3|0,6|kg|
 |0,9 dm3||450 gram|
-
-https://youtu.be/KX-lKlRER1c
