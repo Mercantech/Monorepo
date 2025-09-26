@@ -8,3 +8,5 @@ namespace Blazor.Models
         public string ApiBaseUrl { get; set; } = "https://25h2-mags.mercantec.tech/";
     }
 }
+
+

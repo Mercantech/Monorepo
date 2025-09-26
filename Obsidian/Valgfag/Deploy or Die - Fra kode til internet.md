@@ -1,14 +1,17 @@
-### 💡 **1. "Deploy or Die" – Fra kode til internet**
+### 💡 "Deploy or Die" – Fra kode til internet**
 
 > _Motto: “Hvad nytter det at kode, hvis ingen kan se det?”_
 
 - Lær at deploye et projekt med:
     
-    - Docker, Nginx, server setup (DigitalOcean, Render, Vercel -> Localt med Dokploy)
+    - Docker, Nginx, server setup (DigitalOcean, Render, Vercel - Localt med Dokploy)
         
     - CI/CD pipelines (Github Actions, WebHooks)
         
-    - Domæne, HTTPS (Let’s Encrypt, Cloudflare, Traefik)        
+    - Domæne, HTTPS (Let’s Encrypt, Cloudflare)
+        
+    - Basic frontend/backend structure (SPA, API)
+        
 
 **Slutprodukt**: Deres projekt kører online. Mor kan se det. Og deres GitHub-profil bliver ikke flov.
 

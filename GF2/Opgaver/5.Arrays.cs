@@ -35,7 +35,7 @@ namespace Opgaver
             );
             // Lav opgaven herunder!
             string[] navne = new string[5];
-        }
+         }
 
         public static void Array2()
         {
