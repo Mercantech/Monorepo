@@ -5,39 +5,35 @@ Som datateknikkere arbejder I med data storage, performance og optimering - og p
 > [!multi-column]
 > Hvad er massefylde?
 > Massefylde er det samme som **vægtfylde** og **densitet** - det er hvor "tungt" et materiale er pr. volumen.
-> **Massefylden** af et stof er det antal gram, som 1 cm³ af stoffet vejer.
-> Når jerns massefylde er 7,8 betyder det at:
-> - 1 mm³ jern vejer 7,8 milligram
-> - 1 cm³ jern vejer 7,8 gram  
-> - 1 dm³ jern vejer 7,8 kilo
-> - 1 m³ jern vejer 7,8 tons
+>> **Massefylden** af et stof er det antal gram, som 1 cm³ af stoffet vejer.
+>> Når jerns massefylde er 7,8 betyder det at:
+>> - 1 mm³ jern vejer 7,8 milligram
+>> - 1 cm³ jern vejer 7,8 gram  
+>> - 1 dm³ jern vejer 7,8 kilo
+>> - 1 m³ jern vejer 7,8 tons
 
 ---
 
-> [!multi-column]
-> I datateknologi
-> 
-> Massefylde svarer til:
-> - **Data density** - hvor meget data pr. storage unit
-> - **Memory efficiency** - optimal memory allocation
-> - **Performance metrics** - operations per byte
-> - **Resource optimization** - CPU cycles per operation
-> 
-> Ligesom I optimerer kode for bedre performance, optimerer vi materialer for bedre styrke/vægt ratio!
+
+### I datateknologi
+Massefylde svarer til:
+- **Data density** - hvor meget data pr. storage unit
+- **Memory efficiency** - optimal memory allocation
+- **Performance metrics** - operations per byte
+- **Resource optimization** - CPU cycles per operation
+
+Ligesom I optimerer kode for bedre performance, optimerer vi materialer for bedre styrke/vægt ratio!
 
 ## Sammenhængen mellem vægt, rumfang og massefylde
 
 > [!multi-column]
 > Grundformlen
-> 
 > $$Vægt = Rumfang \cdot Massefylde$$
-> 
-> **Symboler:**
-> - Vægt = m (mass)
-> - Rumfang = V (volume)  
-> - Massefylde = ρ (rho)
-> 
-> $$m = V \cdot \rho$$
+>> **Symboler:**
+>> - Vægt = m (mass)
+>> - Rumfang = V (volume)  
+>> - Massefylde = ρ (rho)
+>> $$m = V \cdot \rho$$
 
 ---
 
