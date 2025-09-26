@@ -105,12 +105,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Valgfag/Deploy or Die - Fra kode til internet.md",
+                "file": "Matematik/Matematik - Oversigt!.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Deploy or Die - Fra kode til internet"
+              "title": "Matematik - Oversigt!"
             }
           }
         ],
@@ -259,7 +259,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -276,6 +277,8 @@
   },
   "active": "16ab8668c7a8acd5",
   "lastOpenFiles": [
+    "Matematik/Geometri.md",
+    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
     "CSharp/Dotnet/ADO.NET/ADO.NET.md",
@@ -284,10 +287,8 @@
     "Welcome.md",
     "CSharp/SignalR/SignalR.md",
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
-    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Opgaver/BinærKodeomformer",
     "Matematik/Matematik - Oversigt!.md",
-    "Matematik/Geometri.md",
     "Matematik",
     "Assets/Pasted Image 20250923220228_489.png",
     "Assets/Pasted Image 20250923210301_730.png",
