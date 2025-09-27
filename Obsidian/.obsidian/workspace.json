@@ -65,12 +65,14 @@
             "id": "6605d2e936fb8821",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Matematik/Geometri/Rumfang og vægt - Draw.md"
+                "file": "Matematik/Geometri/Rumfang.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Rumfang og vægt - Draw"
+              "icon": "lucide-file",
+              "title": "Rumfang"
             }
           },
           {
