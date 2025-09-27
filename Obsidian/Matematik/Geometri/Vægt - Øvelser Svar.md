@@ -1,4 +1,4 @@
-# Vægt - Øvelser Svar
+****# Vægt - Øvelser Svar
 
 Som datateknikkere er det vigtigt at kunne løse komplekse beregninger systematisk - præcis som I debugger kode trin for trin!
 
@@ -192,7 +192,7 @@ $$m = V \cdot \rho = 779,4 \cdot 2,8 = 2.182,3 \text{ g} = 2,18 \text{ kg}$$
 >> ### Komplet tabel:
 >> | Rumfang | Massefylde | Vægt     |
 >> | ------- | ---------- | -------- |
->> | 10 m³   | **2,5**        | **25 tons**  |
+>> | 10 m³   | 2,5        | **25 tons**  |
 >> | 12 cm³  | **3,75**       | 45 gram  |
 >> | **4 liter** | 1,25       | 5,0 kg   |
 >> | 1,3 m³  | 0,6        | **780 kg**   |
