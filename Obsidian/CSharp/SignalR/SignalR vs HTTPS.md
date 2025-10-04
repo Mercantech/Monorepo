@@ -2,6 +2,7 @@
 
 ## Hvornår bruger vi hvad?
 
+
 Som udviklere har vi mange forskellige måder at kommunikere på tværs af netværket. To af de mest almindelige er **SignalR** (real-time) og **HTTPS/RESTful API'er** (request-response). Men hvornår skal vi bruge hvad?
 
 ## HTTPS/RESTful API'er - Den Traditionelle Måde
