@@ -54,7 +54,7 @@ Eleverne skal bruge pensum fra første uge til at snyde i et spil banko. De skal
 Vi dækker større emner som Abstraktion, Encapsulering, Arv og Polymorfi - Eleverne bygger en konsol eller UI applikation som minder om deres større projekt
 
 ## Uge 4 - SQL
-
+Intro til SQL med små opgaver og Khan - Mere fokus på Postgres. Blanding af First-DB opgave og projektet 
 
 ## Uge 5 - Blazor og CSharp
 
@@ -64,9 +64,12 @@ Vi dækker større emner som Abstraktion, Encapsulering, Arv og Polymorfi - Elev
 
 ## Uge 7 - Projekt periode
 
-## Uge 8 - Socket programmering
 
+## Uge 8 - Socket programmering
+Socket programmering med C# - HTTP/TCP listener i Blazor?? 
 
 ## Uge 9 - Projekt periode og Deployment
+
+- HTTPS, Mini Docker intro, Deploy.mercantec.tech - Domæne setup for grupper der vil! 
 
 ## Uge 10 - Projekt periode og Eksamen

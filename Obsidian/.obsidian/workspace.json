@@ -129,12 +129,14 @@
             "id": "8ab0adca8ecf4734",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.9.14"
+                "file": "H1/H1 - Oversigt.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.9.14"
+              "icon": "lucide-file",
+              "title": "H1 - Oversigt"
             }
           }
         ],
@@ -301,6 +303,7 @@
   },
   "active": "8ab0adca8ecf4734",
   "lastOpenFiles": [
+    "H1/Intro til C#/Intro Til CSharp.md",
     "Matematik/Rumfang og vægt.md",
     "Matematik/Geometri/Vægt.md",
     "Matematik/Geometri/Vægt - Øvelser Svar.md",
@@ -327,7 +330,6 @@
     "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
     "CSharp/Dotnet/ADO.NET/ADO.NET.md",
     "H1/H1 - Oversigt.md",
-    "H1/Intro til C#/Intro Til CSharp.md",
     "Welcome.md",
     "CSharp/SignalR/SignalR.md",
     "Opgaver/BinærKodeomformer",
