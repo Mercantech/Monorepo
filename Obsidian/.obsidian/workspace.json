@@ -124,9 +124,21 @@
               "icon": "lucide-file",
               "title": "SignalR vs HTTPS"
             }
+          },
+          {
+            "id": "8ab0adca8ecf4734",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.14"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.9.14"
+            }
           }
         ],
-        "currentTab": 8
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -287,7 +299,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "14cf5925287fe67f",
+  "active": "8ab0adca8ecf4734",
   "lastOpenFiles": [
     "Matematik/Rumfang og vægt.md",
     "Matematik/Geometri/Vægt.md",
