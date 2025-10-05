@@ -56,8 +56,9 @@ Vi dækker større emner som Abstraktion, Encapsulering, Arv og Polymorfi - Elev
 ## Uge 4 - SQL
 Intro til SQL med små opgaver og Khan - Mere fokus på Postgres. Blanding af First-DB opgave og projektet 
 
-## Uge 5 - Blazor og CSharp
+## Uge 5 - Blazor og ADO.NET
 
+Bygge stabile og genanvendelige service's med Klasser og ADO.NET i C#
 
 ## Uge 6 - Blazor og webudvikling
 
