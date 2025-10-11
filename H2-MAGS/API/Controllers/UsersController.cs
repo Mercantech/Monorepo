@@ -28,6 +28,7 @@ namespace API.Controllers
         private readonly JwtService _jwtService;
         private readonly LoginAttemptService _loginAttemptService;
         private readonly MailService _mailService;
+        private readonly PasswordHashingService _passwordHashingService;
         private readonly ILogger<UsersController> _logger;
 
         /// <summary>
@@ -37,13 +38,15 @@ namespace API.Controllers
         /// <param name="jwtService">Service til håndtering af JWT tokens.</param>
         /// <param name="loginAttemptService">Service til håndtering af login forsøg og rate limiting.</param>
         /// <param name="mailService">Service til håndtering af email funktionalitet.</param>
+        /// <param name="passwordHashingService">Service til sikker password hashing med Argon2id.</param>
         /// <param name="logger">Logger til fejlrapportering.</param>
-        public UsersController(AppDBContext context, JwtService jwtService, LoginAttemptService loginAttemptService, MailService mailService, ILogger<UsersController> logger)
+        public UsersController(AppDBContext context, JwtService jwtService, LoginAttemptService loginAttemptService, MailService mailService, PasswordHashingService passwordHashingService, ILogger<UsersController> logger)
         {
             _context = context;
             _jwtService = jwtService;
             _loginAttemptService = loginAttemptService;
             _mailService = mailService;
+            _passwordHashingService = passwordHashingService;
             _logger = logger;
         }
 
@@ -513,8 +516,8 @@ namespace API.Controllers
                     return BadRequest("En bruger med denne email findes allerede.");
                 }
 
-                // Hash password
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+                // Hash password med Argon2id
+                string hashedPassword = _passwordHashingService.HashPassword(dto.Password);
 
                 // Find standard User rolle
                 var userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "User");
@@ -611,7 +614,10 @@ namespace API.Controllers
                     .Include(u => u.Role)
                     .FirstOrDefaultAsync(u => u.Email == dto.Email);
                     
-                if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.HashedPassword))
+                // Verificer password - støtter både Argon2id og BCrypt (for backward compatibility)
+                bool passwordValid = user != null && _passwordHashingService.VerifyPassword(dto.Password, user.HashedPassword);
+                
+                if (user == null || !passwordValid)
                 {
                     _logger.LogWarning("Mislykket login forsøg for email: {Email}", dto.Email);
                     
@@ -711,7 +717,10 @@ namespace API.Controllers
                     .Include(u => u.Role)
                     .FirstOrDefaultAsync(u => u.Email == email);
                     
-                if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.HashedPassword))
+                // Verificer password - støtter både Argon2id og BCrypt (for backward compatibility)
+                bool passwordValid = user != null && _passwordHashingService.VerifyPassword(password, user.HashedPassword);
+                
+                if (user == null || !passwordValid)
                 {
                     _logger.LogWarning("Mislykket login forsøg for email: {Email} (via query parameters)", email);
                     
@@ -1169,6 +1178,102 @@ namespace API.Controllers
                 _logger.LogError(ex, "❌ Fejl ved email test for: {Email}", testEmail);
                 return StatusCode(500, new { 
                     message = "Der opstod en intern serverfejl ved email test",
+                    error = ex.Message
+                });
+            }
+        }
+
+        /// <summary>
+        /// Henter information om password hashing konfiguration.
+        /// Kun tilgængelig for administratorer.
+        /// </summary>
+        /// <returns>Information om Argon2id konfiguration og sikkerhed.</returns>
+        /// <response code="200">Konfigurations information hentet succesfuldt.</response>
+        /// <response code="401">Ikke autoriseret - manglende eller ugyldig token.</response>
+        /// <response code="403">Forbudt - kun administratorer har adgang.</response>
+        /// <response code="500">Der opstod en intern serverfejl.</response>
+        [Authorize(Roles = "Admin")]
+        [HttpGet("password-config")]
+        public IActionResult GetPasswordConfiguration()
+        {
+            try
+            {
+                _logger.LogInformation("Henter password hashing konfiguration");
+
+                var config = _passwordHashingService.GetConfiguration();
+
+                _logger.LogInformation("Password konfiguration hentet succesfuldt");
+                return Ok(config);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Fejl ved hentning af password konfiguration");
+                return StatusCode(500, "Der opstod en intern serverfejl ved hentning af password konfiguration");
+            }
+        }
+
+        /// <summary>
+        /// Test endpoint til at verificere password hashing funktionalitet.
+        /// Kun tilgængelig for administratorer.
+        /// </summary>
+        /// <param name="testPassword">Test password der skal hashes og verificeres.</param>
+        /// <returns>Resultat af password hashing test.</returns>
+        /// <response code="200">Password test kørt succesfuldt.</response>
+        /// <response code="401">Ikke autoriseret - manglende eller ugyldig token.</response>
+        /// <response code="403">Forbudt - kun administratorer har adgang.</response>
+        /// <response code="500">Der opstod en intern serverfejl.</response>
+        [Authorize(Roles = "Admin")]
+        [HttpPost("test-password-hashing")]
+        public IActionResult TestPasswordHashing([FromQuery] string testPassword = "TestPassword123!")
+        {
+            try
+            {
+                _logger.LogInformation("🧪 Tester password hashing funktionalitet");
+
+                var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+                // Test PBKDF2-SHA256 hashing
+                var hashedPassword = _passwordHashingService.HashPassword(testPassword);
+                stopwatch.Stop();
+
+                // Test verifikation
+                var verificationStopwatch = System.Diagnostics.Stopwatch.StartNew();
+                var isValid = _passwordHashingService.VerifyPassword(testPassword, hashedPassword);
+                verificationStopwatch.Stop();
+
+                // Test med forkert password
+                var wrongPasswordValid = _passwordHashingService.VerifyPassword("WrongPassword", hashedPassword);
+
+                var result = new
+                {
+                    message = "Password hashing test færdig",
+                    testPassword = testPassword,
+                    hashedPassword = hashedPassword,
+                    verification = new
+                    {
+                        correctPasswordValid = isValid,
+                        wrongPasswordValid = wrongPasswordValid,
+                        verificationTimeMs = verificationStopwatch.ElapsedMilliseconds
+                    },
+                    performance = new
+                    {
+                        hashingTimeMs = stopwatch.ElapsedMilliseconds,
+                        hashLength = hashedPassword.Length,
+                        algorithm = "PBKDF2-SHA256"
+                    },
+                    configuration = _passwordHashingService.GetConfiguration()
+                };
+
+                _logger.LogInformation("✅ Password hashing test færdig - Hash: {HashTime}ms, Verify: {VerifyTime}ms, Valid: {IsValid}", 
+                    stopwatch.ElapsedMilliseconds, verificationStopwatch.ElapsedMilliseconds, isValid);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "❌ Fejl ved password hashing test");
+                return StatusCode(500, new { 
+                    message = "Der opstod en intern serverfejl ved password hashing test",
                     error = ex.Message
                 });
             }

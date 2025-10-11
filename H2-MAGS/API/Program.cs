@@ -43,6 +43,9 @@ public class Program
         
         // Registrer Ticket Service
         builder.Services.AddScoped<TicketService>();
+        
+        // Registrer Password Hashing Service (Argon2id)
+        builder.Services.AddScoped<PasswordHashingService>();
 
         // Konfigurer JWT Authentication
         var jwtSecretKey = Configuration["Jwt:SecretKey"] ?? Environment.GetEnvironmentVariable("JWT_SECRET_KEY");
