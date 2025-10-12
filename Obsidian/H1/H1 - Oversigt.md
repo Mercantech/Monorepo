@@ -66,6 +66,8 @@ Bygge stabile og genanvendelige service's med Klasser og ADO.NET i C#
 ## Uge 7 - Projekt periode
 
 
+
+
 ## Uge 8 - Socket programmering
 Socket programmering med C# - HTTP/TCP listener i Blazor?? 
 
