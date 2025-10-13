@@ -155,6 +155,7 @@ Officielle valgfag ville
 - Incident response plan
 - **Mål**: Overvågning og håndtering af sikkerhedsbegivenheder
 
+
 #### **Dag 15: Aflevering/fremlæggelse**
 
 
