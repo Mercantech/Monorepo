@@ -32,9 +32,21 @@
               "icon": "lucide-file",
               "title": "Deploy or Die - Fra kode til internet"
             }
+          },
+          {
+            "id": "bbcdce1431bb7794",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Roadmap/Roadmap-GF2-H6.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Roadmap-GF2-H6"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -195,8 +207,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "af92507b1c171169",
+  "active": "bbcdce1431bb7794",
   "lastOpenFiles": [
+    "Valgfag/Deploy or Die - Fra kode til internet.md",
+    "Roadmap/Roadmap-GF2-H6.md",
+    "Roadmap",
     "H4/Program - 2026 Q1.md",
     "Matematik/Rumfang og vægt.md",
     "Matematik/Geometri/Vægt.md",
@@ -220,7 +235,6 @@
     "Opgaver/BinærKodeomformer/Løsningsnoter.md",
     "Matematik/Geometri.md",
     "Matematik/Matematik - Oversigt!.md",
-    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
     "CSharp/Dotnet/ADO.NET/ADO.NET.md",
     "H1/H1 - Oversigt.md",
@@ -235,7 +249,6 @@
     "Projekter/Learn/Learn - Learn.mags.dk.md",
     "CSS/Tailwind.md",
     "CSS/CSS Spil.md",
-    "GF1/Spotify Klon.md",
     "Projekter/Oversigt.canvas",
     "Hovedforløb",
     "Opgaver/Opgaver Oversigt.base",
@@ -244,7 +257,6 @@
     "Projekter",
     "GF2/GF2-Video",
     "GF2/Canva.canvas",
-    "Valgfag/PlanForOnline/Teams-besked.txt",
     "CSharp/CSharp-Bogen/Canva.canvas",
     "CSharp/Blazor/Overview.canvas",
     "CSharp-Bogen/Canva.canvas",
