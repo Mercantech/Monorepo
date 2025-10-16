@@ -70,6 +70,8 @@ Officielle valgfag ville
 - UFW/iptables konfiguration
 - **Mål**: Domæne peger på deres server og firewall er konfigureret
 
+
+
 #### **Dag 3: Database Setup med Docker**
 - Docker installation
 - Database container (PostgreSQL/MySQL)
