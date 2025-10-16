@@ -37,12 +37,14 @@
             "id": "bbcdce1431bb7794",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Roadmap/Roadmap-GF2-H6.md"
+                "file": "Valgfag/Deploy or Die - Fra kode til internet.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Roadmap-GF2-H6"
+              "icon": "lucide-file",
+              "title": "Deploy or Die - Fra kode til internet"
             }
           }
         ],
@@ -209,8 +211,8 @@
   },
   "active": "bbcdce1431bb7794",
   "lastOpenFiles": [
-    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Roadmap/Roadmap-GF2-H6.md",
+    "Valgfag/Deploy or Die - Fra kode til internet.md",
     "Roadmap",
     "H4/Program - 2026 Q1.md",
     "Matematik/Rumfang og vægt.md",
