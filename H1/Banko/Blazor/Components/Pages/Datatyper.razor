@@ -1,0 +1,682 @@
+@page "/datatyper"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Datatyper til Bankoplader</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="display-4 mb-4">Datatyper til Gemme af Bankoplader</h1>
+    
+    <div class="row">
+        <div class="col-lg-10">
+            <section class="mb-5">
+                <p class="lead">
+                    Når vi skal gemme en bankoplade i vores program, har vi flere muligheder for hvilken datastruktur vi bruger. 
+                    Lad os se på forskellige tilgange og deres fordele og ulemper.
+                </p>
+            </section>
+
+            <!-- 2-Dimensionelle Arrays -->
+            <section class="mb-5">
+                <h2>1. 2-Dimensionelle Arrays</h2>
+                
+                <p>
+                    En bankoplade er naturligt struktureret som en tabel med 3 rækker og 9 kolonner. 
+                    Et 2-dimensionelt array passer perfekt til denne struktur!
+                </p>
+
+                <h3 class="mt-4">Illustration af Struktur</h3>
+                <div class="data-structure-visualization">
+                    <CodeBlock Language="csharp">
+int[,] bankoplade = new int[3, 9];
+
+// Struktur:
+// [række, kolonne]
+// 
+//       Kolonne 0  Kolonne 1  Kolonne 2  ...  Kolonne 8
+// Række 0:  [0,0]     [0,1]     [0,2]     ...    [0,8]
+// Række 1:  [1,0]     [1,1]     [1,2]     ...    [1,8]
+// Række 2:  [2,0]     [2,1]     [2,2]     ...    [2,8]
+                    </CodeBlock>
+                </div>
+
+                <h3 class="mt-4">Eksempel på Bankoplade som 2D Array</h3>
+                <ExampleBox>
+                    <p><strong>Visualisering:</strong></p>
+                    <div class="banko-grid">
+                        <table class="banko-table">
+                            <tr>
+                                <th>1-9</th>
+                                <th>10-19</th>
+                                <th>20-29</th>
+                                <th>30-39</th>
+                                <th>40-49</th>
+                                <th>50-59</th>
+                                <th>60-69</th>
+                                <th>70-79</th>
+                                <th>80-90</th>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="empty"></td>
+                                <td>21</td>
+                                <td>31</td>
+                                <td class="empty"></td>
+                                <td>52</td>
+                                <td class="empty"></td>
+                                <td>71</td>
+                                <td class="empty"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty"></td>
+                                <td>15</td>
+                                <td class="empty"></td>
+                                <td>35</td>
+                                <td>45</td>
+                                <td class="empty"></td>
+                                <td>67</td>
+                                <td class="empty"></td>
+                                <td>83</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="empty"></td>
+                                <td>28</td>
+                                <td class="empty"></td>
+                                <td>48</td>
+                                <td class="empty"></td>
+                                <td>69</td>
+                                <td>75</td>
+                                <td class="empty"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="code-example mt-3">
+                        <p><strong>Kodeeksempel:</strong></p>
+                        <CodeBlock Language="csharp">@arrayCodeExample</CodeBlock>
+                    </div>
+                </ExampleBox>
+
+                <ProsCons Pros="@arrayPros" Cons="@arrayCons" />
+            </section>
+
+            <!-- Dictionaries -->
+            <section class="mb-5">
+                <h2>2. Dictionaries</h2>
+                
+                <p>
+                    En Dictionary (ordbog) er en nøgle-værdi struktur, hvor hver værdi er tilknyttet en unik nøgle. 
+                    Dette kan være nyttigt til at gemme flere bankoplader sammen med deres ID'er.
+                </p>
+
+                <h3 class="mt-4">Illustration af Struktur</h3>
+                <div class="data-structure-visualization">
+                    <CodeBlock Language="csharp" Code="@dictionaryIntroCode" />
+                    <p class="mt-2"><small>Struktur: Nøgle (string) → Værdi (2D array). F.eks. "Banko" → [3x9 array med tal]</small></p>
+                </div>
+
+                <h3 class="mt-4">Eksempel på Brug af Dictionary</h3>
+                <div class="code-example">
+                    <CodeBlock Language="csharp" Code="@dictionaryCodeExample" />
+                </div>
+
+                <ProsCons Pros="@dictionaryPros" Cons="@dictionaryCons" />
+            </section>
+
+            <!-- Lister -->
+            <section class="mb-5">
+                <h2>3. Lister</h2>
+                
+                <p>
+                    Lister (List&lt;T&gt;) er en dynamisk datastruktur, der kan vokse og skrumpe. 
+                    For en bankoplade er række-dimensionen den vigtigste - vi har 3 rækker, hver med 5 tal. 
+                    Hvor tallene står i kolonnerne er mindre vigtigt end hvilke tal der er i hver række.
+                </p>
+
+                <h3 class="mt-4">Illustration af Struktur</h3>
+                <div class="data-structure-visualization">
+                    <CodeBlock Language="csharp">
+List&lt;int&gt; row0 = new List&lt;int&gt; { 4, 21, 31, 52, 71 };
+List&lt;int&gt; row1 = new List&lt;int&gt; { 15, 35, 45, 67, 83 };
+List&lt;int&gt; row2 = new List&lt;int&gt; { 7, 28, 48, 69, 75 };
+                    </CodeBlock>
+                    <p class="mt-2"><small>Struktur: Række 0, 1 og 2 hver som en liste med 5 tal</small></p>
+                </div>
+
+                <h3 class="mt-4">Eksempel på Brug af Lister</h3>
+                <div class="code-example">
+                    <CodeBlock Language="csharp">
+// Opret lister til hver række
+List&lt;int&gt; row0 = new List&lt;int&gt; { 4, 21, 31, 52, 71 };
+List&lt;int&gt; row1 = new List&lt;int&gt; { 15, 35, 45, 67, 83 };
+List&lt;int&gt; row2 = new List&lt;int&gt; { 7, 28, 48, 69, 75 };
+
+// Tilføj et tal til en række
+row0.Add(12);
+
+// Tjek om en række indeholder et tal
+if (row0.Contains(4))
+{
+    Console.WriteLine("Row 0 has the number 4!");
+}
+
+// Tjek om en række er fuld (har 5 tal)
+if (row0.Count == 5)
+{
+    Console.WriteLine("Row 0 is full!");
+}
+
+// Gennemgå alle tal i en række
+foreach (int number in row0)
+{
+    Console.WriteLine(number);
+}
+
+// Find position af et tal i rækken
+int index = row0.IndexOf(31); // Returnerer 2
+
+// Fjern et tal fra rækken
+row0.Remove(52);
+                    </CodeBlock>
+                </div>
+
+                <ProsCons Pros="@listPros" Cons="@listCons" />
+
+                <h3 class="mt-4">Sammenligning: Arrays vs. Lister</h3>
+                <div class="comparison-box">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspekt</th>
+                                <th>Arrays</th>
+                                <th>Lister</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Størrelse</strong></td>
+                                <td>Fast størrelse (kan ikke ændres)</td>
+                                <td>Dynamisk størrelse (kan vokse/skrumpe)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tilføj værdier</strong></td>
+                                <td>Svært - skal vide præcis position</td>
+                                <td>Nem - brug Add() metoden</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fjern værdier</strong></td>
+                                <td>Meget svært - arrays har fast størrelse</td>
+                                <td>Nem - brug Remove() metoden</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tjek om værdi findes</strong></td>
+                                <td>Kræver manuel loop gennem array</td>
+                                <td>Nem - brug Contains() metoden</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hukommelse</strong></td>
+                                <td>Mere effektiv (kontinuerlig blok)</td>
+                                <td>Mindre effektiv (dynamisk allokering)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="hint-box mt-3">
+                        <p><strong>💡 Hint:</strong> Når du skal holde styr på trukket tal i banko, kan du eventuelt fjerne værdier efterhånden som de bliver trukket. 
+                         <br><strong>Hvilken datatype tror du er nemmest at bruge til dette?</strong> </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OOP med Klasser -->
+            <section class="mb-5">
+                <h2>4. Objektorienteret Programmering (OOP)</h2>
+                
+                <p>
+                    Ved at bruge klasser og objekter kan vi kombinere data og funktionalitet på en struktureret måde. 
+                    Dette giver os bedre kontrol, validering og mulighed for at udvide funktionaliteten.
+                </p>
+
+                <h3 class="mt-4">Hvad er OOP?</h3>
+                <p>
+                    Objektorienteret programmering er en programmeringsparadigme, hvor vi strukturerer vores kode 
+                    omkring objekter. Et objekt er en instans af en klasse, der både indeholder data (felter/egenskaber) 
+                    og metoder (funktioner).
+                </p>
+
+                <h3 class="mt-4">Eksempel på Bankoplade Klasse med Lister</h3>
+                <p>
+                    Ved at bruge lister kan vi forenkle OOP modellen betydeligt. I stedet for et komplekst 2D array, 
+                    bruger vi simpelthen 3 lister - én for hver række. Dette gør koden meget lettere at forstå og arbejde med!
+                </p>
+                <div class="code-example">
+                    <CodeBlock Language="csharp" Code="@bankoPlateClassExample" />
+                </div>
+
+                <h3 class="mt-4">De 4 Grundsten i OOP</h3>
+
+                <div class="oop-pillars">
+                    <!-- Indkapsling -->
+                    <div class="pillar-box">
+                        <h4>1. Indkapsling (Encapsulation)</h4>
+                        <p>
+                            <strong>Hvad er det?</strong> Indkapsling betyder at skjule interne detaljer og kun eksponere det, 
+                            der er nødvendigt. Vi bruger <code>private</code>, <code>protected</code> og <code>public</code> 
+                            til at kontrollere adgangen.
+                        </p>
+                        <p><strong>Fordel:</strong> Beskytter data mod uautoriseret ændring og sikrer dataintegritet.</p>
+                        <div class="code-example-small">
+                            <CodeBlock Language="csharp" Code="@encapsulationExample" />
+                        </div>
+                    </div>
+
+                    <!-- Arv -->
+                    <div class="pillar-box">
+                        <h4>2. Arv (Inheritance)</h4>
+                        <p>
+                            <strong>Hvad er det?</strong> Arv tillader en klasse at arve egenskaber og metoder fra en anden klasse. 
+                            Den klasse der arver kaldes en underklasse eller afledt klasse.
+                        </p>
+                        <p><strong>Fordel:</strong> Gendbruger kode og skaber hierarkier af relaterede klasser.</p>
+                        <div class="code-example-small">
+                            <CodeBlock Language="csharp" Code="@inheritanceExample" />
+                        </div>
+                    </div>
+
+                    <!-- Polymorfi -->
+                    <div class="pillar-box">
+                        <h4>3. Polymorfi (Polymorphism)</h4>
+                        <p>
+                            <strong>Hvad er det?</strong> Polymorfi betyder "mange former". Det tillader objekter af forskellige 
+                            typer at håndteres gennem et fælles interface eller basisklasse.
+                        </p>
+                        <p><strong>Fordel:</strong> Gør koden mere fleksibel og lettere at udvide.</p>
+                        <div class="code-example-small">
+                            <CodeBlock Language="csharp" Code="@polymorphismExample" />
+                        </div>
+                    </div>
+
+                    <!-- Abstraktion -->
+                    <div class="pillar-box">
+                        <h4>4. Abstraktion (Abstraction)</h4>
+                        <p>
+                            <strong>Hvad er det?</strong> Abstraktion skjuler kompleksitet og viser kun de essentielle detaljer. 
+                            Vi bruger abstrakte klasser eller interfaces til at definere kontrakter uden at implementere alt.
+                        </p>
+                        <p><strong>Fordel:</strong> Forenkler kompleksitet og gør koden lettere at forstå og vedligeholde.</p>
+                        <div class="code-example-small">
+                            <CodeBlock Language="csharp" Code="@abstractionExample" />
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Hvorfor Vælge OOP?</h3>
+                <div class="benefits-box">
+                    <ul>
+                        <li><strong>Organiseret kode:</strong> Data og funktionalitet er samlet i logiske enheder</li>
+                        <li><strong>Genbrugelighed:</strong> Klasser kan bruges igen i forskellige sammenhænge</li>
+                        <li><strong>Vedligeholdelse:</strong> Lettere at finde og rette fejl</li>
+                        <li><strong>Validering:</strong> Indbyggede metoder kan sikre dataintegritet</li>
+                        <li><strong>Udvidelse:</strong> Nemt at tilføje nye funktioner gennem arv eller nye metoder</li>
+                        <li><strong>Testbarhed:</strong> Hver klasse kan testes isoleret</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Konklusion -->
+            <section class="mb-5">
+                <h2>Konklusion</h2>
+                <div class="conclusion-box">
+                    <p>
+                        Mens 2-dimensionelle arrays er en god start for at repræsentere en enkelt bankoplade, lister gør det 
+                        meget simplere at fokusere på rækkerne - den vigtigste dimension. Dictionaries er perfekte til at gemme 
+                        flere plader med ID'er, men objektorienteret programmering giver os den bedste løsning for et professionelt program.
+                    </p>
+                    <p>
+                        Ved at kombinere OOP med lister får vi den perfekte balance: 3 simple lister (én for hver række) indkapslet 
+                        i en klasse med validering og funktionalitet.
+                    </p>
+                    <p>
+                        Med OOP kan vi:
+                    </p>
+                    <ul>
+                        <li>Kombinere data og funktionalitet i en samlet struktur</li>
+                        <li>Sikre dataintegritet gennem validering</li>
+                        <li>Nemt udvide med nye funktioner (f.eks. vindingsdetektion)</li>
+                        <li>Organisere koden på en måde, der gør den lettere at forstå og vedligeholde</li>
+                    </ul>
+                    <p class="mt-3">
+                        <strong>Anbefaling:</strong> Brug klasser og objekter til bankoplader - det giver dig den største 
+                        fleksibilitet og klarhed i din kode!
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<string> arrayPros = new() {
+        "Spejler naturligt strukturen af en bankoplade",
+        "Nem adgang til specifikke positioner: <code>array[række, kolonne]</code>",
+        "Effektiv hukommelsesforbrug",
+        "Simpel iterering gennem rækker og kolonner"
+    };
+
+    private List<string> arrayCons = new() {
+        "Svært at gemme metadata (f.eks. plade-ID)",
+        "Ingen indbyggede metoder til validering",
+        "Tomme celler skal håndteres manuelt (f.eks. med 0)",
+        "Begrænset fleksibilitet til udvidelse"
+    };
+
+    private List<string> dictionaryPros = new() {
+        "Perfekt til at gemme flere plader med unikke ID'er",
+        "Hurtig opslag efter ID",
+        "Let at tilføje og fjerne plader",
+        "Intuitiv struktur: ID → Plade"
+    };
+
+    private List<string> dictionaryCons = new() {
+        "Stadig bruger 2D arrays til selve pladen (sammensat struktur)",
+        "Ingen validering af pladedata",
+        "Svært at tilføje funktionalitet (f.eks. tjek for vindende rækker)",
+        "Ikke objektorienteret - data og logik er adskilt"
+    };
+
+    private List<string> listPros = new() {
+        "Fokuserer på rækkerne - den vigtigste dimension",
+        "Simpel struktur - hver række er en liste",
+        "Dynamisk størrelse - let at tilføje/fjerne tal",
+        "Indbyggede metoder: Contains(), Count, Add(), Remove()",
+        "Nemt at tjekke om en række er fuld (Count == 5)"
+    };
+
+    private List<string> listCons = new() {
+        "Svært at gemme metadata (f.eks. plade-ID)",
+        "Ingen validering af pladedata",
+        "Tre separate variabler - ikke samlet i én struktur",
+        "Svært at udvide med funktionalitet"
+    };
+
+    private string dictionaryIntroCode = "Dictionary<string, int[,]> plates = new();";
+
+    private string bankoPlateClassExample = @"public class BankoPlate
+{
+    // Egenskaber (Properties) - 3 lister, én for hver række
+    public string Id { get; set; }
+    public List<int> Row0 { get; private set; }
+    public List<int> Row1 { get; private set; }
+    public List<int> Row2 { get; private set; }
+    public DateTime Created { get; private set; }
+
+    // Konstruktør
+    public BankoPlate(string id)
+    {
+        Id = id;
+        Row0 = new List<int>();
+        Row1 = new List<int>();
+        Row2 = new List<int>();
+        Created = DateTime.Now;
+    }
+
+    // Metode til at tilføje et tal til en række
+    public void AddNumber(int row, int number)
+    {
+        if (row >= 0 && row < 3)
+        {
+            List<int> rowList = row == 0 ? Row0 : row == 1 ? Row1 : Row2;
+            if (!rowList.Contains(number) && rowList.Count < 5)
+            {
+                rowList.Add(number);
+                rowList.Sort(); // Sorter talene
+            }
+        }
+    }
+
+    // Metode til at tjekke om et tal er på pladen
+    public bool HasNumber(int number)
+    {
+        return Row0.Contains(number) || Row1.Contains(number) || Row2.Contains(number);
+    }
+
+    // Metode til at tjekke om en række er fuld
+    public bool IsRowFull(int row)
+    {
+        List<int> rowList = row == 0 ? Row0 : row == 1 ? Row1 : Row2;
+        return rowList.Count == 5; // En række har præcis 5 tal
+    }
+
+    // Metode til at markere et tal som trukket
+    public void MarkNumberDrawn(int number)
+    {
+        if (Row0.Contains(number))
+            Row0.Remove(number);
+        if (Row1.Contains(number))
+            Row1.Remove(number);
+        if (Row2.Contains(number))
+            Row2.Remove(number);
+    }
+}
+
+// Brug af klassen
+BankoPlate myPlate = new BankoPlate(""Banko"");
+myPlate.AddNumber(0, 4);
+myPlate.AddNumber(0, 21);
+myPlate.AddNumber(0, 31);
+myPlate.AddNumber(0, 52);
+myPlate.AddNumber(0, 71);
+
+if (myPlate.HasNumber(4))
+{
+    Console.WriteLine(""Pladen har tallet 4!"");
+}
+
+if (myPlate.IsRowFull(0))
+{
+    Console.WriteLine(""Række 0 er fuld!"");
+}";
+
+    private string dictionaryCodeExample = @"// Opret dictionary til at gemme flere plader
+Dictionary<string, int[,]> plates = new Dictionary<string, int[,]>();
+
+// Opret en plade
+int[,] plate1 = new int[3, 9];
+plate1[0, 0] = 4;
+plate1[0, 2] = 21;
+// ... flere tal ...
+
+// Gem pladen med et ID
+plates[""Banko""] = plate1;
+
+// Opret og gem en anden plade
+int[,] plate2 = new int[3, 9];
+plate2[0, 1] = 12;
+plate2[0, 3] = 33;
+// ... flere tal ...
+plates[""MyPlate""] = plate2;
+
+// Hent en specifik plade ved ID
+int[,] myPlate = plates[""Banko""];
+
+// Tjek om en plade eksisterer
+if (plates.ContainsKey(""Banko""))
+{
+    Console.WriteLine(""Pladen 'Banko' findes!"");
+}
+
+// Gennemgå alle plader
+foreach (var kvp in plates)
+{
+    string plateId = kvp.Key;        // Nøglen (f.eks. ""Banko"")
+    int[,] plate = kvp.Value;        // Værdien (2D array)
+    Console.WriteLine(""Plate ID: "" + plateId);
+}";
+
+    private string encapsulationExample = @"public class BankoPlate
+{
+    // Private lister - kan ikke ændres udefra
+    private List<int> row0;
+    private List<int> row1;
+    private List<int> row2;
+    
+    // Public properties - læsbare, men ikke skrivbare udefra
+    public List<int> Row0 
+    { 
+        get { return row0; }  // Læsbar, men ikke skrivbar udefra
+    }
+    
+    // Kun gennem metoder kan vi ændre data
+    public void AddNumber(int row, int value)
+    {
+        // Validering først!
+        if (IsValidValue(value) && row >= 0 && row < 3)
+        {
+            List<int> rowList = row == 0 ? row0 : row == 1 ? row1 : row2;
+            if (!rowList.Contains(value) && rowList.Count < 5)
+            {
+                rowList.Add(value);
+            }
+        }
+    }
+}";
+
+    private string inheritanceExample = @"// Basisklasse
+public class BankoPlate
+{
+    public string Id { get; set; }
+    public List<int> Row0 { get; protected set; }
+    public List<int> Row1 { get; protected set; }
+    public List<int> Row2 { get; protected set; }
+    
+    public virtual void ShowPlate()
+    {
+        Console.WriteLine(""Plate ID: "" + Id);
+        Console.WriteLine(""Row 0: "" + string.Join("", "", Row0));
+    }
+}
+
+// Afledt klasse - arver fra BankoPlate
+public class GamePlate : BankoPlate
+{
+    public bool IsActive { get; set; }
+    
+    public GamePlate(string id) : base(id)
+    {
+        IsActive = true;
+    }
+    
+    // Overskriv (override) metoden fra basisklassen
+    public override void ShowPlate()
+    {
+        base.ShowPlate();
+        Console.WriteLine(""Status: "" + (IsActive ? ""Active"" : ""Inactive""));
+    }
+}";
+
+    private string polymorphismExample = @"// Fælles interface
+public interface IPlate
+{
+    void ShowPlate();
+    bool HasNumber(int number);
+}
+
+// Forskellige klasser implementerer samme interface
+public class StandardPlate : IPlate { /* ... */ }
+public class GamePlate : IPlate { /* ... */ }
+public class PracticePlate : IPlate { /* ... */ }
+
+// Kan håndtere alle typer gennem samme interface
+List<IPlate> plates = new List<IPlate>();
+plates.Add(new StandardPlate(""1""));
+plates.Add(new GamePlate(""2""));
+
+foreach (IPlate plate in plates)
+{
+    plate.ShowPlate();  // Hver klasse har sin egen implementering
+}";
+
+    private string abstractionExample = @"// Abstrakt klasse - kan ikke instantieres direkte
+public abstract class BankoPlate
+{
+    public string Id { get; set; }
+    public List<int> Row0 { get; protected set; }
+    public List<int> Row1 { get; protected set; }
+    public List<int> Row2 { get; protected set; }
+    
+    // Abstrakt metode - skal implementeres i underklasser
+    public abstract bool ValidatePlate();
+    
+    // Konkret metode - deles af alle underklasser
+    public void ShowInfo()
+    {
+        Console.WriteLine(""Plate ID: "" + Id);
+        Console.WriteLine(""Row 0 has "" + Row0.Count + "" numbers"");
+    }
+}
+
+// Konkret implementering
+public class StandardPlate : BankoPlate
+{
+    public override bool ValidatePlate()
+    {
+        // Valider at hver række har præcis 5 tal
+        return Row0.Count == 5 && Row1.Count == 5 && Row2.Count == 5;
+    }
+}";
+
+    private string arrayCodeExample = @"// Opret 2D array til bankoplade
+int[,] bankoplade = new int[3, 9];
+
+// Tildel værdier (0 betyder tom plads)
+bankoplade[0, 0] = 4;   // Række 0, Kolonne 0
+bankoplade[0, 2] = 21;  // Række 0, Kolonne 2
+bankoplade[0, 3] = 31;  // Række 0, Kolonne 3
+bankoplade[0, 5] = 52;  // Række 0, Kolonne 5
+bankoplade[0, 7] = 71;  // Række 0, Kolonne 7
+
+bankoplade[1, 1] = 15;  // Række 1, Kolonne 1
+bankoplade[1, 3] = 35;  // Række 1, Kolonne 3
+bankoplade[1, 4] = 45;  // Række 1, Kolonne 4
+bankoplade[1, 6] = 67;  // Række 1, Kolonne 6
+bankoplade[1, 8] = 83;  // Række 1, Kolonne 8
+
+bankoplade[2, 0] = 7;   // Række 2, Kolonne 0
+bankoplade[2, 2] = 28;  // Række 2, Kolonne 2
+bankoplade[2, 4] = 48;  // Række 2, Kolonne 4
+bankoplade[2, 6] = 69;  // Række 2, Kolonne 6
+bankoplade[2, 7] = 75;  // Række 2, Kolonne 7
+
+// Læs værdi
+int værdi = bankoplade[0, 0]; // Får værdien 4
+
+// Gennemgå alle celler
+for (int r = 0; r < 3; r++)
+{
+    for (int k = 0; k < 9; k++)
+    {
+        if (bankoplade[r, k] != 0)
+        {
+            Console.WriteLine(""Række "" + r + "", Kolonne "" + k + "": "" + bankoplade[r, k]);
+        }
+    }
+}";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Wait a bit for Prism to be fully loaded
+            await Task.Delay(100);
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("highlightCode");
+            }
+            catch
+            {
+                // If highlightCode is not available, try direct call
+                await JSRuntime.InvokeVoidAsync("eval", "if (typeof Prism !== 'undefined') Prism.highlightAll();");
+            }
+        }
+    }
+}

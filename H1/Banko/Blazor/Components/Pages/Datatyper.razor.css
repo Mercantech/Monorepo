@@ -1,0 +1,205 @@
+/* Section styling */
+section h2 {
+    color: #2c3e50;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+section h3 {
+    color: #34495e;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+section h4 {
+    color: #495057;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.lead {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.data-structure-visualization {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+.code-example {
+    margin: 15px 0;
+}
+
+.comparison-box {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background-color: white;
+}
+
+.comparison-table th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.comparison-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.comparison-table td:first-child {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.oop-pillars {
+    margin: 30px 0;
+}
+
+.pillar-box {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pillar-box h4 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.pillar-box p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.benefits-box {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    border-radius: 4px;
+}
+
+.benefits-box ul {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+.benefits-box li {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.conclusion-box {
+    margin: 20px 0;
+    padding: 25px;
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.conclusion-box p {
+    margin: 15px 0;
+    line-height: 1.7;
+}
+
+.conclusion-box ul {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+.conclusion-box li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.conclusion-box strong {
+    color: #856404;
+}
+
+.hint-box {
+    padding: 15px;
+    background-color: #e7f3ff;
+    border-left: 4px solid #2196F3;
+    border-radius: 4px;
+}
+
+.hint-box p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.hint-box strong {
+    color: #1976D2;
+}
+
+/* Banko table styling */
+.banko-table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    font-size: 1.1em;
+}
+
+.banko-table th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 5px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #2c3e50;
+    text-align: center;
+}
+
+.banko-table td {
+    width: 11%;
+    min-width: 60px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #2c3e50;
+    font-size: 16px;
+    background-color: white;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.banko-table td.empty {
+    background-color: #f8f9fa;
+}
+
+.banko-grid {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+

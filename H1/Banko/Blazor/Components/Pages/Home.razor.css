@@ -1,0 +1,92 @@
+section h2, section h3 {
+    color: #2c3e50;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+section h4 {
+    color: #495057;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+section ul {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+section li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+section ul ul {
+    margin: 5px 0;
+    padding-left: 25px;
+}
+
+a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.example-plate {
+    margin: 25px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.example-plate table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.example-plate td {
+    width: 11%;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #2c3e50;
+    font-size: 16px;
+    background-color: white;
+}
+
+.example-plate .example-header {
+    background-color: #2c3e50;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.example-notes {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.example-notes p {
+    margin: 5px 0;
+}
+
+.highlight {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.alert-info .alert-heading {
+    color: #0c5460;
+}
+

@@ -1,0 +1,39 @@
+.code-block {
+    margin: 15px 0;
+}
+
+/* Prism tema styling - tillad Prism tema at sætte baggrund */
+.code-block pre[class*="language-"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 4px;
+    overflow-x: auto;
+    /* Fjern ikke baggrund - lad Prism tema sætte den */
+}
+
+.code-block code[class*="language-"] {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    padding: 15px !important;
+    display: block !important;
+    /* Fjern ikke baggrund - lad Prism tema sætte den */
+}
+
+.code-example pre[class*="language-"] {
+    margin: 0;
+    padding: 0;
+}
+
+.code-example pre[class*="language-"] code {
+    padding: 15px;
+}
+
+.code-example-small pre[class*="language-"] {
+    font-size: 12px;
+}
+
+.code-example-small pre[class*="language-"] code {
+    padding: 12px;
+    font-size: 12px;
+}
+

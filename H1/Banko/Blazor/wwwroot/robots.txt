@@ -1,0 +1,23 @@
+# robots.txt for Banko Cheater Blazor Application
+# This file tells web crawlers which pages they can and cannot access
+
+User-agent: *
+Allow: /
+
+# Disallow access to admin or private areas (if any exist in the future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow specific bots (examples)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay (optional - be nice to servers)
+# Crawl-delay: 1
+
+# Sitemap location (add when you have a sitemap)
+# Sitemap: https://yoursite.com/sitemap.xml
+
