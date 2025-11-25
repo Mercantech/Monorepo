@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visuelt SSO Flow Diagram</title>
+    <!-- Inkluderer Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sørger for at SVG-ikoner skalerer korrekt med tekst */
+        .icon {
+            width: 1.25em;
+            height: 1.25em;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.25rem;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans p-4 md:p-10">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
+            Visuelt SSO Flow Diagram
+        </h1>
+        <p class="text-center text-gray-600 mb-10">
+            Flutter, Google (OpenID) og .NET JWT API
+        </p>
+
+        <!-- Forklaring af aktører -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="flex items-center p-3 bg-white rounded-lg shadow">
+                <!-- Bruger Ikon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span class="font-semibold">Bruger</span>
+            </div>
+            <div class="flex items-center p-3 bg-white rounded-lg shadow">
+                <!-- Flutter App Ikon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon text-teal-500"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                <span class="font-semibold">Flutter-app</span>
+            </div>
+            <div class="flex items-center p-3 bg-white rounded-lg shadow">
+                <!-- Google Ikon (Globe) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon text-red-500"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span class="font-semibold">Google (IdP)</span>
+            </div>
+            <div class="flex items-center p-3 bg-white rounded-lg shadow">
+                <!-- API Ikon (Server) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="icon text-purple-600"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                <span class="font-semibold">.NET API</span>
+            </div>
+        </div>
+
+        <!-- Flow Tidslinje -->
+        <div class="space-y-6 relative border-l-2 border-gray-300 pl-8 py-4">
+            
+            <!-- Trin 1-4: Frontend Flow -->
+            <div class="absolute -left-3 top-4 w-6 h-6 bg-blue-600 rounded-full border-4 border-gray-100"></div>
+            <div class="bg-white p-5 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Trin 1-4: Brugergodkendelse</h3>
+                
+                <div class="space-y-3">
+                    <!-- Trin 1 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">1</span>
+                        <div>
+                            <span class="font-semibold text-blue-600">Bruger</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>:
+                            <span class="text-gray-700"> Initierer "Log ind med Google".</span>
+                        </div>
+                    </div>
+                    <!-- Trin 2 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">2</span>
+                        <div>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-red-500">Google</span>:
+                            <span class="text-gray-700"> Omdirigerer til Google for autorisation.</span>
+                        </div>
+                    </div>
+                    <!-- Trin 3 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">3</span>
+                        <div>
+                            <span class="font-semibold text-blue-600">Bruger</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-red-500">Google</span>:
+                            <span class="text-gray-700"> Logger ind og giver samtykke.</span>
+                        </div>
+                    </div>
+                    <!-- Trin 4 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">4</span>
+                        <div>
+                            <span class="font-semibold text-red-500">Google</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>:
+                            <span class="text-gray-700"> Returnerer **Google ID Token** via redirect.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trin 5-9: Backend Token Exchange -->
+            <div class="absolute -left-3 top-1/2 w-6 h-6 bg-purple-600 rounded-full border-4 border-gray-100"></div>
+            <div class="bg-white p-5 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Trin 5-9: API Token Udveksling</h3>
+                
+                <div class="space-y-3">
+                    <!-- Trin 5 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">5</span>
+                        <div>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-purple-600">.NET API</span>:
+                            <span class="text-gray-700"> Sender Google ID Token til `/api/auth/google`.</span>
+                        </div>
+                    </div>
+                    <!-- Trin 6 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">6</span>
+                        <div>
+                            <span class="font-semibold text-purple-600">.NET API</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-red-500">Google</span>:
+                            <span class="text-gray-700"> **Validerer** tokenets signatur (serverside).</span>
+                        </div>
+                    </div>
+                    <!-- Trin 7 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">7</span>
+                        <div>
+                            <span class="font-semibold text-purple-600">.NET API</span>:
+                            <span class="text-gray-700"> Opretter/opdaterer bruger i egen database.</span>
+                        </div>
+                    </div>
+                    <!-- Trin 8 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">8</span>
+                        <div>
+                            <span class="font-semibold text-purple-600">.NET API</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>:
+                            <span class="text-gray-700"> Returnerer **Custom API JWT**.</span>
+                        </div>
+                    </div>
+                     <!-- Trin 9 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">9</span>
+                        <div>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>:
+                            <span class="text-gray-700"> Gemmer det interne JWT sikkert (secure storage).</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trin 10-11: Autoriserede API Kald -->
+            <div class="absolute -left-3 bottom-4 w-6 h-6 bg-teal-500 rounded-full border-4 border-gray-100"></div>
+            <div class="bg-white p-5 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Trin 10-11: Normal App-brug</h3>
+
+                <div class="space-y-3">
+                    <!-- Trin 10 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">10</span>
+                        <div>
+                            <span class="font-semibold text-teal-500">Flutter-app</span>
+                            <span class="text-gray-500 mx-1">→</span>
+                            <span class="font-semibold text-purple-600">.NET API</span>:
+                            <span class="text-gray-700"> Kalder beskyttede endpoints med `Bearer <Custom_JWT>`.</span>
+                        </div>
+                    </div>
+                    <!-- Trin 11 -->
+                    <div class="flex items-start space-x-3">
+                        <span class="flex-shrink-0 w-6 h-6 text-center rounded-full bg-gray-200 text-gray-700 font-bold text-sm pt-0.5">11</span>
+                        <div>
+                            <span class="font-semibold text-purple-600">.NET API</span>:
+                            <span class="text-gray-700"> Validerer det interne JWT og returnerer data.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

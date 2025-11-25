@@ -1,0 +1,56 @@
+.two-stars-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 1rem 0 3rem;
+}
+
+.two-stars-page .page-header h1 {
+    font-weight: 700;
+    color: var(--bs-primary);
+}
+
+.two-stars-page .page-header p {
+    max-width: 60ch;
+}
+
+.two-stars-page .theme-banner {
+    border-radius: 1.25rem;
+}
+
+.feedback-form {
+    border: none;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.08), rgba(255, 193, 7, 0.12));
+}
+
+.feedback-form .form-label {
+    font-weight: 600;
+}
+
+.feedback-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.feedback-form .btn-primary {
+    box-shadow: 0 0.75rem 1.5rem rgba(13, 110, 253, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-form .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 1rem 2rem rgba(13, 110, 253, 0.35);
+}
+
+@media (max-width: 768px) {
+    .two-stars-page {
+        gap: 2rem;
+    }
+
+    .feedback-form .form-control-lg {
+        font-size: 1rem;
+        padding: 0.65rem 0.85rem;
+    }
+}
+

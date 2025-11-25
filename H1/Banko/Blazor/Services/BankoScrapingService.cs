@@ -139,4 +139,3 @@ public class BankoPlate
         Row2 = new List<int>();
     }
 }
-

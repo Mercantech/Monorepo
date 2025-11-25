@@ -48,6 +48,11 @@
                     <i class="fas fa-info-circle me-2"></i>Om
                 </button>
             </li>
+            <li class="nav-item">
+                <button @onclick="NavigateToTwoStars" class="nav-link">
+                    <i class="fas fa-star-half-alt me-2"></i>To stjerner & et ønske
+                </button>
+            </li>
         </ul>
     </nav>
 </div>
@@ -66,6 +71,11 @@
     private void NavigateToAbout()
     {
         Navigation.NavigateTo("/about");
+    }
+    
+    private void NavigateToTwoStars()
+    {
+        Navigation.NavigateTo("/to-stjerner");
     }
     
     private void NavigateToCategory(string categoryPrefix)

@@ -1,4 +1,5 @@
 using Blazor.Components;
+using Blazor.Service;
 
 namespace Blazor
 {
@@ -14,6 +15,9 @@ namespace Blazor
 
             // Tilføj scraping service
             builder.Services.AddScoped<Blazor.Services.BankoScrapingService>();
+
+            // Registrer DBService
+            builder.Services.AddScoped<DBService>();
 
             var app = builder.Build();
 
