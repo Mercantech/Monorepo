@@ -183,6 +183,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "62c913b54455de92",
-  "lastOpenFiles": []
+  "active": "61b215765ddf403f",
+  "lastOpenFiles": [
+    "H4-MAGS/grafana-provisioning/datasources/loki.yaml",
+    "H4-MAGS/grafana-provisioning/datasources",
+    "H4-MAGS/grafana-provisioning",
+    "H4-MAGS/promtail-config.yaml"
+  ]
 }
