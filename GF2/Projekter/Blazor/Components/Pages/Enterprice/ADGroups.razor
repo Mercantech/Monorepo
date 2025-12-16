@@ -1,40 +1,151 @@
 @page "/enterprice/adgroups"
+@using Enterprice
+@using Blazor.Services
+@inject ADServiceWrapper ADService
 
-<div class="game-hero text-center py-5 mb-4">
-    <h1 class="display-4 fw-bold mb-3">Gruppeoversigt (Active Directory)</h1>
-    <p class="lead mb-0">Få et overblik over alle grupper i jeres AD – og se hvem der er medlem af hvad!</p>
+<div class="modern-hero text-center">
+    <div class="hero-content">
+        <h1 class="hero-title">Gruppeoversigt</h1>
+        <p class="hero-subtitle">Active Directory</p>
+        <p class="hero-description">Få et overblik over alle grupper i jeres AD – og se hvem der er medlem af hvad!</p>
+    </div>
+    <div class="hero-background"></div>
 </div>
 
-<div class="container game-content">
+<div class="container modern-content">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-lg mb-5 border-0 game-card">
-                <div class="card-body p-5">
-                    <h2 class="h4 mb-3 text-primary fw-semibold">Sådan gør du:</h2>
-                    <ul class="list-group list-group-flush mb-4">
-                        <li class="list-group-item">Forbind til jeres AD og hent alle grupper.</li>
-                        <li class="list-group-item">Vis grupperne i en oversigt – fx som en tabel eller liste.</li>
-                        <li class="list-group-item"><em>Ekstra:</em> Vis medlemmer for hver gruppe.</li>
-                    </ul>
-                    <div class="alert alert-info mt-4">
-                        <strong>Tip:</strong> Prøv at lave klikbare grupper, så man kan se medlemmerne!</div>
+        <div class="col-lg-10">
+            @if (isLoading)
+            {
+                <div class="modern-card loading-card">
+                    <div class="card-content">
+                        <div class="loading-container">
+                            <div class="modern-spinner">
+                                <div class="spinner-ring"></div>
+                                <div class="spinner-ring"></div>
+                                <div class="spinner-ring"></div>
+                            </div>
+                            <h3 class="loading-title">Henter grupper fra Active Directory</h3>
+                            @if (!string.IsNullOrEmpty(statusMessage))
+                            {
+                                <div class="status-badge">
+                                    <span class="status-icon">⏳</span>
+                                    <span class="status-text">@statusMessage</span>
+                                </div>
+                            }
+                            @if (groups != null && groups.Any())
+                            {
+                                <div class="progress-container">
+                                    <div class="progress-info">
+                                        <span class="progress-label">Indtil videre hentet:</span>
+                                        <span class="progress-count">@groups.Count grupper</span>
+                                    </div>
+                                    <div class="modern-progress">
+                                        <div class="modern-progress-bar"></div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
+            else if (errorMessage != null)
+            {
+                <div class="modern-card error-card">
+                    <div class="card-content">
+                        <div class="error-container">
+                            <div class="error-icon">⚠️</div>
+                            <h3 class="error-title">Der opstod en fejl</h3>
+                            <p class="error-message">@errorMessage</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (groups != null && groups.Any())
+            {
+                <div class="modern-card groups-card">
+                    <div class="card-header-modern">
+                        <div class="header-content">
+                            <h2 class="card-title">
+                                <span class="title-icon">👥</span>
+                                <span class="title-text">AD Grupper</span>
+                            </h2>
+                            <span class="groups-count-badge">@groups.Count</span>
+                        </div>
+                    </div>
+                    <div class="card-body-modern">
+                        <div class="table-wrapper">
+                            <table class="modern-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-name">Gruppenavn</th>
+                                        <th class="col-description">Beskrivelse</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var group in groups)
+                                    {
+                                        <tr class="table-row-modern">
+                                            <td class="group-name">
+                                                <span class="name-icon">🔷</span>
+                                                <span class="name-text">@group.Name</span>
+                                            </td>
+                                            <td class="group-description">@group.Description</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="modern-card empty-card">
+                    <div class="card-content">
+                        <div class="empty-container">
+                            <div class="empty-icon">📭</div>
+                            <h3 class="empty-title">Ingen grupper fundet</h3>
+                            <p class="empty-message">Prøv at tjekke din AD-forbindelse.</p>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
 
-<style>
-.game-hero {
-    background: linear-gradient(90deg, #1b6ec2 0%, #3a0647 100%);
-    color: #fff;
-    border-radius: 0 0 2rem 2rem;
-    box-shadow: 0 4px 32px rgba(27,110,194,0.10);
+@code {
+    private List<global::Enterprice.ADGroup>? groups;
+    private bool isLoading = true;
+    private string? errorMessage;
+    private string statusMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Lad siden loade først
+        await Task.Delay(100);
+        
+        try
+        {
+            isLoading = true;
+            groups = new List<global::Enterprice.ADGroup>();
+            
+            // Hent data asynkront med progress updates
+            groups = await ADService.GetAllGroupsAsync((message) =>
+            {
+                statusMessage = message;
+                InvokeAsync(StateHasChanged);
+            });
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+            statusMessage = string.Empty;
+        }
+    }
 }
-.game-content {
-    margin-top: -40px;
-}
-.game-card {
-    border-radius: 1.5rem;
-}
-</style>

@@ -1,0 +1,439 @@
+﻿/* Content Container */
+.modern-content {
+    margin-top: -40px;
+    padding-bottom: 2rem;
+}
+
+/* Modern Hero Section */
+.modern-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    border-radius: 0 0 2.5rem 2.5rem;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Modern Card Styles */
+.modern-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modern-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.card-content {
+    padding: 3rem;
+}
+
+/* Loading Card */
+.loading-card {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-container {
+    text-align: center;
+    width: 100%;
+}
+
+.modern-spinner {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinner-ring:nth-child(1) {
+    animation-delay: -0.45s;
+    border-top-color: #667eea;
+}
+
+.spinner-ring:nth-child(2) {
+    animation-delay: -0.3s;
+    border-top-color: #764ba2;
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+}
+
+.spinner-ring:nth-child(3) {
+    animation-delay: -0.15s;
+    border-top-color: #f093fb;
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.status-icon {
+    font-size: 1.2rem;
+}
+
+.progress-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.progress-label {
+    color: #718096;
+}
+
+.progress-count {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.modern-progress {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.modern-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 200% 100%;
+    border-radius: 1rem;
+    animation: progressAnimation 2s ease infinite;
+}
+
+@keyframes progressAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Error Card */
+.error-card {
+    border-left: 4px solid #f56565;
+}
+
+.error-container {
+    text-align: center;
+    padding: 1rem;
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.error-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+}
+
+.error-message {
+    color: #718096;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Groups Card */
+.card-header-modern {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    border-bottom: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.title-icon {
+    font-size: 2rem;
+}
+
+.groups-count-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-body-modern {
+    padding: 0;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.modern-table thead {
+    background: #f7fafc;
+}
+
+.modern-table thead th {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #4a5568;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modern-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-row-modern {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table-row-modern:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    transform: scale(1.001);
+}
+
+.table-row-modern:last-child {
+    border-bottom: none;
+}
+
+.table-row-modern td {
+    padding: 1.5rem;
+    vertical-align: middle;
+}
+
+.group-name {
+    font-weight: 600;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.name-icon {
+    font-size: 1.25rem;
+    opacity: 0.7;
+}
+
+.name-text {
+    font-size: 1rem;
+}
+
+.group-description {
+    color: #718096;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Empty Card */
+.empty-card {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+}
+
+.empty-message {
+    color: #718096;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .card-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .card-header-modern {
+        padding: 1.5rem;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+    }
+    
+    .modern-table thead th,
+    .modern-table tbody td {
+        padding: 1rem;
+    }
+    
+    .group-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+/* Smooth animations */
+* {
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
