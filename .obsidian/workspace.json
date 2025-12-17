@@ -185,6 +185,8 @@
   },
   "active": "61b215765ddf403f",
   "lastOpenFiles": [
+    "H4-MAGS/cloudflared-credentials.json.example",
+    "H4-MAGS/cloudflared-config.yaml",
     "H4-MAGS/grafana-provisioning/datasources/loki.yaml",
     "H4-MAGS/grafana-provisioning/datasources",
     "H4-MAGS/grafana-provisioning",
