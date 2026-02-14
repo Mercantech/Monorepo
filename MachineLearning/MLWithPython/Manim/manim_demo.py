@@ -106,3 +106,97 @@ class GraphDemo(Scene):
         self.play(Create(graph), run_time=2)
         self.play(Write(label), run_time=1)
         self.wait(2)
+
+
+# --- Statistik: stolpediagram ---
+
+
+class StolpediagramDemo(Scene):
+    """Fra data til stolpediagram: viser trin for trin hvordan man laver en graf."""
+
+    def construct(self):
+        title = Text("Stolpediagram", font_size=56, color=BLUE)
+        title.to_edge(UP)
+        self.play(Write(title), run_time=1)
+        self.wait(0.5)
+
+        # 1) Vis data som tekst
+        data_title = Text("Data", font_size=36, color=YELLOW).next_to(title, DOWN, buff=0.6)
+        self.play(FadeIn(data_title), run_time=0.5)
+        # Eksempel: Frugt og antal solgt
+        kategorier = ["Æbler", "Pærer", "Bananer", "Appelsiner"]
+        værdier = [4, 7, 3, 5]
+        data_lines = VGroup(
+            Text("Æbler: 4    Pærer: 7    Bananer: 3    Appelsiner: 5", font_size=28),
+        ).next_to(data_title, DOWN, buff=0.3)
+        self.play(Write(data_lines), run_time=1.5)
+        self.wait(1)
+
+        # 2) Transformér til "Nu laver vi en graf"
+        self.play(
+            FadeOut(data_title),
+            FadeOut(data_lines),
+            title.animate.scale(0.9).move_to(ORIGIN).shift(UP * 2.8),
+            run_time=0.8,
+        )
+        step_text = Text("Trin 1: Tegn akser", font_size=32, color=GRAY).to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(step_text), run_time=0.4)
+
+        # Akser (simpel tallinje + lodret akse)
+        y_axis = Line(ORIGIN, UP * 2.2, color=WHITE).shift(LEFT * 2.5)
+        x_axis = Line(LEFT * 2.5, RIGHT * 2.5, color=WHITE).shift(DOWN * 1.2)
+        self.play(Create(y_axis), Create(x_axis), run_time=1)
+        self.wait(0.5)
+
+        # Y-aksen tal 0-8 (placeret ved højden i)
+        y_labels = VGroup(
+            *[Text(str(i), font_size=22).next_to(y_axis.get_start() + UP * (i * 0.275), LEFT, buff=0.15) for i in [0, 2, 4, 6, 8]]
+        )
+        self.play(FadeIn(y_labels), run_time=0.5)
+        self.play(FadeOut(step_text), run_time=0.3)
+
+        step_text2 = Text("Trin 2: Søjler for hver kategori", font_size=32, color=GRAY).to_edge(DOWN, buff=0.4)
+        self.play(FadeIn(step_text2), run_time=0.4)
+
+        # Søjler (stolper) – bredde og højde skaleret
+        bar_width = 0.35
+        bar_scale = 0.22  # 1 enhed = 0.22 manim-enheder
+        colors = [BLUE, GREEN, YELLOW, MAROON]
+        bars = VGroup()
+        x_start = -1.8
+        for i, v in enumerate(værdier):
+            h = v * bar_scale
+            rect = Rectangle(
+                width=bar_width,
+                height=h,
+                fill_color=colors[i],
+                fill_opacity=0.8,
+                stroke_color=WHITE,
+                stroke_width=1,
+            )
+            rect.move_to(x_axis.get_center() + RIGHT * (x_start + i * 1.1) + UP * (h / 2))
+            bars.add(rect)
+
+        for bar in bars:
+            self.play(GrowFromEdge(bar, DOWN), run_time=0.6)
+        self.wait(0.5)
+        self.play(FadeOut(step_text2), run_time=0.3)
+
+        # Kategorier under x-aksen
+        cat_labels = VGroup(
+            Text("Æbler", font_size=20).next_to(bars[0], DOWN, buff=0.15),
+            Text("Pærer", font_size=20).next_to(bars[1], DOWN, buff=0.15),
+            Text("Bananer", font_size=20).next_to(bars[2], DOWN, buff=0.15),
+            Text("Appelsiner", font_size=20).next_to(bars[3], DOWN, buff=0.15),
+        )
+        self.play(FadeIn(cat_labels), run_time=0.8)
+
+        # Titel på y-aksen
+        y_axis_label = Text("Antal", font_size=24, color=GRAY).next_to(y_axis, LEFT, buff=0.3)
+        self.play(FadeIn(y_axis_label), run_time=0.4)
+        self.wait(2)
+
+        # Afslutning
+        slut = Text("Stolpediagrammet viser dataene som søjler", font_size=28, color=GRAY).to_edge(DOWN, buff=0.5)
+        self.play(FadeIn(slut), run_time=0.6)
+        self.wait(2)

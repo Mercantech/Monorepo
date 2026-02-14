@@ -21,6 +21,7 @@ manim -pqm manim_demo.py CircleEquation
 manim -pqm manim_demo.py EulersIdentity
 manim -pqm manim_demo.py Pythagoras
 manim -pqm manim_demo.py GraphDemo
+manim -pqm manim_demo.py StolpediagramDemo
 ```
 
 **Kvalitet** (vælg efter behov):
@@ -44,3 +45,13 @@ Demoen bruger `Text()` med almindelig/unicode-tekst, så den kører **uden LaTeX
 | `EulersIdentity`| Eulers identitet \(e^{i\pi} + 1 = 0\)   |
 | `Pythagoras`    | Retvinklet trekant og \(a^2 + b^2 = c^2\) |
 | `GraphDemo`     | Parabel \(y = x^2\)                  |
+| `StolpediagramDemo` | Statistik: fra data til stolpediagram (video til undervisning) |
+
+### Statistik – stolpediagram
+
+Til undervisning i statistik findes:
+
+- **Videodemo:** `StolpediagramDemo` – viser trin for trin hvordan man laver et stolpediagram fra data (kategorier + værdier) til færdig graf.
+- **Pensum:** [pensum_stolpediagram.md](pensum_stolpediagram.md) – kort pensum om stolpediagram og hvordan man laver dem til en graf (til elever/undervisning).
+
+Kør videoen: `manim -pqm manim_demo.py StolpediagramDemo`
