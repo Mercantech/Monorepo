@@ -1,0 +1,3 @@
+# Machine Learning med Python - afhængigheder
+# Manim Community - matematik-animationer
+manim>=0.18.0
