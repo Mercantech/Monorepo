@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Machine Learning/Supervised Learning.md",
+                "file": "CSharp/CSharp-Bogen/11. LINQ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Supervised Learning"
+              "title": "11. LINQ"
             }
           }
         ],
@@ -197,6 +197,10 @@
   },
   "active": "d780fd6f0589e137",
   "lastOpenFiles": [
+    "CSharp/CSharp-Bogen/CSharp-Bogen.md",
+    "CSharp/CSharp-Bogen/11. LINQ.md",
+    "CSharp/CSharp-Bogen/1. Dit første program.md",
+    "Machine Learning/Supervised Learning.md",
     "Machine Learning/Time Series Forecasting.md",
     "Machine Learning/Unsupervised Learning.md",
     "Valgfag/Deploy or Die - Fra kode til internet.md",
@@ -231,10 +235,6 @@
     "Assets/Pasted image 20250926201602.png",
     "Assets/Pasted image 20250926201544.png",
     "Opgaver/BinærKodeomformer/Løsningsnoter-Drawing.md",
-    "Opgaver/BinærKodeomformer/Løsningsnoter.md",
-    "Matematik/Geometri.md",
-    "CSharp/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
-    "CSharp/Dotnet/ADO.NET/ADO.NET.md",
     "Opgaver/BinærKodeomformer",
     "Matematik",
     "Projekter/Oversigt.canvas",

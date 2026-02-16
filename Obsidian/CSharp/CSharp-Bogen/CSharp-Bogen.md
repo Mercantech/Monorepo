@@ -54,6 +54,11 @@ Velkommen til C# bogen! Her er en oversigt over alle emnerne i bogen med direkte
 - **Indhold:** Navngivning, formatering, kommentarer, performance og datastrukturer
 - **Niveau:** Mellem til avanceret
 
+### 11. [LINQ](11.%20LINQ.md)
+- **Emne:** Language Integrated Query – forespørgelser på samlinger
+- **Indhold:** Where, Select, OrderBy, First, Count, Any, All, lambda-udtryk, metode-syntaks og sammenkædning
+- **Niveau:** Mellem
+
 ## 🎯 Læringsvej
 
 **Anbefalet rækkefølge:**
@@ -61,7 +66,7 @@ Velkommen til C# bogen! Her er en oversigt over alle emnerne i bogen med direkte
 2. **Interaktion** (Kapitel 4): Lær "Inputs" for at håndtere brugerdata
 3. **Logik** (Kapitel 5): Gå videre til "Control Flow" for at lave beslutninger
 4. **Struktur** (Kapitel 6-7): Lær "Klasser og Objekter" og "Loops og iterationer"
-5. **Avanceret** (Kapitel 8-10): Afslut med "Metoder", "Debugging" og "Kodestandarter"
+5. **Avanceret** (Kapitel 8-11): Afslut med "Metoder", "Debugging", "Kodestandarter" og "LINQ"
 
 ## 📝 Noter
 
@@ -94,7 +99,7 @@ Eksperimenter med grafiske applikationer i `WPF/` mappen:
 ### 📚 Avancerede emner
 Lær om avancerede emner i `Teori/` mappen:
 - **JSON.cs** - JSON håndtering
-- **LINQExample.cs** - LINQ queries
+- **LINQExample.cs** - Ekstra LINQ eksempler (se også kapitel 11)
 - **SQLExample.cs** - Database operationer
 
 
