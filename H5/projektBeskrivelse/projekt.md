@@ -29,4 +29,3 @@ Systemet fungerer som en helhed hvor:
 4. Data visualiseres i et dashboard
 
 Dette giver et komplet system fra dataindsamling til visualisering.
-
