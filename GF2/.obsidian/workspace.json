@@ -1,64 +1,40 @@
 {
   "main": {
-    "id": "b950d0f1d54b3713",
+    "id": "6721eadb0706ea7b",
     "type": "split",
     "children": [
       {
-        "id": "616dbb9d223f20cc",
+        "id": "14e5ddafa264c116",
         "type": "tabs",
         "children": [
           {
-            "id": "a34ff97ebd7ab1ff",
+            "id": "c15e2d6affce5eaa",
             "type": "leaf",
-            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Opgaver/Solutions/1-Variabler.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1-Variabler"
+            }
+          }
+        ]
+      },
+      {
+        "id": "f207af39ead1b4d1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7464c9afbf1aaa76",
+            "type": "leaf",
             "state": {
               "type": "graph",
               "state": {},
-              "pinned": true,
               "icon": "lucide-git-fork",
               "title": "Graph view"
-            }
-          },
-          {
-            "id": "85c5e86b128e62c9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hovedforløb/Templates/H1/SQL-Opgaver/README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "e8b700cc1f4f6572",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hovedforløb/H4-MAGS/AI-Notes/API-og-E2E-Testing.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "API-og-E2E-Testing"
-            }
-          },
-          {
-            "id": "da3e397fcda9461c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hovedforløb/Templates/H1/Banko/README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
             }
           }
         ]
@@ -67,15 +43,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "0f4cd4f0d402aebe",
+    "id": "b61c6e2f987fbd62",
     "type": "split",
     "children": [
       {
-        "id": "4ee6e58015b3f320",
+        "id": "28fe2278d1886d62",
         "type": "tabs",
         "children": [
           {
-            "id": "61b215765ddf403f",
+            "id": "6c90efdb223d4a6d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -88,7 +64,7 @@
             }
           },
           {
-            "id": "9b642272dd168e4b",
+            "id": "5fbaf7ded7de4d0e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -105,7 +81,7 @@
             }
           },
           {
-            "id": "d37c3a10c7ad9918",
+            "id": "b56a9c9fae004d6c",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -118,23 +94,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 429.5
+    "width": 300
   },
   "right": {
-    "id": "994e2412261bf9ee",
+    "id": "d034b7f0e391b189",
     "type": "split",
     "children": [
       {
-        "id": "172fbb977d5ad89e",
+        "id": "55df6d0f4b9ac547",
         "type": "tabs",
         "children": [
           {
-            "id": "40bdcf4545a01a8c",
+            "id": "503e06264de4e18d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Welcome.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -144,25 +120,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for README"
+              "title": "Backlinks for Welcome"
             }
           },
           {
-            "id": "4938564691823fcb",
+            "id": "8630b718e642d467",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Welcome.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from README"
+              "title": "Outgoing links from Welcome"
             }
           },
           {
-            "id": "372e88891404dd98",
+            "id": "3330152dc40e264d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -177,7 +153,7 @@
             }
           },
           {
-            "id": "4674a5457f9238b5",
+            "id": "f1950d61719db740",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -186,23 +162,23 @@
                 "showSearch": false,
                 "searchQuery": ""
               },
-              "icon": "lucide-ghost",
-              "title": "all-properties"
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           },
           {
-            "id": "7e34d3a23d7eacd6",
+            "id": "0d14bcf5d1859ec4",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "Welcome.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline of Welcome"
             }
           }
         ]
@@ -220,50 +196,34 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-excalidraw-plugin:New drawing": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Create new base": false
     }
   },
-  "active": "a34ff97ebd7ab1ff",
+  "active": "c15e2d6affce5eaa",
   "lastOpenFiles": [
-    "Hovedforløb/Templates/H1/Banko/README.md",
-    "GF2/CSharp-Bogen/7. Loops og iterationer.md",
-    "GF2/CSharp-Bogen/CSharp-Bogen.md",
-    "GF2/CSharp-Bogen/Canva.canvas",
-    "GF2/CSharp-Bogen/9. Debugging.md",
-    "GF2/CSharp-Bogen/8. Metoder - Funktioner.md",
-    "GF2/CSharp-Bogen/6. Klasser og Objekter.md",
-    "GF2/CSharp-Bogen/5. Control Flow.md",
-    "GF2/CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
-    "GF2/CSharp-Bogen/3.5 Inputs.md",
-    "GF2/CSharp-Bogen/3. Expressions og operatører.md",
-    "GF2/CSharp-Bogen/2. Variabler.md",
-    "GF2/CSharp-Bogen/11. LINQ.md",
-    "GF2/CSharp-Bogen/10. Kodestandarter.md",
-    "GF2/CSharp-Bogen/1. Dit første program.md",
-    "GF2/CSharp-Bogen",
-    "GF2/Notes/Welcome.md",
-    "GF2/Notes",
-    "GF2/Opgaver/Solutions/7-Classes.md",
-    "GF2/Opgaver/Solutions/6-Methods.md",
-    "GF2/Opgaver/Solutions/5-Arrays.md",
-    "GF2/Opgaver/Solutions/4-Loops.md",
-    "GF2/Opgaver/Solutions/3-ControlFlow.md",
-    "GF2/Opgaver/Solutions/2-Inputs.md",
-    "GF2/Opgaver/Solutions/1-Variabler.md",
-    "GF2/Opgaver/7. Classes - løsning.md",
-    "GF2/Opgaver/Solutions",
-    "GF2/Opgaver/6. Methods - løsning.md",
-    "GF2/Opgaver/5. Arrays - løsning.md",
-    "GF2/Opgaver/4. Loops - løsning.md",
-    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfo.cs",
-    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfoInputs.cache",
-    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.GeneratedMSBuildEditorConfig.editorconfig",
-    "GF2/Opgaver/obj/Debug/net10.0/refint",
-    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.GlobalUsings.g.cs",
-    "GF2/Opgaver/obj/Debug/net10.0/ref",
-    "GF2/Opgaver/obj/Debug/net10.0",
-    "GF2/Projekter/Blazor/wwwroot/favicon.png"
+    "Opgaver/Solutions/5-Arrays.md",
+    "Opgaver/Solutions/6-Methods.md",
+    "Opgaver/Solutions/4-Loops.md",
+    "Opgaver/Solutions/3-ControlFlow.md",
+    "Opgaver/Solutions/2-Inputs.md",
+    "Opgaver/Solutions/1-Variabler.md",
+    "CSharp-Bogen/CSharp-Bogen.md",
+    "CSharp-Bogen/7. Loops og iterationer.md",
+    "CSharp-Bogen/8. Metoder - Funktioner.md",
+    "CSharp-Bogen/9. Debugging.md",
+    "CSharp-Bogen/10. Kodestandarter.md",
+    "CSharp-Bogen/11. LINQ.md",
+    "CSharp-Bogen/6. Klasser og Objekter.md",
+    "CSharp-Bogen/5. Control Flow.md",
+    "CSharp-Bogen/4. Arrays, Lists & Dictionary.md",
+    "CSharp-Bogen/3.5 Inputs.md",
+    "CSharp-Bogen/3. Expressions og operatører.md",
+    "CSharp-Bogen/2. Variabler.md",
+    "CSharp-Bogen/1. Dit første program.md",
+    "README.md",
+    "CSharp-Bogen/Canva.canvas",
+    "CSharp-Bogen",
+    "Notes/Welcome.md",
+    "Welcome.md"
   ]
 }

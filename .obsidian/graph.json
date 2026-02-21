@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": true,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "tag:#docker  ",
@@ -50,7 +50,7 @@
       }
     },
     {
-      "query": "path:Obsidian/CSharp  ",
+      "query": "path:GF2/CSharp-Bogen  ",
       "color": {
         "a": 1,
         "rgb": 5779382
