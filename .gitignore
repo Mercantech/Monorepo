@@ -4,3 +4,7 @@
 */bin
 */obj
 venv
+
+# Ignore volatile UI-related state
+.obsidian/workspace.json
+.obsidian/app.json

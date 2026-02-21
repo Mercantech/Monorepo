@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "6837fa67062f252e",
+        "id": "616dbb9d223f20cc",
         "type": "tabs",
         "children": [
           {
-            "id": "62c913b54455de92",
+            "id": "a34ff97ebd7ab1ff",
             "type": "leaf",
+            "pinned": true,
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Obsidian/CSharp/CSharp-Bogen/2. Variabler.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2. Variabler"
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -185,16 +183,26 @@
   },
   "active": "61b215765ddf403f",
   "lastOpenFiles": [
+    "H3/Arduino/test/test_temp_color.cpp",
+    "H3/Arduino/src/main.cpp",
+    "H3/Arduino/test/README",
+    "H3/Arduino/src/secrets.h.example",
+    "H3/Arduino/src/temp_color.cpp",
+    "H3/Arduino/src/secrets.h",
+    "H3/Arduino/src/led_utils.cpp",
+    "H3/Arduino/include/led_utils.h",
+    "H3/Arduino/src/display_utils.cpp",
+    "H3/Arduino/lib/README",
+    "H3/Arduino/include/config.h",
+    "H3/H3-Noter/Welcome.md",
+    "H3/Arduino/README.md",
+    "H3/README.md",
+    "MachineLearning/README.md",
+    "MachineLearning/0.Dataanalyse/Dataanalyse.md",
+    "Obsidian/CSharp/CSharp-Bogen/CSharp-Bogen.md",
+    "H2-MAGS/admin-dashboard/node_modules/ms/license.md",
+    "Obsidian/CSharp/CSharp-Bogen/2. Variabler.md",
     "H4-MAGS/docs/GOOGLE_AUTH.md",
-    "H4-MAGS/docs",
-    "H4-MAGS/flutter_app/lib/core/storage/Untitled",
-    "H4-MAGS/Bruno/Mail/MailDemo.bru",
-    "H4-MAGS/Bruno/Mail/folder.bru",
-    "H4-MAGS/Bruno/Mail",
-    "H4-MAGS/Backend/API/obj/Debug/net10.0/project.razor.json.temp",
-    "H4-MAGS/Backend/Tests/bin/Debug/net10.0/acj4vhrp.00z~",
-    "H4-MAGS/Backend/Tests/obj/Debug/net10.0/1ca5nr0p.dql~",
-    "H4-MAGS/Backend/Backend.AppHost/obj/Debug/net10.0/mzlgcly3.1qc~",
     "Obsidian/CSharp/Web API med CSharp/Bogus.md",
     "Obsidian/CSharp/Web API med CSharp/Bruno.md",
     "Obsidian/CSharp/Web API med CSharp/JWT.md",
@@ -202,7 +210,6 @@
     "GF2/Projekter/Blazor/wwwroot/favicon.png",
     "H4/flutter_app/README.md",
     "H4/README.md",
-    "README.md",
-    "H4-MAGS/cloudflared-credentials.json.example"
+    "README.md"
   ]
 }

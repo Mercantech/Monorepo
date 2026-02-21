@@ -4,7 +4,7 @@ Proxmox, Terraform og Ansible til et K3s-cluster – fra nul til kørende cluste
 
 ---
 
-## Hvad bygger vi?
+## Hvad bygger vi? 
 
 Et **K3s Kubernetes-cluster** med 1 control plane og 2 workers, kørende som virtuelle maskiner på **Proxmox**. Alt er beskrevet som kode: VM’erne oprettes med **Terraform**, og **Ansible** installerer K3s, joiner workers og sætter ingress + MetalLB op. Når du vil starte forfra: `terraform destroy` → `terraform apply` → kør Ansible igen → rent cluster.
 
