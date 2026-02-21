@@ -60,8 +60,23 @@
               "icon": "lucide-file",
               "title": "README"
             }
+          },
+          {
+            "id": "5b8c86fe7a80afde",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GF2/CSharp-Bogen/1. Dit første program.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1. Dit første program"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -225,11 +240,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a34ff97ebd7ab1ff",
+  "active": "5b8c86fe7a80afde",
   "lastOpenFiles": [
+    "GF2/CSharp-Bogen/CSharp-Bogen.md",
+    "GF2/CSharp-Bogen/1. Dit første program.md",
     "Hovedforløb/Templates/H1/Banko/README.md",
     "GF2/CSharp-Bogen/7. Loops og iterationer.md",
-    "GF2/CSharp-Bogen/CSharp-Bogen.md",
     "GF2/CSharp-Bogen/Canva.canvas",
     "GF2/CSharp-Bogen/9. Debugging.md",
     "GF2/CSharp-Bogen/8. Metoder - Funktioner.md",
@@ -241,7 +257,6 @@
     "GF2/CSharp-Bogen/2. Variabler.md",
     "GF2/CSharp-Bogen/11. LINQ.md",
     "GF2/CSharp-Bogen/10. Kodestandarter.md",
-    "GF2/CSharp-Bogen/1. Dit første program.md",
     "GF2/CSharp-Bogen",
     "GF2/Notes/Welcome.md",
     "GF2/Notes",
