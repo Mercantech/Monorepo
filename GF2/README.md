@@ -2,6 +2,26 @@
 
 En omfattende C# læringsplatform for GF2 (Grundforløb 2) med fokus på praktisk programmering og projektbaseret læring.
 
+## 📖 Læringsvej: Bogen + opgaver
+
+**C#-bogen** ([CSharp-Bogen/](CSharp-Bogen/CSharp-Bogen.md)) er teorien; **opgaverne** ([Opgaver/](Opgaver/)) er den praktiske del. Brug dem sammen:
+
+| Opgave | Emne | Læs i bogen |
+|--------|------|--------------|
+| [1. Variabler](Opgaver/1.%20Variabler.cs) | Datatyper, string interpolation | [2. Variabler](CSharp-Bogen/2.%20Variabler.md), [1. Dit første program](CSharp-Bogen/1.%20Dit%20første%20program.md) |
+| [2. Inputs](Opgaver/2.%20Inputs.cs) | Console.ReadLine, Parse | [3.5 Inputs](CSharp-Bogen/3.5%20Inputs.md), [3. Expressions](CSharp-Bogen/3.%20Expressions%20og%20operatører.md) |
+| [3. Control Flow](Opgaver/3.ControlFlow.cs) | if/else, switch, ternary | [5. Control Flow](CSharp-Bogen/5.%20Control%20Flow.md) |
+| [4. Loops](Opgaver/4.Loops.cs) | for, while, do-while, foreach | [7. Loops og iterationer](CSharp-Bogen/7.%20Loops%20og%20iterationer.md) |
+| [5. Arrays](Opgaver/5.Arrays.cs) | Array, List, Dictionary | [4. Arrays, Lists & Dictionary](CSharp-Bogen/4.%20Arrays%2C%20Lists%20%26%20Dictionary.md) |
+| [6. Methods](Opgaver/6.Methods.cs) | Metoder, parametre, rekursion | [8. Metoder - Funktioner](CSharp-Bogen/8.%20Metoder%20-%20Funktioner.md) |
+| [7. Classes](Opgaver/7.Classes.cs) | Klasser, properties, arv | [6. Klasser og Objekter](CSharp-Bogen/6.%20Klasser%20og%20Objekter.md) |
+
+**Vejledende løsninger** findes i [Opgaver/Solutions/](Opgaver/Solutions/) – brug dem kun hvis du er stødt på problemer.
+
+**Kør opgaverne:** [Opgaver/Program.cs](Opgaver/Program.cs)
+
+---
+
 ## 📚 Struktur
 
 Dette repository indeholder en komplet C# læringsmiljø med opgaver, projekter, teori og praktiske eksempler organiseret i følgende hovedkategorier:
@@ -20,8 +40,6 @@ Et interaktivt konsolprogram med 7 grundlæggende opgavesæt der dækker:
 - [Sten, Saks, Papir spil](Opgaver/RockPaperScissors/)
 - [Binær/Decimal konvertering](Opgaver/BinaryConverter/)
 - [Banko spil](Opgaver/Banko/)
-
-**Kør opgaverne:** [Program.cs](Opgaver/Program.cs)
 
 ### 🏠 Projekter
 Praktiske projekter organiseret efter kontekst:
@@ -98,7 +116,8 @@ Teoretiske eksempler og demonstrationskode:
 
 ```
 GF2/
-├── Opgaver/         # Grundlæggende programmeringsopgaver
+├── CSharp-Bogen/    # Teori og lærebog (kapitler 1–11)
+├── Opgaver/         # Grundlæggende programmeringsopgaver + Solutions/
 ├── Projekter/       # Praktiske projekter (Blazor, Konsol)
 ├── WPF/             # Desktop applikationer
 ├── Teori/           # Teoretiske eksempler og demonstrationskode
