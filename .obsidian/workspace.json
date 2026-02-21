@@ -228,6 +228,10 @@
   },
   "active": "61b215765ddf403f",
   "lastOpenFiles": [
+    "GF2/Opgaver/4. Loops - løsning.md",
+    "GF2/Opgaver/3. ControlFlow - løsning.md",
+    "GF2/Opgaver/2. Inputs - løsning.md",
+    "GF2/Opgaver/1. Variabler - løsning.md",
     "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfo.cs",
     "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfoInputs.cache",
     "GF2/Opgaver/obj/Debug/net10.0/Opgaver.GeneratedMSBuildEditorConfig.editorconfig",
@@ -238,7 +242,6 @@
     "GF2/Opgaver/bin/Debug/net10.0",
     "GF2/Projekter/Konsol/Hjemmet/GuessANumber.cs",
     "GF2/Projekter/Konsol/Enterprice/ADService.cs",
-    "GF2/Projekter/Blazor/Program.cs",
     "Obsidian/Monorepo/New Git repo.md",
     "Obsidian/Matematik/Geometri/Geometri - Draw.md",
     "Obsidian/Matematik/Geometri/Rumfang.md",
@@ -261,9 +264,6 @@
     "Obsidian/CSharp/Web API med CSharp/Bogus.md",
     "Obsidian/CSharp/Web API med CSharp/Bruno.md",
     "Obsidian/CSharp/Web API med CSharp/JWT.md",
-    "GF2/Projekter/README.md",
-    "GF2/Projekter/Blazor/wwwroot/favicon.png",
-    "H4/flutter_app/README.md",
-    "H4/README.md"
+    "GF2/Projekter/Blazor/wwwroot/favicon.png"
   ]
 }

@@ -24,27 +24,27 @@ namespace Opgaver
         public static void If1()
         {
             Console.WriteLine(
-                "Lav et program som tjekker om en given værdi er højere eller lavere end 18"
+                "Lav et program som tjekker om en værdi er højere eller lavere end 18. Brug if/else. Værdien kan du skrive fast i koden eller hente med Console.ReadLine()."
             );
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 1 herunder!
         }
 
         public static void If2()
         {
-            Console.WriteLine("Lav et program som tjekker om en given værdi er lige eller ulige");
-            // Lav opgaven herunder!
+            Console.WriteLine("Lav et program som tjekker om en værdi er lige eller ulige. Brug if og else.");
+            // TODO: Lav opgave 2 herunder!
         }
 
         public static void Switch1()
         {
-            Console.WriteLine("Lav et program som tjekker om en given værdi er lige eller ulige");
-            // Lav opgaven herunder!
+            Console.WriteLine("Lav et program som tjekker om en værdi er lige eller ulige – men denne gang ved at bruge switch.");
+            // TODO: Lav opgave 3 herunder!
         }
 
         public static void Ternary1()
         {
-            Console.WriteLine("Lav et program som tjekker om en given værdi er lige eller ulige");
-            // Lav opgaven herunder!
+            Console.WriteLine("Lav et program som tjekker om en værdi er lige eller ulige – brug ternary operator ( ? : ).");
+            // TODO: Lav opgave 4 herunder!
         }
 
         public static void MiniProjektQuiz()
@@ -61,7 +61,7 @@ namespace Opgaver
             Console.WriteLine(
                 "Tip: Brug variabler til at gemme point og svar, og if/else til at tjekke svarene."
             );
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 5 herunder!
         }
 
         public static void MiniProjektKarakterFeedback()
@@ -81,7 +81,7 @@ namespace Opgaver
                 @"Ekstra opgave: Lav så man indtaster flere karaktere 
             for en bruger og man regner gennemsnittet ud."
             );
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 6 herunder!
         }
     }
 }

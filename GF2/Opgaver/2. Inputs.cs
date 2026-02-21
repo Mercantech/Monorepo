@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Opgaver
 {
@@ -25,7 +25,7 @@ namespace Opgaver
             );
 
             Console.WriteLine("Indtast en streng: ");
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 1 herunder! Tip: string s = Console.ReadLine();
         }
 
         public static void Int1()
@@ -35,7 +35,7 @@ namespace Opgaver
             );
 
             Console.WriteLine("Indtast et tal: ");
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 2 herunder! Tip: int tal = int.Parse(Console.ReadLine());
         }
 
         public static void Double1()
@@ -45,7 +45,7 @@ namespace Opgaver
             );
 
             Console.WriteLine("Indtast et decimaltal: ");
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 3 herunder! Tip: double d = double.Parse(Console.ReadLine());
         }
 
         public static void Bool1()
@@ -54,8 +54,8 @@ namespace Opgaver
                 "Lav et program som gemmer et input som en sandhedsværdi og skriver værdien ud i konsollen"
             );
 
-            Console.WriteLine("Indtast en sandhedsværdi (sandt/falsk): ");
-            // Lav opgaven herunder!
+            Console.WriteLine("Indtast true eller false: ");
+            // TODO: Lav opgave 4 herunder! Tip: bool b = bool.Parse(Console.ReadLine());
         }
 
         // Mini-projekt: Personlig profil (skabelon)
@@ -68,7 +68,7 @@ namespace Opgaver
                 "Gem oplysningerne i variabler og udskriv en præsentationstekst, der bruger alle oplysningerne."
             );
             Console.WriteLine("Eksempel: Hej, jeg hedder X, er X år gammel og kommer fra X!");
-            // Lav opgaven herunder!
+            // TODO: Lav opgave 5 herunder!
         }
 
         // Mini-projekt 2: BMI-beregner (skabelon)
@@ -83,6 +83,7 @@ namespace Opgaver
             Console.WriteLine(
                 "Tip: BMI beregnes som vægt divideret med højde i anden (BMI = vægt / (højde * højde))."
             );
+            // TODO: Lav opgave 6 herunder!
         }
     }
 }
