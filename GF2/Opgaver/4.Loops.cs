@@ -8,12 +8,12 @@ namespace Opgaver
         {
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("Velkommen til opgaver omkring Loops både med og uden datastrukturer!");
-            //Loop1();
-            //Loop2();
-            //Loop3();
-            //Loop4();
-            //Loop5();
-            //Loop6();
+            Loop1();
+            Loop2();
+            Loop3();
+            Loop4();
+            Loop5();
+            Loop6();
             Loop7();
             Loop8();
             Loop9();
@@ -27,14 +27,6 @@ namespace Opgaver
             Console.WriteLine("Opgave 1:");
             Console.WriteLine("Brug et loop til at udskrive tallene fra 1 til 10.");
             // Lav opgaven herunder!
-
-            Console.WriteLine();
-            for (int i = 1; i <= 10; i++)
-            {
-                Console.WriteLine("i = " + i);
-            }
-
-
         }
 
         public static void Loop2()
@@ -49,15 +41,6 @@ namespace Opgaver
             Console.WriteLine("Opgave 3:");
             Console.WriteLine("Brug et loop til at lægge alle tal fra 1 til 100 sammen og udskriv resultatet.");
             // Lav opgaven herunder!
-
-            int sum = 0;
-
-            for (int i = 1; i <= 100; i++)
-            {
-                sum = sum + i;
-            }
-            Console.WriteLine($"Summen af alle talene er {sum}");
-
         }
 
         public static void Loop4()
@@ -70,22 +53,8 @@ namespace Opgaver
         public static void Loop5()
         {
             Console.WriteLine("Opgave 5:");
-            Console.WriteLine(@"Bed brugeren om at indtaste et tal. 
-            Brug et loop til at udskrive alle tal fra det indtastede tal og ned til 1.");
+            Console.WriteLine("Bed brugeren om at indtaste et tal. Brug et loop til at udskrive alle tal fra det indtastede tal og ned til 1.");
             // Lav opgaven herunder!
-            Console.WriteLine("Hvilket tal skal jeg tælle ned fra, Hr Frederik?");
-            int tal = 0;
-            while(!int.TryParse(Console.ReadLine(), out tal))
-            {
-                Console.WriteLine("Skriv et rigtigt tal tak! Prøv igen :))");
-            }
-                
-            for (int i = tal; i >= 1; i--)
-            {
-                Console.WriteLine(i);
-            }
-            
-  
         }
 
         public static void Loop6()
@@ -99,27 +68,9 @@ namespace Opgaver
         public static void Loop7()
         {
             Console.WriteLine("Opgave 7:");
-            Console.WriteLine(@"Brug et loop til at tælle, hvor mange gange bogstavet 'a' optræder i en tekst, 
-                som brugeren indtaster.");
+            Console.WriteLine("Brug et loop til at tælle, hvor mange gange bogstavet 'a' optræder i en tekst, som brugeren indtaster.");
             // Lav opgaven herunder!
-
-            Console.Write("Indtast en tekst: "); 
-            string? tekst = Console.ReadLine(); 
-            int count = 0; 
-            if (tekst != null) 
-            { 
-                for (int i = 0; i < tekst.Length; i++) 
-                { 
-                    if (tekst[i] == 'a' || tekst[i] == 'A') 
-                    { 
-                        count++; 
-                    } 
-                } 
-            }
-            Console.WriteLine("Antal 'a' i teksten: " + count);
         }
-
-        
 
         public static void Loop8()
         {
@@ -131,10 +82,8 @@ namespace Opgaver
         public static void Loop9()
         {
             Console.WriteLine("Opgave 9:");
-            Console.WriteLine(@"Bed brugeren om at indtaste 5 tal (ét ad gangen). Brug et loop til at lægge dem sammen og udskriv summen til sidst.");
+            Console.WriteLine("Bed brugeren om at indtaste 5 tal (ét ad gangen). Brug et loop til at lægge dem sammen og udskriv summen til sidst.");
             // Lav opgaven herunder!
-
-
         }
 
         public static void Loop10()
@@ -150,27 +99,6 @@ namespace Opgaver
             Udskriv 'Banke' hvis tallet er deleligt med 3, 'Bøf' hvis tallet er deleligt med 5 
             og 'BankeBøf' hvis tallet er deleligt med både 3 og 5.");
             // Lav opgaven herunder!
-            for (int i = 1; i <= 30; i++)
-            {
-                Thread.Sleep(300);
-                if (i % 3 == 0 && i % 5 == 0)
-                {
-                    Console.WriteLine("BankeBøf");
-                }
-                else if (i % 3 == 0)
-                {
-                    Console.WriteLine("Banke");
-                }
-                else if (i % 5 == 0)
-                {
-                    Console.WriteLine("Bøf");
-                }
-                else
-                {
-                    Console.WriteLine(i);
-                }
-                
-            }
         }
         public static void MiniProjektLommeregner()
         {

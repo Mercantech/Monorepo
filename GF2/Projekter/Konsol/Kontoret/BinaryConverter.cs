@@ -4,6 +4,8 @@ namespace Kontoret
     {
         public void Start()
         {
+            Console.WriteLine("Binærkodeomformer er ikke implementeret endnu.");
+            Console.ReadKey();
         }
     }
 }

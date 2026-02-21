@@ -226,8 +226,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "da3e397fcda9461c",
+  "active": "61b215765ddf403f",
   "lastOpenFiles": [
+    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfo.cs",
+    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfoInputs.cache",
+    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.GeneratedMSBuildEditorConfig.editorconfig",
+    "GF2/Opgaver/obj/Debug/net10.0/refint",
+    "GF2/Opgaver/obj/Debug/net10.0/Opgaver.GlobalUsings.g.cs",
+    "GF2/Opgaver/obj/Debug/net10.0/ref",
+    "GF2/Opgaver/obj/Debug/net10.0",
+    "GF2/Opgaver/bin/Debug/net10.0",
+    "GF2/Projekter/Konsol/Hjemmet/GuessANumber.cs",
+    "GF2/Projekter/Konsol/Enterprice/ADService.cs",
+    "GF2/Projekter/Blazor/Program.cs",
     "Obsidian/Monorepo/New Git repo.md",
     "Obsidian/Matematik/Geometri/Geometri - Draw.md",
     "Obsidian/Matematik/Geometri/Rumfang.md",
@@ -238,16 +249,6 @@
     "Hovedforløb/H4-MAGS/AI-Notes/CI-CD-GitHub-Actions.md",
     "Hovedforløb/H4-MAGS/AI-Notes/E2E-rapport-Dokploy.md",
     "Hovedforløb/Templates/H1/SQL-Opgaver/README.md",
-    "GF2/Teori/obj/Debug/net9.0/mbeq4xsh.ouq~",
-    "GF2/UnitTest/bin/Debug/net8.0/qlmm53jq.irv~",
-    "GF2/UnitTest/obj/Debug/net8.0/qwgncr1l.rdw~",
-    "GF2/WPF/obj/Debug/net8.0-windows/euzv4yrz.w1y~",
-    "GF2/Opgaver/obj/Debug/net8.0/a1pzpb52.sxj~",
-    "H5-MAGS",
-    "H3-MAGS",
-    "H1-MAGS",
-    "H6",
-    "H3/Arduino/test/test_temp_color.cpp",
     "H3/H3-Noter/Welcome.md",
     "H3/Arduino/README.md",
     "H3/README.md",
@@ -263,7 +264,6 @@
     "GF2/Projekter/README.md",
     "GF2/Projekter/Blazor/wwwroot/favicon.png",
     "H4/flutter_app/README.md",
-    "H4/README.md",
-    "README.md"
+    "H4/README.md"
   ]
 }
