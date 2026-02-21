@@ -1,1 +1,7 @@
-{}
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "Assets",
+  "uriCallbacks": true,
+  "showLineNumber": true
+}

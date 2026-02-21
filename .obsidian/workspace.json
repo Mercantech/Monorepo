@@ -144,8 +144,8 @@
                 "showSearch": false,
                 "searchQuery": ""
               },
-              "icon": "lucide-archive",
-              "title": "All properties"
+              "icon": "lucide-ghost",
+              "title": "all-properties"
             }
           },
           {
@@ -183,17 +183,17 @@
   },
   "active": "61b215765ddf403f",
   "lastOpenFiles": [
+    "GF2/Teori/obj/Debug/net9.0/mbeq4xsh.ouq~",
+    "GF2/UnitTest/bin/Debug/net8.0/qlmm53jq.irv~",
+    "GF2/UnitTest/obj/Debug/net8.0/qwgncr1l.rdw~",
+    "GF2/WPF/obj/Debug/net8.0-windows/euzv4yrz.w1y~",
+    "GF2/Opgaver/obj/Debug/net8.0/a1pzpb52.sxj~",
+    "H5-MAGS",
+    "H3-MAGS",
+    "H1-MAGS",
+    "H6",
     "H3/Arduino/test/test_temp_color.cpp",
     "H3/Arduino/src/main.cpp",
-    "H3/Arduino/test/README",
-    "H3/Arduino/src/secrets.h.example",
-    "H3/Arduino/src/temp_color.cpp",
-    "H3/Arduino/src/secrets.h",
-    "H3/Arduino/src/led_utils.cpp",
-    "H3/Arduino/include/led_utils.h",
-    "H3/Arduino/src/display_utils.cpp",
-    "H3/Arduino/lib/README",
-    "H3/Arduino/include/config.h",
     "H3/H3-Noter/Welcome.md",
     "H3/Arduino/README.md",
     "H3/README.md",
