@@ -241,6 +241,15 @@
   },
   "active": "61b215765ddf403f",
   "lastOpenFiles": [
+    "Hovedforløb/Templates/Obsidian",
+    "Hovedforløb/Templates/README.md",
+    "Hovedforløb/Templates/H-Templates.md",
+    "Hovedforløb/Templates/H1/Dokumentation/UMLClassD.md",
+    "Hovedforløb/Templates/H1/Dokumentation/README.md",
+    "Hovedforløb/Templates/H1/Dokumentation/DB.sql",
+    "Hovedforløb/Templates/H1/Dokumentation/boxes.md",
+    "Hovedforløb/Templates/H1/Dokumentation/arrows.md",
+    "Hovedforløb/Templates/H1/Dokumentation",
     "Obsidian/Monorepo/README.md",
     "GF2/WPF/obj/Debug/net10.0-windows/GeneratedInternalTypeHelper.g.cs",
     "Hovedforløb/Templates/H1/Banko/Blazor/appsettings.example.json",
@@ -250,8 +259,6 @@
     "Hovedforløb/Templates/H1/Banko/Blazor/obj/Debug/net10.0/project.razor.json",
     "Hovedforløb/Templates/H1/Banko/Blazor/obj/Debug/net10.0/project.razor.json.temp",
     "GF2/MSTest-Opgaver/obj/Debug/net10.0/gfvgejbi.g5t~",
-    "GF2/WPF/obj/Debug/net10.0-windows/Wordle.baml",
-    "GF2/WPF/obj/Debug/net10.0-windows/Wordle.g.cs",
     "Hovedforløb/Templates/H1/Banko/Blazor/wwwroot/favicon.png",
     "Hovedforløb/Templates/H1/Banko/Assets/favicon.png",
     "Hovedforløb/Templates/H1/Banko/README.md",
@@ -276,13 +283,6 @@
     "GF2/CSharp-Bogen/11. LINQ.md",
     "GF2/CSharp-Bogen/10. Kodestandarter.md",
     "GF2/Notes/Welcome.md",
-    "GF2/Opgaver/Solutions/7-Classes.md",
-    "GF2/Opgaver/Solutions/6-Methods.md",
-    "GF2/Opgaver/Solutions/5-Arrays.md",
-    "GF2/Opgaver/Solutions/4-Loops.md",
-    "GF2/Opgaver/Solutions/3-ControlFlow.md",
-    "GF2/Opgaver/Solutions/2-Inputs.md",
-    "GF2/Opgaver/Solutions/1-Variabler.md",
     "GF2/Projekter/Blazor/wwwroot/favicon.png"
   ]
 }
