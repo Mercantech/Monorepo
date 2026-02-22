@@ -95,6 +95,32 @@ Teoretiske eksempler og demonstrationskode:
 - [LINQ eksempler](Teori/TeoriEmner/LINQ.cs) - (under udvikling)
 - [Hovedprogram](Teori/Program.cs) - Praktiske kodeeksempler med kommentarer
 
+## 🖱️ Editor og udviklingsmiljø
+
+Du kan arbejde med opgaver og projekterne i **Visual Studio** (fuld IDE) eller **VS Code** – begge understøtter C# og .NET fint.
+
+**På GF2** bruger vi **GitHub Codespaces** for nemhedens skyld. Her er en kort guide:
+
+### Hvad er GitHub Codespaces?
+
+**Codespaces** er GitHub's cloud-baserede udviklingsmiljø: du får en fuld Linux-maskine i skyen med VS Code-oplevelsen i browseren (eller i VS Code-appen). Du behøver ikke installere .NET, Git eller andet på din egen computer – det er allerede sat op i Codespace'en. Perfekt til skolebrug, når alle skal kunne køre samme kode uden forskellige opsætninger.
+
+### Sådan åbner du GF2 i Codespaces
+
+1. **Åbn repo'et på GitHub** (fx det repo, I bruger til GF2).
+2. Klik på den grønne **"Code"**-knap øverst til højre.
+3. Vælg fanen **"Codespaces"**.
+4. Klik **"Create codespace on main"** (eller vælg en anden branch).  
+   – GitHub starter en ny Codespace; det tager typisk 1–2 minutter første gang.
+5. Når den er klar, åbnes VS Code i browseren med hele projektet. Du kan nu fx:
+   - Åbne terminalen (`` Ctrl+` `` eller **Terminal → New Terminal**)
+   - Køre opgaverne: `cd Opgaver` og derefter `dotnet run`
+   - Redigere filer som i VS Code
+
+**Tip:** Du kan også bruge **"Code" → "Open in GitHub Codespaces"** fra repo-siden, hvis du foretrækker den vej.
+
+Når du er færdig, lukker du bare fanen eller stopper Codespace'en under **github.com → Your codespaces** for at spare ressourcer.
+
 ## 🚀 Kom i gang
 
 1. **Kør opgaverne:** [Program.cs](Opgaver/Program.cs) - Interaktivt konsolprogram
