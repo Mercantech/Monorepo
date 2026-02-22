@@ -1,0 +1,82 @@
+[
+  {
+    "path": "Courses/H1-MAGS",
+    "url": "https://github.com/Mercantech/H1-MAGS.git"
+  },
+  {
+    "path": "Courses/H2-MAGS",
+    "url": "https://github.com/Mercantech/H2-MAGS.git"
+  },
+  {
+    "path": "Courses/H4-MAGS",
+    "url": "https://github.com/Mercantech/H4-MAGS.git"
+  },
+  {
+    "path": "Courses/H5-MAGS",
+    "url": "https://github.com/Mercantech/H5-MAGS.git"
+  },
+  {
+    "path": "Courses/Templates/H1",
+    "url": "https://github.com/Mercantech/h1.git"
+  },
+  {
+    "path": "Courses/Templates/H2",
+    "url": "https://github.com/Mercantech/h2.git"
+  },
+  {
+    "path": "Courses/Templates/H3",
+    "url": "https://github.com/Mercantech/h3.git"
+  },
+  {
+    "path": "Courses/Templates/H4",
+    "url": "https://github.com/Mercantech/h4.git"
+  },
+  {
+    "path": "Courses/Templates/H5",
+    "url": "https://github.com/Mercantech/h5.git"
+  },
+  {
+    "path": "Courses/Templates/H6",
+    "url": "https://github.com/Mercantech/h6.git"
+  },
+  {
+    "path": "Projekter/videnstjek",
+    "url": "https://github.com/Mercantech/videnstjek.git"
+  },
+  {
+    "path": "Projekter/eval",
+    "url": "https://github.com/Mercantech/eval.git"
+  },
+  {
+    "path": "Projekter/activeDirectoryTesting",
+    "url": "https://github.com/Mercantech/activeDirectoryTesting.git"
+  },
+  {
+    "path": "Projekter/aspire-exampels",
+    "url": "https://github.com/Mercantech/aspire-exampels.git"
+  },
+  {
+    "path": "Projekter/ctf",
+    "url": "https://github.com/Mercantech/ctf.git"
+  },
+  {
+    "path": "DOD",
+    "url": "https://github.com/Mercantech/DOD.git"
+  },
+  {
+    "path": "DOD/Proxi",
+    "url": "https://github.com/Mercantech/Proxi.git"
+  },
+  {
+    "path": "GF2",
+    "url": "https://github.com/Mercantech/GF2.git"
+  },
+  {
+    "path": "GF2-MAGS",
+    "url": "https://github.com/Mercantech/GF2-MAGS.git"
+  },
+  {
+    "path": "MachineLearning",
+    "url": "https://github.com/Mercantech/MachineLearning.git"
+  }
+]
