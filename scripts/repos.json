@@ -20,6 +20,10 @@
     "url": "https://github.com/Mercantech/h1.git"
   },
   {
+    "path": "Courses/Templates/H1/Banko",
+    "url": "https://github.com/Mercantech/Banko.git"
+  },
+  {
     "path": "Courses/Templates/H2",
     "url": "https://github.com/Mercantech/h2.git"
   },
@@ -49,7 +53,7 @@
   },
   {
     "path": "Projekter/activeDirectoryTesting",
-    "url": "https://github.com/Mercantech/activeDirectoryTesting.git"
+    "url": "https://github.com/Mercantech/ActiveDirectoryTester.git"
   },
   {
     "path": "Projekter/aspire-exampels",

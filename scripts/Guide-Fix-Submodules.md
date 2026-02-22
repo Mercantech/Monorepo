@@ -71,19 +71,124 @@ git push origin main
 
 ## Dine 9 submodules – hurtigreference
 
-| Sti | List-Repos nr. | Forslag |
-|-----|----------------|--------|
-| Courses/H4-MAGS | 3 | Metode B: `Sync-OneRepo -Index 3 -Pull`, derefter fjern .git + git rm --cached + git add |
-| Courses/Templates/H1 | 5 | Samme |
-| Courses/Templates/H5 | 9 | Samme |
-| Projekter/videnstjek | 10 | Samme |
-| Projekter/activeDirectoryTesting | 11 | Samme |
-| Projekter/aspire-exampels | 12 | Samme |
-| Projekter/ctf | 13 | Samme |
-| GF2 | 16 | Samme |
-| MachineLearning | 18 | Samme |
+Kør fra **monorepo-roden**. Kopier hele blokken for den repo du vil fixe, indsæt i PowerShell, kør. Derefter evt. `git commit` og `git push` når du har gjort flere.
 
-**Tip:** Kør `.\scripts\List-Repos.ps1` for at se de præcise numre (de kan ændres hvis du redigerer repos.json).
+---
+
+### 1. Courses/H4-MAGS (nr. 3)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 3 -Pull
+Remove-Item -Recurse -Force "Courses/H4-MAGS\.git" -ErrorAction SilentlyContinue
+git rm --cached "Courses/H4-MAGS"
+git add "Courses/H4-MAGS"
+```
+
+---
+
+### 2. Courses/Templates/H1 (nr. 5)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 5 -Pull
+Remove-Item -Recurse -Force "Courses/Templates/H1\.git" -ErrorAction SilentlyContinue
+git rm --cached "Courses/Templates/H1"
+git add "Courses/Templates/H1"
+```
+
+---
+
+### 3. Courses/Templates/H5 (nr. 10)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 10 -Pull
+Remove-Item -Recurse -Force "Courses/Templates/H5\.git" -ErrorAction SilentlyContinue
+git rm --cached "Courses/Templates/H5"
+git add "Courses/Templates/H5"
+```
+
+---
+
+### 4. Projekter/videnstjek (nr. 12)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 12 -Pull
+Remove-Item -Recurse -Force "Projekter/videnstjek\.git" -ErrorAction SilentlyContinue
+git rm --cached "Projekter/videnstjek"
+git add "Projekter/videnstjek"
+```
+
+---
+
+### 5. Projekter/activeDirectoryTesting (nr. 14)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 14 -Pull
+Remove-Item -Recurse -Force "Projekter/activeDirectoryTesting\.git" -ErrorAction SilentlyContinue
+git rm --cached "Projekter/activeDirectoryTesting"
+git add "Projekter/activeDirectoryTesting"
+```
+
+---
+
+### 6. Projekter/aspire-exampels (nr. 15)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 15 -Pull
+Remove-Item -Recurse -Force "Projekter/aspire-exampels\.git" -ErrorAction SilentlyContinue
+git rm --cached "Projekter/aspire-exampels"
+git add "Projekter/aspire-exampels"
+```
+
+---
+
+### 7. Projekter/ctf (nr. 16)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 16 -Pull
+Remove-Item -Recurse -Force "Projekter/ctf\.git" -ErrorAction SilentlyContinue
+git rm --cached "Projekter/ctf"
+git add "Projekter/ctf"
+```
+
+---
+
+### 8. GF2 (nr. 19)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 19 -Pull
+Remove-Item -Recurse -Force "GF2\.git" -ErrorAction SilentlyContinue
+git rm --cached "GF2"
+git add "GF2"
+```
+
+---
+
+### 9. MachineLearning (nr. 21)
+
+```powershell
+.\scripts\Sync-OneRepo.ps1 -Index 21 -Pull
+Remove-Item -Recurse -Force "MachineLearning\.git" -ErrorAction SilentlyContinue
+git rm --cached "MachineLearning"
+git add "MachineLearning"
+```
+
+---
+
+**Tabeloversigt**
+
+| Sti | Nr. |
+|-----|-----|
+| Courses/H4-MAGS | 3 |
+| Courses/Templates/H1 | 5 |
+| Courses/Templates/H5 | 10 |
+| Projekter/videnstjek | 12 |
+| Projekter/activeDirectoryTesting | 14 |
+| Projekter/aspire-exampels | 15 |
+| Projekter/ctf | 16 |
+| GF2 | 19 |
+| MachineLearning | 21 |
+
+**Tip:** Kør `.\scripts\List-Repos.ps1` for at se numre (ændres hvis du redigerer repos.json). Hvis `git rm --cached` siger "did not match any file", spring den linje over.
 
 ---
 

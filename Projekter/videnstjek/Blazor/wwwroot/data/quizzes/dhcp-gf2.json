@@ -1,0 +1,201 @@
+{
+  "id": "dhcp-gf2",
+  "title": "GF2 - DHCP (helt grundlæggende)",
+  "description": "Test din viden om DHCP: hvad det er, DORA-forløbet, leases, scope/pool, reservationer og typiske fejlscenarier",
+  "category": "GF2",
+  "difficulty": "Begynder",
+  "estimatedTime": "8-12 minutter",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "Hvad er DHCP?",
+      "options": {
+        "A": "En protokol der krypterer webtrafik",
+        "B": "En protokol der automatisk tildeler IP-konfiguration til klienter",
+        "C": "En protokol der oversætter domænenavne til IP-adresser",
+        "D": "En firewall der blokerer uønsket trafik"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det er typisk HTTPS/TLS, der krypterer webtrafik.",
+        "B": "✅ DHCP (Dynamic Host Configuration Protocol) bruges til automatisk at give klienter fx IP-adresse, subnetmaske, gateway og DNS.",
+        "C": "❌ Det er DNS, der oversætter domænenavne til IP-adresser.",
+        "D": "❌ En firewall er ikke en DHCP-protokol."
+      },
+      "learnMore": {
+        "title": "What is DHCP?",
+        "description": "Grundig og enkel forklaring på hvad DHCP er, og hvorfor det bruges.",
+        "url": "https://www.cloudflare.com/learning/network-layer/what-is-dhcp/",
+        "type": "article",
+        "icon": "fas fa-network-wired"
+      }
+    },
+    {
+      "id": 2,
+      "questionText": "Hvilke UDP-porte bruges typisk af DHCP (IPv4)?",
+      "options": {
+        "A": "UDP 67 (server)",
+        "B": "UDP 68 (klient)",
+        "C": "TCP 443 (HTTPS)",
+        "D": "UDP 53 (DNS)"
+      },
+      "correctAnswers": ["A", "B"],
+      "explanations": {
+        "A": "✅ DHCP-serveren lytter typisk på UDP port 67.",
+        "B": "✅ DHCP-klienten bruger typisk UDP port 68.",
+        "C": "❌ TCP 443 bruges af HTTPS, ikke DHCP.",
+        "D": "❌ UDP 53 bruges af DNS, ikke DHCP."
+      }
+    },
+    {
+      "id": 3,
+      "questionText": "Hvad er den korrekte rækkefølge i det klassiske DHCP-forløb (DORA)?",
+      "options": {
+        "A": "Discover → Request → Offer → Acknowledge",
+        "B": "Discover → Offer → Request → Acknowledge",
+        "C": "Offer → Discover → Request → Acknowledge",
+        "D": "Discover → Offer → Acknowledge → Request"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Offer kommer før Request.",
+        "B": "✅ DORA står for Discover, Offer, Request, Acknowledge (ACK).",
+        "C": "❌ Klienten starter med Discover, ikke Offer.",
+        "D": "❌ Request kommer før Acknowledge."
+      },
+      "learnMore": {
+        "title": "Dynamic Host Configuration Protocol (DHCP)",
+        "description": "Overblik over DHCP og hvordan tildelingen typisk foregår.",
+        "url": "https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol",
+        "type": "article",
+        "icon": "fas fa-book-open"
+      }
+    },
+    {
+      "id": 4,
+      "questionText": "Hvad betyder det, at en IP-adresse er tildelt som en 'lease'?",
+      "options": {
+        "A": "At IP-adressen er låst til en bestemt switchport for altid",
+        "B": "At IP-adressen er midlertidigt tildelt i en bestemt tidsperiode",
+        "C": "At IP-adressen kun virker til internettet, ikke i LAN",
+        "D": "At IP-adressen automatisk bliver en public IP"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ DHCP lease handler ikke om switchporte eller 'for altid'.",
+        "B": "✅ En lease er en tidsbegrænset tildeling, som klienten typisk fornyer automatisk.",
+        "C": "❌ Leases har ikke noget at gøre med om IP’en virker i LAN eller internet.",
+        "D": "❌ DHCP gør ikke i sig selv en IP-adresse public."
+      }
+    },
+    {
+      "id": 5,
+      "questionText": "Hvad er en DHCP scope/pool?",
+      "options": {
+        "A": "En liste over MAC-adresser som må få internet",
+        "B": "Et interval af IP-adresser som DHCP må uddele",
+        "C": "En liste over DNS-navne der må bruges",
+        "D": "En krypteringsnøgle til netværket"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ Det beskriver mere en adgangsliste/filtrering, ikke en DHCP pool.",
+        "B": "✅ En pool/scope er det område af IP-adresser, som serveren kan uddele til klienter.",
+        "C": "❌ DNS-navne styres ikke af DHCP scope/pool.",
+        "D": "❌ DHCP bruger ikke en 'krypteringsnøgle' på den måde."
+      }
+    },
+    {
+      "id": 6,
+      "questionText": "Hvilke udsagn om DHCP-reservation og statisk IP er korrekte?",
+      "options": {
+        "A": "En DHCP-reservation giver samme IP til en bestemt enhed (typisk via MAC-adresse)",
+        "B": "En statisk IP betyder at klienten ikke behøver DHCP for at få sin IP",
+        "C": "En DHCP-reservation virker kun på Wi-Fi, ikke på kabel",
+        "D": "En statisk IP kræver altid en DHCP-server for at fungere"
+      },
+      "correctAnswers": ["A", "B"],
+      "explanations": {
+        "A": "✅ Korrekt - en reservation gør, at en bestemt klient får en fast IP via DHCP.",
+        "B": "✅ Korrekt - ved statisk IP sættes IP-konfiguration direkte på klienten.",
+        "C": "❌ Reservationer er ikke bundet til Wi‑Fi; de virker også på kabel (og generelt uanset medie).",
+        "D": "❌ Statisk IP fungerer uden DHCP-server."
+      }
+    },
+    {
+      "id": 7,
+      "questionText": "Hvilke 2 oplysninger er mest almindelige at få med fra DHCP i et standard LAN (ud over selve IP-adressen)?",
+      "options": {
+        "A": "Default gateway",
+        "B": "DNS-server",
+        "C": "CPU-type på computeren",
+        "D": "Administratorens adgangskode"
+      },
+      "correctAnswers": ["A", "B"],
+      "explanations": {
+        "A": "✅ Default gateway bruges til at nå ud af subnettet (fx til internettet via routeren).",
+        "B": "✅ DNS-server bruges til navneopslag (fx `google.com` → IP).",
+        "C": "❌ Hardwareinfo som CPU-type udleveres ikke typisk via DHCP.",
+        "D": "❌ Passwords udleveres ikke via DHCP."
+      }
+    },
+    {
+      "id": 8,
+      "questionText": "Hvad betyder det typisk, når en Windows-klient får en IP-adresse i 169.254.x.x?",
+      "options": {
+        "A": "Klienten har fået en public IP fra internettet",
+        "B": "DHCP fejlede, og klienten brugte APIPA (automatisk lokal adresse)",
+        "C": "DNS virker ikke, så IP’en skifter til 169.254.x.x",
+        "D": "Subnetmasken er altid 255.255.0.0 på alle netværk"
+      },
+      "correctAnswers": ["B"],
+      "explanations": {
+        "A": "❌ 169.254.0.0/16 er et link-local område, ikke public IP.",
+        "B": "✅ Det er typisk APIPA/link-local, når klienten ikke kan få svar fra DHCP.",
+        "C": "❌ DNS-problemer giver normalt ikke 169.254.x.x.",
+        "D": "❌ Subnetmaske afhænger af netværket; den er ikke 'altid' det samme."
+      }
+    },
+    {
+      "id": 9,
+      "questionText": "Hvorfor sendes en DHCP Discover typisk som broadcast?",
+      "options": {
+        "A": "Fordi klienten ikke kender DHCP-serverens IP-adresse endnu",
+        "B": "Fordi broadcast er hurtigere end unicast",
+        "C": "Fordi DHCP altid bruger TCP",
+        "D": "Fordi DNS kun virker med broadcast"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ Klienten har endnu ikke en IP-konfiguration og kender ikke serveren, så den råber ud til hele subnettet.",
+        "B": "❌ Det handler ikke om at være 'hurtigere', men om at nå en ukendt server i samme subnet.",
+        "C": "❌ DHCP bruger typisk UDP, ikke TCP.",
+        "D": "❌ DNS har ikke noget med broadcast Discover at gøre."
+      }
+    },
+    {
+      "id": 10,
+      "questionText": "Hvornår har man typisk brug for en DHCP relay (ofte kaldet 'IP helper')?",
+      "options": {
+        "A": "Når DHCP-serveren ligger i et andet subnet, og routere normalt ikke videresender broadcasts",
+        "B": "Når man vil gøre Wi‑Fi hurtigere",
+        "C": "Når man vil kryptere DHCP-trafik",
+        "D": "Når man vil slå DNS helt fra"
+      },
+      "correctAnswers": ["A"],
+      "explanations": {
+        "A": "✅ DHCP relay hjælper DHCP-broadcasts med at komme mellem subnets/VLANs til en central DHCP-server.",
+        "B": "❌ DHCP relay handler ikke om Wi‑Fi performance.",
+        "C": "❌ DHCP relay krypterer ikke trafikken.",
+        "D": "❌ DHCP relay har ikke som formål at deaktivere DNS."
+      },
+      "learnMore": {
+        "title": "DHCP relay agent",
+        "description": "Kort forklaring af hvorfor og hvornår man bruger DHCP relay på tværs af subnets.",
+        "url": "https://en.wikipedia.org/wiki/DHCP_relay",
+        "type": "article",
+        "icon": "fas fa-route"
+      }
+    }
+  ]
+}

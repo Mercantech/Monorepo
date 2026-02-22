@@ -19,9 +19,6 @@ namespace Blazor
             // Add QuizIndexGenerator
             builder.Services.AddScoped<IQuizIndexGenerator, QuizIndexGenerator>();
             
-            // Add Two Stars feedback board
-            builder.Services.AddSingleton<ITwoStarsWishBoard, TwoStarsWishBoard>();
-            
             // Add Health Checks
             builder.Services.AddHealthChecks();
 
