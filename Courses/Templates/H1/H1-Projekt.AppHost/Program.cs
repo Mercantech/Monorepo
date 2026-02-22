@@ -1,5 +1,5 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Blazor>("blazor");
+builder.AddProject<Projects.BlazorApp>("blazor");
 
 builder.Build().Run();
