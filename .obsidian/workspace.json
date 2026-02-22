@@ -53,12 +53,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hovedforløb/Templates/H1/Banko/README.md",
+                "file": "Obsidian/Monorepo/New Git repo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "New Git repo"
             }
           },
           {
@@ -241,17 +241,19 @@
   },
   "active": "61b215765ddf403f",
   "lastOpenFiles": [
-    "Hovedforløb/Templates/H1/Banko/Blazor/obj/Debug/net10.0/project.razor.json.temp",
-    "Hovedforløb/Templates/H1/Projekt/H1-Projekt.AppHost/obj/Debug/net9.0/Aspire/references/BlazorApp.ProjectMetadata.g.cs",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/Debug/net10.0/BlazorApp.assets.cache",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/BlazorApp.csproj.nuget.dgspec.json",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/project.nuget.cache",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/project.assets.json",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/BlazorApp.csproj.nuget.g.targets",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/BlazorApp.csproj.nuget.g.props",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/BlazorApp.csproj.user",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/Debug/net10.0/staticwebassets.removed.txt",
-    "Hovedforløb/Templates/H1/Projekt/BlazorApp/obj/Debug/net10.0/rpswa.dswa.cache.json",
+    "Hovedforløb/Templates/H1/Projekt/BlazorApp/Dockerfile",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Dev/JWTio.razor.css",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Dev/JWTio.razor",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Dev/Database.razor",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Dev/Database.razor.css",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Admin/Users.razor",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Weather.razor",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Login.razor.css",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Login.razor",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Home.razor.css",
+    "Hovedforløb/Templates/H1/Blazor/Components/Pages/Home.razor",
+    "Hovedforløb/Templates/H1/Blazor/wwwroot/favicon.png",
+    "Hovedforløb/Templates/H1/Projekt/Blazor/wwwroot/favicon.png",
     "Hovedforløb/Templates/H1/Projekt/BlazorApp/wwwroot/favicon.png",
     "GF2/MSTest-Opgaver/README.md",
     "Obsidian/CSharp/CSharp.md",
