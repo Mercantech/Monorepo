@@ -4,6 +4,16 @@ Denne mappe indeholder **starterkode og skabeloner** til H1, H2, H3, H4 og H5. H
 
 ---
 
+## Fælles Obsidian-notesbog (H1–H5)
+
+**Alle forløb bruger den samme Obsidian-notesbog-skabelon** – samme plugins, layout og idéer.
+
+- **Skabelon:** [Obsidian/](Obsidian/) – indeholder `.obsidian/` (config, plugins, workspace) og `Noter/Welcome.md`.
+- **Brug:** Kopiér hele indholdet af `Obsidian/` ind i det forløb du vil opdatere (fx H2 eller H4), erstat evt. eksisterende `.obsidian` og notes-mappe, og omdøb derefter `Noter` til **H1-Noter**, **H2-Noter**, **H3-Noter**, **H4-Noter** eller **H5-Noter** efter behov.
+- **Detaljer:** Se [Obsidian/README.md](Obsidian/README.md) for trin-for-trin og opdatering af alle forløb.
+
+---
+
 ## H1 – Blazor, domænemodeller, dokumentation og SQL
 
 **Formål:** Første hovedforløbsprojekt med Blazor (ofte Blazor Server), database og dokumentation.
