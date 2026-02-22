@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Opgaver/Solutions/1-Variabler.md",
+                "file": "CSharp-Bogen/2. Variabler.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1-Variabler"
+              "title": "2. Variabler"
             }
           }
         ]
@@ -201,12 +201,13 @@
   },
   "active": "c15e2d6affce5eaa",
   "lastOpenFiles": [
+    "CSharp-Bogen/1. Dit første program.md",
+    "Opgaver/Solutions/1-Variabler.md",
     "Opgaver/Solutions/5-Arrays.md",
     "Opgaver/Solutions/6-Methods.md",
     "Opgaver/Solutions/4-Loops.md",
     "Opgaver/Solutions/3-ControlFlow.md",
     "Opgaver/Solutions/2-Inputs.md",
-    "Opgaver/Solutions/1-Variabler.md",
     "CSharp-Bogen/CSharp-Bogen.md",
     "CSharp-Bogen/7. Loops og iterationer.md",
     "CSharp-Bogen/8. Metoder - Funktioner.md",
@@ -219,7 +220,6 @@
     "CSharp-Bogen/3.5 Inputs.md",
     "CSharp-Bogen/3. Expressions og operatører.md",
     "CSharp-Bogen/2. Variabler.md",
-    "CSharp-Bogen/1. Dit første program.md",
     "README.md",
     "CSharp-Bogen/Canva.canvas",
     "CSharp-Bogen",

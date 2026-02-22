@@ -75,8 +75,7 @@
               "title": "CSharp"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -240,8 +239,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5b8c86fe7a80afde",
+  "active": "a34ff97ebd7ab1ff",
   "lastOpenFiles": [
+    "Obsidian/CSharp/CSharp.md",
     "README.md",
     "GF2/CSharp-Bogen/1. Dit første program.md",
     "GF2/CSharp-Bogen/CSharp-Bogen.md",
@@ -271,7 +271,6 @@
     "GF2/Opgaver/7. Classes - løsning.md",
     "GF2/Opgaver/Solutions",
     "GF2/Opgaver/6. Methods - løsning.md",
-    "GF2/Opgaver/5. Arrays - løsning.md",
     "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfo.cs",
     "GF2/Opgaver/obj/Debug/net10.0/Opgaver.AssemblyInfoInputs.cache",
     "GF2/Opgaver/obj/Debug/net10.0/Opgaver.GeneratedMSBuildEditorConfig.editorconfig",
