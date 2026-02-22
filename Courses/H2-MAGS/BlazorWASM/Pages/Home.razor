@@ -1,0 +1,269 @@
+﻿@page "/"
+@inject IAuthService AuthService
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@using System.Security.Claims
+@using System.IdentityModel.Tokens.Jwt
+@using System.Text.Json
+@using DomainModels.DTOs.Room
+@using DomainModels.DTOs.Booking
+@inject ILocalStorageService LocalStorage
+
+<PageTitle>MAGS Hotels</PageTitle>
+
+<div class="hero-section">
+    <div class="hero-content">
+        @if (isAuthenticated)
+        {
+            <div class="welcome-message mb-4">
+                <h2>Velkommen tilbage, @userName! 👋</h2>
+                <p>Klar til at planlægge dit næste eventyr?</p>
+            </div>
+        }
+        else
+        {
+            <h1 class="display-4">Find dit perfekte ophold</h1>
+            <p class="lead">Oplev luksuriøse hoteller og uforglemmelige øjeblikke</p>
+        }
+        
+        <div class="search-box">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="date" class="form-control" @bind="checkIn" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="col-md-4">
+                    <input type="date" class="form-control" @bind="checkOut" min="@(checkIn?.AddDays(1).ToString("yyyy-MM-dd"))" />
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary w-100" @onclick="SearchRooms">Søg</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Tilgængelige værelser</h2>
+    
+    @if (isLoading)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Indlæser...</span>
+            </div>
+        </div>
+    }
+    else if (rooms != null && rooms.Any())
+    {
+        <div class="row">
+            @foreach (var room in rooms)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card room-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Værelse @room.RoomNumber</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@room.RoomType.Name</h6>
+                            <p class="card-text">@room.RoomType.Description</p>
+                            <p class="card-text">
+                                <small class="text-muted">Størrelse: @room.RoomType.Size m²</small>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">@room.PricePerNight.ToString("C0") pr. nat</h5>
+                                <button class="btn btn-primary" @onclick="() => BookRoom(room.Id)"
+                                        disabled="@(!isAuthenticated)">
+                                    @if (isAuthenticated)
+                                    {
+                                        <span>Book nu</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Log ind for at booke</span>
+                                    }
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Ingen ledige værelser fundet i den valgte periode.
+        </div>
+    }
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hotel-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: white;
+        margin-bottom: 2rem;
+    }
+
+    .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .search-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 2rem;
+    }
+
+    .destination-card {
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+
+    .destination-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .welcome-message {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .room-card {
+        transition: transform 0.2s;
+        height: 100%;
+    }
+
+    .room-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+</style>
+
+@code {
+    private bool isAuthenticated = false;
+    private bool isLoading = false;
+    private string userName = string.Empty;
+    private string userId = string.Empty;
+    private List<RoomDetailsDTO> rooms;
+    private DateTime? checkIn = DateTime.Now.AddDays(1);
+    private DateTime? checkOut = DateTime.Now.AddDays(2);
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAuthenticated = await AuthService.IsAuthenticatedAsync();
+        
+        if (isAuthenticated)
+        {
+            var token = await AuthService.GetTokenAsync();
+            if (!string.IsNullOrEmpty(token))
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var jwtToken = handler.ReadJwtToken(token);
+                
+                userId = jwtToken.Claims.First(c => c.Type == JwtRegisteredClaimNames.Sub).Value;
+                var nameClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+                userName = nameClaim?.Value ?? userId;
+            }
+        }
+
+        var user = await LocalStorage.GetItemAsync<object>("user");
+        if (user != null)
+        {
+            userName = ((JsonElement)user).GetProperty("Name").GetString();
+        }
+
+        await SearchRooms();
+    }
+
+    private async Task SearchRooms()
+    {
+        try
+        {
+            isLoading = true;
+            var response = await Http.GetAsync("api/Rooms/details");
+            if (response.IsSuccessStatusCode)
+            {
+                rooms = await response.Content.ReadFromJsonAsync<List<RoomDetailsDTO>>();
+                
+                // Filtrer værelser baseret på bookinger hvis datoer er valgt
+                if (checkIn.HasValue && checkOut.HasValue)
+                {
+                    var bookingsResponse = await Http.GetAsync("api/Bookings");
+                    if (bookingsResponse.IsSuccessStatusCode)
+                    {
+                        var bookings = await bookingsResponse.Content.ReadFromJsonAsync<List<GetBookingDTO>>();
+                        rooms = rooms.Where(room => 
+                            !bookings.Any(b => 
+                                b.CheckIn < checkOut && 
+                                b.CheckOut > checkIn)).ToList();
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Der opstod en fejl ved søgning efter værelser.");
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task BookRoom(string roomId)
+    {
+        if (!checkIn.HasValue || !checkOut.HasValue)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Vælg venligst check-in og check-out datoer.");
+            return;
+        }
+
+        try
+        {
+            var booking = new CreateBookingDTO
+            {
+                //UserId = userId,
+                //RoomId = roomId,
+                // Konverter til UTC før afsendelse
+                CheckIn = checkIn.Value.ToUniversalTime(),
+                CheckOut = checkOut.Value.ToUniversalTime()
+            };
+
+            var response = await Http.PostAsJsonAsync("api/Bookings", booking);
+            if (response.IsSuccessStatusCode)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Booking gennemført!");
+                NavigationManager.NavigateTo("/bookings");
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                await JSRuntime.InvokeVoidAsync("alert", $"Booking fejlede: {error}");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Der opstod en fejl ved booking af værelset.");
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}

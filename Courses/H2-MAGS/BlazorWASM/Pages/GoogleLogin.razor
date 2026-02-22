@@ -1,0 +1,33 @@
+@page "/google-login"
+@inject IGoogleAuthService GoogleAuthService
+@inject IJSRuntime JSRuntime
+@inject HttpClient HttpClient
+
+<h3>Google Login</h3>
+
+<div id="g_id_onload"
+     data-client_id="651368027146-uo6aq2thrbapivjqe93ari72t65m828m.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
+<div class="g_id_signin" data-type="standard"></div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var script = await HttpClient.GetStringAsync("api/GoogleAuth/login");
+            await JSRuntime.InvokeVoidAsync("eval", script);
+        }
+    }
+
+    [JSInvokable]
+    public async Task HandleCredentialResponse(string credential)
+    {
+        var success = await GoogleAuthService.LoginAsync(credential);
+        if (!success)
+        {
+            // Håndter login fejl  
+        }
+    }
+} 

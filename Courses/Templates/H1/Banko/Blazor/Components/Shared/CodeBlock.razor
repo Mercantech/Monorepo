@@ -1,0 +1,20 @@
+@* Genbrugelig komponent til syntax highlighted code blocks *@
+@if (!string.IsNullOrEmpty(Code))
+{
+    <div class="code-block">
+        <pre><code class="language-@Language">@((MarkupString)Code)</code></pre>
+    </div>
+}
+else if (ChildContent != null)
+{
+    <div class="code-block">
+        <pre><code class="language-@Language">@ChildContent</code></pre>
+    </div>
+}
+
+@code {
+    [Parameter] public string Code { get; set; } = string.Empty;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public string Language { get; set; } = "csharp";
+}
+

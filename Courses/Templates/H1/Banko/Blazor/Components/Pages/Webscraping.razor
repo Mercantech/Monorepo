@@ -1,0 +1,600 @@
+@page "/webscraping"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Webscraping</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="display-4 mb-4">Webscraping</h1>
+    
+    <div class="row">
+        <div class="col-lg-10">
+            <section class="mb-5">
+                <p class="lead">
+                    Webscraping er teknikken at automatisk hente og ekstrahere data fra websites. 
+                    I denne guide lærer du om begrebet, værktøjer, etiske overvejelser og hvordan man analyserer en DOM struktur.
+                </p>
+            </section>
+
+            <!-- Læringsmål 1: Begreb og værktøjer -->
+            <section class="mb-5">
+                <h2>1. Hvad er Webscraping?</h2>
+                
+                <p>
+                    <strong>Webscraping</strong> (også kaldt web harvesting eller web data extraction) er en proces, 
+                    hvor man automatisk henter data fra websites ved hjælp af software. I stedet for manuelt at kopiere 
+                    data fra en hjemmeside, kan man lade et program gøre det automatisk.
+                </p>
+
+                <h3 class="mt-4">Hvorfor bruge Webscraping?</h3>
+                <ul>
+                    <li>Automation af datahentning fra websites</li>
+                    <li>Overvågning af prisændringer</li>
+                    <li>Samling af forskningsdata</li>
+                    <li>Aggregering af nyheder fra flere kilder</li>
+                    <li>Markedsanalyse og konkurrentovervågning</li>
+                </ul>
+
+                <h3 class="mt-4">Populære Værktøjer til Webscraping</h3>
+                
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Python Værktøjer</h5>
+                                <ul class="list-unstyled">
+                                    <li><strong>Beautiful Soup:</strong> Nem parsing af HTML/XML</li>
+                                    <li><strong>Scrapy:</strong> Komplet webscraping framework</li>
+                                    <li><strong>Selenium:</strong> Automatisering af browsere</li>
+                                    <li><strong>Requests:</strong> HTTP bibliotek til at hente sider</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">C#/.NET Værktøjer</h5>
+                                <ul class="list-unstyled">
+                                    <li><strong>HtmlAgilityPack:</strong> HTML parsing bibliotek</li>
+                                    <li><strong>AngleSharp:</strong> Modern HTML parser</li>
+                                    <li><strong>PuppeteerSharp:</strong> Browser automatisering</li>
+                                    <li><strong>HttpClient:</strong> HTTP requests til at hente sider</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Eksempel: Simple Webscraping med C#</h3>
+                <CodeBlock Language="csharp">
+using HtmlAgilityPack;
+using System.Net.Http;
+
+public class WebScraper
+{
+    public async Task&lt;string&gt; ScrapeTitle(string url)
+    {
+        // Hent HTML fra URL
+        var httpClient = new HttpClient();
+        var html = await httpClient.GetStringAsync(url);
+        
+        // Parse HTML
+        var doc = new HtmlDocument();
+        doc.LoadHtml(html);
+        
+        // Find titel
+        var titleNode = doc.DocumentNode.SelectSingleNode("//title");
+        return titleNode?.InnerText ?? "Ingen titel fundet";
+    }
+}
+                </CodeBlock>
+            </section>
+
+            <!-- Læringsmål 2: Etiske, moralske og lovmæssige hensyn -->
+            <section class="mb-5">
+                <h2>2. Etiske, Moralske og Lovmæssige Hensyn</h2>
+                
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">Vigtigt!</h4>
+                    <p>
+                        Webscraping skal altid udføres ansvarligt og respekterende for website-ejernes rettigheder 
+                        og brugere.
+                    </p>
+                </div>
+
+                <h3 class="mt-4">Lovmæssige Overvejelser</h3>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>GDPR (General Data Protection Regulation)</h5>
+                        <ul>
+                            <li>Personoplysninger må ikke scrapes uden samtykke</li>
+                            <li>Data skal behandles i overensstemmelse med GDPR-reglerne</li>
+                            <li>Brugere skal informeres om databehandling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Copyright og Intellektuel Ejendomsret</h5>
+                        <ul>
+                            <li>Indhold kan være beskyttet af ophavsret</li>
+                            <li>Kopiering og videreformidling kan kræve tilladelse</li>
+                            <li>Tjek altid vilkår og betingelser for website</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Computer Misuse Act / Databeskyttelseslovgivning</h5>
+                        <ul>
+                            <li>Uautoriseret adgang til systemer er ulovlig</li>
+                            <li>Overtrædelse af sikkerhedsforanstaltninger kan være kriminel</li>
+                            <li>Respekter altid robots.txt og terms of service</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Etiske Principper</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="text-success">✓ Gør dette</h5>
+                                <ul>
+                                    <li>Respekter robots.txt filen</li>
+                                    <li>Brug rate limiting (vent mellem requests)</li>
+                                    <li>Identificer dig selv med User-Agent header</li>
+                                    <li>Følg websites terms of service</li>
+                                    <li>Anvend kun offentligt tilgængelige data</li>
+                                    <li>Spørg om tilladelse ved tvivl</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="text-danger">✗ Undgå dette</h5>
+                                <ul>
+                                    <li>Overbelaste serveren med for mange requests</li>
+                                    <li>Ignorere robots.txt instruktioner</li>
+                                    <li>Scrape personfølsomme data uden samtykke</li>
+                                    <li>Bruge scraped data kommercielt uden tilladelse</li>
+                                    <li>Omgå sikkerhedsforanstaltninger</li>
+                                    <li>Scrape login-beskyttede områder</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Best Practices</h3>
+                <ExampleBox>
+                    <ol>
+                        <li><strong>Læs robots.txt:</strong> Tjek altid om scraping er tilladt</li>
+                        <li><strong>Rate Limiting:</strong> Vent 1-2 sekunder mellem requests</li>
+                        <li><strong>User-Agent:</strong> Identificer dit script korrekt</li>
+                        <li><strong>Fejlhåndtering:</strong> Håndter fejl gracefully uden at crashe serveren</li>
+                        <li><strong>Caching:</strong> Undgå at hente samme data flere gange</li>
+                        <li><strong>Kontakt ejeren:</strong> Spørg først om tilladelse for store projekter</li>
+                    </ol>
+                </ExampleBox>
+
+                <h3 class="mt-4">Eksempel: Respektfuld Scraping</h3>
+                <CodeBlock Language="csharp">
+using System;
+using System.Threading.Tasks;
+using HtmlAgilityPack;
+using System.Net.Http;
+
+public class EthicalWebScraper
+{
+    private readonly HttpClient _httpClient;
+    
+    public EthicalWebScraper()
+    {
+        _httpClient = new HttpClient();
+        // Identificer dig selv korrekt
+        _httpClient.DefaultRequestHeaders.Add(
+            "User-Agent", 
+            "BankoCheater/1.0 (Educational Purpose)"
+        );
+    }
+    
+    public async Task&lt;string&gt; ScrapeWithDelay(string url)
+    {
+        // Tjek først robots.txt (skal implementeres separat)
+        
+        // Hent data
+        var html = await _httpClient.GetStringAsync(url);
+        
+        // Vent først næste request (rate limiting)
+        await Task.Delay(2000); // 2 sekunder
+        
+        return html;
+    }
+}
+                </CodeBlock>
+            </section>
+
+            <!-- Læringsmål 3: DOM Analyse -->
+            <section class="mb-5">
+                <h2>3. Analysere en DOM med Henblik på Scraping</h2>
+                
+                <p>
+                    <strong>DOM</strong> (Document Object Model) er den strukturerede repræsentation af en HTML-side. 
+                    For at scrape data effektivt, skal man først forstå sidenes struktur.
+                </p>
+
+                <h3 class="mt-4">Sådan Analyserer du en DOM</h3>
+                
+                <div class="step-by-step">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Trin 1: Inspect Element</h5>
+                            <p>
+                                Brug browserens developer tools (F12) til at inspektere elementerne på siden. 
+                                Find det element, der indeholder den data, du ønsker at hente.
+                            </p>
+                            <ul>
+                                <li>Højreklik på elementet → "Inspect"</li>
+                                <li>Eller tryk F12 → vælg "Elements" tab</li>
+                                <li>Se HTML strukturen og find unikke attributter</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Trin 2: Identificer Selektorer</h5>
+                            <p>
+                                Find CSS selektorer eller XPath, der kan identificere det ønskede element unikt:
+                            </p>
+                            <ul>
+                                <li><strong>ID:</strong> <code>#unique-id</code></li>
+                                <li><strong>Class:</strong> <code>.class-name</code></li>
+                                <li><strong>Tag + Class:</strong> <code>div.content</code></li>
+                                <li><strong>XPath:</strong> <code>//div[@@class='content']</code></li>
+                                <li><strong>Attribute:</strong> <code>[data-testid='element']</code></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Trin 3: Test Selektoren</h5>
+                            <p>
+                                Verificer at selektoren virker ved at teste den i browser console:
+                            </p>
+                            <CodeBlock Language="javascript">
+// I browser console:
+document.querySelector('#unique-id');
+document.querySelectorAll('.class-name');
+// Eller med XPath:
+document.evaluate('//div[@@class="content"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                            </CodeBlock>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Trin 4: Implementer i Kode</h5>
+                            <p>
+                                Brug selektoren i dit scraping script med HtmlAgilityPack eller lignende:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Eksempel: DOM Analyse og Scraping</h3>
+                
+                <div class="alert alert-info" role="alert">
+                    <strong>Eksempel:</strong> Lad os sige vi vil scrape alle priser fra en produktliste
+                </div>
+
+                <ExampleBox>
+                    <h5>HTML Struktur:</h5>
+                    <CodeBlock Language="html">
+&lt;div class="products"&gt;
+    &lt;div class="product" data-id="1"&gt;
+        &lt;h3&gt;Produkt 1&lt;/h3&gt;
+        &lt;span class="price"&gt;299 kr&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="product" data-id="2"&gt;
+        &lt;h3&gt;Produkt 2&lt;/h3&gt;
+        &lt;span class="price"&gt;499 kr&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                    </CodeBlock>
+                </ExampleBox>
+
+                <h5 class="mt-3">C# Kode til at Scrape Priserne:</h5>
+                <CodeBlock Language="csharp">
+using HtmlAgilityPack;
+using System.Collections.Generic;
+using System.Linq;
+
+public class PriceScraper
+{
+    public List&lt;string&gt; ScrapePrices(string html)
+    {
+        var doc = new HtmlDocument();
+        doc.LoadHtml(html);
+        
+        // Find alle produkt-divs
+        var productNodes = doc.DocumentNode
+            .SelectNodes("//div[@@class='product']");
+        
+        var prices = new List&lt;string&gt;();
+        
+        foreach (var product in productNodes)
+        {
+            // Find prisen i hvert produkt
+            var priceNode = product.SelectSingleNode(".//span[@@class='price']");
+            if (priceNode != null)
+            {
+                prices.Add(priceNode.InnerText.Trim());
+            }
+        }
+        
+        return prices;
+    }
+}
+                </CodeBlock>
+
+                <h3 class="mt-4">Fælder at Undgå</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>Dynamisk Indhold</h5>
+                                <p>
+                                    Nogle websites loader indhold via JavaScript. Standard HTML parsing virker ikke her.
+                                </p>
+                                <p><strong>Løsning:</strong> Brug Selenium eller Puppeteer til at vente på at JavaScript kører.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>Skiftende Strukturer</h5>
+                                <p>
+                                    Websites ændrer struktur. Din scraper kan bryde.
+                                </p>
+                                <p><strong>Løsning:</strong> Brug robuste selektorer og håndter fejl gracefully.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Praktisk Øvelse: Analyse din egen Hjemmeside</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <ol>
+                            <li>Åbn din hjemmeside i browseren</li>
+                            <li>Tryk F12 for at åbne Developer Tools</li>
+                            <li>Brug "Inspect" værktøjet til at finde interessante elementer</li>
+                            <li>Identificer CSS selektorer eller XPath</li>
+                            <li>Test selektorerne i Console tab</li>
+                            <li>Skriv et script der kan hente dataene programmatisk</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Praktisk Opgave -->
+            <section class="mb-5">
+                <h2>Praktisk Opgave: Scrape Bankoplader</h2>
+                
+                <div class="alert alert-primary" role="alert">
+                    <h4 class="alert-heading">Opgave</h4>
+                    <p>
+                        Din opgave er at lave en scraper der kan hente bankoplader fra index.html siden. 
+                        Hver plade er unik baseret på det navn/ID som indtastes i input-feltet.
+                    </p>
+                </div>
+
+                <h3 class="mt-4">Opgavebeskrivelse</h3>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Hvad skal du gøre?</h5>
+                        <ol>
+                            <li>Analyser index.html siden og find strukturen af bankopladen</li>
+                            <li>Skriv et program der kan indtaste et navn/ID i input-feltet</li>
+                            <li>Trigger genereringen af pladen (find knappen eller funktionen)</li>
+                            <li>Hent alle tal fra den genererede bankoplade</li>
+                            <li>Gem eller vis dataene i en struktureret form (f.eks. 2D array eller liste)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Hvorfor Selenium?</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>Chrome Extension</h5>
+                                <p>
+                                    Selenium har en Chrome Extension der kan optage dine handlinger og lave en makro. 
+                                    Dette kan hjælpe med at forstå hvilke handlinger der skal automatiseres.
+                                </p>
+                                <p><strong>Tip:</strong> Brug Selenium IDE Chrome Extension til at optage dine trin!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>God Support</h5>
+                                <p>
+                                    Selenium er et meget populært værktøj med masser af dokumentation, 
+                                    eksempler og community support. Det gør det nemmere at finde hjælp.
+                                </p>
+                                <p><strong>Tip:</strong> Tjek Selenium dokumentationen for C# eller Python!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Nyttige Hints (ikke løsningen!)</h3>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Hint 1: Find Elementerne</h5>
+                        <p>
+                            Brug Developer Tools til at inspektere:
+                        </p>
+                        <ul>
+                            <li>Input-feltet hvor navnet skal indtastes - find dets <code>id</code> eller <code>name</code></li>
+                            <li>Knappen der genererer pladen - find dens <code>id</code> eller <code>onclick</code> funktion</li>
+                            <li>Tabel-strukturen med pladen - hvilken <code>id</code> har tabellen?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Hint 2: Vent på Indhold</h5>
+                        <p>
+                            Da pladen genereres dynamisk med JavaScript, skal du vente på at:
+                        </p>
+                        <ul>
+                            <li>Knappen bliver klikket</li>
+                            <li>JavaScript funktionen kører</li>
+                            <li>Indholdet bliver opdateret i DOM'en</li>
+                        </ul>
+                        <p><strong>Tip:</strong> Selenium har metoder til at vente på elementer!</p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Hint 3: Find Selektorerne</h5>
+                        <p>
+                            Analyser HTML strukturen og find de rigtige selektorer:
+                        </p>
+                        <ul>
+                            <li>Tabellen har en specifik <code>id</code></li>
+                            <li>Cellerne i tabellen har også specifikke <code>id</code>'er med et mønster</li>
+                            <li>Tomme celler har ingen tekst - kun celler med tal skal scrapes</li>
+                        </ul>
+                        <p><strong>Tip:</strong> Prøv at teste selektorerne i browser console først!</p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Hint 4: Strukturer Dataene</h5>
+                        <p>
+                            Når du har scrapet tallene, skal de organiseres:
+                        </p>
+                        <ul>
+                            <li>Bankopladen er 3 rækker x 9 kolonner</li>
+                            <li>Hver kolonne har et specifikt talområde (1-9, 10-19, osv.)</li>
+                            <li>Nogle celler er tomme - disse skal repræsenteres (f.eks. med 0 eller null)</li>
+                        </ul>
+                        <p><strong>Tip:</strong> Måske kan du bruge den samme datastruktur som i "Datatyper" lektionen?</p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>Hint 5: Selenium Grundlæggende</h5>
+                        <CodeBlock Language="csharp">
+// Eksempel på grundlæggende Selenium i C# (ikke hele løsningen!)
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+
+// Opret driver
+var driver = new ChromeDriver();
+
+// Naviger til siden
+driver.Navigate().GoToUrl("url til index.html");
+
+// Find et element (eksempel - find det rigtige selektor!)
+var inputElement = driver.FindElement(By.Id("???"));
+
+// Send tekst
+inputElement.SendKeys("test");
+
+// Klik på knap (eksempel - find det rigtige selektor!)
+var button = driver.FindElement(By.Id("???"));
+button.Click();
+
+// Vent på element (eksempel)
+// ... din kode her ...
+
+driver.Quit();
+                        </CodeBlock>
+                    </div>
+                </div>
+
+                <h3 class="mt-4">Chrome Extension: Selenium IDE</h3>
+                <div class="alert alert-info" role="alert">
+                    <h5>Hvordan bruger du Selenium IDE?</h5>
+                    <ol>
+                        <li>Installer Selenium IDE Chrome Extension fra Chrome Web Store</li>
+                        <li>Åbn Selenium IDE i Chrome</li>
+                        <li>Klik "Record" og naviger til index.html</li>
+                        <li>Udfør de handlinger du vil automatisere:
+                            <ul>
+                                <li>Indtast et navn i input-feltet</li>
+                                <li>Klik på generer-knappen</li>
+                            </ul>
+                        </li>
+                        <li>Stop optagelsen</li>
+                        <li>Se koden der blev genereret - dette kan hjælpe dig med at forstå strukturen!</li>
+                    </ol>
+                    <p><strong>Husk:</strong> Den genererede kode er kun en start - du skal selv tilføje logik til at hente tallene!</p>
+                </div>
+
+                <h3 class="mt-4">Trin-for-Trin Tilgang</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <ol>
+                            <li><strong>Start simpelt:</strong> Skriv først et program der bare åbner siden</li>
+                            <li><strong>Tilføj input:</strong> Prøv at finde input-feltet og indtaste tekst</li>
+                            <li><strong>Trigger generering:</strong> Find og klik på knappen</li>
+                            <li><strong>Vent på resultat:</strong> Venter på at pladen bliver genereret</li>
+                            <li><strong>Hent et tal:</strong> Prøv først at hente ét tal fra én celle</li>
+                            <li><strong>Hent alle tal:</strong> Udvid til at hente alle tal fra alle celler</li>
+                            <li><strong>Strukturér data:</strong> Organiser tallene i en passende datastruktur</li>
+                        </ol>
+                        <p class="mt-3"><strong>Vigtigt:</strong> Test hvert trin isoleret, så du ved præcis hvor fejlen opstår hvis noget ikke virker!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Yderligere Ressourcer -->
+            <section class="mb-5">
+                <h2>Yderligere Ressourcer</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Nyttige Links</h5>
+                        <ul>
+                            <li><a href="https://htmlagilitypack.net/" target="_blank">HtmlAgilityPack Dokumentation</a></li>
+                            <li><a href="https://www.w3.org/TR/DOM-Level-2-Core/" target="_blank">W3C DOM Specification</a></li>
+                            <li><a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt" target="_blank">Google: Understanding robots.txt</a></li>
+                            <li><a href="https://www.w3.org/TR/xpath-31/" target="_blank">XPath 3.1 Specification</a></li>
+                        </ul>
+                        
+                        <h5 class="mt-4">Selenium Ressourcer</h5>
+                        <ul>
+                            <li><a href="https://www.selenium.dev/documentation/" target="_blank">Selenium Officiel Dokumentation</a></li>
+                            <li><a href="https://www.selenium.dev/selenium-ide/" target="_blank">Selenium IDE (Chrome Extension)</a></li>
+                            <li><a href="https://www.selenium.dev/documentation/webdriver/elements/" target="_blank">Selenium: Find Elements</a></li>
+                            <li><a href="https://www.selenium.dev/documentation/webdriver/waits/" target="_blank">Selenium: Waits (Vent på elementer)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

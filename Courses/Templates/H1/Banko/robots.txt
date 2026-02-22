@@ -1,0 +1,34 @@
+# robots.txt for Banko Project Root
+# This file tells web crawlers which files and directories they can access
+
+User-agent: *
+Allow: /
+
+# Disallow access to build artifacts and development files
+Disallow: /Blazor/bin/
+Disallow: /Blazor/obj/
+Disallow: /BankoCheater/bin/
+Disallow: /BankoCheater/obj/
+
+# Disallow access to configuration files that may contain sensitive information
+Disallow: /*.csproj.user
+Disallow: /appsettings*.json
+Disallow: /Properties/
+
+# Allow documentation and public assets
+Allow: /README.md
+Allow: /Blazor/wwwroot/
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+
