@@ -1,0 +1,4 @@
+[submodule "Courses/Templates/H3"]
+	path = Courses/Templates/H3
+	url = https://github.com/Mercantech/h3.git
+	branch = main
