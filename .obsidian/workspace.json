@@ -79,14 +79,10 @@
             "id": "971813ce90748205",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hovedforløb/Templates/Obsidian/Notes/Rename-GM4/PersonalNotes.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "PersonalNotes"
+              "title": "New tab"
             }
           }
         ],
