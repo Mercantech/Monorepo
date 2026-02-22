@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  ctf-hub:
+    build: .
+    container_name: ctf-hub
+    ports:
+      - "8080:80"
+    volumes:
+      # Mount current directory for development (hot reload)
+      - .:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    networks:
+      - ctf-network
+
+networks:
+  ctf-network:
+    driver: bridge

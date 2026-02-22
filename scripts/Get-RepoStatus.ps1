@@ -47,10 +47,12 @@ foreach ($e in $list) {
     $path = $e.path -replace '\\', '/'
     $fullPath = Join-Path $Root $path
     $exists = Test-Path $fullPath
-    $hasGit = $exists -and (Test-Path (Join-Path $fullPath ".git"))
-    $isGitlink = $gitlinks.ContainsKey($path)
+    $gitPath = Join-Path $fullPath ".git"
+    $hasGit = $exists -and (Test-Path $gitPath)
+    # Gitlink: index har 160000. Sammenlign case-insensitive (index kan have f.eks. Projekter/CTF, repos.json Projekter/ctf).
+    $isGitlink = $gitlinks.ContainsKey($path) -or (($gitlinks.Keys | Where-Object { $_ -eq $path }).Count -gt 0)
     $normPath = $path -replace '/', [System.IO.Path]::DirectorySeparatorChar
-    $isGitlinkAlt = $gitlinks.ContainsKey($normPath)
+    $isGitlinkAlt = $gitlinks.ContainsKey($normPath) -or (($gitlinks.Keys | Where-Object { $_ -eq $normPath }).Count -gt 0)
 
     if (-not $exists) {
         $status = "Mangler"

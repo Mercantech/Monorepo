@@ -1,0 +1,40 @@
+meta {
+  name: Slet testbruger (cleanup)
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseUrl}}/api/User/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: {{createdUserId}}
+}
+
+auth:bearer {
+  token: {{authTokenAdmin}}
+}
+
+script:pre-request {
+  const adminToken = bru.getEnvVar("authTokenAdmin");
+  if (!adminToken) {
+    const fallbackToken = bru.getEnvVar("authToken");
+    if (fallbackToken) {
+      bru.setEnvVar("authTokenAdmin", fallbackToken);
+    }
+  }
+  const userId = bru.getEnvVar("createdUserId");
+  if (!userId) {
+    bru.skip();
+  }
+}
+
+script:post-response {
+  if (res.status === 204 || res.status === 200) {
+    const userId = bru.getEnvVar("createdUserId");
+    bru.setEnvVar("createdUserId", "");
+  }
+}

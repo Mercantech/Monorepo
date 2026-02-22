@@ -1,0 +1,24 @@
+meta {
+  name: E2E User Flows
+  seq: 1
+}
+
+docs {
+  # E2E Test Suite – standard user flows
+  
+  Kør hele suiten: `bru run E2E-UserFlows -r` med env Kahoot og baseUrl.
+  
+  ## Flow-rækkefølge
+  1. **01-Auth-Lifecycle** – Register, login, refresh (sætter authToken, createdUserId, refreshToken).
+  2. **02-Teacher-Quiz-Session** – Login, opret quiz, session, join, start (sætter createdQuizId, createdQuizPin, sessionId, sessionPin).
+  3. **03-Student-Play** – Hent spørgsmål, indsend svar, leaderboard.
+  4. **04-Public-API** – WeatherForecast, GetQuizzes, GetQuizById, GetQuiz 404.
+  5. **05-Quiz-Read-Update** – GetQuizByPin, UpdateQuiz, GetQuizById (verificer opdatering).
+  6. **06-Cleanup** – Sletter E2E-brugeren (Delete E2E user). Kører altid sidst så prod/demo ikke efterlader testdata.
+  
+  Variabler: createdUserId, authToken, createdQuizId, createdQuizPin, sessionId, sessionPin, participantId.
+}
+
+auth {
+  mode: none
+}

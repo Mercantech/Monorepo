@@ -1,0 +1,126 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: API/Dockerfile
+    ports:
+      - "9080:5000"
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_ENVIRONMENT=Production
+      # Seq logging - bruger Docker service navn internt (http://seq:80)
+      # For ekstern adgang, sæt Seq__ServerUrl=https://kahoot-log.mercantec.tech i .env filen
+      - Storage__MinIO__Endpoint=http://minio:9000
+      - Storage__MinIO__BucketName=kahoot-uploads
+      - Storage__MinIO__AccessKey=${MINIO_ROOT_USER:-minioadmin}
+      - Storage__MinIO__SecretKey=${MINIO_ROOT_PASSWORD:-minioadmin}
+    depends_on:
+      - seq
+      - minio
+    networks:
+      - app-network
+
+  flutterweb:
+    build:
+      context: ./flutter_app
+      dockerfile: Dockerfile
+      args:
+        - BUILDKIT_INLINE_CACHE=1
+    ports:
+      - "9081:80"
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+  seq:
+    image: datalust/seq:latest
+    ports:
+      - "9082:80"    # HTTP UI og API
+      - "5341:5341"  # HTTPS (for ekstern adgang)
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORD=Admin123!
+    volumes:
+      - seq-data:/data
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # MinIO – S3-kompatibel objektlager med Web UI (kun prod, ikke i docker-compose.test.yml)
+  minio:
+    image: minio/minio:latest
+    # Uden --console-address bruger MinIO en dynamisk port til Web UI (fx 37995); 9085:9001 virker kun med fast port.
+    command: server --console-address ":9001" /data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "9084:9000"   # S3 API
+      - "9085:9001"   # Web Console
+    volumes:
+      - minio-data:/data
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Bruno – kør E2E-UserFlows én gang ved deploy (som H2), skriv HTML til delt volume. restart: no = engang-job.
+  bruno-run-on-deploy:
+    build:
+      context: ./Bruno
+      dockerfile: Dockerfile
+    entrypoint: ["sh", "-c"]
+    volumes:
+      - ./Bruno:/collection
+      - bruno-reports:/collection/reports
+    environment:
+      - API_BASE_URL=https://kahoot-api.mercantec.tech
+    command: ["mkdir -p /collection/reports && echo 'Venter på API...' && sleep 15 && bru run E2E-UserFlows -r --sandbox=developer --env Kahoot --env-var \"baseUrl=$$API_BASE_URL\" --reporter-html /collection/reports/results.html && echo 'Rapport skrevet til bruno-reports volume'"]
+    depends_on:
+      - backend
+    restart: "no"
+    networks:
+      - app-network
+
+  # Bruno CLI – manuel kør (fx lokalt). Kør: docker compose --profile cli run bruno-cli
+  bruno-cli:
+    build:
+      context: ./Bruno
+      dockerfile: Dockerfile
+    entrypoint: ["sh", "-c"]
+    volumes:
+      - ./Bruno:/collection
+      - bruno-reports:/collection/reports
+    environment:
+      - API_BASE_URL=https://kahoot-api.mercantec.tech
+    command: ["mkdir -p /collection/reports && bru run E2E-UserFlows -r --sandbox=developer --env Kahoot --env-var \"baseUrl=$$API_BASE_URL\" --reporter-html /collection/reports/results.html"]
+    profiles:
+      - cli
+
+  # Server E2E-rapporten (uden profile – startes ved deploy). Fx https://kahoot-bruno.mercantec.tech
+  # Opdateres automatisk ved deploy via bruno-run-on-deploy (som H2).
+  bruno-reports:
+    build:
+      context: ./Bruno
+      dockerfile: reports-Dockerfile
+    ports:
+      - "9083:80"
+    volumes:
+      - bruno-reports:/usr/share/nginx/html:ro
+      - ./Bruno/reports-nginx.conf:/etc/nginx/conf.d/reports.conf:ro
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  seq-data:
+  bruno-reports:
+  minio-data:

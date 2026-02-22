@@ -1,0 +1,30 @@
+meta {
+  name: Slet bruger (admin)
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{baseUrl}}/api/User/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: {{authTokenAdmin}}
+}
+
+script:pre-request {
+  const adminToken = bru.getEnvVar("authTokenAdmin");
+  if (!adminToken) {
+    const fallbackToken = bru.getEnvVar("authToken");
+    if (fallbackToken) {
+      bru.setEnvVar("authTokenAdmin", fallbackToken);
+    }
+  }
+}
+

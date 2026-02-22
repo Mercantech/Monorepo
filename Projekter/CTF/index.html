@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Hub - Capture The Flag Udfordringer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ctf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .ctf-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ctf-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: #FFD700;
+        }
+
+        .ctf-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .ctf-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ctf-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .ctf-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .ctf-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .ctf-difficulty {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-easy {
+            background: rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+
+        .difficulty-medium {
+            background: rgba(255, 152, 0, 0.3);
+            color: #FF9800;
+            border: 1px solid #FF9800;
+        }
+
+        .difficulty-hard {
+            background: rgba(244, 67, 54, 0.3);
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+
+        .ctf-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .ctf-button {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .ctf-button:hover {
+            background: linear-gradient(45deg, #FFA500, #FF8C00);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .coming-soon .ctf-button {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2);
+            color: #FFA500;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .ctf-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .ctf-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏴‍☠️ CTF Hub</h1>
+            <p>Velkommen til vores samling af Capture The Flag udfordringer! Test dine færdigheder inden for cybersikkerhed, kryptografi og problemløsning.</p>
+        </div>
+
+        <div class="ctf-grid">
+            <!-- Pharos CTF -->
+            <div class="ctf-card" onclick="navigateToCTF('pharos')">
+                <span class="ctf-icon">🏛️</span>
+                <h2 class="ctf-title">Pharos</h2>
+                <div class="ctf-difficulty difficulty-easy">Let</div>
+                <p class="ctf-description">
+                    Udforsk metadata i et billede af det legendariske Pharos-fyrtårn i Alexandria. 
+                    Find skjulte informationer og følg spor til næste udfordring.
+                </p>
+                <div class="ctf-tags">
+                    <span class="tag">Metadata</span>
+                    <span class="tag">Steganografi</span>
+                    <span class="tag">Historie</span>
+                    <span class="tag">Geografi</span>
+                </div>
+                <button class="ctf-button">Start Udfordring</button>
+            </div>
+
+            <!-- Crypto CTF -->
+            <div class="ctf-card" onclick="navigateToCTF('crypto')">
+                <span class="ctf-icon">🔐</span>
+                <h2 class="ctf-title">Kryptografi Kæde</h2>
+                <div class="ctf-difficulty difficulty-medium">Medium</div>
+                <p class="ctf-description">
+                    Løs en serie af kryptografiske udfordringer! Fra Caesar cipher til Vigenère. 
+                    Se introduktionsvideoen og løs alle flag i vilkårlig rækkefølge.
+                </p>
+                <div class="ctf-tags">
+                    <span class="tag">Kryptografi</span>
+                    <span class="tag">Caesar Cipher</span>
+                    <span class="tag">Base64</span>
+                    <span class="tag">ROT13</span>
+                    <span class="tag">Hex</span>
+                    <span class="tag">Vigenère</span>
+                </div>
+                <button class="ctf-button">Start Udfordring</button>
+            </div>
+
+            <div class="ctf-card coming-soon">
+                <span class="ctf-icon">🌐</span>
+                <h2 class="ctf-title">Web Exploitation</h2>
+                <div class="ctf-difficulty difficulty-hard">Svær</div>
+                <p class="ctf-description">
+                    Find sårbarheder i web-applikationer og udnyt dem til at få adgang til flag. 
+                    SQL injection, XSS, og andre web-sikkerhedsproblemer.
+                </p>
+                <div class="ctf-tags">
+                    <span class="tag">Web Security</span>
+                    <span class="tag">SQL Injection</span>
+                    <span class="tag">XSS</span>
+                </div>
+                <button class="ctf-button">Kommer Snart</button>
+            </div>
+
+            <div class="ctf-card coming-soon">
+                <span class="ctf-icon">🔍</span>
+                <h2 class="ctf-title">Forensik Mysterie</h2>
+                <div class="ctf-difficulty difficulty-medium">Medium</div>
+                <p class="ctf-description">
+                    Analyser digitale spor og løs et kriminalmysterie. 
+                    Undersøg log-filer, netværkstrafik og skjulte filer.
+                </p>
+                <div class="ctf-tags">
+                    <span class="tag">Forensik</span>
+                    <span class="tag">Log Analyse</span>
+                    <span class="tag">Netværk</span>
+                </div>
+                <button class="ctf-button">Kommer Snart</button>
+            </div>
+
+            <div class="ctf-card coming-soon">
+                <span class="ctf-icon">⚡</span>
+                <h2 class="ctf-title">Reverse Engineering</h2>
+                <div class="ctf-difficulty difficulty-hard">Svær</div>
+                <p class="ctf-description">
+                    Disassembler og analyser binære filer for at finde skjulte flag. 
+                    Lær at forstå assembly-kode og programmets indre funktioner.
+                </p>
+                <div class="ctf-tags">
+                    <span class="tag">Assembly</span>
+                    <span class="tag">Debugging</span>
+                    <span class="tag">Binær Analyse</span>
+                </div>
+                <button class="ctf-button">Kommer Snart</button>
+            </div>
+
+            <div class="ctf-card coming-soon">
+                <span class="ctf-icon">🎯</span>
+                <h2 class="ctf-title">OSINT Opdagelse</h2>
+                <div class="ctf-difficulty difficulty-easy">Let</div>
+                <p class="ctf-description">
+                    Brug Open Source Intelligence til at samle information om målet. 
+                    Sociale medier, offentlige databaser og online spor.
+                </p>
+                <div class="ctf-tags">
+                    <span class="tag">OSINT</span>
+                    <span class="tag">Research</span>
+                    <span class="tag">Social Engineering</span>
+                </div>
+                <button class="ctf-button">Kommer Snart</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 CTF Hub - Udfordring din cybersikkerhedsfærdigheder</p>
+            <p>Bygget med ❤️ for læring og udfordring</p>
+            <div class="social-links">
+                <a href="#" class="social-link">📧</a>
+                <a href="#" class="social-link">🐙</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">💼</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Routing system
+        function navigateToCTF(ctfName) {
+            switch(ctfName) {
+                case 'pharos':
+                    window.location.href = './Pharos/index.html';
+                    break;
+                case 'crypto':
+                    window.location.href = './Crypto/index.html';
+                    break;
+                default:
+                    console.log('CTF ikke tilgængelig endnu:', ctfName);
+            }
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.ctf-card:not(.coming-soon)');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click animation
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-5px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-10px) scale(1.02)';
+                    }, 150);
+                });
+            });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focused = document.activeElement;
+                if (focused && focused.classList.contains('ctf-card')) {
+                    focused.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

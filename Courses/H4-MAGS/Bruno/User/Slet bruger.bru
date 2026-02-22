@@ -1,0 +1,21 @@
+meta {
+  name: Slet bruger
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/api/User/me
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "password": "{{testPassword}}"
+  }
+}

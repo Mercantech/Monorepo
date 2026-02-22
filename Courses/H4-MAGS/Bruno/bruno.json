@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "H4-Kahoot",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

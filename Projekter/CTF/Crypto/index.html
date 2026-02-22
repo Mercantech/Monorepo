@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kryptografi CTF - Krypteringsmysterier</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Kryptografi CTF</h1>
+            <p>Udforsk verdenen af kryptering og dekryptering i denne spændende udfordring!</p>
+        </div>
+
+        <!-- Video Introduktion -->
+        <div class="video-section">
+            <div class="video-container">
+                <h2>📺 Før du starter - Se denne introduktion!</h2>
+                <p>For at forstå grundlæggende kryptografi-koncepter, skal du se denne video først:</p>
+                <div class="video-wrapper">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/NuyzuNBFWxQ?start=414" 
+                        title="Kryptografi Introduktion" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-note">
+                    <strong>💡 Tip:</strong> Videoen viser vigtige kryptografi-koncepter du skal bruge i udfordringerne!
+                </div>
+            </div>
+        </div>
+
+        <!-- Flag Format Guide -->
+        <div class="format-guide">
+            <h2>📋 Flag Format Guide</h2>
+            <div class="format-examples">
+                <div class="format-item">
+                    <strong>Standard Format:</strong> <code>CTF{flag_indhold}</code>
+                </div>
+                <div class="format-item">
+                    <strong>Eksempler:</strong>
+                    <ul>
+                        <li><code>CTF{caesar_cipher}</code></li>
+                        <li><code>CTF{base64_decoded}</code></li>
+                        <li><code>CTF{rot13_text}</code></li>
+                        <li><code>CTF{hex_converted}</code></li>
+                        <li><code>CTF{vigenere_solved}</code></li>
+                    </ul>
+                </div>
+                <div class="format-item">
+                    <strong>Regler:</strong>
+                    <ul>
+                        <li>Alt i små bogstaver</li>
+                        <li>Brug underscore (_) i stedet for mellemrum</li>
+                        <li>Ingen specialtegn udover underscore</li>
+                        <li>Altid start med CTF{ og slut med }</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-section">
+            <h2>🎯 Din Fremgang</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text">Du har løst <span id="solvedCount">0</span> ud af <span id="totalCount">5</span> flag</p>
+        </div>
+
+        <!-- Challenges Grid -->
+        <div class="challenges-grid">
+            <!-- Flag 1: Caesar Cipher -->
+            <div class="challenge-card" data-challenge="caesar">
+                <div class="challenge-header">
+                    <span class="challenge-icon">🏴</span>
+                    <h3>Flag 1</h3>
+                    <div class="difficulty easy">Let</div>
+                </div>
+                <div class="challenge-content">
+                    <p><strong>Opgave:</strong> Dekrypter denne tekst:</p>
+                    <div class="cipher-text">Wkh qdph ri wkh jdph lv "Fdswxuh wkh Iodj"</div>
+                    <div class="hint-section">
+                        <button class="hint-btn" onclick="toggleHint('caesar')">💡 Vis Hint</button>
+                        <div class="hint" id="hint-caesar" style="display: none;">
+                            Caesar cipher flytter hver bogstav med et fast antal positioner i alfabetet. Prøv forskellige shifts!
+                        </div>
+                    </div>
+                </div>
+                <div class="flag-input-section">
+                    <input type="text" class="flag-input" placeholder="CTF{.. .. ... ..... .. .. .. .. .. .. ..}" data-challenge="caesar">
+                    <button class="submit-btn" onclick="checkFlag('caesar')">Tjek Flag</button>
+                </div>
+                <div class="result" id="result-caesar"></div>
+            </div>
+
+            <!-- Flag 2: Base64 -->
+            <div class="challenge-card" data-challenge="base64">
+                <div class="challenge-header">
+                    <span class="challenge-icon">🏴</span>
+                    <h3>Flag 2</h3>
+                    <div class="difficulty easy">Let</div>
+                </div>
+                <div class="challenge-content">
+                    <p><strong>Opgave:</strong> Dekod denne streng:</p>
+                    <div class="cipher-text">Q1RGe2Jhc2U2NF9lbmNvZGluZ19pbl9hY3Rpb259</div>
+                    <div class="hint-section">
+                        <button class="hint-btn" onclick="toggleHint('base64')">💡 Vis Hint</button>
+                        <div class="hint" id="hint-base64" style="display: none;">
+                            Base64 er en måde at konvertere binære data til tekst. Prøv en online Base64 decoder!
+                        </div>
+                    </div>
+                </div>
+                <div class="flag-input-section">
+                    <input type="text" class="flag-input" placeholder="CTF{..... .. ....... .. ......." data-challenge="base64">
+                    <button class="submit-btn" onclick="checkFlag('base64')">Tjek Flag</button>
+                </div>
+                <div class="result" id="result-base64"></div>
+            </div>
+
+            <!-- Flag 3: ROT13 -->
+            <div class="challenge-card" data-challenge="rot13">
+                <div class="challenge-header">
+                    <span class="challenge-icon">🏴</span>
+                    <h3>Flag 3</h3>
+                    <div class="difficulty easy">Let</div>
+                </div>
+                <div class="challenge-content">
+                    <p><strong>Opgave:</strong> Dekrypter denne tekst:</p>
+                    <div class="cipher-text">Gur pbqr vf "ebg13_rapbqrq"</div>
+                    <div class="hint-section">
+                        <button class="hint-btn" onclick="toggleHint('rot13')">💡 Vis Hint</button>
+                        <div class="hint" id="hint-rot13" style="display: none;">
+                            ROT13 er en Caesar cipher med shift 13. Prøv at flytte hver bogstav 13 positioner!
+                        </div>
+                    </div>
+                </div>
+                <div class="flag-input-section">
+                    <input type="text" class="flag-input" placeholder="CTF{..... ......." data-challenge="rot13">
+                    <button class="submit-btn" onclick="checkFlag('rot13')">Tjek Flag</button>
+                </div>
+                <div class="result" id="result-rot13"></div>
+            </div>
+
+            <!-- Flag 4: Hex -->
+            <div class="challenge-card" data-challenge="hex">
+                <div class="challenge-header">
+                    <span class="challenge-icon">🏴</span>
+                    <h3>Flag 4</h3>
+                    <div class="difficulty medium">Medium</div>
+                </div>
+                <div class="challenge-content">
+                    <p><strong>Opgave:</strong> Konverter denne hex til tekst:</p>
+                    <div class="cipher-text">48657861646563696d616c5f6465636f64696e67</div>
+                    <div class="hint-section">
+                        <button class="hint-btn" onclick="toggleHint('hex')">💡 Vis Hint</button>
+                        <div class="hint" id="hint-hex" style="display: none;">
+                            Hex bruger 0-9 og A-F til at repræsentere binære data. Konverter hver par af hex-tegn til ASCII!
+                        </div>
+                    </div>
+                </div>
+                <div class="flag-input-section">
+                    <input type="text" class="flag-input" placeholder="CTF{........... ......." data-challenge="hex">
+                    <button class="submit-btn" onclick="checkFlag('hex')">Tjek Flag</button>
+                </div>
+                <div class="result" id="result-hex"></div>
+            </div>
+
+            <!-- Flag 5: Vigenère -->
+            <div class="challenge-card" data-challenge="vigenere">
+                <div class="challenge-header">
+                    <span class="challenge-icon">🏴</span>
+                    <h3>Flag 5</h3>
+                    <div class="difficulty hard">Svær</div>
+                </div>
+                <div class="challenge-content">
+                    <p><strong>Opgave:</strong> Dekrypter denne tekst med nøgle "SECRET":</p>
+                    <div class="cipher-text">Lwjv qfqj lwjv qfqj lwjv qfqj</div>
+                    <div class="hint-section">
+                        <button class="hint-btn" onclick="toggleHint('vigenere')">💡 Vis Hint</button>
+                        <div class="hint" id="hint-vigenere" style="display: none;">
+                            Vigenère bruger en nøgle-ord til at kryptere hver bogstav. Brug nøglen "SECRET" til at dekryptere!
+                        </div>
+                    </div>
+                </div>
+                <div class="flag-input-section">
+                    <input type="text" class="flag-input" placeholder="CTF{........ .. ..... ......." data-challenge="vigenere">
+                    <button class="submit-btn" onclick="checkFlag('vigenere')">Tjek Flag</button>
+                </div>
+                <div class="result" id="result-vigenere"></div>
+            </div>
+        </div>
+
+        <!-- Completion Message -->
+        <div class="completion-message" id="completionMessage" style="display: none;">
+            <h2>🎉 Tillykke! Du har løst alle udfordringer!</h2>
+            <p>Du er nu en kryptografi-mester! Prøv at gå tilbage til hovedmenuen og udforsk andre CTF-udfordringer.</p>
+            <button class="home-btn" onclick="goHome()">Tilbage til Hovedmenu</button>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-section">
+            <button class="back-btn" onclick="goHome()">← Tilbage til Hovedmenu</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

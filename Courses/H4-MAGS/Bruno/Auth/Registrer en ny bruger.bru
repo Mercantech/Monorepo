@@ -1,0 +1,140 @@
+meta {
+  name: Registrer en ny bruger
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "{{testUsername}}",
+    "email": "{{testEmail}}",
+    "password": "{{testPassword}}"
+  }
+}
+
+script:pre-request {
+  // Generer unikke testdata baseret på timestamp
+  // Note: Variabler gemmes automatisk i environment filen (environments/Kahoot.bru)
+  // hvis de allerede er defineret der. Sørg for at alle variabler er i environment filen.
+  const timestamp = Date.now();
+  const randomSuffix = Math.floor(Math.random() * 10000);
+  
+  // Gem i environment filen (variablerne skal være defineret i environments/Kahoot.bru først)
+  bru.setEnvVar("testUsername", `testuser_${timestamp}_${randomSuffix}`);
+  bru.setEnvVar("testEmail", `test_${timestamp}_${randomSuffix}@example.com`);
+  bru.setEnvVar("testPassword", "TestPassword123!");
+  
+  console.log(`Opretter testbruger: ${bru.getEnvVar("testUsername")}`);
+}
+
+script:post-response {
+  // Gem userId og token fra responsen i environment filen
+  // Note: Variabler gemmes automatisk i environments/Kahoot.bru hvis de er defineret der
+  if (res.status === 200 || res.status === 201) {
+    const responseData = res.body;
+    
+    // Gem userId til brug ved cleanup (skal være defineret i environment filen)
+    if (responseData && responseData.user && responseData.user.id) {
+      const userId = responseData.user.id;
+      bru.setEnvVar("createdUserId", userId);
+      console.log(`Bruger oprettet med ID: ${userId} (gemt i environment)`);
+    }
+    
+    // Gem token baseret på brugerens rolle (samme logik som login)
+    if (responseData && responseData.token && responseData.user) {
+      const token = responseData.token;
+      const refreshToken = responseData.refreshToken;
+      const userRole = responseData.user.role;
+      
+      // Normaliser rolle navn (f.eks. "Student" -> "Student")
+      const roleKey = userRole.charAt(0).toUpperCase() + userRole.slice(1).toLowerCase();
+      
+      // Gem token baseret på rolle (skal være defineret i environment filen)
+      const tokenVarName = `authToken${roleKey}`;
+      const refreshTokenVarName = `refreshToken${roleKey}`;
+      
+      bru.setEnvVar(tokenVarName, token);
+      bru.setEnvVar(refreshTokenVarName, refreshToken);
+      
+      // Gem også i generel authToken (standard)
+      bru.setEnvVar("authToken", token);
+      
+      console.log(`Token gemt for rolle: ${roleKey} (gemt i environment)`);
+      console.log(`Variabler opdateret i: environments/Kahoot.bru`);
+    }
+  } else {
+    console.error(`Fejl ved oprettelse af bruger: ${res.status}`);
+  }
+}
+
+tests {
+  test("Status skal være 200 eller 201", function() {
+    expect(res.getStatus()).to.be.oneOf([200, 201]);
+  });
+
+  test("Response skal indeholde token", function() {
+    const data = res.getBody();
+    expect(data).to.have.property("token");
+    expect(data.token).to.be.a("string");
+    expect(data.token.length).to.be.greaterThan(0);
+  });
+
+  test("Response skal indeholde refreshToken", function() {
+    const data = res.getBody();
+    expect(data).to.have.property("refreshToken");
+    expect(data.refreshToken).to.be.a("string");
+    expect(data.refreshToken.length).to.be.greaterThan(0);
+  });
+
+  test("Response skal indeholde user objekt", function() {
+    const data = res.getBody();
+    expect(data).to.have.property("user");
+    expect(data.user).to.be.an("object");
+  });
+
+  test("User objekt skal indeholde id", function() {
+    const data = res.getBody();
+    expect(data.user).to.have.property("id");
+    expect(data.user.id).to.be.a("number");
+    expect(data.user.id).to.be.greaterThan(0);
+  });
+
+  test("User objekt skal indeholde username", function() {
+    const data = res.getBody();
+    expect(data.user).to.have.property("username");
+    expect(data.user.username).to.be.a("string");
+    expect(data.user.username.length).to.be.greaterThan(0);
+  });
+
+  test("User objekt skal indeholde email", function() {
+    const data = res.getBody();
+    expect(data.user).to.have.property("email");
+    expect(data.user.email).to.be.a("string");
+    expect(data.user.email).to.include("@");
+  });
+
+  test("User objekt skal indeholde role", function() {
+    const data = res.getBody();
+    expect(data.user).to.have.property("role");
+    expect(data.user.role).to.be.a("string");
+    expect(["Student", "Teacher", "Admin"]).to.include(data.user.role);
+  });
+
+  test("Username skal matche det sendte username", function() {
+    const data = res.getBody();
+    const sentUsername = bru.getEnvVar("testUsername");
+    expect(data.user.username.toLowerCase()).to.equal(sentUsername.toLowerCase());
+  });
+
+  test("Email skal matche den sendte email", function() {
+    const data = res.getBody();
+    const sentEmail = bru.getEnvVar("testEmail");
+    expect(data.user.email.toLowerCase()).to.equal(sentEmail.toLowerCase());
+  });
+}

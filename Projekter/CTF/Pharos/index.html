@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharos CTF - Fyrtårnets Mysterie</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+        .lighthouse-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+        .hint {
+            background: rgba(255, 215, 0, 0.2);
+            border-left: 4px solid #FFD700;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .flag-input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+        .submit-btn {
+            background: #FFD700;
+            color: #333;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+        }
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .error {
+            color: #f44336;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ Pharos CTF - Fyrtårnets Mysterie</h1>
+        
+        <p>Velkommen til den første udfordring! Du står over for et mysterie omkring et af verdens syv vidundere - Pharos-fyrtårnet i Alexandria.</p>
+        
+        <div class="hint">
+            <strong>💡 Hint:</strong> Billeder kan indeholde mere information end det øjet kan se. Prøv at undersøge alle detaljer i dette billede...
+        </div>
+        
+        <img src="Lighthouse.png" alt="Pharos Fyrtårn" class="lighthouse-img">
+        
+        <div class="hint">
+            <strong>🔍 Opgave:</strong> Find metadata-informationen i dette billede og indtast flaget i formatet CTF{...}
+        </div>
+        
+        <input type="text" class="flag-input" id="flagInput" placeholder="Indtast dit flag her...">
+        <br>
+        <button class="submit-btn" onclick="checkFlag()">Tjek Flag</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Flag-validering
+        const validFlags = [
+            'CTF{metadata_found}',
+            'CTF{pharos_island}',
+            'CTF{alexandria_egypt}',
+            'CTF{31.2131N_29.8853E}',
+            'CTF{280_BC}',
+            'CTF{sostratus_of_cnidus}',
+            'CTF{white_marble}',
+            'CTF{130_meters}',
+            'CTF{3_levels}',
+            'CTF{ptolemy_ii_philadelphus}'
+        ];
+
+        function checkFlag() {
+            const input = document.getElementById('flagInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (validFlags.includes(input)) {
+                resultDiv.innerHTML = '<div class="success">🎉 Korrekt! Du har fundet flaget! Næste trin venter...</div>';
+                // Her kan du tilføje logik til at vise næste trin
+                setTimeout(() => {
+                    alert('Næste trin: Find GitHub-brugeren bag dette billede...');
+                }, 2000);
+            } else {
+                resultDiv.innerHTML = '<div class="error">❌ Forkert flag. Prøv igen!</div>';
+            }
+        }
+
+        // Enter-tast funktionalitet
+        document.getElementById('flagInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkFlag();
+            }
+        });
+    </script>
+</body>
+</html>
