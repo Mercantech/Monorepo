@@ -1,27 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'features/weather/view_model/weather_view_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'core/config/app_config.dart';
+import 'core/di/injection.dart';
+import 'features/weather/bloc/weather_bloc.dart';
 import 'features/weather/view/weather_page.dart';
 import 'features/infographic/view/infographic_page.dart';
 import 'core/theme/theme.dart';
 
-void main() {
+/// Main entry point
+/// 
+/// Initialiserer app dependencies og configuration før app starter.
+/// 
+/// Setup steps:
+/// 1. Initialisér app configuration (environment)
+/// 2. Setup dependency injection
+/// 3. Start app
+void main() async {
+  // Sikr at Flutter bindings er initialiseret
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 1. Initialisér App Configuration
+  // TODO: Skift til Environment.production når du deployer til produktion!
+  await AppConfig.initialize(Environment.development);
+  // await AppConfig.initialize(Environment.production);
+  
+  // Log hvilket environment vi kører i
+  debugPrint('🚀 Starting app in ${AppConfig.instance.environment.name} mode');
+  debugPrint('📡 API Base URL: ${AppConfig.instance.apiBaseUrl}');
+
+  // 2. Setup Dependency Injection
+  await setupDependencyInjection();
+  debugPrint('✅ Dependency Injection setup complete');
+
+  // 3. Start App
   runApp(const MyApp());
 }
 
+/// Tip: Skift environment nemt
+/// 
+/// For at skifte mellem localhost og deployed API, ændre bare Environment i main():
+/// - Development (localhost): Environment.development
+/// - Production (deployed): Environment.production
+/// - Staging (hvis I har det): Environment.staging
+
+/// Root app widget
+/// 
+/// Setup BLoC providers og MaterialApp.
+/// BLoCs injiceres via DI container (getIt).
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => WeatherViewModel()),
+        // Weather BLoC - injected via DI
+        // Factory registration giver os ny instance hver gang
+        BlocProvider(
+          create: (context) => getIt<WeatherBloc>(),
+        ),
+        
+        // TODO: Tilføj flere BLoCs her efterhånden:
+        // BlocProvider(
+        //   create: (context) => getIt<LoginBloc>(),
+        // ),
       ],
       child: MaterialApp(
-        title: 'Vejr App',
+        title: 'H4 Vejr App',
         theme: appTheme,
+        debugShowCheckedModeBanner: false,
         home: const MainNavigation(),
       ),
     );
@@ -61,7 +108,7 @@ class _MainNavigationState extends State<MainNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info_outline),
-            label: 'MVVM',
+            label: 'BLoC',
           ),
         ],
       ),

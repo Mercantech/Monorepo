@@ -70,7 +70,19 @@ Kører push og/eller pull for **alle** mapper i `repos.json`.
 
 ---
 
-## 5. Gennemgå repos enkeltvis (List-Repos + Sync-OneRepo)
+## 5. Get-RepoStatus.ps1
+
+Tjekker alle repos i repos.json og viser om de er **OK** (almindelige filer), **Submodule** (har .git eller er gitlink) eller **Mangler** (mappe findes ikke).
+
+```powershell
+.\scripts\Get-RepoStatus.ps1
+```
+
+Brug det før du kører Pull/Sync, så du ved hvilke der skal rettes. **Guide til at rette submodules:** [Guide-Fix-Submodules.md](Guide-Fix-Submodules.md).
+
+---
+
+## 6. Gennemgå repos enkeltvis (List-Repos + Sync-OneRepo)
 
 Når du vil gå **én repo ad gangen** (fx for at løse merge-konflikter):
 

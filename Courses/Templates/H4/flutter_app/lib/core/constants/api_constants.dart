@@ -1,6 +1,6 @@
 class ApiConstants {
-  // Backend API URL - juster til jeres backend URL
-  static const String baseUrl = '/api';
+  // Backend API URL 
+  static const String baseUrl = 'https://h4-api.mercantec.tech/api';
   
   // Weather endpoints
   static const String weatherForecast = '/WeatherForecast';
