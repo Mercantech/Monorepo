@@ -112,9 +112,21 @@
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
+          },
+          {
+            "id": "1a4790a7e6217051",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Obsidian/SSP-H2-H4/Drawing 2026-02-25 10.34.20.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-02-25 10.34.20.excalidraw"
+            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -273,11 +285,14 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "516d18416912d001",
+  "active": "1a4790a7e6217051",
   "lastOpenFiles": [
+    "Obsidian/SSP-H2-H4/Drawing 2026-02-25 10.34.20.excalidraw.md",
     "Obsidian/SSP-H2-H4/Untitled.canvas",
     "Obsidian/SSP-H2-H4",
     "Courses/Templates/H1/README.md",
