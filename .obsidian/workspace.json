@@ -79,6 +79,34 @@
             "id": "971813ce90748205",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian/Courses-Overview/Kurser.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Kurser"
+            }
+          },
+          {
+            "id": "04e64b4199b48356",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Courses/Templates/H1/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "516d18416912d001",
+            "type": "leaf",
+            "state": {
               "type": "graph",
               "state": {},
               "icon": "lucide-git-fork",
@@ -86,7 +114,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -245,13 +273,16 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-excalidraw-plugin:New drawing": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Create new base": false
     }
   },
-  "active": "61b215765ddf403f",
+  "active": "516d18416912d001",
   "lastOpenFiles": [
+    "Obsidian/SSP-H2-H4/Untitled.canvas",
+    "Obsidian/SSP-H2-H4",
+    "Courses/Templates/H1/README.md",
+    "Obsidian/Courses-Overview/Kurser.md",
+    "Obsidian/Courses-Overview",
     "Courses/Templates/H1/H1-Projekt.AppHost/obj/Debug/net9.0/AppSettingsSchema.json",
     "Courses/Templates/H1/H1-Projekt.AppHost/obj/Debug/net9.0/CombinedComponentSchema.json",
     "Courses/Templates/H1/H1-Projekt.AppHost/obj/Debug/net9.0/Aspire/references/_AppHost.ProjectMetadata.g.cs",
@@ -260,9 +291,6 @@
     "Courses/Templates/H1/H1-Projekt.AppHost/obj/Debug/net9.0/Aspire",
     "Courses/Templates/H1/Blazor/obj/Debug/net9.0/Blazor.csproj.AssemblyReference.cache",
     "Courses/Templates/H1/H1-Projekt.AppHost/obj/Debug/net9.0/H1-Projekt.AppHost.csproj.AssemblyReference.cache",
-    "Courses/Templates/H1/H1-Projekt.ServiceDefaults/obj/Debug/net9.0/H1-Projekt.ServiceDefaults.csproj.AssemblyReference.cache",
-    "Courses/Templates/H1/H1-Projekt.AppHost/obj/Debug/net9.0/H1-Projekt.AppHost.assets.cache",
-    "Courses/Templates/H1/Blazor/obj/Debug/net9.0/Blazor.assets.cache",
     "Courses/Templates/H6/Notes/Plugins/Note-redskaber/Mind-map.md",
     "Courses/Templates/H6/Notes/Plugins/Note-redskaber/Excalidraw.md",
     "Courses/Templates/H6/Notes/Plugins/Note-redskaber/Excalidraw-Draw.md",
@@ -296,8 +324,6 @@
     "Courses/Templates/H5/Notes/Assets/Mindmap - GitHub.png",
     "Courses/Templates/H5/Notes/Assets/Mind-Command.png",
     "Courses/Templates/H3/Notes/Plugins/Note-redskaber/Excalidraw.md",
-    "Courses/Templates/H3/Notes/Plugins/Note-redskaber/Mind-map.md",
-    "Courses/Templates/H3/Notes/Plugins/Note-redskaber/Excalidraw-Draw.md",
     "GF2/CSharp-Bogen/Canva.canvas"
   ]
 }
