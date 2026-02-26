@@ -125,8 +125,7 @@
               "title": "Drawing 2026-02-25 10.34.20.excalidraw"
             }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,7 +182,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 429.5
+    "width": 200
   },
   "right": {
     "id": "994e2412261bf9ee",
@@ -290,7 +289,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1a4790a7e6217051",
+  "active": "a34ff97ebd7ab1ff",
   "lastOpenFiles": [
     "Obsidian/SSP-H2-H4/Drawing 2026-02-25 10.34.20.excalidraw.md",
     "Obsidian/SSP-H2-H4/Untitled.canvas",
